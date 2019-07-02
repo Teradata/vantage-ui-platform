@@ -12,6 +12,7 @@
   "scripts": {
     "serve": "./node_modules/.bin/ng serve --proxy-config proxy.conf.js",
     "serve:prod": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve  --aot --prod --source-map=false --optimization --proxy-config proxy.conf.js",
+    "build:docs": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --aot --prod --source-map=false --optimization",
     "lint": "npm run tslint && npm run stylelint",
     "tslint": "ng lint --format codeFrame",
     "stylelint": "./node_modules/.bin/stylelint 'src/**/*.scss' '!**/assets/**' --config .stylelintrc.json --syntax scss",
