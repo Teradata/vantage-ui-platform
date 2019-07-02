@@ -19,6 +19,7 @@
     "preinstall": "rm -rf node_modules tmp deploy dist",
     "webdriver-update": "bash ./node_modules/.bin/webdriver-manager update",
     "test": "ng test --code-coverage --source-map=false --watch=false",
+    "coveralls": "cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "build:lib": "bash scripts/build-release && gulp version-placeholder",
     "publish:npm": "bash scripts/npm-publish",
     "publish:nightly": "bash scripts/nightly-publish",
