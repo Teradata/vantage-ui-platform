@@ -1,0 +1,13 @@
+{
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts",
+      "umdModuleIds": {
+        "@covalent/core/dialogs": "covalent.core.dialogs",
+        "@covalent/core/media": "covalent.core.media",
+  
+        "@ngx-translate/core": "ngx-translate.core"
+      }
+    }
+  }
+}

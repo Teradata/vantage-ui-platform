@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "../../out-tsc/app",
+    "types": [
+      "hammerjs"
+    ],
+    "paths": {
+      "@vantage/ui-platform": [ "../lib" ],
+      "@vantage/ui-platform/*": [ "../lib/*" ],
+    },
+  },
+  "files": [
+    "../polyfills.ts",
+    "../typings.d.ts",
+    "main.ts"
+  ],
+  "exclude": [
+    "test.ts",
+    "**/*.spec.*"
+  ]
+}

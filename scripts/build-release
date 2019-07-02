@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+echo 'Clean up'
+rm -rf ./deploy
+
+./node_modules/.bin/ng build ui-platform
+
+rm -rf src/lib/node_modules
+
+# Adding config file to ui-platform
+cp -R ./src/lib/auth/config ./deploy/ui-platform/auth/
+echo 'Build Complete'

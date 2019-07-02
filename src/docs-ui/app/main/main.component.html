@@ -1,0 +1,22 @@
+<div class="pad">
+  <h4>User Feedback Module</h4>
+  <div layout="row">
+    <button mat-raised-button color="primary" (click)="openToast()">
+      Toast TEST
+    </button>
+    <button mat-raised-button color="accent" (click)="openDialog()">
+      Error TEST
+    </button>
+  </div>
+</div>
+<div class="pad">
+  <h4>Auth Module</h4>
+  {{user | json }}
+  <div>
+    <button mat-raised-button
+            color="accent"
+            (click)="logout()">
+      Log Out
+    </button>
+  </div>
+</div>

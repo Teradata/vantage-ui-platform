@@ -1,0 +1,21 @@
+{
+  "name": "@vantage/ui-platform",
+  "version": "0.0.0-PLATFORM",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Teradata/vantage-ui-platform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Teradata/vantage-ui-platform/issues"
+  },
+  "license": "MIT",
+  "author": "Teradata UI Team",
+  "peerDependencies": {
+    "@angular/common": "^0.0.0-NG",
+    "@angular/core": "^0.0.0-NG",
+    "@angular/cdk": "^0.0.0-MATERIAL",
+    "@angular/material": "^0.0.0-MATERIAL",
+    "@covalent/core": "^0.0.0-COVALENT",
+    "@covalent/http": "^0.0.0-COVALENT"
+  }
+}
