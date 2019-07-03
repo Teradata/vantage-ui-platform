@@ -30,7 +30,7 @@ export class VantageAuthenticationInterceptor implements ITdHttpInterceptor {
       document.cookie = 'XSRF-TOKEN=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       window.location.reload();
     } 
-    return of(error);
+    return error;
   }
 
   handleResponse(observable: Observable<any>): Observable<any> {
