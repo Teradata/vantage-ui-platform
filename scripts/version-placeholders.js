@@ -18,12 +18,14 @@ const versionPlaceholderText = '0.0.0-PLATFORM';
 const covalentVersionPlaceholderText = '0.0.0-COVALENT';
 const ngVersionPlaceholderText = '0.0.0-NG';
 const materialVersionPlaceholderText = '0.0.0-MATERIAL';
+const translateVersionPlaceholderText = '0.0.0-TRANSLATE';
 
 /** RegExp that matches version placeholders inside of a file. */
 const versionPlaceholderRegex = new RegExp(versionPlaceholderText, 'g');
 const covalentVersionPlaceholderRegex = new RegExp(covalentVersionPlaceholderText, 'g');
 const ngVersionPlaceholderRegex = new RegExp(ngVersionPlaceholderText, 'g');
 const materialVersionPlaceholderRegex = new RegExp(materialVersionPlaceholderText, 'g');
+const translateVersionPlaceholderRegex = new RegExp(translateVersionPlaceholderText, 'g');
 
 /**
  * Walks through every file in a directory and replaces the version placeholders
@@ -40,6 +42,7 @@ function replaceVersionPlaceholders(packageDir, projectVersion) {
       .replace(ngVersionPlaceholderRegex, buildConfig.angularVersion)
       .replace(materialVersionPlaceholderRegex, buildConfig.materialVersion)
       .replace(covalentVersionPlaceholderRegex, buildConfig.covalentVersion)
+      .replace(translateVersionPlaceholderRegex, buildConfig.translateVersion)
       .replace(versionPlaceholderRegex, projectVersion);
 
     writeFileSync(filePath, fileContent);
@@ -60,12 +63,12 @@ function buildPlaceholderFindCommand(packageDir) {
   if (platform() === 'win32') {
     return {
       binary: 'findstr',
-      args: ['/msi', `${materialVersionPlaceholderText} ${ngVersionPlaceholderText} ${versionPlaceholderText} ${covalentVersionPlaceholderText}`, `${packageDir}\\*`]
+      args: ['/msi', `${translateVersionPlaceholderText} ${materialVersionPlaceholderText} ${ngVersionPlaceholderText} ${versionPlaceholderText} ${covalentVersionPlaceholderText}`, `${packageDir}\\*`]
     };
   } else {
     return {
       binary: 'grep',
-      args: ['-ril', `${materialVersionPlaceholderText}\\|${ngVersionPlaceholderText}\\|${versionPlaceholderText} ${covalentVersionPlaceholderText}`, packageDir]
+      args: ['-ril', `${translateVersionPlaceholderText}\\|${materialVersionPlaceholderText}\\|${ngVersionPlaceholderText}\\|${versionPlaceholderText} ${covalentVersionPlaceholderText}`, packageDir]
     };
   }
 }
