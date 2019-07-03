@@ -1,5 +1,12 @@
 ## Vantage UI Platform
 
+[![Build Status](https://travis-ci.org/Teradata/vantage-ui-platform.svg?branch=develop)](https://travis-ci.org/Teradata/vantage-ui-platform)
+[![npm](https://img.shields.io/npm/v/%40vantage/ui-platform.svg)](https://www.npmjs.com/package/@vantage/ui-platform)
+[![npm](https://img.shields.io/npm/v/%40vantage/ui-platform/next.svg)](https://www.npmjs.com/package/@vantage/ui-platform/v/next)
+
+[![Coverage Status](https://coveralls.io/repos/github/Teradata/vantage-ui-platform/badge.svg)](https://coveralls.io/github/Teradata/vantage-ui-platform)
+[![npm](https://img.shields.io/npm/l/@vantage/ui-platform.svg)](LICENSE)
+
 ### Components, Utilities and Services for all Teradata Angular UIs
 
 ## Information
