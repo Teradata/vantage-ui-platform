@@ -133,8 +133,8 @@
       }
     },
     "ui-platform": {
-      "root": "src/lib",
-      "sourceRoot": "src/lib",
+      "root": "",
+      "sourceRoot": "src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
@@ -143,6 +143,24 @@
           "options": {
             "tsConfig": "src/lib/tsconfig.lib.json",
             "project": "src/lib/ng-package.js"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/lib/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/lib/tsconfig.spec.json",
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "styles": [
+              "src/theme.scss"
+            ],
+            "assets": [
+              "src/assets"
+            ]
           }
         }
       }
