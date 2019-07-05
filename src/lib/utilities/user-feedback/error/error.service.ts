@@ -1,5 +1,7 @@
 import { Injectable, Provider, SkipSelf, Optional } from '@angular/core';
+
 import { MatDialogRef } from '@angular/material/dialog';
+
 import { TdDialogService, IAlertConfig, TdAlertDialogComponent } from '@covalent/core/dialogs';
 
 import { TranslateService } from '@ngx-translate/core';
