@@ -7,8 +7,8 @@
       "hammerjs"
     ],
     "paths": {
-      "@vantage/ui-platform": [ "../lib" ],
-      "@vantage/ui-platform/*": [ "../lib/*" ],
+      "@td-vantage/ui-platform": [ "../lib" ],
+      "@td-vantage/ui-platform/*": [ "../lib/*" ],
     },
   },
   "files": [

@@ -22,9 +22,9 @@ import { CovalentMediaModule } from '@covalent/core/media';
 
 import { CovalentHttpModule } from '@covalent/http';
 
-import { VantageUserFeedbackModule } from '@vantage/ui-platform/utilities';
-import { VantageUserModule } from '@vantage/ui-platform/user';
-import { VantageAuthenticationModule } from '@vantage/ui-platform/auth';
+import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
+import { VantageUserModule } from '@td-vantage/ui-platform/user';
+import { VantageAuthenticationModule } from '@td-vantage/ui-platform/auth';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';

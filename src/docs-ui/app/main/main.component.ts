@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { VantageToastService, VantageErrorService } from '@vantage/ui-platform/utilities';
-import { VantageTokenService, VantageSessionService } from '@vantage/ui-platform/auth';
-import { IUser } from '@vantage/ui-platform/user';
+import { VantageToastService, VantageErrorService } from '@td-vantage/ui-platform/utilities';
+import { VantageTokenService, VantageSessionService } from '@td-vantage/ui-platform/auth';
+import { IUser } from '@td-vantage/ui-platform/user';
 
 @Component({
   selector: 'td-main',

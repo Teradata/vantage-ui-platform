@@ -1,5 +1,5 @@
 #!/bin/bash
-scope=@vantage
+scope=@td-vantage
 tag=latest
 
 [[ $1 = 'next' ]] && tag=next || tag=latest

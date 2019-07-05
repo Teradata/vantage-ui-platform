@@ -20,8 +20,8 @@
       "dom"
     ],
     "paths": {
-      "@vantage/ui-platform": [ "./src/lib" ],
-      "@vantage/ui-platform/*": [ "./src/lib/*" ],
+      "@td-vantage/ui-platform": [ "./src/lib" ],
+      "@td-vantage/ui-platform/*": [ "./src/lib/*" ],
     },
     "noUnusedParameters": false,
     "noUnusedLocals": false,

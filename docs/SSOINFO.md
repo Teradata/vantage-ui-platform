@@ -7,7 +7,7 @@
 * There are two ways to integrate with SSO
   * Integrate following the flow detailed here:
     * Specification: https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth
-  * Utilize the `@vantage/ui-platform` module in your Angular/Covalent application
+  * Utilize the `@td-vantage/ui-platform` module in your Angular/Covalent application
     * Utilizes the API Gateway and Vantage User Service to handle the OpenID Connect flow
     * No Tokens are stored in the browser (better security)
     * Handles CSRF checking
@@ -19,12 +19,12 @@
 
 ### Usage
 
-1. Update proxy.conf.js file to include the `VantageLoginProxyConfig` from `@vantage/ui-platform` and replace the `serverUrl` with Vantage Base URL:
+1. Update proxy.conf.js file to include the `VantageLoginProxyConfig` from `@td-vantage/ui-platform` and replace the `serverUrl` with Vantage Base URL:
 
 e.g.
 
 ```js
-const vantageLoginProxyConfig = require('@vantage/ui-platform/auth/config/vantageLoginProxyConfig');
+const vantageLoginProxyConfig = require('@td-vantage/ui-platform/auth/config/vantageLoginProxyConfig');
 
 /* * * * * * * * * * * */
 /* Edit these variables to point to your */
@@ -55,8 +55,8 @@ module.exports = PROXY_CONFIG;
 2. Import required dependencies in app.module.ts or desired NgModule.
     
 ```ts
-  import { VantageAuthenticationModule, VantageAuthenticationInterceptor } from '@vantage/ui-platform/auth';
-  import { VantageUserModule } from '@vantage/ui-platform/user';
+  import { VantageAuthenticationModule, VantageAuthenticationInterceptor } from '@td-vantage/ui-platform/auth';
+  import { VantageUserModule } from '@td-vantage/ui-platform/user';
 ```
 
 3. Below the last import statement in the same app.module.ts file, declare interceptor providers
@@ -94,7 +94,7 @@ const httpInterceptorProviders: Type<IHttpInterceptor>[] = [
 5. Protect your routes in app.routes.ts with TdAuthenticationModule
     
 ```ts
-import { VantageAuthenticationGuard } from '@vantage/ui-platform/auth';
+import { VantageAuthenticationGuard } from '@td-vantage/ui-platform/auth';
 
 const routes: Routes = [
     // In root path provide guard to canActivate

@@ -1,8 +1,9 @@
 {
-  "name": "@vantage/ui-platform",
+  "name": "@td-vantage/ui-platform",
   "version": "1.0.0-beta.0",
-  "description": "Vantage Angular Platform for easy integration and usage",
+  "description": "Teradata Vantage Angular Platform for easy integration and usage",
   "keywords": [
+    "teradata",
     "vantage",
     "platform",
     "ui",
