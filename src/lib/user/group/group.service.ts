@@ -1,4 +1,4 @@
-import { Injectable, Provider, SkipSelf, Optional } from '@angular/core';
+import { Provider, SkipSelf, Optional } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import {
   TdHttp,
@@ -23,7 +23,6 @@ export interface IGroup {
     Accept: 'application/json',
   }),
 })
-@Injectable()
 export class VantageGroupService {
 
   /**

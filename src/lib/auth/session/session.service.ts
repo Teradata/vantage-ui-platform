@@ -1,5 +1,5 @@
 import { map, catchError } from 'rxjs/operators';
-import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
+import { Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { TdHttp, TdGET, TdResponse, TdPOST, TdParam } from '@covalent/http';
 import { Observable, of } from 'rxjs';
@@ -32,7 +32,6 @@ export interface ISessionUser {
     Accept: 'application/json',
   }),
 })
-@Injectable()
 export class VantageSessionService {
 
   private _user: IUser;
