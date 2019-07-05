@@ -21,6 +21,9 @@
     "test": "ng test ui-platform --code-coverage --source-map=false --watch=false",
     "coveralls": "cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "build:lib": "bash scripts/build-release && gulp version-placeholder",
+    "release:start": "bash scripts/start-release",
+    "release:finish": "bash scripts/finish-release",
+    "generate:changelog": "./node_modules/.bin/conventional-changelog -i docs/CHANGELOG.md -s -p angular",
     "publish:npm": "bash scripts/npm-publish",
     "publish:nightly": "bash scripts/nightly-publish",
     "bump:version": "gulp bump-version --ver"
@@ -76,6 +79,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "conventional-changelog-cli": "^2.0.21",
     "coveralls": "^3.0.3",
     "glob": "^6.0.4",
     "gulp": "4.0.0",
