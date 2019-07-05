@@ -24,8 +24,8 @@
     "release:start": "bash scripts/start-release",
     "release:finish": "bash scripts/finish-release",
     "generate:changelog": "./node_modules/.bin/conventional-changelog -i docs/CHANGELOG.md -s -p angular",
-    "publish:npm": "bash scripts/npm-publish",
-    "publish:nightly": "bash scripts/nightly-publish",
+    "publish:npm": "npm run build:lib && bash scripts/npm-publish",
+    "publish:nightly": "npm run build:lib && bash scripts/nightly-publish",
     "bump:version": "gulp bump-version --ver"
   },
   "engines": {
