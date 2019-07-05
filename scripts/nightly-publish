@@ -2,6 +2,7 @@
 
 set -o errexit -o nounset
 
+package="ui-platform"
 buildDir="deploy/ui-platform"
 
 commitSha=$(git rev-parse --short HEAD)
