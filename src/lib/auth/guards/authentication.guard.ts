@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
 
 import { VantageSessionService } from '../session/session.service';
 
 @Injectable()
 export class VantageAuthenticationGuard implements CanActivate {
 
-  constructor(private _router: Router, private _sessionService: VantageSessionService) {}
+  constructor(private _sessionService: VantageSessionService) {}
 
   getCookiebyName(name: string): string {
     let pair: string[] = document.cookie.match(new RegExp(name + '=([^;]+)'));

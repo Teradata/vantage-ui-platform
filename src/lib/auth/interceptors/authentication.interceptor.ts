@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
 
-import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { ITdHttpInterceptor } from '@covalent/http';
@@ -18,11 +16,6 @@ const GATEWAY_TIMEOUT: number = 504;
 
 @Injectable()
 export class VantageAuthenticationInterceptor implements ITdHttpInterceptor {
-  constructor(
-    private _router: Router,
-    private _route: ActivatedRoute,
-    private _translate: TranslateService,
-  ) {}
 
   onResponseError(error: any): any {
     if (error.status === UNAUTHORIZED) {
