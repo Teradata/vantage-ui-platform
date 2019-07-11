@@ -18,7 +18,7 @@ $custom-toolbar-typography: mat-typography-config(
 @include mat-toolbar-typography($custom-toolbar-typography);
 
 // Teradata brand
-@import './teradata-branding';
+@import './lib/theming';
 
 // Include the core styles for Covalent
 @include covalent-core();
@@ -38,11 +38,9 @@ $custom-toolbar-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary: mat-palette($td-slate, 700, 100, 900);
-$accent:  mat-palette($td-orange, 800, 200, 900);
-
-// The warn palette is optional (defaults to red).
-$warn:    mat-palette($mat-red, 600, 200, 900);
+$primary: mat-palette($td-teal, 800, 100, 900);
+$accent:  mat-palette($td-orange, 800, 100, 900);
+$warn:    mat-palette($mat-red, 900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($primary, $accent, $warn);
@@ -52,17 +50,20 @@ $theme: mat-light-theme($primary, $accent, $warn);
 // that you are using.
 @include angular-material-theme($theme);
 @include covalent-theme($theme);
+// Include Teradata brand
 @include teradata-brand($theme);
 
-// Active icon color in list nav
-mat-nav-list {
-  [mat-list-item].active {
-    mat-icon[matListAvatar] {
-      background-color: mat-color($accent);
-      color: mat-color($accent, default-contrast);
-    }
-    mat-icon[matListIcon] {
-      color: mat-color($accent);
-    }
-  }
+/* ------------------------------------- DARK THEME ------------------------------------------ */
+
+.dark-theme {
+  $dark-primary: mat-palette($td-teal, 700, 100, 800);
+  $dark-accent:  mat-palette($td-orange, 800, 200, 900);
+  $dark-warn:    mat-palette($mat-red, 900);
+
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+  @include covalent-theme($dark-theme);
+  // Include Teradata brand
+  @include teradata-brand($dark-theme);
 }

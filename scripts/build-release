@@ -10,4 +10,7 @@ rm -rf src/lib/node_modules
 
 # Adding config file to ui-platform
 cp -R ./src/lib/auth/config ./deploy/ui-platform/auth/
+
+# Adding theming file to ui-platform
+cp ./src/lib/_theming.scss ./deploy/ui-platform/
 echo 'Build Complete'
