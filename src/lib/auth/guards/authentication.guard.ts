@@ -1,30 +1,23 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
-
+import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from '@angular/router';
 import { VantageSessionService } from '../session/session.service';
+import { timeout } from 'rxjs/operators';
 
+const UNAUTHORIZED: number = 401;
 @Injectable()
 export class VantageAuthenticationGuard implements CanActivate {
 
-  constructor(private _sessionService: VantageSessionService) {}
-
-  getCookiebyName(name: string): string {
-    let pair: string[] = document.cookie.match(new RegExp(name + '=([^;]+)'));
-    return !!pair ? pair[1] : undefined;
-  }
+  constructor(private _router: Router, private _sessionService: VantageSessionService) {}
 
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    let xsrfToken: string = this.getCookiebyName('XSRF-TOKEN');
-    if (!xsrfToken) {
-      window.location.href = '/start-login';
+    try {
+      // check the validity to see if already logged in
+      await this._sessionService.getInfo().pipe(timeout(5000)).toPromise();
+    } catch (e) {
+      // if not logged in, go ahead and log in...otherwise logout
+      // append the current path so we get redirected back upon login
+      (e.status === UNAUTHORIZED) ? window.location.href = `/start-login${this._router.url}` : this._sessionService.logout();
       return false;
-    } else {
-      try {
-        await this._sessionService.getInfo().toPromise();
-      } catch (e) {
-        this._sessionService.logout();
-        return false;
-      }
     }
     return true;
   }

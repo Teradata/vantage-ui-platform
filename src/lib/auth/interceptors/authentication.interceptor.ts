@@ -19,11 +19,13 @@ export class VantageAuthenticationInterceptor implements ITdHttpInterceptor {
 
   onResponseError(error: any): any {
     if (error.status === UNAUTHORIZED) {
-      // expire the xsrf cookie and reload page
-      document.cookie = 'XSRF-TOKEN=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      window.location.reload();
+      // if logged in, go ahead an expire the cooke and reload the page
+      if (!error.url.includes('/token/validity')) {
+        document.cookie = 'XSRF-TOKEN=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        window.location.reload();
+      }
     } 
-    return error;
+    throw error;
   }
 
   handleResponse(observable: Observable<any>): Observable<any> {
