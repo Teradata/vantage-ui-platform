@@ -109,3 +109,19 @@ const routes: Routes = [
     { path: '**', redirectTo: '/' },
 ];
 ```
+
+### Note
+
+If you are deploying outside the Vantage environment, there is a known issue with redirecting back to the previous page upon login.  In your `default.conf`, add:
+
+```html
+location ~ .*/start-login {
+  proxy_pass APPCENTERBASEURL;
+  proxy_set_header X-Orig-Host TARGETHOSTNAME:TARGETPORT;
+  proxy_set_header X-Orig-Proto http;
+  proxy_redirect off;
+  rewrite ^/start-login(.*)$ /$1 break;
+}
+```
+
+where `TARGETHOSTNAME` is the application URL and `TARGETPORT` is the port.
