@@ -12,7 +12,7 @@ import { timeout } from 'rxjs/operators';
 })
 export class MainComponent implements OnInit {
   user: IUser;
-  loggedIn: boolean = false;;
+  loggedIn: boolean = false;
 
   constructor(private _errorService: VantageErrorService,
               private _toastService: VantageToastService,
