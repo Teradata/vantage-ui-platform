@@ -4,11 +4,12 @@ import { MainComponent } from './main/main.component';
 
 import { VantageAuthenticationGuard } from '@td-vantage/ui-platform/auth';
 
-const routes: Routes = [{
-    path: '', component: MainComponent, canActivate: [ VantageAuthenticationGuard ],
-  }, {
-    path: '**', redirectTo: '/',
-  },
+const routes: Routes = [
+  {
+    path: '', component: MainComponent, children: [
+      { path: 'login', component: MainComponent, canActivate: [ VantageAuthenticationGuard ] },
+    ],
+  }, { path: '**', redirectTo: '/', },
 ];
 
 export const appRoutingProviders: any[] = [
