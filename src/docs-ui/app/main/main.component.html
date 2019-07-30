@@ -1,22 +1,25 @@
 <div class="pad">
   <h4>User Feedback Module</h4>
   <div layout="row">
-    <button mat-raised-button color="primary" (click)="openToast()">
+    <button mat-raised-button class="push-sm" color="primary" (click)="openToast()">
       Toast TEST
     </button>
-    <button mat-raised-button color="accent" (click)="openDialog()">
+    <button mat-raised-button class="push-sm" color="accent" (click)="openDialog()">
       Error TEST
     </button>
   </div>
 </div>
 <div class="pad">
   <h4>Auth Module</h4>
-  {{user | json }}
-  <div>
-    <button mat-raised-button
-            color="accent"
-            (click)="logout()">
-      Log Out
-    </button>
+  <p *ngIf="loggedIn">User is logged in: {{user | json }}</p>
+  <div layout="row">
+    <div>
+      <a *ngIf="!loggedIn" mat-raised-button routerLink="/login" routerLinkActive="active" color="accent">
+        Log In
+      </a>
+      <a *ngIf="loggedIn" mat-raised-button color="primary" (click)="logout()">
+        Log Out
+      </a>
+    </div>
   </div>
 </div>
