@@ -575,6 +575,23 @@ body {
       font-size: 16px;
     }
   }
+  // Toolbar Buttons
+  .mat-toolbar-row,
+  .mat-toolbar-single-row, 
+  .mat-toolbar-multiple-rows {
+    .mat-stroked-button,
+    .mat-raised-button,
+    .mat-flat-button,
+    .mat-button {
+      line-height: 28px;
+      mat-icon.material-icons, mat-icon.material-icons.mat-icon {
+        font-size: 18px;
+        line-height: 16px;
+        margin-left: -4px;
+        margin-right: 4px;
+      }
+    }
+  }
   // Spacing before logo in main toolbar
   .mat-toolbar {
     background-color: if($is-dark, mat-color($td-slate-dark, 900), white);
