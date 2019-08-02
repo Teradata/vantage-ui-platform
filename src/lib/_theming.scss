@@ -583,9 +583,11 @@ body {
     .mat-raised-button,
     .mat-flat-button,
     .mat-button {
-      line-height: 28px;
+      line-height: 32px;
+      font-size: 0.8125rem;
+      height: 28px;
       mat-icon.material-icons, mat-icon.material-icons.mat-icon {
-        font-size: 18px;
+        font-size: 1.12rem;
         line-height: 16px;
         margin-left: -4px;
         margin-right: 4px;
