@@ -82,6 +82,7 @@
     "codelyzer": "^5.0.0",
     "conventional-changelog-cli": "^2.0.21",
     "coveralls": "^3.0.3",
+    "cypress": "3.4.1",
     "glob": "^6.0.4",
     "gulp": "4.0.0",
     "gulp-hub": "4.2.0",
