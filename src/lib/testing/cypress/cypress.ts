@@ -1,23 +1,19 @@
 /// <reference types="cypress" />
 
+const BASE_URL: string = Cypress.config('baseUrl'); // ex: http://localhost:4200
+const SSO_URL: string = Cypress.env('ssoUrl'); // ex: https://vantage.url.io/auth
+
 export interface ISSOLoginConfig {
   username: string;
   password: string;
-  baseUrl?: string; // ex: http://localhost:4200
-  ssoUrl?: string; // ex: https://vantage.url.io/auth
 }
 
 // inspired by https://vrockai.github.io/blog/2017/10/28/cypress-keycloak-intregration/
-export function ssoLogin({
-  username,
-  password,
-  baseUrl = Cypress.config('baseUrl'),
-  ssoUrl = Cypress.env('ssoUrl'),
-}: ISSOLoginConfig): void {
-  cy.visit(baseUrl);
-  cy.url().should('include', ssoUrl);
+export function ssoLogin({ username, password }: ISSOLoginConfig): void {
+  cy.visit(BASE_URL);
+  cy.url().should('include', SSO_URL);
   cy.request({
-    url: ssoUrl,
+    url: SSO_URL,
   }).then((response: any) => {
     const loginPageHtml: HTMLElement = document.createElement('html');
     loginPageHtml.innerHTML = response.body;
@@ -35,24 +31,16 @@ export function ssoLogin({
         password: password,
       },
     }).then(() => {
-      cy.visit(baseUrl);
-      cy.url().should('not.include', ssoUrl);
-      cy.url().should('include', baseUrl);
+      cy.visit(BASE_URL);
+      cy.url().should('not.include', SSO_URL);
+      cy.url().should('include', BASE_URL);
     });
   });
 }
 
-export interface ISSOLogoutConfig {
-  baseUrl?: string; // ex: http://localhost:4200
-  ssoUrl?: string; // ex: https://vantage.url.io/auth
-}
-
-export function ssoLogout({
-  baseUrl = Cypress.config('baseUrl'),
-  ssoUrl = Cypress.env('ssoUrl'),
-}: ISSOLogoutConfig = {}): void {
-  cy.visit(baseUrl);
+export function ssoLogout(): void {
+  cy.visit(BASE_URL);
   cy.visit('/api/user/logout');
-  cy.visit(baseUrl);
-  cy.url().should('include', ssoUrl);
+  cy.visit(BASE_URL);
+  cy.url().should('include', SSO_URL);
 }
