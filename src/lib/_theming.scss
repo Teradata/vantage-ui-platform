@@ -10,9 +10,14 @@ $td-font-medium: '"RidleyGrotesk-Medium", Arial, Helvetica, sans-serif';
 
 // Setting the toolbar to the proper spec weight
 @include mat-toolbar-typography(
-  mat-typography-config( $font-family: $td-font-medium, $title: mat-typography-level(19px, 28px, 400))
+  mat-typography-config(
+    $font-family: $td-font-medium,
+    $title: mat-typography-level(19px, 28px, 400)
+  )
 );
-@include mat-button-typography(mat-typography-config( $font-family: $td-font-semibold));
+@include mat-button-typography(
+  mat-typography-config($font-family: $td-font-semibold)
+);
 
 // Teradata brand typography
 h1,
@@ -22,7 +27,7 @@ h4,
 .mat-grid-tile-header,
 .td-nagivation-drawer-toolbar .td-navigation-drawer-title,
 .td-navigation-drawer-menu-toggle {
-  font-family: 'RidleyGrotesk-Regular', Arial, Helvetica, sans-serif !important;
+  font-family: "RidleyGrotesk-Regular", Arial, Helvetica, sans-serif !important;
 }
 h2,
 h3,
@@ -41,12 +46,15 @@ h3,
 .mat-tab-link,
 [td-chip-avatar],
 .td-navigation-drawer-name {
-  font-family: 'RidleyGrotesk-SemiBold', Arial, Helvetica, sans-serif !important;
+  font-family: "RidleyGrotesk-SemiBold", Arial, Helvetica, sans-serif !important;
 }
 .mat-display-1,
 .mat-display-2,
 .mat-display-3,
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   letter-spacing: -0.025em;
 }
 
@@ -77,7 +85,7 @@ $td-orange: (
     600: white,
     700: white,
     800: $white-87-opacity,
-    900: $white-87-opacity,
+    900: $white-87-opacity
   )
 );
 $td-slate: (
@@ -101,7 +109,7 @@ $td-slate: (
     600: white,
     700: white,
     800: $white-87-opacity,
-    900: $white-87-opacity,
+    900: $white-87-opacity
   )
 );
 $td-slate-dark: (
@@ -125,7 +133,7 @@ $td-slate-dark: (
     600: white,
     700: white,
     800: $white-87-opacity,
-    900: $white-87-opacity,
+    900: $white-87-opacity
   )
 );
 $td-yellow: (
@@ -149,7 +157,7 @@ $td-yellow: (
     600: $black-87-opacity,
     700: $black-87-opacity,
     800: $black-87-opacity,
-    900: $black-87-opacity,
+    900: $black-87-opacity
   )
 );
 $td-teal: (
@@ -173,7 +181,7 @@ $td-teal: (
     600: $black-87-opacity,
     700: $black-87-opacity,
     800: white,
-    900: white,
+    900: white
   )
 );
 $td-blue: (
@@ -197,7 +205,7 @@ $td-blue: (
     600: white,
     700: white,
     800: $white-87-opacity,
-    900: $white-87-opacity,
+    900: $white-87-opacity
   )
 );
 
@@ -205,40 +213,40 @@ $td-positive: (
   foreground-light: mat-color($mat-green, 700),
   foreground-dark: mat-color($mat-green, 300),
   background-light: mat-color($mat-green, 300),
-  background-dark: mat-color($mat-green, 300),
+  background-dark: mat-color($mat-green, 300)
 );
 $td-caution: (
   foreground-light: mat-color($mat-amber, 800),
   foreground-dark: mat-color($mat-orange, 300),
   background-light: mat-color($mat-orange, 300),
-  background-dark: mat-color($mat-orange, 300),
+  background-dark: mat-color($mat-orange, 300)
 );
 $td-negative: (
   foreground-light: mat-color($mat-red, 900),
   foreground-dark: mat-color($mat-red, 300),
   background-light: mat-color($mat-red, 300),
-  background-dark: mat-color($mat-red, 300),
+  background-dark: mat-color($mat-red, 300)
 );
 $td-neutral: (
   foreground-light: mat-color($mat-grey, 800),
   foreground-dark: mat-color($mat-grey, 300),
   background-light: mat-color($mat-grey, 300),
-  background-dark: mat-color($mat-grey, 300),
+  background-dark: mat-color($mat-grey, 300)
 );
 $td-emphasis1: (
   foreground-light: mat-color($mat-cyan, 800),
   foreground-dark: mat-color($mat-cyan, 200),
   background-light: mat-color($mat-cyan, 200),
-  background-dark: mat-color($mat-cyan, 200),
+  background-dark: mat-color($mat-cyan, 200)
 );
 $td-emphasis2: (
   foreground-light: mat-color($mat-blue-grey, 600),
   foreground-dark: mat-color($mat-blue-grey, 200),
   background-light: mat-color($mat-blue-grey, 200),
-  background-dark: mat-color($mat-blue-grey, 200),
+  background-dark: mat-color($mat-blue-grey, 200)
 );
 
-body { 
+body {
   // Slate
   .bgc-td-slate,
   .bgc-td-slate-900,
@@ -555,7 +563,8 @@ body {
   }
   // Toolbar
   body {
-    .mat-toolbar-row, .mat-toolbar-single-row {
+    .mat-toolbar-row,
+    .mat-toolbar-single-row {
       height: 48px;
     }
     .mat-toolbar-multiple-rows {
@@ -571,26 +580,40 @@ body {
       padding: 0 10px;
       line-height: 24px;
     }
-    mat-icon.material-icons, mat-icon.material-icons.mat-icon {
+    mat-icon.material-icons,
+    mat-icon.material-icons.mat-icon {
       font-size: 16px;
     }
   }
   // Toolbar Buttons
+  // Toolbar Buttons
   .mat-toolbar-row,
-  .mat-toolbar-single-row, 
-  .mat-toolbar-multiple-rows {
+  .mat-toolbar-single-row,
+  .mat-toolbar-multiple-rows,
+  .td-vantage-toolbar {
     .mat-stroked-button,
     .mat-raised-button,
     .mat-flat-button,
     .mat-button {
-      line-height: 32px;
-      font-size: 0.8125rem;
-      height: 28px;
-      mat-icon.material-icons, mat-icon.material-icons.mat-icon {
-        font-size: 1.12rem;
+      height: 26px;
+      line-height: normal;
+      .mat-button-wrapper {
+        display: inline-flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding-top: 0.125em;
+      }
+      mat-icon.material-icons,
+      mat-icon.material-icons.mat-icon {
+        font-size: 16px;
         line-height: 16px;
-        margin-left: -4px;
-        margin-right: 4px;
+        margin-left: -0.21428em;
+        margin-right: 0.21428em;
+        display: inline-block;
+        width: 16px;
+        height: 18px;
       }
     }
   }
@@ -618,7 +641,7 @@ body {
   }
   // Apply theme for this app
   body::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     height: 2px;
@@ -660,45 +683,85 @@ body {
 
   // State colors
   .tc-positive {
-    color: map-get($td-positive, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get(
+      $td-positive,
+      if($is-dark, foreground-dark, foreground-light)
+    ) !important;
   }
   .tc-caution {
-    color: map-get($td-caution, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get(
+      $td-caution,
+      if($is-dark, foreground-dark, foreground-light)
+    ) !important;
   }
   .tc-negative {
-    color: map-get($td-negative, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get(
+      $td-negative,
+      if($is-dark, foreground-dark, foreground-light)
+    ) !important;
   }
   .tc-neutral {
-    color: map-get($td-neutral, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get(
+      $td-neutral,
+      if($is-dark, foreground-dark, foreground-light)
+    ) !important;
   }
   .tc-emphasis-1 {
-    color: map-get($td-emphasis1, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get(
+      $td-emphasis1,
+      if($is-dark, foreground-dark, foreground-light)
+    ) !important;
   }
   .tc-emphasis-2 {
-    color: map-get($td-emphasis2, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get(
+      $td-emphasis2,
+      if($is-dark, foreground-dark, foreground-light)
+    ) !important;
   }
   .bgc-positive {
-    background-color: map-get($td-positive, if($is-dark, background-dark, background-light)) !important;
+    background-color: map-get(
+      $td-positive,
+      if($is-dark, background-dark, background-light)
+    ) !important;
   }
   .bgc-caution {
-    background-color: map-get($td-caution, if($is-dark, background-dark, background-light)) !important;
+    background-color: map-get(
+      $td-caution,
+      if($is-dark, background-dark, background-light)
+    ) !important;
   }
   .bgc-negative {
-    background-color: map-get($td-negative, if($is-dark, background-dark, background-light)) !important;
+    background-color: map-get(
+      $td-negative,
+      if($is-dark, background-dark, background-light)
+    ) !important;
   }
   .bgc-neutral {
-    background-color: map-get($td-neutral, if($is-dark, background-dark, background-light)) !important;
+    background-color: map-get(
+      $td-neutral,
+      if($is-dark, background-dark, background-light)
+    ) !important;
   }
   .bgc-emphasis-1 {
-    background-color: map-get($td-emphasis1, if($is-dark, background-dark, background-light)) !important;
+    background-color: map-get(
+      $td-emphasis1,
+      if($is-dark, background-dark, background-light)
+    ) !important;
   }
   .bgc-emphasis-2 {
-    background-color: map-get($td-emphasis2, if($is-dark, background-dark, background-light)) !important;
+    background-color: map-get(
+      $td-emphasis2,
+      if($is-dark, background-dark, background-light)
+    ) !important;
   }
 
   // Always slate for primary
   .mat-toolbar.mat-primary {
-    background-color: if($is-dark, mat-color($td-slate-dark, 600), mat-color($td-slate, 700));
+    background-color: if(
+      $is-dark,
+      mat-color($td-slate-dark, 600),
+      mat-color($td-slate, 700)
+    );
     color: white;
   }
 
