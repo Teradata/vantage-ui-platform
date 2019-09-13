@@ -43,6 +43,6 @@ export class MainComponent implements OnInit {
   }
 
   public logout(): void {
-    window.location.href = '/api/user/logout';
+    this._sessionService.logout();
   }
 }

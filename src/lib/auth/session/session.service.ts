@@ -56,6 +56,10 @@ export class VantageSessionService {
     }
   }
 
+  public logout(): void {
+    window.location.href = '/api/user/logout';
+  }
+
   /**
    * gets the current sso logged in users information
    */
