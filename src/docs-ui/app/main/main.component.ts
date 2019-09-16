@@ -42,7 +42,7 @@ export class MainComponent implements OnInit {
     });
   }
 
-  async logout(): Promise<void> {
-    await this._sessionService.logout();
+  public logout(): void {
+    this._sessionService.logout();
   }
 }

@@ -56,15 +56,8 @@ export class VantageSessionService {
     }
   }
 
-  async logout(): Promise<void> {
-    try {
-      return await this._logout().toPromise();
-    } catch (e) {
-      // ignore error
-    } finally {
-      document.cookie = 'XSRF-TOKEN=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      window.location.reload();
-    }
+  public logout(): void {
+    window.location.href = '/api/user/logout';
   }
 
   /**
@@ -82,22 +75,6 @@ export class VantageSessionService {
     return response.pipe(
       map((res: HttpResponse<ISessionUser>) => {
         return res.body;
-      }),
-    );
-  }
-
-  @TdGET({
-    path: '/logout?session=true',
-    options: {
-      observe: 'response',
-    },
-  })
-  private _logout(
-    @TdResponse() response?: Observable<HttpResponse<any>>,
-  ): Observable<any> {
-    return response.pipe(
-      map((res: HttpResponse<any>) => {
-        return res;
       }),
     );
   }
