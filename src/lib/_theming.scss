@@ -54,19 +54,18 @@ h1,h2,h3,h4 {
 * Colors
 */
 
-// Customer Teradata brand palette
 // Custom orange contrast
 $td-orange: (
-  50: #fce3db,
-  100: #fce3db,
-  200: #fac7b7,
-  300: #fac7b7,
-  400: #f7aa93,
-  500: #f7aa93,
-  600: #f58e6f,
-  700: #f58e6f,
-  800: #f3753f,
-  900: #f3753f,
+  50: #FCE3DB,
+  100: #FACDBC,
+  200: #F8B79D,
+  300: #F7A17D,
+  400: #F58B5E,
+  500: #F3753F,
+  600: #E46732,
+  700: #D45925,
+  800: #C54B17,
+  900: #B53D0A,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -74,23 +73,29 @@ $td-orange: (
     300: $black-87-opacity,
     400: $black-87-opacity,
     500: $black-87-opacity,
-    600: white,
-    700: white,
-    800: $white-87-opacity,
+    600: $black-87-opacity,
+    700: $black-87-opacity,
+    800: $black-87-opacity,
     900: $white-87-opacity,
   )
 );
 $td-slate: (
-  50: #d8dbdc,
-  100: #d8dbdc,
-  200: #b0b6b9,
-  300: #b0b6b9,
-  400: #899296,
-  500: #899296,
-  600: #616d73,
-  700: #616d73,
-  800: #394851,
+  50: #E3E7E8,
+  100: #C9CFD1,
+  200: #AFB6B9,
+  300: #959EA2,
+  400: #7B858A,
+  500: #616D73,
+  600: #57646B,
+  700: #4D5B62,
+  800: #43515A,
   900: #394851,
+  1000: #2E3D42,
+  1100: #28353B,
+  1200: #222E33,
+  1300: #1E272E,
+  1400: #182126,
+  1500: #131A1F,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -98,47 +103,31 @@ $td-slate: (
     300: $black-87-opacity,
     400: $black-87-opacity,
     500: $black-87-opacity,
-    600: white,
-    700: white,
+    600: $white-87-opacity,
+    700: $white-87-opacity,
     800: $white-87-opacity,
     900: $white-87-opacity,
+    1000: $white-87-opacity,
+    1100: $white-87-opacity,
+    1200: $white-87-opacity,
+    1300: $white-87-opacity,
+    1400: $white-87-opacity,
+    1500: $white-87-opacity,
   )
 );
-$td-slate-dark: (
-  50: #d8dbdc,
-  100: #d8dbdc,
-  200: #b0b6b9,
-  300: #b0b6b9,
-  400: #899296,
-  500: #616d73,
-  600: #394851,
-  700: #2b383f,
-  800: #222e34,
-  900: #1c252a,
-  contrast: (
-    50: $black-87-opacity,
-    100: $black-87-opacity,
-    200: $black-87-opacity,
-    300: $black-87-opacity,
-    400: $black-87-opacity,
-    500: $black-87-opacity,
-    600: white,
-    700: white,
-    800: $white-87-opacity,
-    900: $white-87-opacity,
-  )
-);
+$td-slate-dark: $td-slate;
+
 $td-yellow: (
-  50: #fff4df,
-  100: #fff4df,
-  200: #fee9c0,
-  300: #fee9c0,
-  400: #fedea0,
-  500: #fedea0,
-  600: #fdd381,
-  700: #fdd381,
-  800: #fec64d,
-  900: #fec64d,
+  50: #FFF4DF,
+  100: #FFEBC2,
+  200: #FFE2A5,
+  300: #FED887,
+  400: #FECF6A,
+  500: #FEC64D,
+  600: #F5BB3C,
+  700: #ECAF2B,
+  800: #E3A419,
+  900: #DA9808,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -153,16 +142,16 @@ $td-yellow: (
   )
 );
 $td-teal: (
-  50: #cff0ef,
-  100: #cff0ef,
-  200: #9fe1e0,
-  300: #9fe1e0,
-  400: #6fd2d0,
-  500: #6fd2d0,
-  600: #3fc3c1,
-  700: #3fc3c1,
-  800: #00b2b1,
-  900: #00b2b1,
+  50: #DEF9F8,
+  100: #B2EBEA,
+  200: #85DDDC,
+  300: #59CECD,
+  400: #2CC0BF,
+  500: #00B2B1,
+  600: #00A2A2,
+  700: #009392,
+  800: #008383,
+  900: #007373,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -172,21 +161,21 @@ $td-teal: (
     500: $black-87-opacity,
     600: $black-87-opacity,
     700: $black-87-opacity,
-    800: white,
-    900: white,
+    800: $black-87-opacity,
+    900: $white-87-opacity,
   )
 );
 $td-blue: (
-  50: #d1eaf4,
-  100: #d1eaf4,
-  200: #a4d6e8,
-  300: #a4d6e8,
-  400: #76c1dd,
-  500: #76c1dd,
-  600: #49add1,
-  700: #49add1,
-  800: #0098c9,
-  900: #0098c9,
+  50: #DCEEF5,
+  100: #B0DDEC,
+  200: #84CCE3,
+  300: #58BADB,
+  400: #2CA9D2,
+  500: #0098C9,
+  600: #008AB6,
+  700: #007BA3,
+  800: #006D90,
+  900: #005E7D,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -194,8 +183,8 @@ $td-blue: (
     300: $black-87-opacity,
     400: $black-87-opacity,
     500: $black-87-opacity,
-    600: white,
-    700: white,
+    600: $black-87-opacity,
+    700: $black-87-opacity,
     800: $white-87-opacity,
     900: $white-87-opacity,
   )
@@ -203,301 +192,454 @@ $td-blue: (
 
 $td-positive: (
   foreground-light: mat-color($mat-green, 700),
-  foreground-dark: mat-color($mat-green, 300),
-  background-light: mat-color($mat-green, 300),
-  background-dark: mat-color($mat-green, 300),
+  foreground-dark: mat-color($mat-green, 200),
+  background-light: mat-color($mat-green, 200),
+  background-dark: #336033,
 );
 $td-caution: (
   foreground-light: mat-color($mat-amber, 800),
   foreground-dark: mat-color($mat-orange, 300),
   background-light: mat-color($mat-orange, 300),
-  background-dark: mat-color($mat-orange, 300),
+  background-dark: #704C16,
 );
 $td-negative: (
   foreground-light: mat-color($mat-red, 900),
   foreground-dark: mat-color($mat-red, 300),
   background-light: mat-color($mat-red, 300),
-  background-dark: mat-color($mat-red, 300),
+  background-dark: #883E32,
 );
 $td-neutral: (
-  foreground-light: mat-color($mat-grey, 800),
-  foreground-dark: mat-color($mat-grey, 300),
+  foreground-light: $black-87-opacity,
+  foreground-dark: $black-87-opacity,
   background-light: mat-color($mat-grey, 300),
-  background-dark: mat-color($mat-grey, 300),
+  background-dark: mat-color($td-slate, 800),
 );
 $td-emphasis1: (
-  foreground-light: mat-color($mat-cyan, 800),
-  foreground-dark: mat-color($mat-cyan, 200),
-  background-light: mat-color($mat-cyan, 200),
-  background-dark: mat-color($mat-cyan, 200),
+  foreground-light: mat-color($td-teal, 900),
+  foreground-dark: mat-color($td-teal, 300),
+  background-light: mat-color($td-teal, 200),
+  background-dark: #005858,
 );
 $td-emphasis2: (
   foreground-light: mat-color($mat-blue-grey, 600),
   foreground-dark: mat-color($mat-blue-grey, 200),
   background-light: mat-color($mat-blue-grey, 200),
-  background-dark: mat-color($mat-blue-grey, 200),
+  background-dark: #4F5558,
 );
 
 body { 
-  // Slate
-  .bgc-td-slate,
-  .bgc-td-slate-900,
-  .bgc-td-slate-800 {
-    background-color: mat-color($td-slate, 800);
-  }
 
-  .bgc-td-slate-700,
-  .bgc-td-slate-600 {
-    background-color: mat-color($td-slate, 600);
+  // Teradata slate - foreground
+  .tc-td-slate {
+    color: mat-color($td-slate, 500);
   }
-
-  .bgc-td-slate-500,
-  .bgc-td-slate-400 {
-    background-color: mat-color($td-slate, 400);
-  }
-
-  .bgc-td-slate-300,
-  .bgc-td-slate-200 {
-    background-color: mat-color($td-slate, 200);
-  }
-
-  .bgc-td-slate-100,
-  .bgc-td-slate-50 {
-    background-color: mat-color($td-slate, 50);
-  }
-
-  .tc-td-slate,
-  .tc-td-slate-900,
-  .tc-td-slate-800 {
-    color: mat-color($td-slate, 800);
-  }
-
-  .tc-td-slate-700,
-  .tc-td-slate-600 {
-    color: mat-color($td-slate, 600);
-  }
-
-  .tc-td-slate-500,
-  .tc-td-slate-400 {
-    color: mat-color($td-slate, 400);
-  }
-
-  .tc-td-slate-300,
-  .tc-td-slate-200 {
-    color: mat-color($td-slate, 200);
-  }
-
-  .tc-td-slate-100,
+  
   .tc-td-slate-50 {
     color: mat-color($td-slate, 50);
   }
-  // Orange
-  .bgc-td-orange,
-  .bgc-td-orange-900,
-  .bgc-td-orange-800 {
-    background-color: mat-color($td-orange, 800);
+  .tc-td-slate-100 {
+    color: mat-color($td-slate, 100);
+  }
+  .tc-td-slate-200 {
+    color: mat-color($td-slate, 200);
+  }
+  .tc-td-slate-300 {
+    color: mat-color($td-slate, 300);
+  }
+  .tc-td-slate-400 {
+    color: mat-color($td-slate, 400);
+  }
+  .tc-td-slate-500 {
+    color: mat-color($td-slate, 500);
+  }
+  .tc-td-slate-600 {
+    color: mat-color($td-slate, 600);
+  }
+  .tc-td-slate-700 {
+    color: mat-color($td-slate, 700);
+  }
+  .tc-td-slate-800 {
+    color: mat-color($td-slate, 800);
+  }
+  .tc-td-slate-900 {
+    color: mat-color($td-slate, 900);
+  }
+  .tc-td-slate-1000 {
+    color: mat-color($td-slate, 1000);
+  }
+  .tc-td-slate-1100 {
+    color: mat-color($td-slate, 1100);
+  }
+  .tc-td-slate-1200 {
+    color: mat-color($td-slate, 1200);
+  }
+  .tc-td-slate-1300 {
+    color: mat-color($td-slate, 1300);
+  }
+  .tc-td-slate-1400 {
+    color: mat-color($td-slate, 1400);
+  }
+  .tc-td-slate-1500 {
+    color: mat-color($td-slate, 1500);
   }
 
-  .bgc-td-orange-700,
-  .bgc-td-orange-600 {
-    background-color: mat-color($td-orange, 600);
+
+  // Teradata slate - background
+  .bgc-td-slate {
+    background-color: mat-color($td-slate, 500);
+  }
+  
+  .bgc-td-slate-50 {
+    background-color: mat-color($td-slate, 50);
+  }
+  .bgc-td-slate-100 {
+    background-color: mat-color($td-slate, 100);
+  }
+  .bgc-td-slate-200 {
+    background-color: mat-color($td-slate, 200);
+  }
+  .bgc-td-slate-300 {
+    background-color: mat-color($td-slate, 300);
+  }
+  .bgc-td-slate-400 {
+    background-color: mat-color($td-slate, 400);
+  }
+  .bgc-td-slate-500 {
+    background-color: mat-color($td-slate, 500);
+  }
+  .bgc-td-slate-600 {
+    background-color: mat-color($td-slate, 600);
+  }
+  .bgc-td-slate-700 {
+    background-color: mat-color($td-slate, 700);
+  }
+  .bgc-td-slate-800 {
+    background-color: mat-color($td-slate, 800);
+  }
+  .bgc-td-slate-900 {
+    background-color: mat-color($td-slate, 900);
+  }
+  .bgc-td-slate-1000 {
+    background-color: mat-color($td-slate, 1000);
+  }
+  .bgc-td-slate-1100 {
+    background-color: mat-color($td-slate, 1100);
+  }
+  .bgc-td-slate-1200 {
+    background-color: mat-color($td-slate, 1200);
+  }
+  .bgc-td-slate-1300 {
+    background-color: mat-color($td-slate, 1300);
+  }
+  .bgc-td-slate-1400 {
+    background-color: mat-color($td-slate, 1400);
+  }
+  .bgc-td-slate-1500 {
+    background-color: mat-color($td-slate, 1500);
   }
 
-  .bgc-td-orange-500,
-  .bgc-td-orange-400 {
-    background-color: mat-color($td-orange, 400);
-  }
 
-  .bgc-td-orange-300,
-  .bgc-td-orange-200 {
-    background-color: mat-color($td-orange, 200);
-  }
 
-  .bgc-td-orange-100,
-  .bgc-td-orange-50 {
-    background-color: mat-color($td-orange, 50);
-  }
 
-  .tc-td-orange,
-  .tc-td-orange-900,
-  .tc-td-orange-800 {
+  // Teradata orange - foreground
+  .tc-td-orange {
     color: mat-color($td-orange, 800);
   }
-
-  .tc-td-orange-700,
-  .tc-td-orange-600 {
-    color: mat-color($td-orange, 600);
-  }
-
-  .tc-td-orange-500,
-  .tc-td-orange-400 {
-    color: mat-color($td-orange, 400);
-  }
-
-  .tc-td-orange-300,
-  .tc-td-orange-200 {
-    color: mat-color($td-orange, 200);
-  }
-
-  .tc-td-orange-100,
+  
   .tc-td-orange-50 {
     color: mat-color($td-orange, 50);
   }
-  // Yellow
-  .bgc-td-yellow,
-  .bgc-td-yellow-900,
-  .bgc-td-yellow-800 {
-    background-color: mat-color($td-yellow, 800);
+  .tc-td-orange-100 {
+    color: mat-color($td-orange, 100);
+  }
+  .tc-td-orange-200 {
+    color: mat-color($td-orange, 200);
+  }
+  .tc-td-orange-300 {
+    color: mat-color($td-orange, 300);
+  }
+  .tc-td-orange-400 {
+    color: mat-color($td-orange, 400);
+  }
+  .tc-td-orange-500 {
+    color: mat-color($td-orange, 500);
+  }
+  .tc-td-orange-600 {
+    color: mat-color($td-orange, 600);
+  }
+  .tc-td-orange-700 {
+    color: mat-color($td-orange, 700);
+  }
+  .tc-td-orange-800 {
+    color: mat-color($td-orange, 800);
+  }
+  .tc-td-orange-900 {
+    color: mat-color($td-orange, 900);
   }
 
-  .bgc-td-yellow-700,
-  .bgc-td-yellow-600 {
-    background-color: mat-color($td-yellow, 600);
+
+  // Teradata orange - background
+  .bgc-td-orange {
+    background-color: mat-color($td-orange, 500);
+  }
+  
+  .bgc-td-orange-50 {
+    background-color: mat-color($td-orange, 50);
+  }
+  .bgc-td-orange-100 {
+    background-color: mat-color($td-orange, 100);
+  }
+  .bgc-td-orange-200 {
+    background-color: mat-color($td-orange, 200);
+  }
+  .bgc-td-orange-300 {
+    background-color: mat-color($td-orange, 300);
+  }
+  .bgc-td-orange-400 {
+    background-color: mat-color($td-orange, 400);
+  }
+  .bgc-td-orange-500 {
+    background-color: mat-color($td-orange, 500);
+  }
+  .bgc-td-orange-600 {
+    background-color: mat-color($td-orange, 600);
+  }
+  .bgc-td-orange-700 {
+    background-color: mat-color($td-orange, 700);
+  }
+  .bgc-td-orange-800 {
+    background-color: mat-color($td-orange, 800);
+  }
+  .bgc-td-orange-900 {
+    background-color: mat-color($td-orange, 900);
   }
 
-  .bgc-td-yellow-500,
-  .bgc-td-yellow-400 {
-    background-color: mat-color($td-yellow, 400);
-  }
 
-  .bgc-td-yellow-300,
-  .bgc-td-yellow-200 {
-    background-color: mat-color($td-yellow, 200);
-  }
 
-  .bgc-td-yellow-100,
-  .bgc-td-yellow-50 {
-    background-color: mat-color($td-yellow, 50);
+  
+  // Teradata yellow - foreground
+  .tc-td-yellow {
+    color: mat-color($td-yellow, 900);
   }
-
-  .tc-td-yellow,
-  .tc-td-yellow-900,
-  .tc-td-yellow-800 {
-    color: mat-color($td-yellow, 800);
-  }
-
-  .tc-td-yellow-700,
-  .tc-td-yellow-600 {
-    color: mat-color($td-yellow, 600);
-  }
-
-  .tc-td-yellow-500,
-  .tc-td-yellow-400 {
-    color: mat-color($td-yellow, 400);
-  }
-
-  .tc-td-yellow-300,
-  .tc-td-yellow-200 {
-    color: mat-color($td-yellow, 200);
-  }
-
-  .tc-td-yellow-100,
+  
   .tc-td-yellow-50 {
     color: mat-color($td-yellow, 50);
   }
-  // Teal
-  .bgc-td-teal,
-  .bgc-td-teal-900,
-  .bgc-td-teal-800 {
-    background-color: mat-color($td-teal, 800);
+  .tc-td-yellow-100 {
+    color: mat-color($td-yellow, 100);
+  }
+  .tc-td-yellow-200 {
+    color: mat-color($td-yellow, 200);
+  }
+  .tc-td-yellow-300 {
+    color: mat-color($td-yellow, 300);
+  }
+  .tc-td-yellow-400 {
+    color: mat-color($td-yellow, 400);
+  }
+  .tc-td-yellow-500 {
+    color: mat-color($td-yellow, 500);
+  }
+  .tc-td-yellow-600 {
+    color: mat-color($td-yellow, 600);
+  }
+  .tc-td-yellow-700 {
+    color: mat-color($td-yellow, 700);
+  }
+  .tc-td-yellow-800 {
+    color: mat-color($td-yellow, 800);
+  }
+  .tc-td-yellow-900 {
+    color: mat-color($td-yellow, 900);
   }
 
-  .bgc-td-teal-700,
-  .bgc-td-teal-600 {
-    background-color: mat-color($td-teal, 600);
+
+  // Teradata yellow - background
+  .bgc-td-yellow {
+    background-color: mat-color($td-yellow, 500);
+  }
+  
+  .bgc-td-yellow-50 {
+    background-color: mat-color($td-yellow, 50);
+  }
+  .bgc-td-yellow-100 {
+    background-color: mat-color($td-yellow, 100);
+  }
+  .bgc-td-yellow-200 {
+    background-color: mat-color($td-yellow, 200);
+  }
+  .bgc-td-yellow-300 {
+    background-color: mat-color($td-yellow, 300);
+  }
+  .bgc-td-yellow-400 {
+    background-color: mat-color($td-yellow, 400);
+  }
+  .bgc-td-yellow-500 {
+    background-color: mat-color($td-yellow, 500);
+  }
+  .bgc-td-yellow-600 {
+    background-color: mat-color($td-yellow, 600);
+  }
+  .bgc-td-yellow-700 {
+    background-color: mat-color($td-yellow, 700);
+  }
+  .bgc-td-yellow-800 {
+    background-color: mat-color($td-yellow, 800);
+  }
+  .bgc-td-yellow-900 {
+    background-color: mat-color($td-yellow, 900);
   }
 
-  .bgc-td-teal-500,
-  .bgc-td-teal-400 {
-    background-color: mat-color($td-teal, 400);
-  }
 
-  .bgc-td-teal-300,
-  .bgc-td-teal-200 {
-    background-color: mat-color($td-teal, 200);
-  }
 
-  .bgc-td-teal-100,
-  .bgc-td-teal-50 {
-    background-color: mat-color($td-teal, 50);
+  
+  // Teradata teal - foreground
+  .tc-td-teal {
+    color: mat-color($td-teal, 900);
   }
-
-  .tc-td-teal,
-  .tc-td-teal-900,
-  .tc-td-teal-800 {
-    color: mat-color($td-teal, 800);
-  }
-
-  .tc-td-teal-700,
-  .tc-td-teal-600 {
-    color: mat-color($td-teal, 600);
-  }
-
-  .tc-td-teal-500,
-  .tc-td-teal-400 {
-    color: mat-color($td-teal, 400);
-  }
-
-  .tc-td-teal-300,
-  .tc-td-teal-200 {
-    color: mat-color($td-teal, 200);
-  }
-
-  .tc-td-teal-100,
+  
   .tc-td-teal-50 {
     color: mat-color($td-teal, 50);
   }
-  // Blue
-  .bgc-td-blue,
-  .bgc-td-blue-900,
-  .bgc-td-blue-800 {
-    background-color: mat-color($td-blue, 800);
+  .tc-td-teal-100 {
+    color: mat-color($td-teal, 100);
+  }
+  .tc-td-teal-200 {
+    color: mat-color($td-teal, 200);
+  }
+  .tc-td-teal-300 {
+    color: mat-color($td-teal, 300);
+  }
+  .tc-td-teal-400 {
+    color: mat-color($td-teal, 400);
+  }
+  .tc-td-teal-500 {
+    color: mat-color($td-teal, 500);
+  }
+  .tc-td-teal-600 {
+    color: mat-color($td-teal, 600);
+  }
+  .tc-td-teal-700 {
+    color: mat-color($td-teal, 700);
+  }
+  .tc-td-teal-800 {
+    color: mat-color($td-teal, 800);
+  }
+  .tc-td-teal-900 {
+    color: mat-color($td-teal, 900);
   }
 
-  .bgc-td-blue-700,
-  .bgc-td-blue-600 {
-    background-color: mat-color($td-blue, 600);
+
+  // Teradata teal - background
+  .bgc-td-teal {
+    background-color: mat-color($td-teal, 500);
+  }
+  
+  .bgc-td-teal-50 {
+    background-color: mat-color($td-teal, 50);
+  }
+  .bgc-td-teal-100 {
+    background-color: mat-color($td-teal, 100);
+  }
+  .bgc-td-teal-200 {
+    background-color: mat-color($td-teal, 200);
+  }
+  .bgc-td-teal-300 {
+    background-color: mat-color($td-teal, 300);
+  }
+  .bgc-td-teal-400 {
+    background-color: mat-color($td-teal, 400);
+  }
+  .bgc-td-teal-500 {
+    background-color: mat-color($td-teal, 500);
+  }
+  .bgc-td-teal-600 {
+    background-color: mat-color($td-teal, 600);
+  }
+  .bgc-td-teal-700 {
+    background-color: mat-color($td-teal, 700);
+  }
+  .bgc-td-teal-800 {
+    background-color: mat-color($td-teal, 800);
+  }
+  .bgc-td-teal-900 {
+    background-color: mat-color($td-teal, 900);
   }
 
-  .bgc-td-blue-500,
-  .bgc-td-blue-400 {
-    background-color: mat-color($td-blue, 400);
-  }
 
-  .bgc-td-blue-300,
-  .bgc-td-blue-200 {
-    background-color: mat-color($td-blue, 200);
-  }
 
-  .bgc-td-blue-100,
-  .bgc-td-blue-50 {
-    background-color: mat-color($td-blue, 50);
+  
+  // Teradata blue - foreground
+  .tc-td-blue {
+    color: mat-color($td-blue, 700);
   }
-
-  .tc-td-blue,
-  .tc-td-blue-900,
-  .tc-td-blue-800 {
-    color: mat-color($td-blue, 800);
+  
+  .tc-td-blue-50 {
+    color: mat-color($td-blue, 50);
   }
-
-  .tc-td-blue-700,
-  .tc-td-blue-600 {
-    color: mat-color($td-blue, 600);
+  .tc-td-blue-100 {
+    color: mat-color($td-blue, 100);
   }
-
-  .tc-td-blue-500,
-  .tc-td-blue-400 {
-    color: mat-color($td-blue, 400);
-  }
-
-  .tc-td-blue-300,
   .tc-td-blue-200 {
     color: mat-color($td-blue, 200);
   }
+  .tc-td-blue-300 {
+    color: mat-color($td-blue, 300);
+  }
+  .tc-td-blue-400 {
+    color: mat-color($td-blue, 400);
+  }
+  .tc-td-blue-500 {
+    color: mat-color($td-blue, 500);
+  }
+  .tc-td-blue-600 {
+    color: mat-color($td-blue, 600);
+  }
+  .tc-td-blue-700 {
+    color: mat-color($td-blue, 700);
+  }
+  .tc-td-blue-800 {
+    color: mat-color($td-blue, 800);
+  }
+  .tc-td-blue-900 {
+    color: mat-color($td-blue, 900);
+  }
 
-  .tc-td-blue-100,
-  .tc-td-blue-50 {
-    color: mat-color($td-blue, 50);
+
+  // Teradata blue - background
+  .bgc-td-blue {
+    background-color: mat-color($td-blue, 500);
+  }
+  
+  .bgc-td-blue-50 {
+    background-color: mat-color($td-blue, 50);
+  }
+  .bgc-td-blue-100 {
+    background-color: mat-color($td-blue, 100);
+  }
+  .bgc-td-blue-200 {
+    background-color: mat-color($td-blue, 200);
+  }
+  .bgc-td-blue-300 {
+    background-color: mat-color($td-blue, 300);
+  }
+  .bgc-td-blue-400 {
+    background-color: mat-color($td-blue, 400);
+  }
+  .bgc-td-blue-500 {
+    background-color: mat-color($td-blue, 500);
+  }
+  .bgc-td-blue-600 {
+    background-color: mat-color($td-blue, 600);
+  }
+  .bgc-td-blue-700 {
+    background-color: mat-color($td-blue, 700);
+  }
+  .bgc-td-blue-800 {
+    background-color: mat-color($td-blue, 800);
+  }
+  .bgc-td-blue-900 {
+    background-color: mat-color($td-blue, 900);
   }
 }
 
@@ -608,7 +750,7 @@ body {
   }
   // Spacing before logo in main toolbar
   .mat-toolbar {
-    background-color: if($is-dark, mat-color($td-slate-dark, 900), white);
+    background-color: if($is-dark, mat-color($td-slate, 1100), $white-87-opacity);
     .mat-icon-button + .mat-icon-logo,
     .mat-icon-button + span > .mat-icon-logo {
       margin-left: 10px;
@@ -636,7 +778,7 @@ body {
     height: 2px;
     width: 100%;
     z-index: 1000;
-    background-color: mat-color($td-orange, 700);
+    background-color: mat-color($td-orange, 500);
   }
 
   .tc-primary {
@@ -661,13 +803,13 @@ body {
     color: if($is-dark, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.5));
   }
   .bgc-contrast {
-    background-color: if($is-dark, mat-color($td-slate-dark, 900), #ececec);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1400), mat-color($mat-gray, 50));
   }
   .tc {
-    color: if($is-dark, rgba(0, 0, 0, 0.87), white);
+    color: if($is-dark, $black-87-opacity, $white-87-opacity);
   }
   .bgc {
-    background-color: if($is-dark, mat-color($td-slate-dark, 800), white);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
   }
 
   // State colors
@@ -710,23 +852,23 @@ body {
 
   // Always slate for primary
   .mat-toolbar.mat-primary {
-    background-color: if($is-dark, mat-color($td-slate-dark, 600), mat-color($td-slate, 700));
-    color: white;
+    background-color: if($is-dark, mat-color($td-slate-dark, 1100), mat-color($td-slate, 500));
+    color: $white-87-opacity;
   }
 
   // Components
   .mat-tree {
-    background-color: if($is-dark, mat-color($td-slate-dark, 800), white);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1400), $white-87-opacity);
   }
   .mat-drawer-container {
-    background-color: if($is-dark, mat-color($td-slate-dark, 700), #e0e0e3);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), #e0e0e3);
   }
   .td-expansion-panel {
-    background-color: if($is-dark, mat-color($td-slate-dark, 700), white);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
   }
   // Active icon color in list nav
   .mat-drawer {
-    background-color: if($is-dark, mat-color($td-slate-dark, 700), white);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
     mat-nav-list {
       .mat-list-item {
         &.active {
@@ -751,12 +893,12 @@ body {
     }
   }
   .mat-card {
-    background-color: if($is-dark, mat-color($td-slate-dark, 600), white);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
   }
   .td-search {
-    background-color: if($is-dark, mat-color($td-slate-dark, 600), white);
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
   }
   .mat-form-field-ripple {
-    background-color: if($is-dark, mat-color($primary, lighter), white);
+    background-color: if($is-dark, mat-color($primary, lighter), $white-87-opacity);
   }
 }

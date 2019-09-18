@@ -38,8 +38,8 @@ $custom-toolbar-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary: mat-palette($td-teal, 800, 100, 900);
-$accent:  mat-palette($td-orange, 800, 100, 900);
+$primary: mat-palette($td-teal, 500, 100, 900);
+$accent:  mat-palette($td-orange, 500, 100, 900);
 $warn:    mat-palette($mat-red, 900);
 
 // Create the theme object (a Sass map containing all of the palettes).
@@ -56,9 +56,9 @@ $theme: mat-light-theme($primary, $accent, $warn);
 /* ------------------------------------- DARK THEME ------------------------------------------ */
 
 .dark-theme {
-  $dark-primary: mat-palette($td-teal, 700, 100, 800);
-  $dark-accent:  mat-palette($td-orange, 800, 200, 900);
-  $dark-warn:    mat-palette($mat-red, 900);
+  $dark-primary: mat-palette($td-teal, 500, 100, 800);
+  $dark-accent:  mat-palette($td-orange, 500, 200, 900);
+  $dark-warn:    mat-palette($mat-red, 300);
 
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
