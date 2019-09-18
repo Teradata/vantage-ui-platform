@@ -56,16 +56,16 @@ h1,h2,h3,h4 {
 
 // Custom orange contrast
 $td-orange: (
-  50: #FCE3DB,
-  100: #FACDBC,
-  200: #F8B79D,
-  300: #F7A17D,
-  400: #F58B5E,
-  500: #F3753F,
-  600: #E46732,
-  700: #D45925,
-  800: #C54B17,
-  900: #B53D0A,
+  50: #fce3db,
+  100: #facdbc,
+  200: #f8b79d,
+  300: #f7a17d,
+  400: #f58b5e,
+  500: #f3753f,
+  600: #e46732,
+  700: #d45925,
+  800: #c54b17,
+  900: #b53d0a,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -80,22 +80,22 @@ $td-orange: (
   )
 );
 $td-slate: (
-  50: #E3E7E8,
-  100: #C9CFD1,
-  200: #AFB6B9,
-  300: #959EA2,
-  400: #7B858A,
-  500: #616D73,
-  600: #57646B,
-  700: #4D5B62,
-  800: #43515A,
+  50: #e3e7e8,
+  100: #c9cfd1,
+  200: #afb6b9,
+  300: #959ea2,
+  400: #7b858a,
+  500: #616d73,
+  600: #57646b,
+  700: #4d5b62,
+  800: #43515a,
   900: #394851,
-  1000: #2E3D42,
-  1100: #28353B,
-  1200: #222E33,
-  1300: #1E272E,
+  1000: #2e3d42,
+  1100: #28353b,
+  1200: #222e33,
+  1300: #1e272e,
   1400: #182126,
-  1500: #131A1F,
+  1500: #131a1f,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -118,16 +118,16 @@ $td-slate: (
 $td-slate-dark: $td-slate;
 
 $td-yellow: (
-  50: #FFF4DF,
-  100: #FFEBC2,
-  200: #FFE2A5,
-  300: #FED887,
-  400: #FECF6A,
-  500: #FEC64D,
-  600: #F5BB3C,
-  700: #ECAF2B,
-  800: #E3A419,
-  900: #DA9808,
+  50: #fff4df,
+  100: #ffebc2,
+  200: #ffe2a5,
+  300: #fed887,
+  400: #fecf6a,
+  500: #fec64d,
+  600: #f5bb3c,
+  700: #ecaf2b,
+  800: #e3a419,
+  900: #da9808,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -142,13 +142,13 @@ $td-yellow: (
   )
 );
 $td-teal: (
-  50: #DEF9F8,
-  100: #B2EBEA,
-  200: #85DDDC,
-  300: #59CECD,
-  400: #2CC0BF,
-  500: #00B2B1,
-  600: #00A2A2,
+  50: #def9f8,
+  100: #b2ebea,
+  200: #85dddc,
+  300: #59cecd,
+  400: #2cc0bf,
+  500: #00b2b1,
+  600: #00a2a2,
   700: #009392,
   800: #008383,
   900: #007373,
@@ -166,16 +166,16 @@ $td-teal: (
   )
 );
 $td-blue: (
-  50: #DCEEF5,
-  100: #B0DDEC,
-  200: #84CCE3,
-  300: #58BADB,
-  400: #2CA9D2,
-  500: #0098C9,
-  600: #008AB6,
-  700: #007BA3,
-  800: #006D90,
-  900: #005E7D,
+  50: #dceef5,
+  100: #b0ddec,
+  200: #84cce3,
+  300: #58badb,
+  400: #2ca9d2,
+  500: #0098c9,
+  600: #008ab6,
+  700: #007ba3,
+  800: #006d90,
+  900: #005e7d,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -200,13 +200,13 @@ $td-caution: (
   foreground-light: mat-color($mat-amber, 800),
   foreground-dark: mat-color($mat-orange, 300),
   background-light: mat-color($mat-orange, 300),
-  background-dark: #704C16,
+  background-dark: #704c16,
 );
 $td-negative: (
   foreground-light: mat-color($mat-red, 900),
   foreground-dark: mat-color($mat-red, 300),
   background-light: mat-color($mat-red, 300),
-  background-dark: #883E32,
+  background-dark: #883e32,
 );
 $td-neutral: (
   foreground-light: $black-87-opacity,
@@ -224,7 +224,7 @@ $td-emphasis2: (
   foreground-light: mat-color($mat-blue-grey, 600),
   foreground-dark: mat-color($mat-blue-grey, 200),
   background-light: mat-color($mat-blue-grey, 200),
-  background-dark: #4F5558,
+  background-dark: #4f5558,
 );
 
 body { 
@@ -283,7 +283,6 @@ body {
     color: mat-color($td-slate, 1500);
   }
 
-
   // Teradata slate - background
   .bgc-td-slate {
     background-color: mat-color($td-slate, 500);
@@ -338,9 +337,6 @@ body {
     background-color: mat-color($td-slate, 1500);
   }
 
-
-
-
   // Teradata orange - foreground
   .tc-td-orange {
     color: mat-color($td-orange, 800);
@@ -376,7 +372,6 @@ body {
   .tc-td-orange-900 {
     color: mat-color($td-orange, 900);
   }
-
 
   // Teradata orange - background
   .bgc-td-orange {
@@ -414,9 +409,6 @@ body {
     background-color: mat-color($td-orange, 900);
   }
 
-
-
-  
   // Teradata yellow - foreground
   .tc-td-yellow {
     color: mat-color($td-yellow, 900);
@@ -452,7 +444,6 @@ body {
   .tc-td-yellow-900 {
     color: mat-color($td-yellow, 900);
   }
-
 
   // Teradata yellow - background
   .bgc-td-yellow {
@@ -490,9 +481,6 @@ body {
     background-color: mat-color($td-yellow, 900);
   }
 
-
-
-  
   // Teradata teal - foreground
   .tc-td-teal {
     color: mat-color($td-teal, 900);
@@ -528,7 +516,6 @@ body {
   .tc-td-teal-900 {
     color: mat-color($td-teal, 900);
   }
-
 
   // Teradata teal - background
   .bgc-td-teal {
@@ -566,9 +553,6 @@ body {
     background-color: mat-color($td-teal, 900);
   }
 
-
-
-  
   // Teradata blue - foreground
   .tc-td-blue {
     color: mat-color($td-blue, 700);
@@ -604,7 +588,6 @@ body {
   .tc-td-blue-900 {
     color: mat-color($td-blue, 900);
   }
-
 
   // Teradata blue - background
   .bgc-td-blue {
