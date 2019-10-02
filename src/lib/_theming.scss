@@ -750,7 +750,9 @@ body {
       }
     }
   }
-  .mat-card {
+  .mat-card, 
+  .mat-dialog-container, 
+  .mat-menu-panel {
     background-color: if($is-dark, mat-color($td-slate-dark, 600), white);
   }
   .td-search {
