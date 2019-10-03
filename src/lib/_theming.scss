@@ -501,6 +501,15 @@ body {
   }
 }
 
+// Overriding only the card and dialog background-colors from material dark theme
+$mat-dark-theme-background: map-merge(
+  $mat-dark-theme-background,
+  (
+    card: mat-color($td-slate-dark, 600),
+    dialog: mat-color($td-slate-dark, 600)
+  )
+);
+
 @mixin teradata-brand($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -750,15 +759,15 @@ body {
       }
     }
   }
-  .mat-card, 
-  .mat-dialog-container, 
-  .mat-menu-panel {
-    background-color: if($is-dark, mat-color($td-slate-dark, 600), white);
-  }
   .td-search {
     background-color: if($is-dark, mat-color($td-slate-dark, 600), white);
   }
   .mat-form-field-ripple {
     background-color: if($is-dark, mat-color($primary, lighter), white);
+  }
+  // Manually setting drawer backdrop to override material's deafault color invert
+  // from the card background variable
+  .mat-drawer-backdrop.mat-drawer-shown {
+    background-color: rgba(189, 189, 189, 0.6);
   }
 }
