@@ -592,7 +592,7 @@ $mat-dark-theme-background: map-merge(
     .mat-stroked-button,
     .mat-raised-button,
     .mat-flat-button,
-    .mat-button {
+    .mat-button:not(.td-breadcrumb) {
       height: 26px;
       line-height: normal;
       .mat-button-wrapper {
