@@ -502,6 +502,8 @@ body {
 }
 
 // Overriding only the card and dialog background-colors from material dark theme
+// here. Also, we add the backdrop key as reference to the original card
+// background to be used when overriding backdrop.
 $mat-dark-theme-background: map-merge(
   $mat-dark-theme-background,
   (
@@ -767,8 +769,9 @@ $mat-dark-theme-background: map-merge(
     background-color: if($is-dark, mat-color($primary, lighter), white);
   }
   
-  // Manually setting drawer backdrop to override material's default color invert
-  // from the background card variable when in dark mode
+  // We override material backdrop to prevent the default invert on td-teal
+  // on dark-mode. If not on dark-mode, revert to original implementation
+  // inverting card background color at .6 opacity. 
   $backdrop-background:  if($is-dark, 
   invert(mat-color($background, backdrop, 0.6)),
   invert(mat-color($background, card, 0.6)));
