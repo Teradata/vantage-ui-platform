@@ -506,7 +506,8 @@ $mat-dark-theme-background: map-merge(
   $mat-dark-theme-background,
   (
     card: mat-color($td-slate-dark, 600),
-    dialog: mat-color($td-slate-dark, 600)
+    dialog: mat-color($td-slate-dark, 600),
+    backdrop: mat-color($mat-grey, 800),
   )
 );
 
@@ -765,9 +766,14 @@ $mat-dark-theme-background: map-merge(
   .mat-form-field-ripple {
     background-color: if($is-dark, mat-color($primary, lighter), white);
   }
-  // Manually setting drawer backdrop to override material's deafault color invert
-  // from the card background variable
+  
+  // Manually setting drawer backdrop to override material's default color invert
+  // from the background card variable when in dark mode
+  $backdrop-background:  if($is-dark, 
+  invert(mat-color($background, backdrop, 0.6)),
+  invert(mat-color($background, card, 0.6)));
+
   .mat-drawer-backdrop.mat-drawer-shown {
-    background-color: rgba(189, 189, 189, 0.6);
+    background-color: $backdrop-background;
   }
 }
