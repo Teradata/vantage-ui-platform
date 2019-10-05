@@ -501,6 +501,18 @@ body {
   }
 }
 
+// Overriding only the card and dialog background-colors from material dark theme
+// here. Also, we add the backdrop key as reference to the original card
+// background to be used when overriding backdrop.
+$mat-dark-theme-background: map-merge(
+  $mat-dark-theme-background,
+  (
+    card: mat-color($td-slate-dark, 600),
+    dialog: mat-color($td-slate-dark, 600),
+    backdrop: mat-color($mat-grey, 800),
+  )
+);
+
 @mixin teradata-brand($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -583,7 +595,7 @@ body {
     .mat-stroked-button,
     .mat-raised-button,
     .mat-flat-button,
-    .mat-button {
+    .mat-button:not(.td-breadcrumb) {
       height: 26px;
       line-height: normal;
       .mat-button-wrapper {
@@ -750,13 +762,21 @@ body {
       }
     }
   }
-  .mat-card {
-    background-color: if($is-dark, mat-color($td-slate-dark, 600), white);
-  }
   .td-search {
     background-color: if($is-dark, mat-color($td-slate-dark, 600), white);
   }
   .mat-form-field-ripple {
     background-color: if($is-dark, mat-color($primary, lighter), white);
+  }
+  
+  // We override material backdrop to prevent the default invert on td-teal
+  // on dark-mode. If not on dark-mode, revert to original implementation
+  // inverting card background color at .6 opacity. 
+  $backdrop-background:  if($is-dark, 
+  invert(mat-color($background, backdrop, 0.6)),
+  invert(mat-color($background, card, 0.6)));
+
+  .mat-drawer-backdrop.mat-drawer-shown {
+    background-color: $backdrop-background;
   }
 }
