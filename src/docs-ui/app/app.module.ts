@@ -25,6 +25,7 @@ import { CovalentHttpModule } from '@covalent/http';
 import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
 import { VantageUserModule } from '@td-vantage/ui-platform/user';
 import { VantageAuthenticationModule } from '@td-vantage/ui-platform/auth';
+import { VantageAccessModule } from '@td-vantage/ui-platform/access';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -68,6 +69,7 @@ import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTE
     VantageUserFeedbackModule,
     VantageUserModule,
     VantageAuthenticationModule,
+    VantageAccessModule,
 
     appRoutes,
   ], // modules needed to run this module
