@@ -94,7 +94,7 @@ export class VantageSessionService {
         return of(error);
       }),
       map((res: HttpResponse<IUser>) => {
-        return <IUser>res.body;
+        return res.body;
       }),
     );
   }

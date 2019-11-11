@@ -17,7 +17,7 @@ export class VantageErrorService {
 
   open(error: VantageError): MatDialogRef<TdAlertDialogComponent> {
     if (error) {
-      let config: IAlertConfig = {
+      const config: IAlertConfig = {
         title: this._translate.instant('THERE_WAS_A_PROBLEM'),
         message: error.message,
         disableClose: true,

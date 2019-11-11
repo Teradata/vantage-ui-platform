@@ -32,9 +32,9 @@ export class VantageTokenService {
   ): Observable<any> {
     return response.pipe(
       map((res: HttpResponse<IToken>) => {
-        let data: IToken = res.body;
-        let token: string = res.headers.get('X-AUTH-TOKEN') || data.access_token;
-        return { data: data, token: token };
+        const data: IToken = res.body;
+        const token: string = res.headers.get('X-AUTH-TOKEN') || data.access_token;
+        return { data, token };
       }),
     );
   }

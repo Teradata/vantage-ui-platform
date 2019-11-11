@@ -76,7 +76,7 @@ export class VantageLDAPService {
   test(@TdBody() body: ILDAPConfig, @TdResponse() response?: Observable<boolean>): Observable<boolean> {
     return response.pipe(
       map((res: any) => {
-        return res.status === 200 ? true : false;
+        return res.status === 200;
       }),
     );
   }
