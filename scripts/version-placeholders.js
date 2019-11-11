@@ -8,7 +8,7 @@ var gulp = require('gulp');
 const buildConfig = require('../build.conf');
 const packageJson = require('../package.json');
 
-gulp.task('version-placeholder', function(cb){
+gulp.task('version-placeholder', function(cb) {
   replaceVersionPlaceholders(buildConfig.deployed, packageJson.version);
   cb();
 });
@@ -37,7 +37,7 @@ function replaceVersionPlaceholders(packageDir, projectVersion) {
 
   // Walk through every file that contains version placeholders and replace those with the current
   // version of the root package.json file.
-  files.forEach(filePath => {
+  files.forEach((filePath) => {
     const fileContent = readFileSync(filePath, 'utf-8')
       .replace(ngVersionPlaceholderRegex, buildConfig.angularVersion)
       .replace(materialVersionPlaceholderRegex, buildConfig.materialVersion)
@@ -52,8 +52,8 @@ function replaceVersionPlaceholders(packageDir, projectVersion) {
 /** Finds all files in the specified package dir where version placeholders are included. */
 function findFilesWithPlaceholders(packageDir) {
   const findCommand = buildPlaceholderFindCommand(packageDir);
-  return spawnSync(findCommand.binary, findCommand.args).stdout
-    .toString()
+  return spawnSync(findCommand.binary, findCommand.args)
+    .stdout.toString()
     .split(/[\n\r]/)
     .filter(String);
 }
@@ -63,12 +63,20 @@ function buildPlaceholderFindCommand(packageDir) {
   if (platform() === 'win32') {
     return {
       binary: 'findstr',
-      args: ['/msi', `${translateVersionPlaceholderText} ${materialVersionPlaceholderText} ${ngVersionPlaceholderText} ${versionPlaceholderText} ${covalentVersionPlaceholderText}`, `${packageDir}\\*`]
+      args: [
+        '/msi',
+        `${translateVersionPlaceholderText} ${materialVersionPlaceholderText} ${ngVersionPlaceholderText} ${versionPlaceholderText} ${covalentVersionPlaceholderText}`,
+        `${packageDir}\\*`,
+      ],
     };
   } else {
     return {
       binary: 'grep',
-      args: ['-ril', `${translateVersionPlaceholderText}\\|${materialVersionPlaceholderText}\\|${ngVersionPlaceholderText}\\|${versionPlaceholderText} ${covalentVersionPlaceholderText}`, packageDir]
+      args: [
+        '-ril',
+        `${translateVersionPlaceholderText}\\|${materialVersionPlaceholderText}\\|${ngVersionPlaceholderText}\\|${versionPlaceholderText} ${covalentVersionPlaceholderText}`,
+        packageDir,
+      ],
     };
   }
 }

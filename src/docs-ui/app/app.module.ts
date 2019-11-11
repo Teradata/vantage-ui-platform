@@ -37,10 +37,7 @@ import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-transla
 import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTED_LANGS } from '../config/translate';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-  ], // directives, components, and pipes owned by this NgModule
+  declarations: [AppComponent, MainComponent], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
     HttpClientModule,
@@ -73,14 +70,11 @@ import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTE
 
     appRoutes,
   ], // modules needed to run this module
-  providers: [
-    appRoutingProviders,
-  ],
-  bootstrap: [ AppComponent ],
+  providers: [appRoutingProviders],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(translateService: TranslateService) {
-
     // set the default language
     translateService.setDefaultLang('en');
     translateService.addLangs(SUPPORTED_LANGS);

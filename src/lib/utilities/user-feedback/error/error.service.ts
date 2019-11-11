@@ -13,9 +13,7 @@ export class VantageError {
 
 @Injectable()
 export class VantageErrorService {
-
-  constructor(private _dialogService: TdDialogService,
-              private _translate: TranslateService) {}
+  constructor(private _dialogService: TdDialogService, private _translate: TranslateService) {}
 
   open(error: VantageError): MatDialogRef<TdAlertDialogComponent> {
     if (error) {
@@ -33,11 +31,13 @@ export class VantageErrorService {
       }
     }
   }
-
 }
 
 export function VANTAGE_ERROR_PROVIDER_FACTORY(
-  parent: VantageErrorService, dialogService: TdDialogService, translate: TranslateService): VantageErrorService {
+  parent: VantageErrorService,
+  dialogService: TdDialogService,
+  translate: TranslateService,
+): VantageErrorService {
   return parent || new VantageErrorService(dialogService, translate);
 }
 

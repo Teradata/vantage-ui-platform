@@ -10,9 +10,9 @@ $td-font-medium: '"RidleyGrotesk-Medium", Arial, Helvetica, sans-serif';
 
 // Setting the toolbar to the proper spec weight
 @include mat-toolbar-typography(
-  mat-typography-config( $font-family: $td-font-medium, $title: mat-typography-level(19px, 28px, 400))
+  mat-typography-config($font-family: $td-font-medium, $title: mat-typography-level(19px, 28px, 400))
 );
-@include mat-button-typography(mat-typography-config( $font-family: $td-font-semibold));
+@include mat-button-typography(mat-typography-config($font-family: $td-font-semibold));
 
 // Teradata brand typography
 h1,
@@ -46,7 +46,10 @@ h3,
 .mat-display-1,
 .mat-display-2,
 .mat-display-3,
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   letter-spacing: -0.025em;
 }
 
@@ -78,7 +81,7 @@ $td-orange: (
     700: white,
     800: $white-87-opacity,
     900: $white-87-opacity,
-  )
+  ),
 );
 $td-slate: (
   50: #d8dbdc,
@@ -102,7 +105,7 @@ $td-slate: (
     700: white,
     800: $white-87-opacity,
     900: $white-87-opacity,
-  )
+  ),
 );
 $td-slate-dark: (
   50: #d8dbdc,
@@ -126,7 +129,7 @@ $td-slate-dark: (
     700: white,
     800: $white-87-opacity,
     900: $white-87-opacity,
-  )
+  ),
 );
 $td-yellow: (
   50: #fff4df,
@@ -150,7 +153,7 @@ $td-yellow: (
     700: $black-87-opacity,
     800: $black-87-opacity,
     900: $black-87-opacity,
-  )
+  ),
 );
 $td-teal: (
   50: #cff0ef,
@@ -174,7 +177,7 @@ $td-teal: (
     700: $black-87-opacity,
     800: white,
     900: white,
-  )
+  ),
 );
 $td-blue: (
   50: #d1eaf4,
@@ -198,7 +201,7 @@ $td-blue: (
     700: white,
     800: $white-87-opacity,
     900: $white-87-opacity,
-  )
+  ),
 );
 
 $td-positive: (
@@ -238,7 +241,7 @@ $td-emphasis2: (
   background-dark: mat-color($mat-blue-grey, 200),
 );
 
-body { 
+body {
   // Slate
   .bgc-td-slate,
   .bgc-td-slate-900,
@@ -567,7 +570,8 @@ $mat-dark-theme-background: map-merge(
   }
   // Toolbar
   body {
-    .mat-toolbar-row, .mat-toolbar-single-row {
+    .mat-toolbar-row,
+    .mat-toolbar-single-row {
       height: 48px;
     }
     .mat-toolbar-multiple-rows {
@@ -583,7 +587,8 @@ $mat-dark-theme-background: map-merge(
       padding: 0 10px;
       line-height: 24px;
     }
-    mat-icon.material-icons, mat-icon.material-icons.mat-icon {
+    mat-icon.material-icons,
+    mat-icon.material-icons.mat-icon {
       font-size: 16px;
     }
   }
@@ -768,13 +773,15 @@ $mat-dark-theme-background: map-merge(
   .mat-form-field-ripple {
     background-color: if($is-dark, mat-color($primary, lighter), white);
   }
-  
+
   // We override material backdrop to prevent the default invert on td-teal
   // on dark-mode. If not on dark-mode, revert to original implementation
-  // inverting card background color at .6 opacity. 
-  $backdrop-background:  if($is-dark, 
-  invert(mat-color($background, backdrop, 0.6)),
-  invert(mat-color($background, card, 0.6)));
+  // inverting card background color at .6 opacity.
+  $backdrop-background: if(
+    $is-dark,
+    invert(mat-color($background, backdrop, 0.6)),
+    invert(mat-color($background, card, 0.6))
+  );
 
   .mat-drawer-backdrop.mat-drawer-shown {
     background-color: $backdrop-background;

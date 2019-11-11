@@ -13,14 +13,14 @@
 
 ### Setup
 
-* Ensure you have **Node 10.15.3** (on a Mac use Homebrew and `brew install node@10.15.3`)
-* Ensure you have **NPM 6+** installed.
-* Install Docker Engine: [https://docs.docker.com/engine/installation/](https://docs.docker.com/engine/installation/)
-* Install Angular CLI `npm i -g @angular/cli`
-* Install Typescript `npm i -g typescript`
-* Install TSLint `npm i -g tslint`
-* Install Protractor for e2e testing `npm i -g protractor`
-* Install Node packages `npm install`
+- Ensure you have **Node 10.15.3** (on a Mac use Homebrew and `brew install node@10.15.3`)
+- Ensure you have **NPM 6+** installed.
+- Install Docker Engine: [https://docs.docker.com/engine/installation/](https://docs.docker.com/engine/installation/)
+- Install Angular CLI `npm i -g @angular/cli`
+- Install Typescript `npm i -g typescript`
+- Install TSLint `npm i -g tslint`
+- Install Protractor for e2e testing `npm i -g protractor`
+- Install Node packages `npm install`
 
 ### Development
 
@@ -32,11 +32,11 @@
 
 ## Build and publish
 
-* Build the source code
+- Build the source code
 
 `npm run build:lib`
 
-* Publish to npm
+- Publish to npm
 
 `npm run publish:npm`
 
@@ -48,11 +48,12 @@ click here for information about [SSO](./docs/SSOINFO.md)
 
 ### Http
 
-* HTTP in the ui-platform uses Covalent Http
-  * See more information here: [https://teradata.github.io/covalent/#/components/http](https://teradata.github.io/covalent/#/components/http)
-* An es7 polyfill will be required in the Angular Application
-  * Create a file named `src/polyfills.ts`
-  * In that file add the following import:
+- HTTP in the ui-platform uses Covalent Http
+  - See more information here: [https://teradata.github.io/covalent/#/components/http](https://teradata.github.io/covalent/#/components/http)
+- An es7 polyfill will be required in the Angular Application
+  - Create a file named `src/polyfills.ts`
+  - In that file add the following import:
+
 ```
 import 'core-js/es7/reflect';
 ```

@@ -4,15 +4,7 @@ import { HttpParams, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angul
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import {
-  TdHttp,
-  TdGET,
-  TdPOST,
-  TdParam,
-  TdBody,
-  TdResponse,
-  TdQueryParams,
-} from '@covalent/http';
+import { TdHttp, TdGET, TdPOST, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
 
 export interface IAuditLog {
   action?: string;
@@ -28,18 +20,19 @@ export interface IAuditLog {
 
 @TdHttp({
   baseUrl: '/api/audit',
-  baseHeaders: new HttpHeaders({ 'Accept': 'application/json' }),
+  baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
 })
 export class VantageAuditService {
-
   @TdGET({
     path: '/audit/messages',
     options: {
       observe: 'response',
     },
   })
-  query(@TdQueryParams() params?: HttpParams,
-        @TdResponse() response?: Observable<HttpResponse<any>>): Observable<{total: number, data: IAuditLog[]}> {
+  query(
+    @TdQueryParams() params?: HttpParams,
+    @TdResponse() response?: Observable<HttpResponse<any>>,
+  ): Observable<{ total: number; data: IAuditLog[] }> {
     return response.pipe(
       map((res: HttpResponse<any>) => {
         return {
@@ -53,17 +46,14 @@ export class VantageAuditService {
   @TdPOST({
     path: '/audit/messages',
   })
-  create(@TdBody() body: IAuditLog,
-          @TdResponse() response?: Observable<IAuditLog>,
-        ): Observable<IAuditLog> {
+  create(@TdBody() body: IAuditLog, @TdResponse() response?: Observable<IAuditLog>): Observable<IAuditLog> {
     return response;
   }
 
   @TdGET({
     path: '/audit/messages/:id',
   })
-  get(@TdParam('id') id: number | string,
-      @TdResponse() response?: Observable<IAuditLog>): Observable<IAuditLog> {
+  get(@TdParam('id') id: number | string, @TdResponse() response?: Observable<IAuditLog>): Observable<IAuditLog> {
     return response;
   }
 

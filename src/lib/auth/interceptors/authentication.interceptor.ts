@@ -16,7 +16,6 @@ const GATEWAY_TIMEOUT: number = 504;
 
 @Injectable()
 export class VantageAuthenticationInterceptor implements ITdHttpInterceptor {
-
   onResponseError(error: any): any {
     if (error.status === UNAUTHORIZED) {
       // if logged in, go ahead an expire the cooke and reload the page
@@ -24,7 +23,7 @@ export class VantageAuthenticationInterceptor implements ITdHttpInterceptor {
         document.cookie = 'XSRF-TOKEN=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         window.location.reload();
       }
-    } 
+    }
     throw error;
   }
 
@@ -34,7 +33,7 @@ export class VantageAuthenticationInterceptor implements ITdHttpInterceptor {
         // check error and do something
         if (e instanceof HttpErrorResponse) {
           // do something if its response error
-         return this.onResponseError(e);
+          return this.onResponseError(e);
         }
       }),
     );

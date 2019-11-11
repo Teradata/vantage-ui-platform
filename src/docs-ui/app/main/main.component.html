@@ -11,7 +11,7 @@
 </div>
 <div class="pad">
   <h4>Auth Module</h4>
-  <p *ngIf="loggedIn">User is logged in: {{user | json }}</p>
+  <p *ngIf="loggedIn">User is logged in: {{ user | json }}</p>
   <div layout="row">
     <div>
       <a *ngIf="!loggedIn" mat-raised-button routerLink="/login" routerLinkActive="active" color="accent">

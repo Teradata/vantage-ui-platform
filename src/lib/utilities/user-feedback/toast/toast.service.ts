@@ -6,9 +6,7 @@ import { TdMediaService } from '@covalent/core/media';
 
 @Injectable()
 export class VantageToastService {
-
-  constructor(private _snackBarService: MatSnackBar,
-              private _media: TdMediaService) { }
+  constructor(private _snackBarService: MatSnackBar, private _media: TdMediaService) {}
 
   open(message: string, time: number = 3000): void {
     if (message) {
@@ -18,11 +16,13 @@ export class VantageToastService {
       });
     }
   }
-
 }
 
 export function VANTAGE_TOAST_PROVIDER_FACTORY(
-  parent: VantageToastService, snackBar: MatSnackBar, media: TdMediaService): VantageToastService {
+  parent: VantageToastService,
+  snackBar: MatSnackBar,
+  media: TdMediaService,
+): VantageToastService {
   return parent || new VantageToastService(snackBar, media);
 }
 
