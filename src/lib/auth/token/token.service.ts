@@ -4,12 +4,7 @@ import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import {
-  TdHttp,
-  TdPOST,
-  TdBody,
-  TdResponse,
-} from '@covalent/http';
+import { TdHttp, TdPOST, TdBody, TdResponse } from '@covalent/http';
 
 export interface IToken {
   access_token?: string;
@@ -22,23 +17,24 @@ export interface IToken {
 
 @TdHttp({
   baseUrl: '/api/user',
-  baseHeaders: new HttpHeaders({ 'Accept': 'application/json' }),
+  baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
 })
 export class VantageTokenService {
-
   @TdPOST({
     path: '/token',
     options: {
       observe: 'response',
     },
   })
-  create(@TdBody() user: { username: string, password: string },
-         @TdResponse() response?: Observable<HttpResponse<IToken>>): Observable<any> {
+  create(
+    @TdBody() user: { username: string; password: string },
+    @TdResponse() response?: Observable<HttpResponse<IToken>>,
+  ): Observable<any> {
     return response.pipe(
       map((res: HttpResponse<IToken>) => {
-        let data: IToken = res.body;
-        let token: string = res.headers.get('X-AUTH-TOKEN') || data.access_token;
-        return { data: data, token: token };
+        const data: IToken = res.body;
+        const token: string = res.headers.get('X-AUTH-TOKEN') || data.access_token;
+        return { data, token };
       }),
     );
   }

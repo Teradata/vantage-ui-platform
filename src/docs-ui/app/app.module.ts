@@ -37,10 +37,7 @@ import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-transla
 import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTED_LANGS } from '../config/translate';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-  ], // directives, components, and pipes owned by this NgModule
+  declarations: [AppComponent, MainComponent], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
     HttpClientModule,
@@ -73,21 +70,17 @@ import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTE
 
     appRoutes,
   ], // modules needed to run this module
-  providers: [
-    appRoutingProviders,
-  ],
-  bootstrap: [ AppComponent ],
+  providers: [appRoutingProviders],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(translateService: TranslateService) {
-
     // set the default language
     translateService.setDefaultLang('en');
     translateService.addLangs(SUPPORTED_LANGS);
 
     // Get selected language and load it
-    let selectedLocale: string = getSelectedLocale(translateService);
-    let selectedLanguage: string = getSelectedLanguage(translateService);
+    const selectedLanguage: string = getSelectedLanguage(translateService);
 
     // using require here so can avoid making an http request ajax to get the language files
     // this prevents the language keys from flashing on the screen for a second before the actual

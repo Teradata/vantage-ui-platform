@@ -7,14 +7,12 @@ import { VantageBlockRootAccessGuard, VantageBlockUserAccessGuard } from '@td-va
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'login', component: MainComponent, canActivate: [ VantageAuthenticationGuard ] },
-  { path: 'block-root', component: MainComponent, canActivate: [ VantageBlockRootAccessGuard ] },
-  { path: 'block-user', component: MainComponent, canActivate: [ VantageBlockUserAccessGuard ] },
-  { path: '**', redirectTo: '/', },
+  { path: 'login', component: MainComponent, canActivate: [VantageAuthenticationGuard] },
+  { path: 'block-root', component: MainComponent, canActivate: [VantageBlockRootAccessGuard] },
+  { path: 'block-user', component: MainComponent, canActivate: [VantageBlockUserAccessGuard] },
+  { path: '**', redirectTo: '/' },
 ];
 
-export const appRoutingProviders: any[] = [
-
-];
+export const appRoutingProviders: any[] = [];
 
 export const appRoutes: any = RouterModule.forRoot(routes);

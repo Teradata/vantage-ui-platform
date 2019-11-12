@@ -7,9 +7,7 @@
     "inlineSources": true,
     "skipLibCheck": true
   },
-  "exclude": [
-    "./auth/config/*"
-  ],
+  "exclude": ["./auth/config/*"],
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,

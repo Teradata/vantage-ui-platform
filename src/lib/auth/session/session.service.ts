@@ -33,7 +33,6 @@ export interface ISessionUser {
   }),
 })
 export class VantageSessionService {
-
   private _user: IUser;
 
   get user(): IUser {
@@ -47,8 +46,8 @@ export class VantageSessionService {
           return this._getUser(sessionUser.user).pipe(
             tap((u: IUser) => {
               this._user = Object.assign({}, sessionUser, u);
-            },
-          ));
+            }),
+          );
         }),
       );
     } else {
@@ -69,9 +68,7 @@ export class VantageSessionService {
       observe: 'response',
     },
   })
-  private _get(
-    @TdResponse() response?: Observable<HttpResponse<any>>,
-  ): Observable<any> {
+  private _get(@TdResponse() response?: Observable<HttpResponse<any>>): Observable<any> {
     return response.pipe(
       map((res: HttpResponse<ISessionUser>) => {
         return res.body;
@@ -97,7 +94,7 @@ export class VantageSessionService {
         return of(error);
       }),
       map((res: HttpResponse<IUser>) => {
-        return <IUser>res.body;
+        return res.body;
       }),
     );
   }

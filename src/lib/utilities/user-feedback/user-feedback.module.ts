@@ -11,17 +11,7 @@ import { VANTAGE_ERROR_PROVIDER } from './error/error.service';
 import { VANTAGE_TOAST_PROVIDER } from './toast/toast.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatSnackBarModule,
-    CovalentDialogsModule,
-    CovalentMediaModule,
-  ],
-  providers: [
-    VANTAGE_ERROR_PROVIDER,
-    VANTAGE_TOAST_PROVIDER,
-  ],
+  imports: [CommonModule, MatSnackBarModule, CovalentDialogsModule, CovalentMediaModule],
+  providers: [VANTAGE_ERROR_PROVIDER, VANTAGE_TOAST_PROVIDER],
 })
-export class VantageUserFeedbackModule {
-
-}
+export class VantageUserFeedbackModule {}

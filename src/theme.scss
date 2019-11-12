@@ -4,10 +4,10 @@
 
 // Custom typography
 $custom-typography: mat-typography-config(
-  $button: mat-typography-level(14px, 14px, 400)
+  $button: mat-typography-level(14px, 14px, 400),
 );
 $custom-toolbar-typography: mat-typography-config(
-  $title: mat-typography-level(20px, 32px, 400)
+  $title: mat-typography-level(20px, 32px, 400),
 );
 
 // Include the base styles for Angular Material core. We include this here so that you only
@@ -39,8 +39,8 @@ $custom-toolbar-typography: mat-typography-config(
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $primary: mat-palette($td-teal, 800, 100, 900);
-$accent:  mat-palette($td-orange, 800, 100, 900);
-$warn:    mat-palette($mat-red, 900);
+$accent: mat-palette($td-orange, 800, 100, 900);
+$warn: mat-palette($mat-red, 900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($primary, $accent, $warn);
@@ -57,8 +57,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 .dark-theme {
   $dark-primary: mat-palette($td-teal, 700, 100, 800);
-  $dark-accent:  mat-palette($td-orange, 800, 200, 900);
-  $dark-warn:    mat-palette($mat-red, 900);
+  $dark-accent: mat-palette($td-orange, 800, 200, 900);
+  $dark-warn: mat-palette($mat-red, 900);
 
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 

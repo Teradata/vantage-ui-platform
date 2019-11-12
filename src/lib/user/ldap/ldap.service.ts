@@ -4,17 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import {
-  TdHttp,
-  TdGET,
-  TdPUT,
-  TdPOST,
-  TdPATCH,
-  TdDELETE,
-  TdParam,
-  TdBody,
-  TdResponse,
-} from '@covalent/http';
+import { TdHttp, TdGET, TdPUT, TdPOST, TdPATCH, TdDELETE, TdParam, TdBody, TdResponse } from '@covalent/http';
 
 export enum LDAPEncription {
   None = 'NONE',
@@ -42,10 +32,9 @@ export interface ILDAPConfig {
 
 @TdHttp({
   baseUrl: '/api/user/ldap/config',
-  baseHeaders: new HttpHeaders({ 'Accept': 'application/json' }),
+  baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
 })
 export class VantageLDAPService {
-  
   @TdGET({
     path: '/',
   })
@@ -56,25 +45,25 @@ export class VantageLDAPService {
   @TdPOST({
     path: '/',
   })
-  create(@TdBody() body: ILDAPConfig,
-         @TdResponse() response?: Observable<ILDAPConfig>): Observable<ILDAPConfig> {
+  create(@TdBody() body: ILDAPConfig, @TdResponse() response?: Observable<ILDAPConfig>): Observable<ILDAPConfig> {
     return response;
   }
 
   @TdPATCH({
     path: '/:id',
   })
-  update(@TdParam('id') id: string | number,
-          @TdBody() body: ILDAPConfig,
-          @TdResponse() response?: Observable<ILDAPConfig>): Observable<ILDAPConfig> {
+  update(
+    @TdParam('id') id: string | number,
+    @TdBody() body: ILDAPConfig,
+    @TdResponse() response?: Observable<ILDAPConfig>,
+  ): Observable<ILDAPConfig> {
     return response;
   }
 
   @TdDELETE({
     path: '/:id',
   })
-  delete(@TdParam('id') id: string | number,
-          @TdResponse() response?: Observable<void>): Observable<void> {
+  delete(@TdParam('id') id: string | number, @TdResponse() response?: Observable<void>): Observable<void> {
     return response;
   }
 
@@ -84,11 +73,10 @@ export class VantageLDAPService {
       observe: 'response',
     },
   })
-  test(@TdBody() body: ILDAPConfig,
-       @TdResponse() response?: Observable<boolean>): Observable<boolean> {
+  test(@TdBody() body: ILDAPConfig, @TdResponse() response?: Observable<boolean>): Observable<boolean> {
     return response.pipe(
       map((res: any) => {
-        return res.status === 200 ? true : false;
+        return res.status === 200;
       }),
     );
   }

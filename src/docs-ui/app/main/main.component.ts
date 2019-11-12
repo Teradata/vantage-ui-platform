@@ -14,14 +14,18 @@ export class MainComponent implements OnInit {
   user: IUser;
   loggedIn: boolean = false;
 
-  constructor(private _errorService: VantageErrorService,
-              private _toastService: VantageToastService,
-              private _sessionService: VantageSessionService) {
-  }
+  constructor(
+    private _errorService: VantageErrorService,
+    private _toastService: VantageToastService,
+    private _sessionService: VantageSessionService,
+  ) {}
 
   async ngOnInit(): Promise<void> {
     try {
-      this.user = await this._sessionService.getInfo().pipe(timeout(5000)).toPromise();
+      this.user = await this._sessionService
+        .getInfo()
+        .pipe(timeout(5000))
+        .toPromise();
       this.loggedIn = true;
     } catch (error) {
       if (error.status !== 401) {

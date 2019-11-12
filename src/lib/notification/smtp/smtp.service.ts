@@ -4,14 +4,7 @@ import { HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/ht
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import {
-  TdHttp,
-  TdGET,
-  TdPUT,
-  TdDELETE,
-  TdBody,
-  TdResponse,
-} from '@covalent/http';
+import { TdHttp, TdGET, TdPUT, TdDELETE, TdBody, TdResponse } from '@covalent/http';
 
 export interface ISMTPConfig {
   server?: string;
@@ -26,16 +19,13 @@ export interface ISMTPConfig {
 
 @TdHttp({
   baseUrl: '/api/notification',
-  baseHeaders: new HttpHeaders({ 'Accept': 'application/json' }),
+  baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
 })
 export class VantageSMTPService {
-
   @TdPUT({
     path: '/smtp-config',
   })
-  create(@TdBody() body: ISMTPConfig,
-         @TdResponse() response?: Observable<ISMTPConfig>,
-        ): Observable<ISMTPConfig> {
+  create(@TdBody() body: ISMTPConfig, @TdResponse() response?: Observable<ISMTPConfig>): Observable<ISMTPConfig> {
     return response;
   }
 
@@ -45,7 +35,7 @@ export class VantageSMTPService {
   query(@TdResponse() response?: Observable<ISMTPConfig>): Observable<ISMTPConfig> {
     return response;
   }
-  
+
   @TdDELETE({
     path: '/smtp-config',
   })

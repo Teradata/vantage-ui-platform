@@ -4,17 +4,7 @@ import { HttpParams, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angul
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import {
-  TdHttp,
-  TdGET,
-  TdPUT,
-  TdPOST,
-  TdDELETE,
-  TdParam,
-  TdBody,
-  TdResponse,
-  TdQueryParams,
-} from '@covalent/http';
+import { TdHttp, TdGET, TdPUT, TdPOST, TdDELETE, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
 
 export enum SystemType {
   Teradata = 'TERADATA',
@@ -22,11 +12,7 @@ export enum SystemType {
   Presto = 'PRESTO',
 }
 
-export const VANTAGE_SYSTEMS_TYPES: SystemType[] = [
-  SystemType.Teradata,
-  SystemType.Aster,
-  SystemType.Presto,
-];
+export const VANTAGE_SYSTEMS_TYPES: SystemType[] = [SystemType.Teradata, SystemType.Aster, SystemType.Presto];
 
 export interface ISystemAttributes {
   attributes?: any;
@@ -62,10 +48,9 @@ export interface ITestSystem extends IAbstractSystem {
 
 @TdHttp({
   baseUrl: '/api/system',
-  baseHeaders: new HttpHeaders({ 'Accept': 'application/json' }),
+  baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
 })
 export class VantageSystemService {
-
   @TdGET({
     path: '/health',
   })
@@ -86,8 +71,10 @@ export class VantageSystemService {
       observe: 'response',
     },
   })
-  query(@TdQueryParams() params?: HttpParams,
-         @TdResponse() response?: Observable<HttpResponse<any>>): Observable<{total: number, data: ISystem[]}> {
+  query(
+    @TdQueryParams() params?: HttpParams,
+    @TdResponse() response?: Observable<HttpResponse<any>>,
+  ): Observable<{ total: number; data: ISystem[] }> {
     return response.pipe(
       map((res: HttpResponse<any>) => {
         return {
@@ -101,41 +88,39 @@ export class VantageSystemService {
   @TdGET({
     path: '/systems/:id',
   })
-  get(@TdParam('id') id: string | number,
-        @TdResponse() response?: Observable<ISystem>): Observable<ISystem> {
+  get(@TdParam('id') id: string | number, @TdResponse() response?: Observable<ISystem>): Observable<ISystem> {
     return response;
   }
 
   @TdPOST({
     path: '/systems',
   })
-  create(@TdBody() system: ISystem,
-          @TdResponse() response?: Observable<ISystem>): Observable<ISystem> {
+  create(@TdBody() system: ISystem, @TdResponse() response?: Observable<ISystem>): Observable<ISystem> {
     return response;
   }
 
   @TdPUT({
     path: '/systems/:id',
   })
-  update(@TdParam('id') id: string,
-          @TdBody() system: ISystem,
-          @TdResponse() response?: Observable<ISystem>): Observable<ISystem> {
+  update(
+    @TdParam('id') id: string,
+    @TdBody() system: ISystem,
+    @TdResponse() response?: Observable<ISystem>,
+  ): Observable<ISystem> {
     return response;
   }
 
   @TdDELETE({
     path: '/systems/:id',
   })
-  delete(@TdParam('id') id: string,
-          @TdResponse() response?: Observable<void>): Observable<void> {
+  delete(@TdParam('id') id: string, @TdResponse() response?: Observable<void>): Observable<void> {
     return response;
   }
 
   @TdPOST({
     path: '/testsystem',
   })
-  test(@TdBody() system: ITestSystem,
-        @TdResponse() response?: Observable<HttpResponse<any>>): Observable<boolean> {
+  test(@TdBody() system: ITestSystem, @TdResponse() response?: Observable<HttpResponse<any>>): Observable<boolean> {
     return response.pipe(
       map((res: HttpResponse<any>) => {
         return true;

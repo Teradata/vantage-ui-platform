@@ -1,11 +1,6 @@
 import { Provider, SkipSelf, Optional } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
-import {
-  TdHttp,
-  TdGET,
-  TdResponse,
-  TdQueryParams,
-} from '@covalent/http';
+import { TdHttp, TdGET, TdResponse, TdQueryParams } from '@covalent/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -24,7 +19,6 @@ export interface IGroup {
   }),
 })
 export class VantageGroupService {
-
   /**
    * get groups in paginated form via query string
    */
@@ -37,7 +31,7 @@ export class VantageGroupService {
   query(
     @TdQueryParams() queryParams?: HttpParams,
     @TdResponse() response?: Observable<HttpResponse<any>>,
-  ): Observable<{total: number, data: IGroup[]}> {
+  ): Observable<{ total: number; data: IGroup[] }> {
     return response.pipe(
       catchError((error: Response) => {
         return of(error);
