@@ -41,6 +41,14 @@ describe('ng-add schematic', () => {
     expectVersionToBe(dependencies, '@td-vantage/ui-platform', expectedUIPlatformVersion);
   });
 
+  it('should create proxy.conf.js when sso option is selected by user', async () => {
+    const dependencyOptions: any = { ssoServerURL: 'https://vantage.url.io' };
+    const tree: Tree = await testRunner.runSchematicAsync('ng-add', dependencyOptions, appTree).toPromise();
+    expect(tree.exists('proxy.conf.js')).toBe(true);
+    const fileContent: string = getFileContent(tree, 'proxy.conf.js');
+    expect(fileContent).toContain('https://vantage.url.io');
+  });
+
   function expectVersionToBe(dependencies: any, name: string, expectedVersion: string): void {
     expect(dependencies[name]).toBe(
       expectedVersion,

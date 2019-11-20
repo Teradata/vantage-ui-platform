@@ -4,11 +4,10 @@
   "title": "Vantage UI Platform ng-add schematic",
   "type": "object",
   "properties": {
-    "sso": {
-      "type": "boolean",
-      "default": true,
-      "description": "Whether SSO should be set up.",
-      "x-prompt": "Set up SSO through Vantage Services and the API Gateway?"
+    "ssoServerURL": {
+      "type": "string",
+      "description": "Add SSO if user provides SSO server URL",
+      "x-prompt": "Add SSO server url to setup SSO or press enter to skip"
     }
   },
   "required": []
