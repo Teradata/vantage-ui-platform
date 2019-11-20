@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "vantage-ui-platform-ng-add",
+  "title": "Vantage UI Platform ng-add schematic",
+  "type": "object",
+  "properties": {
+    "sso": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether SSO should be set up.",
+      "x-prompt": "Set up SSO through Vantage Services and the API Gateway?"
+    }
+  },
+  "required": []
+}
