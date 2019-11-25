@@ -17,7 +17,7 @@ describe('ng-add schematic', () => {
   };
 
   const appOptions: ApplicationOptions = {
-    name: 'bar',
+    name: 'ui-platform-workspace',
   };
 
   let appTree: UnitTestTree;
@@ -47,6 +47,13 @@ describe('ng-add schematic', () => {
     expect(tree.exists('proxy.conf.js')).toBe(true);
     const fileContent: string = getFileContent(tree, 'proxy.conf.js');
     expect(fileContent).toContain('https://vantage.url.io');
+  });
+
+  it('should import Vantage Auth modules to app.module.ts when sso option is selected by user', async () => {
+    const dependencyOptions: any = { ssoServerURL: 'https://vantage.url.io' };
+    const tree: Tree = await testRunner.runSchematicAsync('ng-add', dependencyOptions, appTree).toPromise();
+    const fileContent: string = getFileContent(tree, 'projects/ui-platform-workspace/src/app/app.module.ts');
+    expect(fileContent).toContain('VantageAuthenticationModule');
   });
 
   function expectVersionToBe(dependencies: any, name: string, expectedVersion: string): void {
