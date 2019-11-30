@@ -54,6 +54,9 @@ describe('ng-add schematic', () => {
     const tree: Tree = await testRunner.runSchematicAsync('ng-add', dependencyOptions, appTree).toPromise();
     const fileContent: string = getFileContent(tree, 'projects/ui-platform-workspace/src/app/app.module.ts');
     expect(fileContent).toContain('VantageAuthenticationModule');
+    expect(fileContent).toContain('VantageAuthenticationInterceptor');
+    expect(fileContent).toContain('VantageUserModule');
+    expect(fileContent).toContain('CovalentHttpModule');
   });
 
   function expectVersionToBe(dependencies: any, name: string, expectedVersion: string): void {
