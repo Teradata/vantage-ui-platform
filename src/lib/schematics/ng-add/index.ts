@@ -5,7 +5,7 @@ import { ISchema } from './schema';
 import { strings } from '@angular-devkit/core';
 
 import { getProjectFromWorkspace, addModuleImportToRootModule } from '@angular/cdk/schematics';
-import { addImportToModule, insertImport } from '@schematics/angular/utility/ast-utils';
+import { insertImport, addProviderToModule } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { getWorkspace } from '@schematics/angular/utility/config';
@@ -42,25 +42,45 @@ function addSSOImports(): Rule {
   return (host: Tree) => {
     const workspace: experimental.workspace.WorkspaceSchema = getWorkspace(host);
     const project: experimental.workspace.WorkspaceProject = getProjectFromWorkspace(workspace);
-    // Add import and entry in NGModule
+    const replacementString: string = `CovalentHttpModule.forRoot({
+      interceptors: [{
+        interceptor: VantageAuthenticationInterceptor, paths: ['**'],
+      }],
+    })`;
+
     addModuleImportToRootModule(host, 'VantageAuthenticationModule', '@td-vantage/ui-platform/auth', project);
     addModuleImportToRootModule(host, 'VantageUserModule', '@td-vantage/ui-platform/user', project);
     addModuleImportToRootModule(host, `CovalentHttpModule.forRoot()`, '@covalent/http', project);
+    replaceContent(host, `CovalentHttpModule.forRoot()`, replacementString);
     
-    insertImportOnly(host, 'VantageAuthenticationInterceptor', '@td-vantage/ui-platform/auth');
+    addProvider(host, `VantageAuthenticationInterceptor`, '@td-vantage/ui-platform/auth');
   };
 }
 
-function insertImportOnly(host: Tree, symbolName: string, fileName: string): void {
+function addProvider(host: Tree, classifiedName: string, importPath: string): void {
   const workspace: experimental.workspace.WorkspaceSchema = getWorkspace(host);
   const project: experimental.workspace.WorkspaceProject = getProjectFromWorkspace(workspace);
   const modulePath: string = getAppModulePath(host, getProjectMainFile(project));
   const moduleSource: SourceFile = getSourceFile(host, modulePath);
-  const recorder: UpdateRecorder = host.beginUpdate(modulePath);
-  const importChange: InsertChange = insertImport(moduleSource, modulePath, symbolName, fileName) as InsertChange;
-  
-  if ( importChange.toAdd ) {
-    recorder.insertLeft(importChange.pos, importChange.toAdd);
+  const changes: Change[] = addProviderToModule(moduleSource, modulePath, classifiedName, importPath);
+  applyChanges(host, modulePath, changes);
+}
+
+function applyChanges(tree: Tree, path: string, changes: Change[]): void {
+  const recorder: UpdateRecorder = tree.beginUpdate(path);
+  for (const change of changes) {
+    if (change instanceof InsertChange) {
+      recorder.insertLeft(change.pos, change.toAdd);
+    }
   }
-  host.commitUpdate(recorder);
+  tree.commitUpdate(recorder);
+}
+
+function replaceContent(host: Tree, match: string, replacement: string): void {
+  const workspace: experimental.workspace.WorkspaceSchema = getWorkspace(host);
+  const project: experimental.workspace.WorkspaceProject = getProjectFromWorkspace(workspace);
+  const modulePath: string = getAppModulePath(host, getProjectMainFile(project));
+  const moduleSource: SourceFile = getSourceFile(host, modulePath);
+  const content: string = host.get(modulePath).content.toString();
+  host.overwrite(modulePath, content.replace(match, replacement));
 }
