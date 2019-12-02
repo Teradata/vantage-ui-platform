@@ -7,7 +7,7 @@ import { strings } from '@angular-devkit/core';
 import { getProjectFromWorkspace, addModuleImportToRootModule } from '@angular/cdk/schematics';
 import { addProviderToModule } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { getAppModulePath, findBootstrapModulePath } from '@schematics/angular/utility/ng-ast-utils';
+import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { experimental } from '@angular-devkit/core';
 import { getSourceFile, getProjectMainFile } from '@angular/cdk/schematics/utils';
