@@ -59,6 +59,22 @@ describe('ng-add schematic', () => {
     expect(fileContent).toContain('CovalentHttpModule');
   });
 
+  it('should create app.routes.ts when sso option is selected by user', async () => {
+    const dependencyOptions: any = { ssoServerURL: 'https://vantage.url.io' };
+    const tree: Tree = await testRunner.runSchematicAsync('ng-add', dependencyOptions, appTree).toPromise();
+    expect(tree.exists('src/app/app.routes.ts')).toBe(true);
+    const fileContent: string = getFileContent(tree, 'src/app/app.routes.ts');
+    expect(fileContent).toContain('VantageAuthenticationGuard');
+  });
+
+  it('should import route provider to app.module.ts when sso option is selected by user', async () => {
+    const dependencyOptions: any = { ssoServerURL: 'https://vantage.url.io' };
+    const tree: Tree = await testRunner.runSchematicAsync('ng-add', dependencyOptions, appTree).toPromise();
+    const fileContent: string = getFileContent(tree, 'projects/ui-platform-workspace/src/app/app.module.ts');
+    expect(fileContent).toContain('appRoutes');
+    expect(fileContent).toContain('appRoutingProviders');
+  });
+
   function expectVersionToBe(dependencies: any, name: string, expectedVersion: string): void {
     expect(dependencies[name]).toBe(
       expectedVersion,

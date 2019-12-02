@@ -5,9 +5,9 @@ import { ISchema } from './schema';
 import { strings } from '@angular-devkit/core';
 
 import { getProjectFromWorkspace, addModuleImportToRootModule } from '@angular/cdk/schematics';
-import { insertImport, addProviderToModule } from '@schematics/angular/utility/ast-utils';
+import { addProviderToModule } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
+import { getAppModulePath, findBootstrapModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { experimental } from '@angular-devkit/core';
 import { getSourceFile, getProjectMainFile } from '@angular/cdk/schematics/utils';
@@ -51,9 +51,11 @@ function addSSOImports(): Rule {
     addModuleImportToRootModule(host, 'VantageAuthenticationModule', '@td-vantage/ui-platform/auth', project);
     addModuleImportToRootModule(host, 'VantageUserModule', '@td-vantage/ui-platform/user', project);
     addModuleImportToRootModule(host, `CovalentHttpModule.forRoot()`, '@covalent/http', project);
-    replaceContent(host, `CovalentHttpModule.forRoot()`, replacementString);
+    replaceContentInAppModule(host, `CovalentHttpModule.forRoot()`, replacementString);
+    addModuleImportToRootModule(host, 'appRoutes', './app.routes', project);
     
     addProvider(host, `VantageAuthenticationInterceptor`, '@td-vantage/ui-platform/auth');
+    addProvider(host, `appRoutingProviders`, './app.routes');
   };
 }
 
@@ -76,11 +78,10 @@ function applyChanges(tree: Tree, path: string, changes: Change[]): void {
   tree.commitUpdate(recorder);
 }
 
-function replaceContent(host: Tree, match: string, replacement: string): void {
+function replaceContentInAppModule(host: Tree, match: string, replacement: string): void {
   const workspace: experimental.workspace.WorkspaceSchema = getWorkspace(host);
   const project: experimental.workspace.WorkspaceProject = getProjectFromWorkspace(workspace);
   const modulePath: string = getAppModulePath(host, getProjectMainFile(project));
-  const moduleSource: SourceFile = getSourceFile(host, modulePath);
   const content: string = host.get(modulePath).content.toString();
   host.overwrite(modulePath, content.replace(match, replacement));
 }
