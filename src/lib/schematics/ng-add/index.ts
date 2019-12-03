@@ -16,7 +16,7 @@ import { Change } from '@schematics/angular/utility/change';
 
 export function addDependenciesAndFiles(options: ISchema): Rule {
   let addVantagePacakgeRule: Rule = (host: Tree) => {
-    addPackageToPackageJson(host, '@td-vantage/ui-platform', `~${uiPlatformVersion}`);
+    addPackageToPackageJson(host, '@td-vantage/ui-platform', `${uiPlatformVersion}`);
   };
 
   let ruleSet: Rule[] = [addVantagePacakgeRule];

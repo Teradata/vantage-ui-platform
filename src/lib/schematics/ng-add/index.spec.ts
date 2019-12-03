@@ -36,7 +36,7 @@ describe('ng-add schematic', () => {
     const packageJson: any = JSON.parse(getFileContent(tree, '/package.json'));
     const dependencies: any = packageJson.dependencies;
 
-    const expectedUIPlatformVersion: string = `~${uiPlatformVersion}`;
+    const expectedUIPlatformVersion: string = `${uiPlatformVersion}`;
 
     expectVersionToBe(dependencies, '@td-vantage/ui-platform', expectedUIPlatformVersion);
   });
@@ -78,7 +78,7 @@ describe('ng-add schematic', () => {
   function expectVersionToBe(dependencies: any, name: string, expectedVersion: string): void {
     expect(dependencies[name]).toBe(
       expectedVersion,
-      'Expected ' + name + ' package to have ' + `~${expectedVersion}` + ' version.',
+      'Expected ' + name + ' package to have ' + `${expectedVersion}` + ' version.',
     );
   }
 });

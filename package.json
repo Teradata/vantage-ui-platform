@@ -19,6 +19,7 @@
     "stylelint": "./node_modules/.bin/stylelint 'src/**/*.scss' '!**/assets/**' --config .stylelintrc.json --syntax scss",
     "webdriver-update": "bash ./node_modules/.bin/webdriver-manager update",
     "test": "ng test ui-platform --code-coverage --source-map=false --watch=false",
+    "test:schematics": "tsc -p src/lib/schematics/tsconfig.spec.json && jasmine src/lib/schematics/**/*.spec.js",
     "coveralls": "cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "build:lib": "bash scripts/build-release && gulp version-placeholder",
     "release:start": "bash scripts/start-release",
