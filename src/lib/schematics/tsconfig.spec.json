@@ -8,6 +8,6 @@
       "types": ["jasmine", "hammerjs", "node"]
     },
     "include": ["**/*", "**/*.spec.ts"],
-    "exclude": ["*/files/**/*"]
+    "exclude": ["*/files/**/*", "*/files/**/**/*"]
   }
   
