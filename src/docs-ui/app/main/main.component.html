@@ -22,4 +22,17 @@
       </a>
     </div>
   </div>
+
+  <div class="pad-top">
+    <h4>App Module</h4>
+    <div *ngIf="!apps || apps.length === 0" layout="row" layout-align="start center">
+      <p>Please Log In as User1 to view Apps!!</p>
+    </div>
+    <ng-template let-app let-last="last" ngFor [ngForOf]="apps">
+      <div mat-list-item layout="row">
+        <app-app-icon matListAvatar class="app-icon-size" [color]="'tc-' + app?.color" [app]="app"></app-app-icon>
+        <p class="push-top-xs pad-left-sm">{{ app?.name }}</p>
+      </div>
+    </ng-template>
+  </div>
 </div>

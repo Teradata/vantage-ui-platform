@@ -683,7 +683,8 @@ $mat-dark-theme-background: map-merge(
   .tc {
     color: if($is-dark, rgba(0, 0, 0, 0.87), white);
   }
-  .bgc, td-markdown-navigator-window {
+  .bgc,
+  td-markdown-navigator-window {
     background-color: if($is-dark, mat-color($td-slate-dark, 800), white);
   }
 

@@ -35,6 +35,7 @@ import { appRoutes, appRoutingProviders } from './app.routes';
 import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
 
 import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTED_LANGS } from '../config/translate';
+import { VantageAppModule } from '@td-vantage/ui-platform/app';
 
 @NgModule({
   declarations: [AppComponent, MainComponent], // directives, components, and pipes owned by this NgModule
@@ -67,6 +68,7 @@ import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTE
     VantageUserModule,
     VantageAuthenticationModule,
     VantageAccessModule,
+    VantageAppModule,
 
     appRoutes,
   ], // modules needed to run this module

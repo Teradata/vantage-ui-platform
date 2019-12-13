@@ -1,0 +1,10 @@
+<mat-icon
+  [ngClass]="_matListAvatar ? 'mat-list-avatar mat-icon-center' : ''"
+  [class]="color"
+  *ngIf="!app?.isIconUrl; else displayImgIcon"
+>
+  {{ app?.icon }}
+</mat-icon>
+<ng-template #displayImgIcon>
+  <img class="app-icons-size" [src]="app?.icon" />
+</ng-template>

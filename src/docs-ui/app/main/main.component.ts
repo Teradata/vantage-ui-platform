@@ -4,6 +4,8 @@ import { VantageToastService, VantageErrorService } from '@td-vantage/ui-platfor
 import { VantageSessionService } from '@td-vantage/ui-platform/auth';
 import { IUser } from '@td-vantage/ui-platform/user';
 import { timeout } from 'rxjs/operators';
+import { IApp, VantageAppsService } from '@td-vantage/ui-platform/app';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'td-main',
@@ -13,11 +15,13 @@ import { timeout } from 'rxjs/operators';
 export class MainComponent implements OnInit {
   user: IUser;
   loggedIn: boolean = false;
+  apps: IApp[];
 
   constructor(
     private _errorService: VantageErrorService,
     private _toastService: VantageToastService,
     private _sessionService: VantageSessionService,
+    private _appService: VantageAppsService,
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -32,6 +36,19 @@ export class MainComponent implements OnInit {
         this.loggedIn = false;
         this._errorService.open(error);
       }
+    }
+
+    const queryParam: HttpParams = new HttpParams();
+    queryParam
+      .append('page', '1')
+      .append('per_page', '5')
+      .append('sort', 'desc:last_updated_time');
+
+    try {
+      const response: { data: IApp[]; total: number } = await this._appService.query(queryParam).toPromise();
+      this.apps = response.data;
+    } catch (error) {
+      this._errorService.open(error);
     }
   }
 

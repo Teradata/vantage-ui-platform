@@ -53,6 +53,7 @@ export interface IApp {
   system_id?: string;
   containerPort?: number;
   favorite?: boolean;
+  isIconUrl?: boolean;
 }
 
 export interface IAppConfiguration {
