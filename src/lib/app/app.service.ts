@@ -53,7 +53,6 @@ export interface IApp {
   system_id?: string;
   containerPort?: number;
   favorite?: boolean;
-  isIconUrl?: boolean;
 }
 
 export interface IAppConfiguration {
@@ -76,7 +75,7 @@ export interface IAppPermissions {
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
 })
 @Injectable()
-export class VantageAppsService {
+export class VantageAppService {
   @TdGET({
     path: '/apps',
     options: {
@@ -141,13 +140,13 @@ export class VantageAppsService {
   }
 }
 
-export function VANTAGE_APPS_PROVIDER_FACTORY(parent: VantageAppsService): VantageAppsService {
-  return parent || new VantageAppsService();
+export function VANTAGE_APPS_PROVIDER_FACTORY(parent: VantageAppService): VantageAppService {
+  return parent || new VantageAppService();
 }
 
 export const VANTAGE_APPS_PROVIDER: Provider = {
   // If there is already a service available, use that. Otherwise, provide a new one.
-  provide: VantageAppsService,
-  deps: [[new Optional(), new SkipSelf(), VantageAppsService]],
+  provide: VantageAppService,
+  deps: [[new Optional(), new SkipSelf(), VantageAppService]],
   useFactory: VANTAGE_APPS_PROVIDER_FACTORY,
 };

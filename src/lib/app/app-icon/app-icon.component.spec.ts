@@ -25,12 +25,14 @@ describe('VantageAppIconComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
     component.matListAvatar = true;
+
     component.app = {
       app_id: '12345',
       name: 'test',
       icon: 'cancel',
     };
     expect(component).toBeTruthy();
+    component.matListAvatar = false;
     component.app = {
       app_id: '12345',
       name: 'test',

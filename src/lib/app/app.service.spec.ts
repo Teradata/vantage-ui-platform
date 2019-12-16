@@ -4,7 +4,7 @@ import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { CovalentHttpModule } from '@covalent/http';
 
 import { VantageAppModule } from './app.module';
-import { VantageAppsService, IApp } from './apps.service';
+import { VantageAppService, IApp } from './app.service';
 
 const testUrl: string = '/api/app';
 
@@ -17,8 +17,8 @@ describe('App Service:', () => {
 
   it('expect to do a query succesfully', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         let success: boolean = false;
         let complete: boolean = false;
         service.query().subscribe(
@@ -53,8 +53,8 @@ describe('App Service:', () => {
 
   it('expect to do a query failure', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         service.query().subscribe(
           (data: { data: IApp[]; total: number }) => {
             fail('on success execute when it shouldnt have with observables');
@@ -82,8 +82,8 @@ describe('App Service:', () => {
 
   it('expect to do a query with HttpParams parameters succesfully', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         let success: boolean = false;
         let complete: boolean = false;
         let queryParams: HttpParams = new HttpParams()
@@ -123,8 +123,8 @@ describe('App Service:', () => {
 
   it('expect to do a query with object parameters succesfully', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         let success: boolean = false;
         let complete: boolean = false;
         service
@@ -166,8 +166,8 @@ describe('App Service:', () => {
 
   it('expect to do a get succesfully', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         let success: boolean = false;
         let complete: boolean = false;
         service.get('id-of-something').subscribe(
@@ -203,8 +203,8 @@ describe('App Service:', () => {
 
   it('expect to do a create succesfully', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         let success: boolean = false;
         let complete: boolean = false;
         let body: any = {};
@@ -242,8 +242,8 @@ describe('App Service:', () => {
 
   it('expect to do an update succesfully', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         let success: boolean = false;
         let complete: boolean = false;
         let body: any = {};
@@ -278,8 +278,8 @@ describe('App Service:', () => {
 
   it('expect to do an delete succesfully', async(
     inject(
-      [VantageAppsService, HttpTestingController],
-      (service: VantageAppsService, httpTestingController: HttpTestingController) => {
+      [VantageAppService, HttpTestingController],
+      (service: VantageAppService, httpTestingController: HttpTestingController) => {
         let success: boolean = false;
         let complete: boolean = false;
         service.delete('id-of-something').subscribe(

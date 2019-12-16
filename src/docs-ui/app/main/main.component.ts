@@ -4,7 +4,7 @@ import { VantageToastService, VantageErrorService } from '@td-vantage/ui-platfor
 import { VantageSessionService } from '@td-vantage/ui-platform/auth';
 import { IUser } from '@td-vantage/ui-platform/user';
 import { timeout } from 'rxjs/operators';
-import { IApp, VantageAppsService } from '@td-vantage/ui-platform/app';
+import { IApp, VantageAppService } from '@td-vantage/ui-platform/app';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
     private _errorService: VantageErrorService,
     private _toastService: VantageToastService,
     private _sessionService: VantageSessionService,
-    private _appService: VantageAppsService,
+    private _appService: VantageAppService,
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
     try {
       const response: { data: IApp[]; total: number } = await this._appService.query(queryParam).toPromise();
       this.apps = response.data;
+      this.apps[0].icon = 'https://bitnami.com/assets/stacks/drupal/img/drupal-stack-220x234.png';
     } catch (error) {
       this._errorService.open(error);
     }

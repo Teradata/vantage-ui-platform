@@ -1,15 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { IApp } from '..';
+import { IApp } from '../app.service';
 
 @Component({
-  selector: 'app-app-icon',
+  selector: 'vui-app-icon',
   templateUrl: './app-icon.component.html',
   styleUrls: ['./app-icon.component.scss'],
 })
 export class VantageAppIconComponent {
-  private _app: IApp;
-  _matListAvatar: boolean;
+  private _matListAvatar: boolean = false;
+  @Input() app: IApp;
   @Input() color: string;
 
   @Input('matListAvatar')
@@ -18,16 +18,6 @@ export class VantageAppIconComponent {
   }
   get active(): boolean {
     return this._matListAvatar;
-  }
-
-  @Input() set app(app: IApp) {
-    this._app = app;
-    if (this._app && this._app.icon) {
-      this._app.isIconUrl = !!this.isUrl(this._app.icon);
-    }
-  }
-  get app(): IApp {
-    return this._app;
   }
 
   isUrl(path: string): boolean {
