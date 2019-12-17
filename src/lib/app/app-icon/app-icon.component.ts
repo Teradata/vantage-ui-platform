@@ -3,7 +3,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { IApp } from '../app.service';
 
 @Component({
-  selector: 'vui-app-icon',
+  selector: 'vt-app-icon',
   templateUrl: './app-icon.component.html',
   styleUrls: ['./app-icon.component.scss'],
 })

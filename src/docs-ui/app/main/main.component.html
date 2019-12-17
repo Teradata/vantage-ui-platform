@@ -30,7 +30,7 @@
     </div>
     <ng-template let-app let-last="last" ngFor [ngForOf]="apps">
       <div mat-list-item layout="row">
-        <vui-app-icon matListAvatar [color]="'tc-' + app?.color" [app]="app"></vui-app-icon>
+        <vt-app-icon matListAvatar [color]="'tc-' + app?.color" [app]="app"></vt-app-icon>
         <p class="push-top-xs pad-left-sm">{{ app?.name }}</p>
       </div>
     </ng-template>
