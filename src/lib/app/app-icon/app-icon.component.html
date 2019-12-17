@@ -1,5 +1,5 @@
 <mat-icon
-  [ngClass]="_matListAvatar ? 'mat-list-avatar mat-icon-center' : ''"
+  [ngClass]="avatar ? 'mat-list-avatar mat-icon-center' : ''"
   [class]="color"
   *ngIf="!isUrl(app?.icon); else displayImgIcon"
 >

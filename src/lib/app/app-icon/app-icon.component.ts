@@ -8,16 +8,13 @@ import { IApp } from '../app.service';
   styleUrls: ['./app-icon.component.scss'],
 })
 export class VantageAppIconComponent {
-  private _matListAvatar: boolean = false;
   @Input() app: IApp;
   @Input() color: string;
 
-  @Input('matListAvatar')
-  set matListAvatar(matListAvatar: boolean) {
-    this._matListAvatar = coerceBooleanProperty(matListAvatar);
-  }
-  get active(): boolean {
-    return this._matListAvatar;
+  @Input() matListAvatar: boolean;
+
+  get avatar(): boolean {
+    return coerceBooleanProperty(this.matListAvatar);
   }
 
   isUrl(path: string): boolean {
