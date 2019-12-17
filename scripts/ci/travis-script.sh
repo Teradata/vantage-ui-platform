@@ -40,7 +40,7 @@ elif [ "${MODE}" = "release" ]; then
 elif [ "${MODE}" = "unit-test" ]; then
   npm run test
 elif [ "${MODE}" = "audit" ]; then
-  npm audit
+  npm audit --only=prod --audit-level=high
 fi
 
 # Upload coverage results if those are present.
