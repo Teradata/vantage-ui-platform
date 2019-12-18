@@ -44,3 +44,8 @@ function _redirectToHome(): void {
   cy.url().should('not.include', LOGIN_URL);
   cy.url().should('include', BASE_URL);
 }
+
+export const SSO_COOKIES: string[] = ['USER_SSO_ID', 'XSRF-TOKEN'];
+export function whiteListSSOCookies(): void {
+  Cypress.Cookies.defaults({ whitelist: SSO_COOKIES });
+}
