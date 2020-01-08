@@ -52,3 +52,15 @@ import { SSO_COOKIES } from '@td-vantage/ui-platform/testing/cypress';
 
 Cypress.Cookies.defaults({ whitelist: [..SSO_COOKIES, 'my-custom-cookie'] });
 ```
+
+## Waiting for Angular
+
+Wait for Angular to stabilize
+
+### Usage
+
+```ts
+import { waitForAngular } from '@td-vantage/ui-platform/testing/cypress';
+
+waitForAngular();
+```
