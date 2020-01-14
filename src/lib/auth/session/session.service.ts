@@ -56,7 +56,7 @@ export class VantageSessionService {
   }
 
   public logout(): void {
-    window.location.href = '/api/user/logout';
+    window.location.href = '/api/user/logout?nonce=' + Math.floor(1000000000 + Math.random() * 9000000000);
   }
 
   /**

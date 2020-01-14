@@ -30,3 +30,37 @@ login({
 
 logout();
 ```
+
+## Whitelisting SSO Cookies
+
+Cypress deletes cookies between each `it`. This whitelists the sso cookies, so they are not deleted.
+
+### Usage
+
+`support/index.js`
+
+```js
+import { whiteListSSOCookies } from '@td-vantage/ui-platform/testing/cypress';
+
+whiteListSSOCookies();
+```
+
+Or if you want more control just import the SSOCookies
+
+```js
+import { SSO_COOKIES } from '@td-vantage/ui-platform/testing/cypress';
+
+Cypress.Cookies.defaults({ whitelist: [..SSO_COOKIES, 'my-custom-cookie'] });
+```
+
+## Waiting for Angular
+
+Wait for Angular to stabilize
+
+### Usage
+
+```ts
+import { waitForAngular } from '@td-vantage/ui-platform/testing/cypress';
+
+waitForAngular();
+```
