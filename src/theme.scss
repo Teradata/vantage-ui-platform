@@ -38,9 +38,9 @@ $custom-toolbar-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary: mat-palette($td-teal, 800, 100, 900);
-$accent: mat-palette($td-orange, 800, 100, 900);
-$warn: mat-palette($mat-red, 900);
+$primary: $td-primary;
+$accent: $td-accent;
+$warn: $td-warn;
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($primary, $accent, $warn);
@@ -56,9 +56,9 @@ $theme: mat-light-theme($primary, $accent, $warn);
 /* ------------------------------------- DARK THEME ------------------------------------------ */
 
 .dark-theme {
-  $dark-primary: mat-palette($td-teal, 700, 100, 800);
-  $dark-accent: mat-palette($td-orange, 800, 200, 900);
-  $dark-warn: mat-palette($mat-red, 900);
+  $dark-primary: $td-primary;
+  $dark-accent: $td-accent;
+  $dark-warn: $td-warn;
 
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
@@ -66,4 +66,18 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include covalent-theme($dark-theme);
   // Include Teradata brand
   @include teradata-brand($dark-theme);
+
+  [class^='tc-grey-'],
+  [class*=' tc-grey-'] {
+    color: white !important;
+  }
+  .mat-focused:not(.mat-form-field-invalid) .mat-form-field-placeholder {
+    color: mat-color($dark-primary, lighter);
+  }
+
+  vui-search-bar {
+    .mat-form-field-outline {
+      background-color: mat-color($td-slate-dark, 600) !important;
+    }
+  }
 }

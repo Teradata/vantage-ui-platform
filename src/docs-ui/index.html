@@ -9,8 +9,21 @@
     <meta name="theme-color" content="#EF6C00" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
+<<<<<<< HEAD
   <body>
     <div id="td-pre-loader"></div>
     <td-app></td-app>
+=======
+  <body style="background:#e0e0e0;">
+    <td-app>
+      <div style="padding: 20%; text-align:center;">
+        <div class="loader">Loading...</div>
+      </div>
+    </td-app>
+    <script>
+      let theme = localStorage.getItem('vantage.theme');
+      document.getElementsByTagName('body').item(0).className = theme;
+    </script>
+>>>>>>> feat: ui platform testbed
   </body>
 </html>
