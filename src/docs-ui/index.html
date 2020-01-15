@@ -85,5 +85,9 @@
         <div class="loader">Loading...</div>
       </div>
     </td-app>
+    <script>
+      let theme = localStorage.getItem('vantage.theme');
+      document.getElementsByTagName('body').item(0).className = theme;
+    </script>
   </body>
 </html>
