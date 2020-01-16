@@ -1,19 +1,18 @@
 <td-layout-nav color="none">
   <div td-toolbar-content layout="row" layout-align="start center" flex>
-    Second Toolbar Row
+    <span>Second Toolbar Row</span>
+    <span class="example-spacer"></span>
+    <mat-slide-toggle
+      [disabled]="slider.disabled"
+      [checked]="activeTheme !== LIGHT_THEME"
+      (change)="activeTheme === LIGHT_THEME ? theme(DARK_THEME) : theme(LIGHT_THEME)"
+    >
+      <span class="mat-subheading-1">Dark Mode</span>
+    </mat-slide-toggle>
   </div>
 
   <div layout="row" layout-align="center start">
     <div flex="80">
-      <div class="pad-md pad-bottom-none push push-bottom-none push-top-xl">
-        <mat-slide-toggle
-          [disabled]="slider.disabled"
-          [checked]="activeTheme !== LIGHT_THEME"
-          (change)="activeTheme === LIGHT_THEME ? theme(DARK_THEME) : theme(LIGHT_THEME)"
-        >
-          <span class="mat-subheading-1">Dark Mode</span>
-        </mat-slide-toggle>
-      </div>
       <div layout="row" class="pad-top">
         <div flex="50" class="pad-md push">
           <!-- Material Button -->

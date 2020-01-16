@@ -56,9 +56,9 @@ $theme: mat-light-theme($primary, $accent, $warn);
 /* ------------------------------------- DARK THEME ------------------------------------------ */
 
 .dark-theme {
-  $dark-primary: $td-primary;
-  $dark-accent: $td-accent;
-  $dark-warn: $td-warn;
+  $dark-primary: $td-dark-primary;
+  $dark-accent: $td-dark-accent;
+  $dark-warn: $td-dark-warn;
 
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 

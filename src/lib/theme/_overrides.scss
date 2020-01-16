@@ -3,12 +3,29 @@
 // Vantage UI platform
 // 
 
+// Light theme color variable overrides
+$mat-light-theme-background: map-merge(
+  $mat-light-theme-background,
+  (
+    app-bar: mat-color($mat-grey, 50),
+    background: mat-color($mat-grey, 200),
+
+    // Add new colors to the map
+    backdrop: rgba(#000000,0.4),
+  )
+);
+
+// Dark theme color variable overrides
 $mat-dark-theme-background: map-merge(
   $mat-dark-theme-background,
   (
-    card: mat-color($td-slate-dark, 1100),
-    dialog: mat-color($td-slate-dark, 600),
-    backdrop: mat-color($mat-grey, 800),
+    app-bar: mat-color($td-slate, 1300),
+    background: mat-color($td-slate, 1500),
+    card: mat-color($td-slate, 1100),
+    dialog: mat-color($td-slate, 1100),
+
+    // Add new colors to the map
+    backdrop: rgba(#000000,0.4),
   )
 );
 
@@ -65,64 +82,20 @@ $mat-dark-theme-background: map-merge(
     }
   }
   // Toolbar
-  body {
-    .mat-toolbar-row,
-    .mat-toolbar-single-row {
-      height: 48px;
-    }
-    .mat-toolbar-multiple-rows {
-      min-height: 48px;
-    }
-  }
-  // Buttons
-  .mat-button,
-  .mat-raised-button,
-  .mat-flat-button,
-  .mat-stroked-button {
-    &.mat-button-sm {
-      padding: 0 10px;
-      line-height: 24px;
-    }
-    mat-icon.material-icons,
-    mat-icon.material-icons.mat-icon {
-      font-size: 16px;
-    }
-  }
-  // Toolbar Buttons
-  .mat-toolbar-row,
-  .mat-toolbar-single-row,
-  .mat-toolbar-multiple-rows,
-  .vantage-toolbar {
-    .mat-stroked-button,
-    .mat-raised-button,
-    .mat-flat-button,
-    .mat-button:not(.td-breadcrumb) {
-      height: 26px;
-      line-height: normal;
-      .mat-button-wrapper {
-        display: inline-flex;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-        padding-top: 0.125em;
-      }
-      mat-icon.material-icons,
-      mat-icon.material-icons.mat-icon {
-        font-size: 16px;
-        line-height: 16px;
-        margin-left: -0.21428em;
-        margin-right: 0.21428em;
-        display: inline-block;
-        width: 16px;
-        height: 18px;
-      }
+  .mat-toolbar {
+    border-top: 1px solid mat-color($foreground, divider);
+
+    &.mat-primary {
+      // Use custom background color on light mode
+      background-color: if($is-dark, mat-color($background, app-bar), mat-color($td-slate, 500));
+      border-top: 0;
+      // Always dark theme text color here, regardless of active theme
+      color: mat-color($mat-dark-theme-foreground, text);
     }
   }
 
-   // Spacing before logo in main toolbar
+  // Spacing before logo in main toolbar
   .mat-toolbar {
-    background-color: if($is-dark, mat-color($td-slate, 1100), $white-87-opacity);
     .mat-icon-button + .mat-icon-logo,
     .mat-icon-button + span > .mat-icon-logo {
       margin-left: 10px;
@@ -222,18 +195,13 @@ $mat-dark-theme-background: map-merge(
     background-color: map-get($td-emphasis2, if($is-dark, background-dark, background-light)) !important;
   }
 
-  // Always slate for primary
-  .mat-toolbar.mat-primary {
-    background-color: if($is-dark, mat-color($td-slate-dark, 1100), mat-color($td-slate, 500));
-    color: $white-87-opacity;
-  }
-
   // Components
   .mat-tree {
     background-color: if($is-dark, mat-color($td-slate-dark, 1400), $white-87-opacity);
   }
-  .mat-drawer-container {
-    background-color: if($is-dark, mat-color($td-slate-dark, 1300), #e0e0e3);
+  .mat-drawer-container,
+  .light-theme .mat-drawer-container.mat-sidenav-container {
+    background-color: mat-color($background, background);
   }
   .td-expansion-panel {
     background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
