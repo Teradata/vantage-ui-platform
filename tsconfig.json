@@ -22,5 +22,6 @@
     "noUnusedLocals": false,
     "allowUnreachableCode": false,
     "pretty": true
-  }
+  },
+  "include": ["src/lib/testing/cypress/*.ts", "./node_modules/cypress"]
 }
