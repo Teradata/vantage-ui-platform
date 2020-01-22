@@ -295,6 +295,34 @@ and end of each it() or within beforeEach()/afterEach().
 - tearDown(): If recording, this method dumps the URL/method to response data map to a _mockdata.json_ file in the
   _cypress/recordings/testname/date_ directory. It then logs the user out.
 
+#### Usage
+
+Defining an E2E test
+
+```javascript
+import { MockUtility, TestType } from '@td-vantage/ui-platform/testing/cypress';
+
+describe('E2E Test', () => {
+  const mockUtil: MockUtility = new MockUtility();
+
+  before(() => {
+    mockUtil.setUp('mye2etest', TestType.e2e, ['golden'], 'user1');
+  });
+```
+
+Defining a unit test
+
+```javascript
+import { MockUtility, TestType } from '@td-vantage/ui-platform/testing/cypress';
+
+describe('Unit Test', () => {
+  const mockUtil: MockUtility = new MockUtility();
+
+  before(() => {
+    mockUtil.setUp('myunittest', TestType.unit, ['empty'], 'user1');
+  });
+```
+
 ### Unit Testing
 
 Unit test specs should reside in the `cypress/unit` directory.
