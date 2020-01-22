@@ -12,7 +12,7 @@ Update the angular.json
 "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "indexTransform": "@td-vantage/ui-platform/utilities/pre-loader",
+            "indexTransform": "node_modules/@td-vantage/ui-platform/utilities/pre-loader",
 ```
 
 ```json
