@@ -9,11 +9,6 @@ import { VantageThemeService } from '../../../lib';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  DARK_THEME: string = 'dark-theme';
-  LIGHT_THEME: string = 'light-theme';
-
-  isDarkTheme = false;
-
   navLinks: any = [
     {
       name: 'Components',

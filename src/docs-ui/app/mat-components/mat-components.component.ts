@@ -11,7 +11,6 @@ export class MatComponentsComponent implements OnInit {
   DARK_THEME: string = 'dark-theme';
   LIGHT_THEME: string = 'light-theme';
 
-  isDarkTheme = false;
   lastDialogResult: string;
   mode: string;
   value: number;
@@ -24,14 +23,14 @@ export class MatComponentsComponent implements OnInit {
 
   public selectedValue: string;
 
-  public games = [
+  public games: any[] = [
     { value: 'rts-0', viewValue: 'Starcraft' },
     { value: 'rpg-1', viewValue: "Baldur's Gate" },
     { value: 'fps-2', viewValue: 'Doom' },
   ];
 
-  public progress = 0;
-  public slider = {
+  public progress: number = 0;
+  public slider: any = {
     autoTicks: false,
     disabled: false,
     invert: false,
@@ -45,7 +44,7 @@ export class MatComponentsComponent implements OnInit {
     tickInterval: 1,
     checked: true,
   };
-  public tiles = [
+  public tiles: any = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
     { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
     { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
@@ -54,7 +53,7 @@ export class MatComponentsComponent implements OnInit {
 
   public color: string;
 
-  public availableColors = [
+  public availableColors: any[] = [
     { name: 'none', color: '' },
     { name: 'Primary', color: 'primary' },
     { name: 'Accent', color: 'accent' },
@@ -83,21 +82,21 @@ export class MatComponentsComponent implements OnInit {
     document.getElementsByTagName('body').item(0).className = theme;
   }
 
-  openDialog() {
-    const dialogRef = this._dialog.open(DialogContentComponent);
+  openDialog(): void {
+    const dialogRef: any = this._dialog.open(DialogContentComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       this.lastDialogResult = result;
     });
   }
 
-  showSnackbar() {
+  showSnackbar(): void {
     this._snackbar.open('YUM SNACKS', 'CHEW');
   }
   get tickInterval(): number | 'auto' {
-    return this.slider.showTicks ? (this.slider.autoTicks ? 'auto' : this.slider.tickInterval) : null;
+    return this.slider.showTicks ? (this.slider.autoTicks ? 'auto' : this.slider.tickInterval) : undefined;
   }
-  set tickInterval(v) {
+  set tickInterval(v: number | 'auto') {
     this.slider.tickInterval = Number(v);
   }
 }

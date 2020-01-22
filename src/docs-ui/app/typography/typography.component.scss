@@ -1,7 +1,6 @@
 .types {
   display: grid;
   grid-template-areas: 'left right';
-  grid-template-columns: 1fr 1fr;
 
   .headers {
     grid-area: left;
