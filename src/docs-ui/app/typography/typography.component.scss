@@ -1,0 +1,12 @@
+.types {
+  display: grid;
+  grid-template-areas: 'left right';
+
+  .headers {
+    grid-area: left;
+  }
+
+  .bodies {
+    grid-area: right;
+  }
+}
