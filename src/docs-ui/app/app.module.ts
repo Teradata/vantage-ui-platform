@@ -52,16 +52,18 @@ import { VantageAuthenticationModule } from '@td-vantage/ui-platform/auth';
 import { VantageAccessModule } from '@td-vantage/ui-platform/access';
 
 import { AppComponent } from './app.component';
-import { MainComponent, DialogContentComponent } from './main/main.component';
+import { MainComponent } from './main/main.component';
 
 import { appRoutes, appRoutingProviders } from './app.routes';
 
 import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
 
 import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTED_LANGS } from '../config/translate';
+import { TypographyComponent } from './typography/typography.component';
+import { MatComponentsComponent, DialogContentComponent } from './mat-components/mat-components.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, DialogContentComponent], // directives, components, and pipes owned by this NgModule
+  declarations: [AppComponent, MainComponent, DialogContentComponent, TypographyComponent, MatComponentsComponent], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
     HttpClientModule,
