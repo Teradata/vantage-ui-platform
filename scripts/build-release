@@ -16,6 +16,6 @@ cp -R ./src/lib/theme ./deploy/ui-platform/
 cp ./src/lib/_theming.scss ./deploy/ui-platform/
 
 # Add pre-loader files
-mkdir -p ./deploy/ui-platform/utilities/pre-loader && cp -R ./src/lib/utilities/pre-loader/ ./deploy/ui-platform/utilities/pre-loader/
+mkdir -p ./deploy/ui-platform/utilities/pre-loader && cp -R ./src/lib/utilities/pre-loader ./deploy/ui-platform/utilities
 
 echo 'Build Complete'
