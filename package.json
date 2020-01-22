@@ -72,11 +72,12 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^8.4.1",
     "@angular-devkit/build-angular": "^0.900.0-rc.10",
-    "@angular-devkit/build-ng-packagr": "0.900.0-rc.6",
-    "@angular-devkit/core": "9.0.0-rc.6",
-    "@angular-devkit/schematics": "9.0.0-rc.6",
-    "@angular/cli": "9.0.0-rc.6",
+    "@angular-devkit/build-ng-packagr": "0.900.0-rc.10",
+    "@angular-devkit/core": "9.0.0-rc.10",
+    "@angular-devkit/schematics": "9.0.0-rc.10",
+    "@angular/cli": "9.0.0-rc.10",
     "@angular/compiler-cli": "9.0.0-rc.6",
     "@covalent/coding-standards": "git+https://github.com/Teradata/covalent-coding-standards-nightly.git",
     "@types/hammerjs": "^2.0.30",
