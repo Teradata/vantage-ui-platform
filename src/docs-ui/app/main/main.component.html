@@ -8,8 +8,8 @@
       <div class="pad-md pad-bottom-none push push-bottom push-top-md">
         <mat-slide-toggle
           class="push-bottom-lg"
-          [checked]="activeTheme !== LIGHT_THEME"
-          (change)="activeTheme === LIGHT_THEME ? theme(DARK_THEME) : theme(LIGHT_THEME)"
+          [checked]="darkThemeIsActive"
+          (change)="lightThemeIsActive ? applyDarkTheme() : applyLightTheme()"
         >
           <span class="mat-subheading-1">Dark Mode</span>
         </mat-slide-toggle>

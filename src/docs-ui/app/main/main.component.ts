@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { VantageThemeService } from '../../../lib';
 
 @Component({
   selector: 'td-main',
@@ -24,20 +25,23 @@ export class MainComponent implements OnInit {
     },
   ];
 
-  constructor(private _dialog: MatDialog, private _snackbar: MatSnackBar) {}
+  constructor(private _dialog: MatDialog, private _snackbar: MatSnackBar, private _themeService: VantageThemeService) {}
 
   ngOnInit(): void {
     // Sets default theme to dark mode if user never set theme
-    if (!this.activeTheme) {
-      this.theme(this.DARK_THEME);
-    }
   }
 
-  get activeTheme(): string {
-    return localStorage.getItem('vantage.theme');
+  get darkThemeIsActive(): boolean {
+    return this._themeService.darkThemeIsActive;
   }
-  theme(theme?: string): void {
-    localStorage.setItem('vantage.theme', theme);
-    document.getElementsByTagName('body').item(0).className = theme;
+  get lightThemeIsActive(): boolean {
+    return this._themeService.lightThemeIsActive;
+  }
+
+  applyLightTheme(): void {
+    this._themeService.applyLightTheme();
+  }
+  applyDarkTheme(): void {
+    this._themeService.applyDarkTheme();
   }
 }
