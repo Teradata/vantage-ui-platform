@@ -20,7 +20,9 @@ export class VantageAuthenticationGuard implements CanActivate {
         catchError((e: HttpErrorResponse) => {
           // if not logged in, go ahead and log in...otherwise logout
           // append the current path so we get redirected back upon login
-          e.status === UNAUTHORIZED ? (window.location.href = '/start-login') : this._sessionService.logout();
+          e.status === UNAUTHORIZED
+            ? (window.location.href = '/start-login?nonce=' + Math.floor(1000000000 + Math.random() * 9000000000))
+            : this._sessionService.logout();
           throw e;
         }),
         map(() => {
