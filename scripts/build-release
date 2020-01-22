@@ -13,4 +13,8 @@ cp -R ./src/lib/auth/config ./deploy/ui-platform/auth/
 
 # Adding theming file to ui-platform
 cp ./src/lib/_theming.scss ./deploy/ui-platform/
+
+# Add pre-loader files
+mkdir -p ./deploy/ui-platform/utilities/pre-loader && cp -R ./src/lib/utilities/pre-loader/ ./deploy/ui-platform/utilities/pre-loader/
+
 echo 'Build Complete'
