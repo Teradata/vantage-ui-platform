@@ -3,59 +3,38 @@
 */
 
 // Teradata Font
+$td-font-default: 'Arial ,Helvetica, sans-serif';
 $td-font-regular: '"RidleyGrotesk-Regular", Arial, Helvetica, sans-serif';
 $td-font-bold: '"RidleyGrotesk-Bold", Arial, Helvetica, sans-serif';
 $td-font-semibold: '"RidleyGrotesk-SemiBold", Arial, Helvetica, sans-serif';
 $td-font-medium: '"RidleyGrotesk-Medium", Arial, Helvetica, sans-serif';
 
-// Setting the toolbar to the proper spec weight
-@include mat-toolbar-typography(
-  mat-typography-config($font-family: $td-font-medium, $title: mat-typography-level(19px, 28px, 400))
+$fontConfig: (
+  font-family: $td-font-default,
+  display-4: mat-typography-level(96px, 120px, 300, 'RidleyGrotesk-Light', -1.5px),
+  display-3: mat-typography-level(60px, 84px, 400, 'RidleyGrotesk-Regular', -0.5px),
+  display-2: mat-typography-level(48px, 64px, 400, 'RidleyGrotesk-Regular', 0),
+  display-1: mat-typography-level(34px, 48px, 400, 'RidleyGrotesk-Medium', 0.25px),
+  headline: mat-typography-level(24px, 36px, 400, 'RidleyGrotesk-Semibold', 0),
+  title: mat-typography-level(20px, 28px, 500, 'RidleyGrotesk-Semibold', 0.15px),
+  subheading-2: mat-typography-level(16px, 24px, 400, 'RidleyGrotesk-Semibold', 0.15px),
+  subheading-1: mat-typography-level(14px, 20px, 500, 'RidleyGrotesk-Semibold', 0.1px),
+  body-2: mat-typography-level(14px, 20px, 500, 'Arial', 0.25px),
+  body-1: mat-typography-level(14px, 20px, 400, 'Arial', 0.25px),
+  button: mat-typography-level(14px, 16px, 500, 'RidleyGrotesk-Semibold', 0.5px),
+  caption: mat-typography-level(12px, 16px, 400, 'Arial', 0.4px),
+  input: mat-typography-level(inherit, 1.125, 400, 'Arial', 1.5px),
 );
-@include mat-button-typography(mat-typography-config($font-family: $td-font-semibold));
 
-// Teradata brand typography
-h1,
-h4,
-.mat-display-3,
-.mat-subheading-2,
-.mat-grid-tile-header,
-.td-nagivation-drawer-toolbar .td-navigation-drawer-title,
-.td-navigation-drawer-menu-toggle {
-  font-family: 'RidleyGrotesk-Regular', Arial, Helvetica, sans-serif !important;
-}
-h2,
-h3,
-.mat-display-2,
-.mat-title,
-.mat-headline,
-.mat-card-title,
-.mat-subheading-1,
-.mat-display-1,
-.mat-card-subtitle,
-.td-expansion-label,
-.mat-expansion-panel-header-title,
-.mat-step-label,
-.td-step-label,
-.mat-tab-label,
-.mat-tab-link,
-[td-chip-avatar],
-.td-navigation-drawer-name {
-  font-family: 'RidleyGrotesk-SemiBold', Arial, Helvetica, sans-serif !important;
-}
-.mat-display-1,
-.mat-display-2,
-.mat-display-3,
-h1,
-h2,
-h3,
-h4 {
-  letter-spacing: -0.025em;
+@include mat-core($fontConfig);
+
+.mat-card-title {
+  @include mat-typography-level-to-styles($fontConfig, title);
 }
 
 // Teradata Palette utility classes
-body { 
-  
+body {
+  font-family: #{$td-font-default} !important;
   // Teradata Slate - foreground & background
   @include tc($td-slate, td-slate, 500);
   @include bgc($td-slate, td-slate, 500);
@@ -75,6 +54,4 @@ body {
   // Teradata Blue - foreground & background
   @include tc($td-blue, td-blue, 700);
   @include bgc($td-blue, td-blue, 500);
-
 }
-
