@@ -8,10 +8,10 @@ $mat-light-theme-background: map-merge(
   $mat-light-theme-background,
   (
     // Override default material colors
-    app-bar: mat-color($mat-grey, 50),
+      app-bar: mat-color($mat-grey, 50),
     background: mat-color($mat-grey, 200),
     // Add new colors to the map
-    overlay: rgba(#000000, 0.4)
+      overlay: rgba(#000000, 0.4)
   )
 );
 
@@ -20,12 +20,12 @@ $mat-dark-theme-background: map-merge(
   $mat-dark-theme-background,
   (
     // Override default material colors
-    app-bar: mat-color($td-slate, 1300),
+      app-bar: mat-color($td-slate, 1300),
     background: mat-color($td-slate, 1500),
     card: mat-color($td-slate, 1100),
     dialog: mat-color($td-slate, 1100),
     // Add new colors to the map
-    overlay: rgba(#000000, 0.4)
+      overlay: rgba(#000000, 0.4)
   )
 );
 
@@ -92,10 +92,8 @@ $mat-dark-theme-background: map-merge(
       // Always dark theme text color here, regardless of active theme
       color: mat-color($mat-dark-theme-foreground, text);
     }
-  }
 
-  // Spacing before logo in main toolbar
-  .mat-toolbar {
+    // Spacing before logo in main toolbar
     .mat-icon-button + .mat-icon-logo,
     .mat-icon-button + span > .mat-icon-logo {
       margin-left: 10px;
