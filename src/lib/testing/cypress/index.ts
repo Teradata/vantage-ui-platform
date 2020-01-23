@@ -1,2 +1,2 @@
-export * from './utility';
-export * from './mockutility';
+export * from './utility/utility';
+export * from './mock/mockutility';

@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-import { login, logout, ILoginCredentials } from './utility';
+import { login, logout, ILoginCredentials, waitForAngular } from '../utility/utility';
 
 import * as moment_ from 'moment';
 const moment: any = moment_;
@@ -141,7 +141,7 @@ export class MockUtility {
     }
 
     // Wait for page to load
-    this.waitForAngular();
+    waitForAngular();
   }
 
   /**
@@ -273,30 +273,6 @@ export class MockUtility {
     cy.now('log', 'url/method: ' + url + SLASH + method);
     cy.now('log', 'response: ' + JSON.stringify(fixtureRouteDef));
     byMethodMap[method].push(fixtureRouteDef);
-  }
-
-  waitForAngular(): Cypress.Chainable {
-    cy.get('[ng-version]').should('exist');
-    return cy.window().then((win: Window) => {
-      return new Cypress.Promise(
-        (resolve: (thenableOrResult?: {} | PromiseLike<{}>) => void, reject: (error?: any) => void) => {
-          const testabilities: any = win['getAllAngularTestabilities']();
-          if (!testabilities) {
-            return reject(new Error('No testabilities. Is Angular loaded?'));
-          }
-          let count: number = testabilities.length;
-          testabilities.forEach((testability: any) =>
-            testability.whenStable(() => {
-              count--;
-              if (count !== 0) {
-                return;
-              }
-              resolve();
-            }),
-          );
-        },
-      );
-    });
   }
 
   tearDown(): void {
