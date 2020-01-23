@@ -2,28 +2,30 @@
 * FONTS
 */
 
+// @import 'ridley-grotesk'; // Uncomment when embedded font file is present
+
 // Teradata Font
-$td-font-default: 'Arial ,Helvetica, sans-serif';
-$td-font-regular: '"RidleyGrotesk-Regular", Arial, Helvetica, sans-serif';
-$td-font-bold: '"RidleyGrotesk-Bold", Arial, Helvetica, sans-serif';
-$td-font-semibold: '"RidleyGrotesk-SemiBold", Arial, Helvetica, sans-serif';
-$td-font-medium: '"RidleyGrotesk-Medium", Arial, Helvetica, sans-serif';
+$td-font-default: 'Arial, Helvetica, sans-serif';
+$td-font-regular: '"RidleyGrotesk", Arial, Helvetica, sans-serif';
+$td-font-bold: '"RidleyGrotesk", Arial, Helvetica, sans-serif';
+$td-font-semibold: '"RidleyGrotesk", Arial, Helvetica, sans-serif';
+$td-font-medium: '"RidleyGrotesk", Arial, Helvetica, sans-serif';
 
 $fontConfig: (
   font-family: $td-font-default,
-  display-4: mat-typography-level(96px, 120px, 300, 'RidleyGrotesk-Light', -1.5px),
-  display-3: mat-typography-level(60px, 84px, 400, 'RidleyGrotesk-Regular', -0.5px),
-  display-2: mat-typography-level(48px, 64px, 400, 'RidleyGrotesk-Regular', 0),
-  display-1: mat-typography-level(34px, 48px, 400, 'RidleyGrotesk-Medium', 0.25px),
-  headline: mat-typography-level(24px, 36px, 400, 'RidleyGrotesk-Semibold', 0),
-  title: mat-typography-level(20px, 28px, 500, 'RidleyGrotesk-Semibold', 0.15px),
-  subheading-2: mat-typography-level(16px, 24px, 400, 'RidleyGrotesk-Semibold', 0.15px),
-  subheading-1: mat-typography-level(14px, 20px, 500, 'RidleyGrotesk-Semibold', 0.1px),
-  body-2: mat-typography-level(14px, 20px, 500, 'Arial', 0.25px),
-  body-1: mat-typography-level(14px, 20px, 400, 'Arial', 0.25px),
-  button: mat-typography-level(14px, 16px, 500, 'RidleyGrotesk-Semibold', 0.5px),
-  caption: mat-typography-level(12px, 16px, 400, 'Arial', 0.4px),
-  input: mat-typography-level(inherit, 1.125, 400, 'Arial', 1.5px),
+  body-2: mat-typography-level(14px, 20px, 500, $td-font-default, 0.25px),
+  body-1: mat-typography-level(14px, 20px, 400, $td-font-default, 0.25px),
+  caption: mat-typography-level(12px, 16px, 400, $td-font-default, 0.4px),
+  input: mat-typography-level(inherit, 1.125, 400, $td-font-default, 1.5px),
+  button: mat-typography-level(14px, 36px, 600, $td-font-regular, 0.5px),
+  display-4: mat-typography-level(96px, 120px, 500, $td-font-regular, -1.5px),
+  display-3: mat-typography-level(60px, 84px, 600, $td-font-regular, -0.5px),
+  display-2: mat-typography-level(48px, 64px, 600, $td-font-regular, 0),
+  display-1: mat-typography-level(34px, 48px, 700, $td-font-regular, 0.25px),
+  headline: mat-typography-level(24px, 36px, 700, $td-font-regular, 0),
+  subheading-2: mat-typography-level(16px, 24px, 600, $td-font-regular, 0.15px),
+  subheading-1: mat-typography-level(14px, 20px, 600, $td-font-regular, 0.1px),
+  title: mat-typography-level(20px, 28px, 600, $td-font-regular, 0.15px),
 );
 
 @include mat-core($fontConfig);
