@@ -137,43 +137,6 @@ $td-blue: (
   ),
 );
 
-$td-positive: (
-  foreground-light: mat-color($mat-green, 700),
-  foreground-dark: mat-color($mat-green, 200),
-  background-light: mat-color($mat-green, 200),
-  background-dark: #336033,
-);
-$td-caution: (
-  foreground-light: mat-color($mat-amber, 800),
-  foreground-dark: mat-color($mat-orange, 300),
-  background-light: mat-color($mat-orange, 300),
-  background-dark: #704c16,
-);
-$td-negative: (
-  foreground-light: mat-color($mat-red, 900),
-  foreground-dark: mat-color($mat-red, 300),
-  background-light: mat-color($mat-red, 300),
-  background-dark: #883e32,
-);
-$td-neutral: (
-  foreground-light: $black-87-opacity,
-  foreground-dark: $black-87-opacity,
-  background-light: mat-color($mat-grey, 300),
-  background-dark: mat-color($td-slate, 800),
-);
-$td-emphasis1: (
-  foreground-light: mat-color($td-teal, 900),
-  foreground-dark: mat-color($td-teal, 300),
-  background-light: mat-color($td-teal, 200),
-  background-dark: #005858,
-);
-$td-emphasis2: (
-  foreground-light: mat-color($mat-blue-grey, 600),
-  foreground-dark: mat-color($mat-blue-grey, 200),
-  background-light: mat-color($mat-blue-grey, 200),
-  background-dark: #4f5558,
-);
-
 // Background palette for light themes.
 $mat-light-theme-background: (
   status-bar: #e0e0e0,
@@ -233,6 +196,7 @@ $mat-light-theme-foreground: (
   emphasis: mat-color($mat-blue-grey, 600),
   caution: mat-color($mat-amber, 800),
   negative: mat-color($mat-red, 900),
+  neutral: rgba(black, 0.87),
   positive: mat-color($mat-green, 700),
 );
 
@@ -295,5 +259,43 @@ $mat-dark-theme-foreground: (
   emphasis: mat-color($mat-blue-grey, 200),
   caution: mat-color($mat-orange, 300),
   negative: mat-color($mat-red, 400),
+  neutral: rgba(white, 0.87),
   positive: mat-color($mat-green, 300),
+);
+
+$td-positive: (
+  foreground-light: map-get($mat-light-theme-foreground, positive),
+  foreground-dark: map-get($mat-dark-theme-foreground, positive),
+  background-light: map-get($mat-light-theme-background, positive),
+  background-dark: map-get($mat-dark-theme-background, positive),
+);
+$td-caution: (
+  foreground-light: map-get($mat-light-theme-foreground, caution),
+  foreground-dark: map-get($mat-dark-theme-foreground, caution),
+  background-light: map-get($mat-light-theme-background, caution),
+  background-dark: map-get($mat-dark-theme-background, caution),
+);
+$td-negative: (
+  foreground-light: map-get($mat-light-theme-foreground, negative),
+  foreground-dark: map-get($mat-dark-theme-foreground, negative),
+  background-light: map-get($mat-light-theme-background, negative),
+  background-dark: map-get($mat-dark-theme-background, negative),
+);
+$td-neutral: (
+  foreground-light: map-get($mat-light-theme-foreground, neutral),
+  foreground-dark: map-get($mat-dark-theme-foreground, neutral),
+  background-light: map-get($mat-light-theme-background, neutral),
+  background-dark: map-get($mat-dark-theme-background, neutral),
+);
+$td-emphasis1: (
+  foreground-light: map-get($mat-light-theme-foreground, accent),
+  foreground-dark: map-get($mat-dark-theme-foreground, accent),
+  background-light: map-get($mat-light-theme-background, accent),
+  background-dark: map-get($mat-dark-theme-background, accent),
+);
+$td-emphasis2: (
+  foreground-light: map-get($mat-light-theme-foreground, emphasis),
+  foreground-dark: map-get($mat-dark-theme-foreground, emphasis),
+  background-light: map-get($mat-light-theme-background, emphasis),
+  background-dark: map-get($mat-dark-theme-background, emphasis),
 );
