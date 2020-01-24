@@ -38,6 +38,9 @@ $shape-radius: 8px;
     &.mat-warn {
       border-color: mat-color($warn);
     }
+    &:disabled {
+      border-color: map-get($foreground, disabled);
+    }
   }
 
   // Chips
