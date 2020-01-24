@@ -17,13 +17,17 @@ $shape-radius: 8px;
   $is-dark: map-get($theme, is-dark);
 
   .mat-button,
-  .mat-raised-button,
-  .mat-flat-button {
+  .mat-flat-button,
+  .mat-raised-button {
     text-transform: uppercase;
   }
+
   .mat-stroked-button {
     text-transform: uppercase;
 
+    &:not([disabled]) {
+      border-color: mat-color($foreground, icon);
+    }
     &.mat-primary {
       border-color: mat-color($primary);
     }
