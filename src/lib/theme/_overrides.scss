@@ -16,6 +16,29 @@ $shape-radius: 8px;
   $foreground: map-get($theme, foreground);
   $is-dark: map-get($theme, is-dark);
 
+  .mat-button,
+  .mat-raised-button,
+  .mat-flat-button {
+    text-transform: uppercase;
+  }
+  .mat-stroked-button {
+    text-transform: uppercase;
+
+    &.mat-primary {
+      border-color: mat-color($primary);
+    }
+    &.mat-accent {
+      border-color: mat-color($accent);
+    }
+    &.mat-warn {
+      border-color: mat-color($warn);
+    }
+  }
+
+  .mat-tab-label {
+    text-transform: uppercase;
+  }
+
   // Active icon color in list nav
   mat-nav-list {
     [mat-list-item].selected {
