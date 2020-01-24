@@ -182,40 +182,44 @@ $shape-radius: 8px;
 
   // State colors
   .tc-positive {
-    color: map-get($td-positive, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get($foreground, positive) !important;
   }
   .tc-caution {
-    color: map-get($td-caution, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get($foreground, caution) !important;
   }
   .tc-negative {
-    color: map-get($td-negative, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get($foreground, negative) !important;
   }
   .tc-neutral {
-    color: map-get($td-neutral, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get($foreground, neutral) !important;
   }
+  .tc-accent,
   .tc-emphasis-1 {
-    color: map-get($td-emphasis1, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get($foreground, accent) !important;
   }
+  .tc-emphasis,
   .tc-emphasis-2 {
-    color: map-get($td-emphasis2, if($is-dark, foreground-dark, foreground-light)) !important;
+    color: map-get($foreground, emphasis) !important;
   }
   .bgc-positive {
-    background-color: map-get($td-positive, if($is-dark, background-dark, background-light)) !important;
+    color: map-get($background, positive) !important;
   }
   .bgc-caution {
-    background-color: map-get($td-caution, if($is-dark, background-dark, background-light)) !important;
+    color: map-get($background, caution) !important;
   }
   .bgc-negative {
-    background-color: map-get($td-negative, if($is-dark, background-dark, background-light)) !important;
+    color: map-get($background, negative) !important;
   }
   .bgc-neutral {
-    background-color: map-get($td-neutral, if($is-dark, background-dark, background-light)) !important;
+    color: map-get($background, neutral) !important;
   }
+  .bgc-accent,
   .bgc-emphasis-1 {
-    background-color: map-get($td-emphasis1, if($is-dark, background-dark, background-light)) !important;
+    color: map-get($background, accent) !important;
   }
+  .bgc-emphasis,
   .bgc-emphasis-2 {
-    background-color: map-get($td-emphasis2, if($is-dark, background-dark, background-light)) !important;
+    color: map-get($background, emphasis) !important;
   }
 
   // Components
