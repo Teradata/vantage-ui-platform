@@ -16,6 +16,7 @@ $shape-radius: 8px;
   $foreground: map-get($theme, foreground);
   $is-dark: map-get($theme, is-dark);
 
+  // Buttons
   .mat-button,
   .mat-flat-button,
   .mat-raised-button {
@@ -39,6 +40,12 @@ $shape-radius: 8px;
     }
   }
 
+  // Chips
+  .mat-chip {
+    font-weight: normal;
+  }
+
+  // Tabs
   .mat-tab-label {
     text-transform: uppercase;
   }
@@ -255,16 +262,7 @@ $shape-radius: 8px;
     background-color: if($is-dark, mat-color($primary, lighter), $white-87-opacity);
   }
 
-  // We override material overlay to prevent the default invert on td-teal
-  // on dark-mode. If not on dark-mode, revert to original implementation
-  // inverting card background color at .6 opacity.
-  $overlay-background: if(
-    $is-dark,
-    invert(mat-color($background, overlay, 0.6)),
-    invert(mat-color($background, card, 0.6))
-  );
-
   .mat-drawer-overlay.mat-drawer-shown {
-    background-color: $overlay-background;
+    background-color: mat-color($background, overlay);
   }
 }

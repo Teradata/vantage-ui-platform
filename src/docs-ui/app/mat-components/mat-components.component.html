@@ -10,17 +10,23 @@
       <button class="app-button" mat-button color="warn">Flat warn</button>
       <button class="app-button" mat-button disabled>Flat disabled</button>
       <br />
+      <br />
+      <br />
       <button class="app-button" mat-raised-button mat-tooltip="This is a tooltip!">Raised</button>
       <button class="app-button" mat-raised-button color="primary">Primary raised</button>
       <button class="app-button" mat-raised-button color="accent">Accent raised</button>
       <button class="app-button" mat-raised-button color="warn">Warn raised</button>
       <button class="app-button" mat-raised-button disabled>Disabled raised</button>
       <br />
+      <br />
+      <br />
       <button class="app-button" mat-stroked-button color="none">Stroked</button>
       <button class="app-button" mat-stroked-button color="primary">Primary stroked</button>
       <button class="app-button" mat-stroked-button color="accent">Accent stroked</button>
       <button class="app-button" mat-stroked-button color="warn">Warn stroked</button>
       <button class="app-button" mat-stroked-button disabled>Disabled stroked</button>
+      <br />
+      <br />
       <br />
       <button mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon>favorite</mat-icon>
@@ -45,8 +51,29 @@
       <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Chips</h4>
 
       <mat-chip-list>
-        <mat-chip *ngFor="let chipColor of availableColors" selected="true" color="{{ chipColor.color }}">
-          {{ chipColor.name }}
+        <mat-chip>
+          Default
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="accent" selected="true">
+          Accent
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="warn" selected="true">
+          Negative
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="caution" selected="true">
+          Caution
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="positive" selected="true">
+          Positive
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="emphasis" selected="true">
+          Emphasis
+          <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
     </div>
