@@ -104,21 +104,70 @@
     <div class="app-input-section push-bottom-xl">
       <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Input</h4>
 
-      <mat-form-field>
-        <input matInput placeholder="First name" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #nickname placeholder="Nickname" maxlength="50" />
-        <mat-hint align="end">{{ nickname.value.length }} / 50</mat-hint>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-icon matPrefix class="app-input-icon">android</mat-icon>
-        <input matInput placeholder="Favorite phone" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-icon matPrefix class="app-input-icon">motorcycle</mat-icon>
-        <input matInput placeholder="Motorcycle model" />
-      </mat-form-field>
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Legacy form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy" color="warn">
+          <mat-label>Legacy form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Standard form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard" color="warn">
+          <mat-label>Standard form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Fill form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill" color="warn">
+          <mat-label>Fill form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Outline form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" color="warn">
+          <mat-label>Outline form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
     </div>
     <!-- /Material Input -->
 
