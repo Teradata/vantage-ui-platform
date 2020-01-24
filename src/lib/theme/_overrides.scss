@@ -3,31 +3,10 @@
 // Vantage UI platform
 //
 
-// Light theme background color variable overrides
-$mat-light-theme-background: map-merge(
-  $mat-light-theme-background,
-  (
-    // Override default material colors
-      app-bar: mat-color($mat-grey, 50),
-    background: mat-color($mat-grey, 200),
-    // Add new colors to the map
-      overlay: rgba(#000000, 0.4)
-  )
-);
+// Radius to be used in: card, snackbar, button, dialog & menu
+$shape-radius: 8px;
 
-// Dark theme background color variable overrides
-$mat-dark-theme-background: map-merge(
-  $mat-dark-theme-background,
-  (
-    // Override default material colors
-      app-bar: mat-color($td-slate, 1300),
-    background: mat-color($td-slate, 1500),
-    card: mat-color($td-slate, 1100),
-    dialog: mat-color($td-slate, 1100),
-    // Add new colors to the map
-      overlay: rgba(#000000, 0.4)
-  )
-);
+// Theme Config
 
 @mixin teradata-brand($theme) {
   $primary: map-get($theme, primary);
@@ -110,8 +89,19 @@ $mat-dark-theme-background: map-merge(
     }
   }
   // More border radius
-  body .mat-card {
-    border-radius: 8px;
+  body {
+    .mat-card,
+    .mat-button-base,
+    .mat-dialog-container,
+    .mat-snack-bar-container,
+    .mat-menu-panel {
+      border-radius: $shape-radius;
+    }
+
+    .mat-ink-bar {
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+    }
   }
   // Apply theme for this app
   body::after {

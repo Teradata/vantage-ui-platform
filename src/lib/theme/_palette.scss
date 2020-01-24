@@ -173,3 +173,41 @@ $td-emphasis2: (
   background-light: mat-color($mat-blue-grey, 200),
   background-dark: #4f5558,
 );
+
+$mat-light-theme-background: (
+  status-bar: #e0e0e0,
+  app-bar: mat-color($mat-grey, 50),
+  background: mat-color($mat-grey, 200),
+  hover: rgba(0, 0, 0, 0.04),
+  card: white,
+  dialog: white,
+  disabled-button: rgba(0, 0, 0, 0.12),
+  raised-button: white,
+  focused-button: rgba(0, 0, 0, 0.12),
+  selected-button: #e0e0e0,
+  selected-disabled-button: #bdbdbd,
+  disabled-button-toggle: #eeeeee,
+  unselected-chip: #e0e0e0,
+  disabled-list-option: #eeeeee,
+  tooltip: #616161,
+  overlay: rgba(#000000, 0.4),
+);
+
+$mat-dark-theme-background: (
+  status-bar: black,
+  app-bar: mat-color($td-slate, 1300),
+  background: mat-color($td-slate, 1500),
+  card: mat-color($td-slate, 1100),
+  dialog: mat-color($td-slate, 1100),
+  hover: rgba(255, 255, 255, 0.04),
+  disabled-button: rgba(255, 255, 255, 0.12),
+  raised-button: #424242,
+  focused-button: rgba(255, 255, 255, 0.12),
+  selected-button: #212121,
+  selected-disabled-button: #424242,
+  disabled-button-toggle: black,
+  unselected-chip: #616161,
+  disabled-list-option: black,
+  tooltip: #616161,
+  overlay: rgba(0, 0, 0, 0.4),
+);
