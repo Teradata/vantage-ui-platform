@@ -279,19 +279,18 @@ utilized for use in the checkin pipeline.
 
 The testing framework has a switch to allow recording XHR response data into _mockdata.json_ fixture files. Enable recording by:
 
-- Run the tests by using the `npm run cypress:runrecord` script.
-- Run Cypress using the `npm run cypress:openrecord` script and then run individual tests.
+- Run the tests with the `"--env record=true"` Cypress environment variable set on the Cypress command line.
 - Modify the call to the `setUp` method in a specific test to pass the optional fourth "record" parameter as `true`.
 
 Recorded response fixtures are written to the _cypress/recordings/testname/date_ directory.
 
 ## Running Tests
 
-The following scripts exist in the package.json to facilitate running Cypress tests. All require that you start the web server in a separate command window.
+The following scripts should be added to your project's package.json to facilitate running Cypress tests. All require that you start the web server in a separate command window.
 
-- `cypress:open` - Open the Cypress dashboard
-- `cypress:openmock` - Open the Cypress dashboard with the "mock" environment variable injected into the Cypress environment
-- `cypress:openrecord` - Open the Cypress dashboard with the "record" environment variable injected into the Cypress environment
-- `cypress:run` - Run the Cypress specs
-- `cypress:runmock` - Run the Cypress specs with the "mock" environment variable injected into the Cypress environment
-- `cypress:runrecord` - Run the Cypress specs with the "record" environment variable injected into the Cypress environment
+- `"cypress:open": "cypress open"` - Open the Cypress dashboard
+- `"cypress:openmock": "cypress open --env mock=true"` - Open the Cypress dashboard with the "mock" environment variable injected into the Cypress environment
+- `"cypress:openrecord": "cypress open --env record=true"` - Open the Cypress dashboard with the "record" environment variable injected into the Cypress environment
+- `"cypress:run": "cypress run"` - Run the Cypress specs
+- `"cypress:runmock": "cypress run --env mock=true"` - Run the Cypress specs with the "mock" environment variable injected into the Cypress environment
+- `"cypress:runrecord": "cypress run --env record=true"` - Run the Cypress specs with the "record" environment variable injected into the Cypress environment
