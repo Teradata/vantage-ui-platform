@@ -35,6 +35,7 @@ Mock files are named _mockdata.json_.
 
 A _mockdata.json_ fixture file has the following general format:
 
+```JSON
 {
 urlWithQueryParams: {
 method: [
@@ -59,10 +60,12 @@ urlWithQueryParams: {
 },
 ...
 }
+```
 
 For example, the "empty" state fixture _cypress/fixtures/templates/mockdata.json_ has the following content.
 This fixture returns "empty" response data for all requests invoked to populate the homepage.
 
+```JSON
 {
 "/api/app/apps?favorite=true&type=sql": {
 "GET": [
@@ -98,6 +101,7 @@ This fixture returns "empty" response data for all requests invoked to populate 
 },
 ...
 }
+```
 
 For each URL/method pair, you can define multiple responses. Each response is defined to have an alias
 (useful in your code to perform cy.wait()), a status, headers and some response body content. The infrastructure
