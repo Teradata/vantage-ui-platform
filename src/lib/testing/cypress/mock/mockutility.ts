@@ -12,8 +12,7 @@ declare global {
 
 import { login, logout, ILoginCredentials, waitForAngular } from '../utility/utility';
 
-import * as moment_ from 'moment';
-const moment: any = moment_;
+import moment from 'moment';
 
 export enum TestType {
   'unit' = 'unit',

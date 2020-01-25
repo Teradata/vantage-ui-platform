@@ -287,12 +287,11 @@ Recorded response fixtures are written to the _cypress/recordings/testname/date_
 
 ## Running Tests
 
-The following scripts exist in the package.json to facilitate running Cypress tests. All require that you
-start the web server in a separate command window.
+The following scripts exist in the package.json to facilitate running Cypress tests. All require that you start the web server in a separate command window.
 
-cypress:open - Open the Cypress dashboard
-cypress:openmock - Open the Cypress dashboard with the "mock" environment variable injected into the Cypress environment
-cypress:openrecord - Open the Cypress dashboard with the "record" environment variable injected into the Cypress environment
-cypress:run - Run the Cypress specs
-cypress:runmock - Run the Cypress specs with the "mock" environment variable injected into the Cypress environment
-cypress:runrecord - Run the Cypress specs with the "record" environment variable injected into the Cypress environment
+- `cypress:open` - Open the Cypress dashboard
+- `cypress:openmock` - Open the Cypress dashboard with the "mock" environment variable injected into the Cypress environment
+- `cypress:openrecord` - Open the Cypress dashboard with the "record" environment variable injected into the Cypress environment
+- `cypress:run` - Run the Cypress specs
+- `cypress:runmock` - Run the Cypress specs with the "mock" environment variable injected into the Cypress environment
+- `cypress:runrecord` - Run the Cypress specs with the "record" environment variable injected into the Cypress environment
