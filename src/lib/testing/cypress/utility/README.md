@@ -1,4 +1,4 @@
-# Cypress testing utilities
+# Cypress Testing Utilities
 
 ## Login and logout
 
