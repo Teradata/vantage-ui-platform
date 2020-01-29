@@ -1,7 +1,3 @@
-/*
- * Copyright (C) 2016-2017 by Teradata Corporation. All rights reserved.
- * TERADATA CORPORATION CONFIDENTIAL AND TRADE SECRET
- */
 import { Optional, SkipSelf, Provider, Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 
