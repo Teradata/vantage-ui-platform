@@ -12,7 +12,7 @@ rm -rf src/lib/node_modules
 cp -R ./src/lib/auth/config ./deploy/ui-platform/auth/
 
 # Adding theming file to ui-platform
-cp -R ./src/lib/theme ./deploy/ui-platform/
+cp ./src/lib/theme/*.scss ./deploy/ui-platform/theme/
 cp ./src/lib/_theming.scss ./deploy/ui-platform/
 
 # Add pre-loader files

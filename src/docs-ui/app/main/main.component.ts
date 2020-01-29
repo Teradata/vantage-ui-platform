@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { VantageThemeService } from '../../../lib';
+import { VantageThemeService } from '../../../lib/theme/theme.service';
 
 @Component({
   selector: 'td-main',
