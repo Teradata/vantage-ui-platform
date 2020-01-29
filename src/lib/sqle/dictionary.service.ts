@@ -3,7 +3,7 @@ import { Injectable, SkipSelf, Optional, Provider } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { VantageQueryService, IQueryResultSet, IQueryPayload, ISQLEConnection } from './query.service';
+import { VantageQueryService, IQueryResultSet, ISQLEConnection } from './query.service';
 
 export const sysDatabases: string[] = [
   'DBC',
@@ -115,83 +115,6 @@ export interface IDictionaryTableColumn {
 @Injectable()
 export class VantageDictionaryService {
   constructor(private _queryService: VantageQueryService) {}
-
-  async getFrequencyAnalysis(
-    connection: ISQLEConnection,
-    database: string,
-    table: string,
-    column: string,
-  ): Promise<any> {
-    const requests: any[] = [];
-    const session: any = await this._queryService.createSession(connection).toPromise();
-    const payload: IQueryPayload = {
-      query: `
-        call demouser.td_analyze('frequency', 'database=${database};tablename=${table};columns=${column};');
-      `,
-      session: session.sessionId,
-      rowLimit: 10000,
-    };
-    requests.push(this._queryService.querySystem(connection, payload));
-
-    const resultSets: IQueryResultSet[] = [];
-    try {
-      for (const request of requests) {
-        resultSets.push(await request.toPromise());
-      }
-    } finally {
-      await this._queryService.deleteSession(connection, session.sessionId).toPromise();
-    }
-    const rows: any[] = resultSets[0].results[0].data.map((row: any) => {
-      return {
-        value: row.xval,
-        percent: row.xpct,
-      };
-    });
-    return {
-      database,
-      table,
-      column,
-      frequency: rows,
-    };
-  }
-
-  async getValuesAnalysis(connection: ISQLEConnection, database: string, table: string, column: string): Promise<any> {
-    const requests: any[] = [];
-    const session: any = await this._queryService.createSession(connection).toPromise();
-    const payload: IQueryPayload = {
-      query: `
-        call demouser.td_analyze('values', 'database=${database};tablename=${table};columns=${column};');
-      `,
-      session: session.sessionId,
-      rowLimit: 10000,
-    };
-    requests.push(this._queryService.querySystem(connection, payload));
-
-    const resultSets: IQueryResultSet[] = [];
-    try {
-      for (const request of requests) {
-        resultSets.push(await request.toPromise());
-      }
-    } finally {
-      await this._queryService.deleteSession(connection, session.sessionId).toPromise();
-    }
-
-    const row: any = resultSets[0].results[0].data[0];
-
-    return {
-      database,
-      table,
-      column,
-      type: row.xtype,
-      count: row.xcnt,
-      zeros: row.xzero,
-      negatives: row.xneg,
-      positives: row.xpos,
-      blanks: row.xblank,
-      nulls: row.xnull,
-      uniques: row.xunique,
-    };
-  }
 
   getViewHelp(connection: ISQLEConnection, database: string, view: string): Observable<any> {
     const queryStr: string = `
