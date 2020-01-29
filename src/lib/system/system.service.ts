@@ -6,6 +6,12 @@ import { map, catchError } from 'rxjs/operators';
 
 import { TdHttp, TdGET, TdPUT, TdPOST, TdDELETE, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
 
+/*
+ * These interfaces are duplicated in the system and the query service.
+ * However, within the system service, SystemType includes Aster & Presto.
+ * Whereas in the query service, they are excluded.
+ * TODO: DRY this up
+ */
 export enum SystemType {
   Teradata = 'TERADATA',
   Aster = 'ASTER',
