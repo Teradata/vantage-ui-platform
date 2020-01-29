@@ -1,6 +1,6 @@
-// TODO: import variables to use
-// @import '@angular/material/theming';
-// @import '@td-vantage/ui-platform/theming';
+@import '@angular/material/theming';
+@import '../../theme/palette';
+@import '../../theme/default-variables';
 
 /* stylelint-disable selector-max-id */
 #td-pre-loader {
@@ -16,7 +16,7 @@
   z-index: 10000;
 
   /* light-theme */
-  background-color: rgb(236, 236, 236);
+  background-color: map-get($mat-light-theme-background, background);
 
   /* LOGO */
   .teradata-logo {
@@ -66,9 +66,10 @@
     transition-property: stroke-dashoffset;
   }
 
+  /* light-theme */
   .mat-progress-spinner circle,
   .mat-spinner circle {
-    stroke: #f2724b;
+    stroke: map-get($td-accent, default);
   }
 
   @keyframes mat-progress-spinner-linear-rotate {
@@ -149,7 +150,13 @@
 
 .dark-theme #td-pre-loader {
   /* dark-theme */
-  background-color: rgb(28, 37, 42);
+  background-color: map-get($mat-dark-theme-background, background);
+
+  /* dark-theme */
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: map-get($td-dark-accent, default);
+  }
 
   /* dark-theme */
   .teradata-logo .teradata-logo-letters path {

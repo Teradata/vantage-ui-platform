@@ -4,17 +4,45 @@
     <div class="push-bottom-xxl pad-bottom-lg">
       <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Button</h4>
 
-      <button class="app-button" mat-button color="none">FLAT</button>
-      <button class="app-button" mat-button color="primary">FLAT PRIMARY</button>
-      <button class="app-button" mat-button color="accent">FLAT ACCENT</button>
+      <button class="app-button" mat-button color="none">Flat</button>
+      <button class="app-button" mat-button color="primary">Flat primary</button>
+      <button class="app-button" mat-button color="accent">Flat accent</button>
+      <button class="app-button" mat-button color="warn">Flat warn</button>
+      <button class="app-button" mat-button disabled>Flat disabled</button>
       <br />
-      <button class="app-button" mat-raised-button mat-tooltip="This is a tooltip!">RAISED</button>
-      <button class="app-button" mat-raised-button color="primary">PRIMARY RAISED</button>
-      <button class="app-button" mat-raised-button color="accent">ACCENT RAISED</button>
       <br />
-      <button class="app-button" mat-stroked-button color="none">STROKED</button>
-      <button class="app-button" mat-stroked-button color="primary">PRIMARY STROKED</button>
-      <button class="app-button" mat-stroked-button color="accent">ACCENT STROKED</button>
+      <br />
+      <button class="app-button" mat-raised-button mat-tooltip="This is a tooltip!">Raised</button>
+      <button class="app-button" mat-raised-button color="primary">Primary raised</button>
+      <button class="app-button" mat-raised-button color="accent">Accent raised</button>
+      <button class="app-button" mat-raised-button color="warn">Warn raised</button>
+      <button class="app-button" mat-raised-button disabled>Disabled raised</button>
+      <br />
+      <br />
+      <br />
+      <button class="app-button" mat-stroked-button color="none">Stroked</button>
+      <button class="app-button" mat-stroked-button color="primary">Primary stroked</button>
+      <button class="app-button" mat-stroked-button color="accent">Accent stroked</button>
+      <button class="app-button" mat-stroked-button color="warn">Warn stroked</button>
+      <button class="app-button" mat-stroked-button disabled>Disabled stroked</button>
+      <br />
+      <br />
+      <br />
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button disabled aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
     </div>
     <!-- /Material Button -->
 
@@ -23,8 +51,29 @@
       <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Chips</h4>
 
       <mat-chip-list>
-        <mat-chip *ngFor="let chipColor of availableColors" selected="true" color="{{ chipColor.color }}">
-          {{ chipColor.name }}
+        <mat-chip>
+          Default
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="accent" selected="true">
+          Accent
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="warn" selected="true">
+          Negative
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="caution" selected="true">
+          Caution
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="positive" selected="true">
+          Positive
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="emphasis" selected="true">
+          Emphasis
+          <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
     </div>
@@ -55,21 +104,70 @@
     <div class="app-input-section push-bottom-xl">
       <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Input</h4>
 
-      <mat-form-field>
-        <input matInput placeholder="First name" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #nickname placeholder="Nickname" maxlength="50" />
-        <mat-hint align="end">{{ nickname.value.length }} / 50</mat-hint>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-icon matPrefix class="app-input-icon">android</mat-icon>
-        <input matInput placeholder="Favorite phone" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-icon matPrefix class="app-input-icon">motorcycle</mat-icon>
-        <input matInput placeholder="Motorcycle model" />
-      </mat-form-field>
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Legacy form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy" color="warn">
+          <mat-label>Legacy form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Standard form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard" color="warn">
+          <mat-label>Standard form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Fill form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill" color="warn">
+          <mat-label>Fill form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Outline form field</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" color="warn">
+          <mat-label>Outline form field (warn)</mat-label>
+          <input matInput placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
     </div>
     <!-- /Material Input -->
 
