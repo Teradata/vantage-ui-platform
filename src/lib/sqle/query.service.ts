@@ -11,6 +11,9 @@ import { map, catchError } from 'rxjs/operators';
  */
 enum SystemType {
   Teradata = 'TERADATA',
+  // TODO: remove the following 2
+  Aster = 'ASTER',
+  Presto = 'PRESTO',
 }
 interface ISystemAttributes {
   attributes?: any;
