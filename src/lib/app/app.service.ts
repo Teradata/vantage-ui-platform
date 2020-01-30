@@ -1,15 +1,14 @@
 import { Optional, SkipSelf, Provider, Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 
+import { TdHttp, TdParam, TdBody, TdQueryParams, TdResponse, TdGET, TdPOST, TdDELETE, TdPATCH } from '@covalent/http';
+
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { TdHttp, TdGET, TdPOST, TdDELETE, TdPATCH, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
 
 export enum AppType {
   SQL = 'sql',
   BTEQ = 'bteq',
-  JAVA = 'java',
   CUSTOM = 'custom',
 }
 
@@ -71,7 +70,7 @@ export interface IAppPermissions {
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
 })
 @Injectable()
-export class VantageAppsService {
+export class VantageAppService {
   @TdGET({
     path: '/apps',
     options: {
@@ -136,13 +135,13 @@ export class VantageAppsService {
   }
 }
 
-export function VANTAGE_APPS_PROVIDER_FACTORY(parent: VantageAppsService): VantageAppsService {
-  return parent || new VantageAppsService();
+export function VANTAGE_APP_PROVIDER_FACTORY(parent: VantageAppService): VantageAppService {
+  return parent || new VantageAppService();
 }
 
-export const VANTAGE_APPS_PROVIDER: Provider = {
+export const VANTAGE_APP_PROVIDER: Provider = {
   // If there is already a service available, use that. Otherwise, provide a new one.
-  provide: VantageAppsService,
-  deps: [[new Optional(), new SkipSelf(), VantageAppsService]],
-  useFactory: VANTAGE_APPS_PROVIDER_FACTORY,
+  provide: VantageAppService,
+  deps: [[new Optional(), new SkipSelf(), VantageAppService]],
+  useFactory: VANTAGE_APP_PROVIDER_FACTORY,
 };
