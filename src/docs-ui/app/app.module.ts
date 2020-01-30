@@ -50,6 +50,7 @@ import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
 import { VantageUserModule } from '@td-vantage/ui-platform/user';
 import { VantageAuthenticationModule } from '@td-vantage/ui-platform/auth';
 import { VantageAccessModule } from '@td-vantage/ui-platform/access';
+import { VantageThemeModule } from '@td-vantage/ui-platform/theme';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -117,6 +118,7 @@ import { MatComponentsComponent, DialogContentComponent } from './mat-components
     VantageUserModule,
     VantageAuthenticationModule,
     VantageAccessModule,
+    VantageThemeModule,
 
     appRoutes,
   ], // modules needed to run this module
