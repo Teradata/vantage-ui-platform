@@ -178,6 +178,7 @@ $shape-radius: 8px;
   .tc {
     color: if($is-dark, $black-87-opacity, $white-87-opacity);
   }
+  body,
   .bgc,
   td-markdown-navigator-window {
     background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);

@@ -16,7 +16,7 @@
   z-index: 10000;
 
   /* light-theme */
-  background-color: map-get($mat-light-theme-background, background);
+  background-color: $white-87-opacity;
 
   /* LOGO */
   .teradata-logo {
@@ -150,7 +150,7 @@
 
 .dark-theme #td-pre-loader {
   /* dark-theme */
-  background-color: map-get($mat-dark-theme-background, background);
+  background-color: mat-color($td-slate-dark, 1300);
 
   /* dark-theme */
   .mat-progress-spinner circle,
