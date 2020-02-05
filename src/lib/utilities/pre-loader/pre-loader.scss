@@ -5,6 +5,7 @@
 /* stylelint-disable selector-max-id */
 #td-pre-loader {
   display: flex;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -14,9 +15,11 @@
   left: 0;
   bottom: 0;
   z-index: 10000;
+  height: 100%; // for transition
+  transition: opacity 0.25s 0s ease-in-out, height 0s 0.25s ease-in-out;
 
   /* light-theme */
-  background-color: $white-87-opacity;
+  background-color: map-get($mat-light-theme-background, background);
 
   /* LOGO */
   .teradata-logo {
@@ -150,7 +153,7 @@
 
 .dark-theme #td-pre-loader {
   /* dark-theme */
-  background-color: mat-color($td-slate-dark, 1300);
+  background-color: map-get($mat-dark-theme-background, background);
 
   /* dark-theme */
   .mat-progress-spinner circle,

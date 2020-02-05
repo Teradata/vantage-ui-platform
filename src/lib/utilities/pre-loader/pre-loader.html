@@ -15,12 +15,16 @@
     ~1 sec on dev mode in simple app
     So instead we look for ng-version to verify that the app is ready
     */
+    // global variable that can be accessed elsewhere in angular app
+    var TD_PRE_LOADER_COUNT = 1;
     var interval = setInterval(() => {
       if (!!document.querySelector('[ng-version]')) {
         clearInterval(interval);
+        TD_PRE_LOADER_COUNT--;
         var loader = document.getElementById('td-pre-loader');
         if (loader) {
-          loader.remove();
+          loader.style.height = TD_PRE_LOADER_COUNT > 0 ? '100%' : '0';
+          loader.style.opacity = TD_PRE_LOADER_COUNT > 0 ? '1' : '0';
         }
       }
     }, 100);
