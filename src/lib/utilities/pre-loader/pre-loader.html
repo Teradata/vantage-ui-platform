@@ -16,15 +16,15 @@
     So instead we look for ng-version to verify that the app is ready
     */
     // global variable that can be accessed elsewhere in angular app
-    var PRE_LOADER_COUNT = 1;
+    var TD_PRE_LOADER_COUNT = 1;
     var interval = setInterval(() => {
       if (!!document.querySelector('[ng-version]')) {
         clearInterval(interval);
-        PRE_LOADER_COUNT--;
+        TD_PRE_LOADER_COUNT--;
         var loader = document.getElementById('td-pre-loader');
         if (loader) {
-          loader.style.height = PRE_LOADER_COUNT > 0 ? '100%' : '0';
-          loader.style.opacity = PRE_LOADER_COUNT > 0 ? '1' : '0';
+          loader.style.height = TD_PRE_LOADER_COUNT > 0 ? '100%' : '0';
+          loader.style.opacity = TD_PRE_LOADER_COUNT > 0 ? '1' : '0';
         }
       }
     }, 100);

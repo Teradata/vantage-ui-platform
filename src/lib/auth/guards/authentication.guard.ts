@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from
 import { VantageSessionService } from '../session/session.service';
 import { Observable } from 'rxjs';
 import { timeout, catchError, map, finalize } from 'rxjs/operators';
+import { showPreLoader, hidePreLoader } from '@td-vantage/ui-platform/utilities';
 
 const UNAUTHORIZED: number = 401;
 
@@ -26,29 +27,5 @@ export class VantageAuthenticationGuard implements CanActivate {
       map(() => true),
       finalize(() => hidePreLoader()),
     );
-  }
-}
-
-// PRE_LOADER_COUNT variable is defined inside pre-loader.html
-
-function showPreLoader(): void {
-  if ((<any>window).PRE_LOADER_COUNT !== undefined) {
-    (<any>window).PRE_LOADER_COUNT++;
-    updatePreLoaderVisibility();
-  }
-}
-
-function hidePreLoader(): void {
-  if ((<any>window).PRE_LOADER_COUNT !== undefined) {
-    (<any>window).PRE_LOADER_COUNT--;
-    updatePreLoaderVisibility();
-  }
-}
-
-function updatePreLoaderVisibility(): void {
-  const loader: HTMLElement = document.getElementById('td-pre-loader');
-  if (loader) {
-    loader.style.height = (<any>window).PRE_LOADER_COUNT > 0 ? '100%' : '0';
-    loader.style.opacity = (<any>window).PRE_LOADER_COUNT > 0 ? '1' : '0';
   }
 }

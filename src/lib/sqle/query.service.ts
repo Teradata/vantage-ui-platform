@@ -2,39 +2,7 @@ import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-
-/*
- * These interfaces are duplicated in the system and the query service.
- * However, within the system service, SystemType includes Aster & Presto.
- * Whereas in the query service, they are excluded.
- * TODO: DRY this up
- */
-enum SystemType {
-  Teradata = 'TERADATA',
-  // TODO: remove the following 2
-  Aster = 'ASTER',
-  Presto = 'PRESTO',
-}
-interface ISystemAttributes {
-  attributes?: any;
-}
-interface IAbstractSystem {
-  host?: string;
-  port?: number;
-  system_type?: SystemType;
-  catalog?: string;
-  schema?: string;
-}
-interface ISystem extends IAbstractSystem {
-  attributes?: string;
-  data_center?: string;
-  environment?: string;
-  id?: string;
-  nickname?: string;
-  platform_id?: number;
-  system_attributes?: ISystemAttributes;
-  version?: string;
-}
+import { ISystem } from '@td-vantage/ui-platform/system';
 
 export interface IQueryPayload {
   query: string;

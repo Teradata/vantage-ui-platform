@@ -3,20 +3,9 @@ import { Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { TdHttp, TdGET, TdResponse, TdPOST, TdParam } from '@covalent/http';
 import { Observable, of } from 'rxjs';
+import { IUser } from '@td-vantage/ui-platform/user';
 
 import { tap, switchMap } from 'rxjs/operators';
-
-export interface IUser {
-  username?: string;
-  password?: string;
-  email?: string;
-  local?: boolean;
-  admin?: boolean;
-  groups?: string[];
-  display_name?: string;
-  access_token?: string;
-  expires_at?: number;
-}
 
 export interface ISessionUser {
   user?: string;

@@ -5,7 +5,11 @@
     "baseUrl": ".",
     "inlineSourceMap": true,
     "inlineSources": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@td-vantage/ui-platform": ["./"],
+      "@td-vantage/ui-platform/*": ["./*"]
+    }
   },
   "exclude": ["./auth/config/*"],
   "angularCompilerOptions": {
