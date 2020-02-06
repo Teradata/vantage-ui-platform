@@ -9,7 +9,11 @@ export class VantageConnectionService {
   constructor(private _queryService: VantageQueryService) {}
 
   public get current(): ISQLEConnection {
-    return JSON.parse(sessionStorage.getItem(CONNECTION_SESSION_KEY));
+    try {
+      return JSON.parse(sessionStorage.getItem(CONNECTION_SESSION_KEY));
+    } catch {
+      return undefined;
+    }
   }
 
   public disconnect(): void {
