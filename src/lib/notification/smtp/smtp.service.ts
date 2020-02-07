@@ -1,10 +1,10 @@
-import { Provider, Optional, SkipSelf } from '@angular/core';
+import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { TdHttp, TdGET, TdPUT, TdDELETE, TdBody, TdResponse } from '@covalent/http';
+import { mixinHttp, TdGET, TdPUT, TdDELETE, TdBody, TdResponse } from '@covalent/http';
 
 export interface ISMTPConfig {
   server?: string;
@@ -17,11 +17,11 @@ export interface ISMTPConfig {
   server_timeout?: number;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageSMTPService extends mixinHttp(class {}, {
   baseUrl: '/api/notification',
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
-})
-export class VantageSMTPService {
+}) {
   @TdPUT({
     path: '/smtp-config',
   })

@@ -1,7 +1,7 @@
 import { map, catchError } from 'rxjs/operators';
-import { Provider, Optional, SkipSelf } from '@angular/core';
+import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
-import { TdHttp, TdGET, TdResponse, TdPOST, TdParam } from '@covalent/http';
+import { mixinHttp, TdGET, TdResponse, TdPOST, TdParam } from '@covalent/http';
 import { Observable, of } from 'rxjs';
 import { IUser } from '@td-vantage/ui-platform/user';
 
@@ -15,13 +15,13 @@ export interface ISessionUser {
   expires_at?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageSessionService extends mixinHttp(class {}, {
   baseUrl: '/api/user',
   baseHeaders: new HttpHeaders({
     Accept: 'application/json',
   }),
-})
-export class VantageSessionService {
+}) {
   private _user: IUser;
 
   get user(): IUser {

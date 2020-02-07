@@ -1,6 +1,6 @@
-import { Provider, SkipSelf, Optional } from '@angular/core';
+import { Injectable, Provider, SkipSelf, Optional } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
-import { TdHttp, TdGET, TdResponse, TdParam, TdQueryParams } from '@covalent/http';
+import { TdGET, TdResponse, TdParam, TdQueryParams, mixinHttp } from '@covalent/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -16,13 +16,13 @@ export interface IUser {
   expires_at?: number;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageUserService extends mixinHttp(class {}, {
   baseUrl: '/api/user',
   baseHeaders: new HttpHeaders({
     Accept: 'application/json',
   }),
-})
-export class VantageUserService {
+}) {
   /**
    * get all users
    */

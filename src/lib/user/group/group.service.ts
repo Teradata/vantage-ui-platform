@@ -1,6 +1,6 @@
-import { Provider, SkipSelf, Optional } from '@angular/core';
+import { Injectable, Provider, SkipSelf, Optional } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
-import { TdHttp, TdGET, TdResponse, TdQueryParams } from '@covalent/http';
+import { mixinHttp, TdGET, TdResponse, TdQueryParams } from '@covalent/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -12,13 +12,13 @@ export interface IGroup {
   users?: string[];
 }
 
-@TdHttp({
+@Injectable()
+export class VantageGroupService extends mixinHttp(class {}, {
   baseUrl: '/api/user',
   baseHeaders: new HttpHeaders({
     Accept: 'application/json',
   }),
-})
-export class VantageGroupService {
+}) {
   /**
    * get groups in paginated form via query string
    */

@@ -1,10 +1,10 @@
-import { Optional, SkipSelf, Provider } from '@angular/core';
+import { Injectable, Optional, SkipSelf, Provider } from '@angular/core';
 import { HttpParams, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { TdHttp, TdGET, TdPOST, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
+import { mixinHttp, TdGET, TdPOST, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
 
 export interface IAuditLog {
   action?: string;
@@ -18,11 +18,11 @@ export interface IAuditLog {
   username?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageAuditService extends mixinHttp(class {}, {
   baseUrl: '/api/audit',
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
-})
-export class VantageAuditService {
+}) {
   @TdGET({
     path: '/audit/messages',
     options: {
