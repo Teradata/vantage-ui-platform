@@ -21,6 +21,7 @@ export interface IApp {
   app_id?: string;
   app_type?: AppType;
   app_code?: string;
+  app_state?: string;
   collaborators?: IAppPermissions;
   color?: string;
   config?: any;
