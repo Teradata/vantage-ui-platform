@@ -1,6 +1,7 @@
 import { Injectable, Optional, SkipSelf, Provider } from '@angular/core';
-import { retry, timeout } from 'rxjs/operators';
-import { ISQLEConnection, VantageQueryService } from './query.service';
+import { Observable } from 'rxjs';
+import { tap, mapTo } from 'rxjs/operators';
+import { VantageQueryService, ISQLEConnection } from './query.service';
 
 const CONNECTION_SESSION_KEY: string = 'vantage.editor.connection';
 
@@ -20,16 +21,14 @@ export class VantageConnectionService {
     sessionStorage.removeItem(CONNECTION_SESSION_KEY);
   }
 
-  public async connect(connection: ISQLEConnection): Promise<void> {
+  public connect(connection: ISQLEConnection): Observable<ISQLEConnection> {
     // clear connection before starting a new one
     this.disconnect();
     // test connection with SELECT 1
-    await this._queryService
-      .querySystem(connection, { query: 'SELECT 1;' })
-      .pipe(timeout(7000), retry(1))
-      .toPromise();
-    // if successful, save
-    this.store(connection);
+    return this._queryService.querySystem(connection, { query: 'SELECT 1;' }).pipe(
+      tap(() => this.store(connection)), // if successful, save
+      mapTo(connection),
+    );
   }
 
   private store({ system, creds }: ISQLEConnection): void {
