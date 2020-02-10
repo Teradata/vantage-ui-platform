@@ -1,7 +1,7 @@
 import { Optional, SkipSelf, Provider, Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 
-import { TdHttp, TdQueryParams, TdResponse, TdGET } from '@covalent/http';
+import { mixinHttp, TdQueryParams, TdResponse, TdGET } from '@covalent/http';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,12 +11,11 @@ export interface ITag {
   tag?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageTagsService extends mixinHttp(class {}, {
   baseUrl: '/api/app',
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
-})
-@Injectable()
-export class VantageTagsService {
+}) {
   @TdGET({
     path: '/tags',
     options: {

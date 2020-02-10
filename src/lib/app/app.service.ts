@@ -1,7 +1,17 @@
 import { Optional, SkipSelf, Provider, Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 
-import { TdHttp, TdParam, TdBody, TdQueryParams, TdResponse, TdGET, TdPOST, TdDELETE, TdPATCH } from '@covalent/http';
+import {
+  mixinHttp,
+  TdParam,
+  TdBody,
+  TdQueryParams,
+  TdResponse,
+  TdGET,
+  TdPOST,
+  TdDELETE,
+  TdPATCH,
+} from '@covalent/http';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -66,12 +76,11 @@ export interface IAppPermissions {
   groups?: string[];
 }
 
-@TdHttp({
+@Injectable()
+export class VantageAppService extends mixinHttp(class {}, {
   baseUrl: '/api/app',
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
-})
-@Injectable()
-export class VantageAppService {
+}) {
   @TdGET({
     path: '/apps',
     options: {

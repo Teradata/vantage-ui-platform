@@ -1,10 +1,10 @@
-import { Provider, Optional, SkipSelf } from '@angular/core';
+import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { TdHttp, TdGET, TdPUT, TdPOST, TdPATCH, TdDELETE, TdParam, TdBody, TdResponse } from '@covalent/http';
+import { mixinHttp, TdGET, TdPOST, TdPATCH, TdDELETE, TdParam, TdBody, TdResponse } from '@covalent/http';
 
 export enum LDAPEncription {
   None = 'NONE',
@@ -30,11 +30,11 @@ export interface ILDAPConfig {
   url?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageLDAPService extends mixinHttp(class {}, {
   baseUrl: '/api/user/ldap/config',
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
-})
-export class VantageLDAPService {
+}) {
   @TdGET({
     path: '/',
   })

@@ -1,10 +1,10 @@
-import { Optional, SkipSelf, Provider } from '@angular/core';
+import { Injectable, Optional, SkipSelf, Provider } from '@angular/core';
 import { HttpParams, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { TdHttp, TdGET, TdPUT, TdPOST, TdDELETE, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
+import { mixinHttp, TdGET, TdPUT, TdPOST, TdDELETE, TdParam, TdBody, TdResponse, TdQueryParams } from '@covalent/http';
 
 /*
  * These interfaces are duplicated in the system and the query service.
@@ -52,11 +52,11 @@ export interface ITestSystem extends IAbstractSystem {
   username?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageSystemService extends mixinHttp(class {}, {
   baseUrl: '/api/system',
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
-})
-export class VantageSystemService {
+}) {
   @TdGET({
     path: '/health',
   })

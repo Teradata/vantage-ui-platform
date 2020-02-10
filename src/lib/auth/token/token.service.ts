@@ -1,10 +1,10 @@
-import { Optional, SkipSelf, Provider } from '@angular/core';
+import { Injectable, Optional, SkipSelf, Provider } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { TdHttp, TdPOST, TdBody, TdResponse } from '@covalent/http';
+import { mixinHttp, TdPOST, TdBody, TdResponse } from '@covalent/http';
 
 export interface IToken {
   access_token?: string;
@@ -15,11 +15,11 @@ export interface IToken {
   token_in?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageTokenService extends mixinHttp(class {}, {
   baseUrl: '/api/user',
   baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
-})
-export class VantageTokenService {
+}) {
   @TdPOST({
     path: '/token',
     options: {
