@@ -2,20 +2,9 @@
 @import '~@covalent/core/theming/all-theme';
 // Plus imports for other components in your app.
 
-// Custom typography
-$custom-typography: mat-typography-config(
-  $button: mat-typography-level(14px, 14px, 400)
-);
-$custom-toolbar-typography: mat-typography-config(
-  $title: mat-typography-level(20px, 32px, 400)
-);
-
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 @include mat-core();
-
-// Setting the toolbar to the proper spec weight
-@include mat-toolbar-typography($custom-toolbar-typography);
 
 // Teradata brand
 @import './lib/theming';
@@ -38,9 +27,9 @@ $custom-toolbar-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary: mat-palette($td-teal, 800, 100, 900);
-$accent:  mat-palette($td-orange, 800, 100, 900);
-$warn:    mat-palette($mat-red, 900);
+$primary: $td-primary;
+$accent: $td-accent;
+$warn: $td-warn;
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($primary, $accent, $warn);
@@ -56,9 +45,9 @@ $theme: mat-light-theme($primary, $accent, $warn);
 /* ------------------------------------- DARK THEME ------------------------------------------ */
 
 .dark-theme {
-  $dark-primary: mat-palette($td-teal, 700, 100, 800);
-  $dark-accent:  mat-palette($td-orange, 800, 200, 900);
-  $dark-warn:    mat-palette($mat-red, 900);
+  $dark-primary: $td-dark-primary;
+  $dark-accent: $td-dark-accent;
+  $dark-warn: $td-dark-warn;
 
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 

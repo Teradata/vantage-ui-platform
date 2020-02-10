@@ -44,3 +44,32 @@ function _redirectToHome(): void {
   cy.url().should('not.include', LOGIN_URL);
   cy.url().should('include', BASE_URL);
 }
+
+export const SSO_COOKIES: string[] = ['USER_SSO_ID', 'XSRF-TOKEN'];
+export function whiteListSSOCookies(): void {
+  Cypress.Cookies.defaults({ whitelist: SSO_COOKIES });
+}
+
+export function waitForAngular(): Cypress.Chainable {
+  cy.get('[ng-version]').should('exist');
+  return cy.window().then((win: Window) => {
+    return new Cypress.Promise(
+      (resolve: (thenableOrResult?: {} | PromiseLike<{}>) => void, reject: (error?: any) => void) => {
+        const testabilities: any = win['getAllAngularTestabilities']();
+        if (!testabilities) {
+          return reject(new Error('No testabilities. Is Angular loaded?'));
+        }
+        let count: number = testabilities.length;
+        testabilities.forEach((testability: any) =>
+          testability.whenStable(() => {
+            count--;
+            if (count !== 0) {
+              return;
+            }
+            resolve();
+          }),
+        );
+      },
+    );
+  });
+}

@@ -1,15 +1,10 @@
-import { Optional, SkipSelf, Provider } from '@angular/core';
+import { Injectable, Optional, SkipSelf, Provider } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import {
-  TdHttp,
-  TdPOST,
-  TdBody,
-  TdResponse,
-} from '@covalent/http';
+import { mixinHttp, TdPOST, TdBody, TdResponse } from '@covalent/http';
 
 export interface IToken {
   access_token?: string;
@@ -20,25 +15,26 @@ export interface IToken {
   token_in?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageTokenService extends mixinHttp(class {}, {
   baseUrl: '/api/user',
-  baseHeaders: new HttpHeaders({ 'Accept': 'application/json' }),
-})
-export class VantageTokenService {
-
+  baseHeaders: new HttpHeaders({ Accept: 'application/json' }),
+}) {
   @TdPOST({
     path: '/token',
     options: {
       observe: 'response',
     },
   })
-  create(@TdBody() user: { username: string, password: string },
-         @TdResponse() response?: Observable<HttpResponse<IToken>>): Observable<any> {
+  create(
+    @TdBody() user: { username: string; password: string },
+    @TdResponse() response?: Observable<HttpResponse<IToken>>,
+  ): Observable<any> {
     return response.pipe(
       map((res: HttpResponse<IToken>) => {
-        let data: IToken = res.body;
-        let token: string = res.headers.get('X-AUTH-TOKEN') || data.access_token;
-        return { data: data, token: token };
+        const data: IToken = res.body;
+        const token: string = res.headers.get('X-AUTH-TOKEN') || data.access_token;
+        return { data, token };
       }),
     );
   }
