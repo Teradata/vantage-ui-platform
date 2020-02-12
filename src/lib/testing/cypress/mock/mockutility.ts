@@ -86,8 +86,39 @@ export class MockUtility {
 
       cy.now('log', 'Recording...');
       cy.route({
-        url: '/api/**',
-        onResponse: (xhr: any) => this.recordResponse(xhr),
+        url: '**',
+        method: 'GET',
+        onResponse: (xhr: any) => {
+          this.recordResponse(xhr);
+        },
+      });
+      cy.route({
+        url: '**',
+        method: 'POST',
+        onResponse: (xhr: any) => {
+          this.recordResponse(xhr);
+        },
+      });
+      cy.route({
+        url: '**',
+        method: 'PUT',
+        onResponse: (xhr: any) => {
+          this.recordResponse(xhr);
+        },
+      });
+      cy.route({
+        url: '**',
+        method: 'PATCH',
+        onResponse: (xhr: any) => {
+          this.recordResponse(xhr);
+        },
+      });
+      cy.route({
+        url: '**',
+        method: 'DELETE',
+        onResponse: (xhr: any) => {
+          this.recordResponse(xhr);
+        },
       });
     }
 
