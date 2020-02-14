@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -7,10 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './mat-components.component.html',
   styleUrls: ['./mat-components.component.scss'],
 })
-export class MatComponentsComponent implements OnInit {
-  DARK_THEME: string = 'dark-theme';
-  LIGHT_THEME: string = 'light-theme';
-
+export class MatComponentsComponent {
   lastDialogResult: string;
   mode: string;
   value: number;
@@ -65,21 +62,6 @@ export class MatComponentsComponent implements OnInit {
     setInterval(() => {
       this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
     }, 200);
-  }
-
-  ngOnInit(): void {
-    // Sets default theme to dark mode if user never set theme
-    if (!this.activeTheme) {
-      this.theme(this.DARK_THEME);
-    }
-  }
-
-  get activeTheme(): string {
-    return localStorage.getItem('vantage.theme');
-  }
-  theme(theme?: string): void {
-    localStorage.setItem('vantage.theme', theme);
-    document.getElementsByTagName('body').item(0).className = theme;
   }
 
   openDialog(): void {
