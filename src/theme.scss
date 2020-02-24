@@ -33,6 +33,7 @@ $warn: $td-warn;
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($primary, $accent, $warn);
+$theme-all-accent: mat-light-theme($accent, $accent, $warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -41,6 +42,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include covalent-theme($theme);
 // Include Teradata brand
 @include teradata-brand($theme);
+// Override certain component color choices
+@include mat-checkbox-theme($theme-all-accent);
+@include mat-form-field-theme($theme-all-accent);
+@include mat-radio-theme($theme-all-accent);
+@include mat-slide-toggle-theme($theme-all-accent);
+@include mat-tabs-theme($theme-all-accent);
 
 /* ------------------------------------- DARK THEME ------------------------------------------ */
 
@@ -50,9 +57,16 @@ $theme: mat-light-theme($primary, $accent, $warn);
   $dark-warn: $td-dark-warn;
 
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  $dark-theme-all-accent: mat-dark-theme($dark-accent, $dark-accent, $dark-warn);
 
   @include angular-material-theme($dark-theme);
   @include covalent-theme($dark-theme);
   // Include Teradata brand
   @include teradata-brand($dark-theme);
+  // Override certain component color choices
+  @include mat-checkbox-theme($dark-theme-all-accent);
+  @include mat-form-field-theme($dark-theme-all-accent);
+  @include mat-radio-theme($dark-theme-all-accent);
+  @include mat-slide-toggle-theme($dark-theme-all-accent);
+  @include mat-tabs-theme($dark-theme-all-accent);
 }
