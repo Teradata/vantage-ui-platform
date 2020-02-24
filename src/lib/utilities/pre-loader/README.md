@@ -20,11 +20,4 @@ Update the angular.json
           "builder": "@angular-builders/custom-webpack:dev-server",
 ```
 
-Update the index.html
-
-```html
-<div id="td-pre-loader"></div>
-<td-app></td-app>
-```
-
-Note that is alongside, not inside, of the root component. For an explanation see pre-loader.html
+That's it! The pre-loader markup will be inserted into the index html right before the closing body tag.
