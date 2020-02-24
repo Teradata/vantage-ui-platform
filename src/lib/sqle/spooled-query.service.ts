@@ -1,15 +1,10 @@
 import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
-import { catchError, expand, map, mapTo, pluck, skipWhile, switchMap, take, tap } from 'rxjs/operators';
+import { catchError, expand, map, mapTo, skipWhile, switchMap, take, tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of, throwError, timer } from 'rxjs';
-
-import {
-  VantageQueryService,
-  VantageConnectionService,
-  IQueryPayload,
-  IQueryResultSet,
-} from '@td-vantage/ui-platform/sqle';
+import { VantageConnectionService } from './connection.service';
+import { VantageQueryService, IQueryPayload, IQueryResultSet } from './query.service';
 
 interface ISpooledQueryError extends HttpErrorResponse {
   id: string;
@@ -131,7 +126,7 @@ export function VANTAGE_SPOOLED_QUERY_PROVIDER_FACTORY(
 
 export const VANTAGE_SPOOLED_QUERY_PROVIDER: Provider = {
   // If there is already a service available, use that. Otherwise, provide a new one.
-  provide: VantageQueryService,
+  provide: VantageSpooledQueryService,
   deps: [
     [new Optional(), new SkipSelf(), VantageSpooledQueryService],
     VantageConnectionService,
