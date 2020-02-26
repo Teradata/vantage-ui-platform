@@ -225,7 +225,9 @@ $shape-radius: 8px;
       border-radius: 3px 3px 0 0;
     }
 
-    &[dense='toolbars'] {
+    // MatToolbars globally 48px
+    // Adding this to body will make all mat-toolbars 48px in height
+    &[dense='mat-toolbars'] {
       .mat-toolbar-row,
       .mat-toolbar-single-row {
         height: 48px;
