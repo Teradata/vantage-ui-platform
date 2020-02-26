@@ -6,8 +6,7 @@
 // Radius to be used in: card, snackbar, button, dialog & menu
 $shape-radius: 8px;
 
-// Theme Config
-
+// Teradata-specific overrides
 @mixin teradata-brand($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -15,6 +14,17 @@ $shape-radius: 8px;
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
   $is-dark: map-get($theme, is-dark);
+
+  // Component theme overrides
+  $theme--all-accent: if($is-dark, mat-dark-theme($accent, $accent, $warn), mat-light-theme($accent, $accent, $warn));
+
+  @include mat-checkbox-theme($theme--all-accent);
+  @include mat-form-field-theme($theme--all-accent);
+  @include mat-radio-theme($theme--all-accent);
+  @include mat-slide-toggle-theme($theme--all-accent);
+  @include mat-tabs-theme($theme--all-accent);
+
+  // More fine-grained overrides
 
   // Chips
   .mat-chip.mat-standard-chip {
