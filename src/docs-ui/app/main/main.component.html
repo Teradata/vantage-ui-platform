@@ -14,7 +14,7 @@
           <span class="mat-input">Dark mode</span>
         </mat-slide-toggle>
 
-        <nav mat-tab-nav-bar color="accent" class="push-bottom-none">
+        <nav mat-tab-nav-bar class="push-bottom-none">
           <a
             mat-tab-link
             *ngFor="let link of navLinks"
@@ -23,7 +23,7 @@
             #rla="routerLinkActive"
             [active]="rla.isActive"
           >
-            {{ link.name | uppercase }}
+            {{ link.name }}
           </a>
         </nav>
       </div>

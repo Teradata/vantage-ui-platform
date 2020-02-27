@@ -6,8 +6,7 @@
 // Radius to be used in: card, snackbar, button, dialog & menu
 $shape-radius: 8px;
 
-// Theme Config
-
+// Teradata-specific overrides
 @mixin teradata-brand($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -16,41 +15,74 @@ $shape-radius: 8px;
   $foreground: map-get($theme, foreground);
   $is-dark: map-get($theme, is-dark);
 
-  // Buttons
-  .mat-button,
-  .mat-flat-button,
-  .mat-raised-button {
-    text-transform: uppercase;
-  }
+  // Component theme overrides
+  $theme--all-accent: if($is-dark, mat-dark-theme($accent, $accent, $warn), mat-light-theme($accent, $accent, $warn));
 
-  .mat-stroked-button {
-    text-transform: uppercase;
+  @include mat-checkbox-theme($theme--all-accent);
+  @include mat-form-field-theme($theme--all-accent);
+  @include mat-radio-theme($theme--all-accent);
+  @include mat-slide-toggle-theme($theme--all-accent);
+  @include mat-tabs-theme($theme--all-accent);
 
-    &:not([disabled]) {
-      border-color: mat-color($foreground, icon);
-    }
-    &.mat-primary {
-      border-color: mat-color($primary);
-    }
-    &.mat-accent {
-      border-color: mat-color($accent);
-    }
-    &.mat-warn {
-      border-color: mat-color($warn);
-    }
-    &:disabled {
-      border-color: map-get($foreground, disabled);
-    }
-  }
+  // More fine-grained overrides
 
   // Chips
-  .mat-chip {
+  .mat-chip.mat-standard-chip {
     font-weight: normal;
-  }
 
-  // Tabs
-  .mat-tab-label {
-    text-transform: uppercase;
+    &.mat-accent {
+      background-color: mat-color($background, accent);
+    }
+    &.mat-caution {
+      background-color: mat-color($background, caution);
+    }
+    &.mat-emphasis {
+      background-color: mat-color($background, emphasis);
+    }
+    &.mat-negative,
+    &.mat-warn {
+      background-color: mat-color($background, negative);
+    }
+    &.mat-neutral {
+      background-color: mat-color($background, neutral);
+    }
+    &.mat-positive {
+      background-color: mat-color($background, positive);
+    }
+    &.mat-primary {
+      background-color: mat-color($background, primary);
+    }
+
+    &.mat-chip-selected {
+      &.mat-accent {
+        background-color: mat-color($foreground, accent);
+        color: if($is-dark, map-get($mat-light-theme-foreground, text), map-get($mat-dark-theme-foreground, text));
+      }
+      &.mat-caution {
+        background-color: mat-color($foreground, caution);
+        color: if($is-dark, map-get($mat-light-theme-foreground, text), map-get($mat-dark-theme-foreground, text));
+      }
+      &.mat-emphasis {
+        background-color: mat-color($foreground, emphasis);
+        color: if($is-dark, map-get($mat-light-theme-foreground, text), map-get($mat-dark-theme-foreground, text));
+      }
+      &.mat-neutral {
+        background-color: mat-color($foreground, neutral);
+        color: if($is-dark, map-get($mat-light-theme-foreground, text), map-get($mat-dark-theme-foreground, text));
+      }
+      &.mat-positive {
+        background-color: mat-color($foreground, positive);
+        color: if($is-dark, map-get($mat-light-theme-foreground, text), map-get($mat-dark-theme-foreground, text));
+      }
+      &.mat-primary {
+        background-color: mat-color($foreground, primary);
+        color: if($is-dark, map-get($mat-light-theme-foreground, text), map-get($mat-dark-theme-foreground, text));
+      }
+
+      .mat-chip-remove {
+        color: if($is-dark, map-get($mat-light-theme-foreground, icon), map-get($mat-dark-theme-foreground, icon));
+      }
+    }
   }
 
   // Active icon color in list nav
@@ -125,8 +157,61 @@ $shape-radius: 8px;
       margin-right: 8px;
     }
   }
-  // More border radius
   body {
+    // Buttons
+    a.mat-button,
+    button.mat-button,
+    .mat-flat-button {
+      // Remove min-width to make sure items align consistently
+      min-width: 0;
+      // According to the spec, non-raised buttons should have less padding
+      padding: 0 8px;
+      // According to the spec, buttons should be all-caps
+      text-transform: uppercase;
+    }
+    .mat-raised-button {
+      // According to the spec, buttons should be all-caps
+      text-transform: uppercase;
+    }
+    .mat-stroked-button {
+      // According to the spec, buttons should be all-caps
+      text-transform: uppercase;
+
+      // Update border colors to material 2 style
+      &:not([disabled]) {
+        border-color: mat-color($foreground, icon);
+      }
+      &.mat-primary {
+        border-color: mat-color($primary);
+      }
+      &.mat-accent {
+        border-color: mat-color($accent);
+      }
+      &.mat-warn {
+        border-color: mat-color($warn);
+      }
+      &:disabled {
+        border-color: map-get($foreground, disabled);
+      }
+    }
+
+    // Tabs
+    .mat-tab-link,
+    .mat-tab-label {
+      // Remove min-width to make sure items align consistently
+      min-width: 0;
+      // Match indent to buttons
+      padding: 0 16px;
+      // According to the spec, tabs should be all-caps
+      text-transform: uppercase;
+
+      // The active tab text is supposed to be darker than the rest
+      &.mat-tab-label-active {
+        opacity: 1;
+      }
+    }
+
+    // More border radius
     .mat-card,
     .mat-button-base,
     .mat-dialog-container,
@@ -152,22 +237,22 @@ $shape-radius: 8px;
   }
 
   .tc-primary {
-    color: if($is-dark, mat-color($primary), mat-color($primary));
+    color: mat-color($primary);
   }
   .tc-accent {
-    color: if($is-dark, mat-color($accent), mat-color($accent));
+    color: map-get($foreground, accent);
   }
   .tc-warn {
-    color: if($is-dark, mat-color($warn), mat-color($warn));
+    color: map-get($foreground, negative);
   }
   .bgc-primary {
-    background-color: mat-color($primary);
+    background-color: map-get($background, emphasis);
   }
   .bgc-accent {
-    background-color: mat-color($accent);
+    background-color: map-get($background, accent);
   }
   .bgc-warn {
-    background-color: mat-color($warn);
+    background-color: map-get($background, negative);
   }
   .tc-faded {
     color: if($is-dark, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.5));
@@ -232,7 +317,7 @@ $shape-radius: 8px;
 
   // Components
   .mat-tree {
-    background-color: if($is-dark, mat-color($td-slate-dark, 1400), $white-87-opacity);
+    background-color: transparent;
   }
   .mat-drawer-container,
   .light-theme .mat-drawer-container.mat-sidenav-container {
