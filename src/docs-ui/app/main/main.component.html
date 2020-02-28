@@ -8,8 +8,8 @@
       <div class="pad-md pad-bottom-none push push-bottom push-top-md">
         <mat-slide-toggle
           class="push-bottom-lg"
-          [checked]="darkThemeIsActive"
-          (change)="lightThemeIsActive ? applyDarkTheme() : applyLightTheme()"
+          [checked]="_themeService.map({ 'dark-theme': true, 'light-theme': false }) | async"
+          (change)="_themeService.toggleTheme()"
         >
           <span class="mat-input">Dark mode</span>
         </mat-slide-toggle>

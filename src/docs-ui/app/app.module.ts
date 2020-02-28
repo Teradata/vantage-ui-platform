@@ -62,9 +62,17 @@ import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-transla
 import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTED_LANGS } from '../config/translate';
 import { TypographyComponent } from './typography/typography.component';
 import { MatComponentsComponent, DialogContentComponent } from './mat-components/mat-components.component';
+import { DemosComponent } from './demos/demos.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, DialogContentComponent, TypographyComponent, MatComponentsComponent], // directives, components, and pipes owned by this NgModule
+  declarations: [
+    AppComponent,
+    MainComponent,
+    DialogContentComponent,
+    TypographyComponent,
+    MatComponentsComponent,
+    DemosComponent,
+  ], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
     HttpClientModule,
