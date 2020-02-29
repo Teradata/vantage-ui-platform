@@ -43,6 +43,7 @@ import { CovalentMessageModule } from '@covalent/core/message';
 import { CovalentLoadingModule } from '@covalent/core/loading';
 import { CovalentDialogsModule } from '@covalent/core/dialogs';
 import { CovalentMediaModule } from '@covalent/core/media';
+import { CovalentBreadcrumbsModule } from '@covalent/core/breadcrumbs';
 
 import { CovalentHttpModule } from '@covalent/http';
 
@@ -63,6 +64,7 @@ import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTE
 import { TypographyComponent } from './typography/typography.component';
 import { MatComponentsComponent, DialogContentComponent } from './mat-components/mat-components.component';
 import { DemosComponent } from './demos/demos.component';
+import { CovalentComponentsComponent } from './covalent-components/covalent-components.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,7 @@ import { DemosComponent } from './demos/demos.component';
     TypographyComponent,
     MatComponentsComponent,
     DemosComponent,
+    CovalentComponentsComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
@@ -115,6 +118,7 @@ import { DemosComponent } from './demos/demos.component';
     /** Covalent Modules */
     CovalentCommonModule,
     CovalentLayoutModule,
+    CovalentBreadcrumbsModule,
     CovalentMediaModule,
     CovalentDialogsModule,
     CovalentLoadingModule,

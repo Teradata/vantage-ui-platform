@@ -22,6 +22,10 @@ export class MainComponent {
       name: 'Demos',
       route: '/demos',
     },
+    {
+      name: 'Covalent',
+      route: '/covalent-components',
+    },
   ];
 
   constructor(private _dialog: MatDialog, private _snackbar: MatSnackBar, public _themeService: VantageThemeService) {}
