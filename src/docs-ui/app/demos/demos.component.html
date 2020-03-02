@@ -1,0 +1,7 @@
+<h2>Theme Service</h2>
+<div>Active theme: {{ _themeService.activeTheme$ | async }}</div>
+<div>Dark theme is active: {{ _themeService.darkTheme$ | async }}</div>
+<div>Light theme is active: {{ _themeService.lightTheme$ | async }}</div>
+<div>
+  Theme map: {{ _themeService.map({ 'dark-theme': 'hacker vibes 👩‍💻', 'light-theme': 'miami vibes 🏖️' }) | async }}
+</div>
