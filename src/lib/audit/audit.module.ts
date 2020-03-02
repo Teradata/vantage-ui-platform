@@ -4,13 +4,7 @@ import { CommonModule } from '@angular/common';
 import { VANTAGE_AUDIT_PROVIDER } from './audit.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-  ],
-  providers: [
-    VANTAGE_AUDIT_PROVIDER,
-  ],
+  imports: [CommonModule],
+  providers: [VANTAGE_AUDIT_PROVIDER],
 })
-export class VantageAuditModule {
-
-}
+export class VantageAuditModule {}

@@ -1,22 +1,11 @@
 import { map, catchError } from 'rxjs/operators';
-import { Provider, Optional, SkipSelf } from '@angular/core';
+import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
-import { TdHttp, TdGET, TdResponse, TdPOST, TdParam } from '@covalent/http';
+import { mixinHttp, TdGET, TdResponse, TdPOST, TdParam } from '@covalent/http';
 import { Observable, of } from 'rxjs';
+import { IUser } from '@td-vantage/ui-platform/user';
 
 import { tap, switchMap } from 'rxjs/operators';
-
-export interface IUser {
-  username?: string;
-  password?: string;
-  email?: string;
-  local?: boolean;
-  admin?: boolean;
-  groups?: string[];
-  display_name?: string;
-  access_token?: string;
-  expires_at?: number;
-}
 
 export interface ISessionUser {
   user?: string;
@@ -26,14 +15,13 @@ export interface ISessionUser {
   expires_at?: string;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageSessionService extends mixinHttp(class {}, {
   baseUrl: '/api/user',
   baseHeaders: new HttpHeaders({
     Accept: 'application/json',
   }),
-})
-export class VantageSessionService {
-
+}) {
   private _user: IUser;
 
   get user(): IUser {
@@ -47,8 +35,8 @@ export class VantageSessionService {
           return this._getUser(sessionUser.user).pipe(
             tap((u: IUser) => {
               this._user = Object.assign({}, sessionUser, u);
-            },
-          ));
+            }),
+          );
         }),
       );
     } else {
@@ -57,7 +45,7 @@ export class VantageSessionService {
   }
 
   public logout(): void {
-    window.location.href = '/api/user/logout';
+    window.location.href = '/api/user/logout?nonce=' + Math.floor(1000000000 + Math.random() * 9000000000);
   }
 
   /**
@@ -69,9 +57,7 @@ export class VantageSessionService {
       observe: 'response',
     },
   })
-  private _get(
-    @TdResponse() response?: Observable<HttpResponse<any>>,
-  ): Observable<any> {
+  private _get(@TdResponse() response?: Observable<HttpResponse<any>>): Observable<any> {
     return response.pipe(
       map((res: HttpResponse<ISessionUser>) => {
         return res.body;
@@ -97,7 +83,7 @@ export class VantageSessionService {
         return of(error);
       }),
       map((res: HttpResponse<IUser>) => {
-        return <IUser>res.body;
+        return res.body;
       }),
     );
   }

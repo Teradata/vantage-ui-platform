@@ -1,0 +1,280 @@
+//
+// All style overrides for dark, light and all components for
+// Vantage UI platform
+//
+
+// Radius to be used in: card, snackbar, button, dialog & menu
+$shape-radius: 8px;
+
+// Theme Config
+
+@mixin teradata-brand($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $is-dark: map-get($theme, is-dark);
+
+  // Buttons
+  .mat-button,
+  .mat-flat-button,
+  .mat-raised-button {
+    text-transform: uppercase;
+  }
+
+  .mat-stroked-button {
+    text-transform: uppercase;
+
+    &:not([disabled]) {
+      border-color: mat-color($foreground, icon);
+    }
+    &.mat-primary {
+      border-color: mat-color($primary);
+    }
+    &.mat-accent {
+      border-color: mat-color($accent);
+    }
+    &.mat-warn {
+      border-color: mat-color($warn);
+    }
+    &:disabled {
+      border-color: map-get($foreground, disabled);
+    }
+  }
+
+  // Chips
+  .mat-chip {
+    font-weight: normal;
+  }
+
+  // Tabs
+  .mat-tab-label {
+    text-transform: uppercase;
+  }
+
+  // Active icon color in list nav
+  mat-nav-list {
+    [mat-list-item].selected {
+      background-color: mat-color($background, app-bar);
+      opacity: 0.9;
+    }
+    [mat-list-item].active {
+      mat-icon[matListAvatar] {
+        background-color: mat-color($accent);
+        color: mat-color($accent, default-contrast);
+      }
+      mat-icon[matListIcon] {
+        color: mat-color($accent);
+      }
+    }
+  }
+
+  // Logo alignment
+  .mat-icon.mat-icon-logo {
+    position: relative;
+    top: -2px;
+    // Logo + title alignment
+    & + .mat-title,
+    & + span {
+      position: relative;
+      top: 2px;
+      text-transform: uppercase;
+      & + mat-divider.mat-divider-vertical {
+        margin-left: 16px;
+        margin-right: 16px;
+        opacity: 0.8;
+        border-right-color: currentColor;
+        height: 32px;
+        & + span {
+          position: relative;
+          top: 2px;
+          text-transform: uppercase;
+        }
+      }
+    }
+    & + .td-navigation-drawer-title {
+      top: 3px;
+    }
+  }
+  // Toolbar
+  .mat-toolbar {
+    border-top: 1px solid mat-color($foreground, divider);
+
+    &.mat-primary {
+      // Use custom background color on light mode
+      background-color: if($is-dark, mat-color($background, app-bar), mat-color($td-slate, 500));
+      border-top: 0;
+      // Always dark theme text color here, regardless of active theme
+      color: mat-color($mat-dark-theme-foreground, text);
+    }
+
+    // Spacing before logo in main toolbar
+    .mat-icon-button + .mat-icon-logo,
+    .mat-icon-button + span > .mat-icon-logo {
+      margin-left: 10px;
+    }
+    // Spacing after logo in toolbar
+    .mat-icon-logo {
+      margin-right: 16px;
+    }
+  }
+  // Logo in card title alignment
+  .mat-card-title {
+    .mat-icon-logo {
+      margin-right: 8px;
+    }
+  }
+  // More border radius
+  body {
+    .mat-card,
+    .mat-button-base,
+    .mat-dialog-container,
+    .mat-snack-bar-container,
+    .mat-menu-panel {
+      border-radius: $shape-radius;
+    }
+
+    .mat-ink-bar {
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+    }
+  }
+  // Apply theme for this app
+  body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 2px;
+    width: 100%;
+    z-index: 1000;
+    background-color: mat-color($td-orange, 500);
+  }
+
+  .tc-primary {
+    color: if($is-dark, mat-color($primary), mat-color($primary));
+  }
+  .tc-accent {
+    color: if($is-dark, mat-color($accent), mat-color($accent));
+  }
+  .tc-warn {
+    color: if($is-dark, mat-color($warn), mat-color($warn));
+  }
+  .bgc-primary {
+    background-color: mat-color($primary);
+  }
+  .bgc-accent {
+    background-color: mat-color($accent);
+  }
+  .bgc-warn {
+    background-color: mat-color($warn);
+  }
+  .tc-faded {
+    color: if($is-dark, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.5));
+  }
+  .bgc-contrast {
+    background-color: if($is-dark, mat-color($td-slate-dark, 1400), mat-color($mat-gray, 50));
+  }
+  .tc {
+    color: if($is-dark, $black-87-opacity, $white-87-opacity);
+  }
+  body,
+  .bgc,
+  td-markdown-navigator-window {
+    background-color: if(
+      $is-dark,
+      map-get($mat-dark-theme-background, background),
+      map-get($mat-light-theme-background, background)
+    );
+  }
+
+  // State colors
+  .tc-positive {
+    color: map-get($foreground, positive) !important;
+  }
+  .tc-caution {
+    color: map-get($foreground, caution) !important;
+  }
+  .tc-negative {
+    color: map-get($foreground, negative) !important;
+  }
+  .tc-neutral {
+    color: map-get($foreground, neutral) !important;
+  }
+  .tc-accent,
+  .tc-emphasis-1 {
+    color: map-get($foreground, accent) !important;
+  }
+  .tc-emphasis,
+  .tc-emphasis-2 {
+    color: map-get($foreground, emphasis) !important;
+  }
+  .bgc-positive {
+    color: map-get($background, positive) !important;
+  }
+  .bgc-caution {
+    color: map-get($background, caution) !important;
+  }
+  .bgc-negative {
+    color: map-get($background, negative) !important;
+  }
+  .bgc-neutral {
+    color: map-get($background, neutral) !important;
+  }
+  .bgc-accent,
+  .bgc-emphasis-1 {
+    color: map-get($background, accent) !important;
+  }
+  .bgc-emphasis,
+  .bgc-emphasis-2 {
+    color: map-get($background, emphasis) !important;
+  }
+
+  // Components
+  .mat-tree {
+    background-color: if($is-dark, mat-color($td-slate-dark, 1400), $white-87-opacity);
+  }
+  .mat-drawer-container,
+  .light-theme .mat-drawer-container.mat-sidenav-container {
+    background-color: mat-color($background, background);
+  }
+  .td-expansion-panel {
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
+  }
+  // Active icon color in list nav
+  .mat-drawer {
+    background-color: mat-color($background, app-bar);
+    mat-nav-list {
+      .mat-list-item {
+        &.active {
+          font-weight: bold;
+          color: mat-color($accent, darker) !important;
+          .mat-icon.mat-list-avatar {
+            background-color: mat-color($accent);
+            color: mat-color($accent, default-contrast);
+            fill: mat-color($accent, default-contrast);
+          }
+          .mat-icon.mat-list-icon {
+            color: mat-color($accent);
+            fill: mat-color($accent);
+          }
+        }
+      }
+      &[dense] {
+        .mat-icon.mat-list-avatar {
+          min-width: 36px;
+        }
+      }
+    }
+  }
+  .td-search {
+    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
+  }
+  .mat-form-field-ripple {
+    background-color: if($is-dark, mat-color($primary, lighter), $white-87-opacity);
+  }
+
+  .mat-drawer-overlay.mat-drawer-shown {
+    background-color: mat-color($background, overlay);
+  }
+}

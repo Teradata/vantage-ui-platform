@@ -14,8 +14,9 @@
       "sourceRoot": "src",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "indexTransform": "./src/lib/utilities/pre-loader/",
             "outputPath": "dist",
             "index": "src/docs-ui/index.html",
             "main": "src/docs-ui/main.ts",
@@ -30,13 +31,8 @@
                 "output": "/"
               }
             ],
-            "styles": [
-              "src/theme.scss",
-              "src/docs-ui/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/hammerjs/hammer.min.js"
-            ]
+            "styles": ["src/theme.scss", "src/docs-ui/styles.scss"],
+            "scripts": ["node_modules/hammerjs/hammer.min.js"]
           },
           "configurations": {
             "production": {
@@ -66,7 +62,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "docs-ui:build"
           },
@@ -89,13 +85,8 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/docs-ui/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/hammerjs/hammer.min.js"
-            ],
-            "styles": [
-              "src/theme.scss",
-              "src/docs-ui/styles.scss"
-            ],
+            "scripts": ["node_modules/hammerjs/hammer.min.js"],
+            "styles": ["src/theme.scss", "src/docs-ui/styles.scss"],
             "assets": [
               "src/assets",
               {
@@ -109,13 +100,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/docs-ui/tsconfig.app.json",
-              "src/docs-ui/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["src/docs-ui/tsconfig.app.json", "src/docs-ui/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -152,15 +138,9 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/lib/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/hammerjs/hammer.min.js"
-            ],
-            "styles": [
-              "src/theme.scss"
-            ],
-            "assets": [
-              "src/assets"
-            ]
+            "scripts": ["node_modules/hammerjs/hammer.min.js"],
+            "styles": ["src/theme.scss"],
+            "assets": ["src/assets"]
           }
         }
       }

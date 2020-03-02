@@ -7,15 +7,7 @@ import { VANTAGE_SESSION_PROVIDER } from './session/session.service';
 import { VantageAuthenticationGuard } from './guards/authentication.guard';
 
 @NgModule({
-  imports: [
-    CommonModule,
-  ],
-  providers: [
-    VANTAGE_TOKEN_PROVIDER,
-    VANTAGE_SESSION_PROVIDER,
-    VantageAuthenticationGuard,
-  ],
+  imports: [CommonModule],
+  providers: [VANTAGE_TOKEN_PROVIDER, VANTAGE_SESSION_PROVIDER, VantageAuthenticationGuard],
 })
-export class VantageAuthenticationModule {
-
-}
+export class VantageAuthenticationModule {}

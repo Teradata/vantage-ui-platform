@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { VantageToastService, VantageErrorService } from '@td-vantage/ui-platform/utilities';
-import { VantageSessionService } from '@td-vantage/ui-platform/auth';
-import { IUser } from '@td-vantage/ui-platform/user';
-import { timeout } from 'rxjs/operators';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { VantageThemeService } from '@td-vantage/ui-platform/theme';
 
 @Component({
   selector: 'td-main',
@@ -11,38 +9,34 @@ import { timeout } from 'rxjs/operators';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  user: IUser;
-  loggedIn: boolean = false;
+  navLinks: any = [
+    {
+      name: 'Components',
+      route: '/components',
+    },
+    {
+      name: 'Typography',
+      route: '/typography',
+    },
+  ];
 
-  constructor(private _errorService: VantageErrorService,
-              private _toastService: VantageToastService,
-              private _sessionService: VantageSessionService) {
+  constructor(private _dialog: MatDialog, private _snackbar: MatSnackBar, private _themeService: VantageThemeService) {}
+
+  ngOnInit(): void {
+    // Sets default theme to dark mode if user never set theme
   }
 
-  async ngOnInit(): Promise<void> {
-    try {
-      this.user = await this._sessionService.getInfo().pipe(timeout(5000)).toPromise();
-      this.loggedIn = true;
-    } catch (error) {
-      if (error.status !== 401) {
-        this.loggedIn = false;
-        this._errorService.open(error);
-      }
-    }
+  get darkThemeIsActive(): boolean {
+    return this._themeService.darkThemeIsActive;
+  }
+  get lightThemeIsActive(): boolean {
+    return this._themeService.lightThemeIsActive;
   }
 
-  openToast(): void {
-    this._toastService.open('My toast');
+  applyLightTheme(): void {
+    this._themeService.applyLightTheme();
   }
-
-  openDialog(): void {
-    this._errorService.open({
-      error: 1000,
-      message: 'Error message',
-    });
-  }
-
-  public logout(): void {
-    this._sessionService.logout();
+  applyDarkTheme(): void {
+    this._themeService.applyDarkTheme();
   }
 }

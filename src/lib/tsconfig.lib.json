@@ -5,16 +5,19 @@
     "baseUrl": ".",
     "inlineSourceMap": true,
     "inlineSources": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@td-vantage/ui-platform": ["./"],
+      "@td-vantage/ui-platform/*": ["./*"]
+    }
   },
-  "exclude": [
-    "./auth/config/*"
-  ],
+  "exclude": ["./auth/config/*"],
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "enableResourceInlining": true
+    "enableResourceInlining": true,
+    "enableIvy": false
   }
 }

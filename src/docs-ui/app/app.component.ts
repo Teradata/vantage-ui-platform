@@ -7,9 +7,7 @@ import { MatIconRegistry } from '@angular/material/icon';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   constructor(private _iconRegistry: MatIconRegistry) {
-
     // Register Covalent Icons
     this._iconRegistry.registerFontClassAlias('covalent', 'covalent-icons');
   }

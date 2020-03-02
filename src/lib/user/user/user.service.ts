@@ -1,12 +1,6 @@
-import { Provider, SkipSelf, Optional } from '@angular/core';
+import { Injectable, Provider, SkipSelf, Optional } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
-import {
-  TdHttp,
-  TdGET,
-  TdResponse,
-  TdParam,
-  TdQueryParams,
-} from '@covalent/http';
+import { TdGET, TdResponse, TdParam, TdQueryParams, mixinHttp } from '@covalent/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -22,14 +16,13 @@ export interface IUser {
   expires_at?: number;
 }
 
-@TdHttp({
+@Injectable()
+export class VantageUserService extends mixinHttp(class {}, {
   baseUrl: '/api/user',
   baseHeaders: new HttpHeaders({
     Accept: 'application/json',
   }),
-})
-export class VantageUserService {
-
+}) {
   /**
    * get all users
    */
@@ -42,7 +35,7 @@ export class VantageUserService {
   query(
     @TdQueryParams() queryParams?: HttpParams,
     @TdResponse() response?: Observable<HttpResponse<any>>,
-  ): Observable<{total: number, data: IUser[]}> {
+  ): Observable<{ total: number; data: IUser[] }> {
     return response.pipe(
       catchError((error: Response) => {
         return of(error);
@@ -65,20 +58,16 @@ export class VantageUserService {
       observe: 'response',
     },
   })
-  get(
-    @TdParam('username') id: string,
-    @TdResponse() response?: Observable<HttpResponse<any>>,
-  ): Observable<IUser> {
+  get(@TdParam('username') id: string, @TdResponse() response?: Observable<HttpResponse<any>>): Observable<IUser> {
     return response.pipe(
       catchError((error: Response) => {
         return of(error);
       }),
       map((res: HttpResponse<IUser>) => {
-        return <IUser>res.body;
+        return res.body;
       }),
     );
   }
-
 }
 
 export function VANTAGE_USER_PROVIDER_FACTORY(parent: VantageUserService): VantageUserService {
