@@ -24,16 +24,11 @@ enum SpooledQueryState {
   RESULT_SET_READY = 'RESULT_SET_READY',
 }
 
-export interface IRunningQueryInfo {
-  id: string;
-  sessionId: string;
-}
-
 @Injectable()
 export class VantageSpooledQueryService {
   queryStatus: BehaviorSubject<SpooledQueryState> = new BehaviorSubject<SpooledQueryState>(undefined);
   queryStatus$: Observable<SpooledQueryState> = this.queryStatus.asObservable();
-  queryStack: IRunningQueryInfo[] = [];
+  queryStack: string[] = [];
   constructor(
     private connectionService: VantageConnectionService,
     private queryService: VantageQueryService,
@@ -41,7 +36,7 @@ export class VantageSpooledQueryService {
   ) {}
 
   cancelLastQuery(): void {
-    const thisQuery: IRunningQueryInfo = this.queryStack.pop();
+    const thisQuery: string = this.queryStack.pop();
 
     return this.deleteSpooledQuery(thisQuery);
   }
@@ -54,6 +49,7 @@ export class VantageSpooledQueryService {
     let currentRuns: number = 1;
 
     return this.queryService.querySystem(this.connectionService.current, { ...payload, spooledResultSet: true }).pipe(
+      tap((res: any) => this.queryStack.push(res.id)),
       switchMap((res: any) => this.exponentialBackOffInterval(MAX_INTERVAL, res.id)),
       switchMap((id: number) =>
         this.queryService.getQuery(this.connectionService.current, id.toString()).pipe(
@@ -105,13 +101,10 @@ export class VantageSpooledQueryService {
     return Math.min(interval, maxInterval);
   }
 
-  deleteSpooledQuery(query: IRunningQueryInfo): void {
-    this.queryService
-      .deleteQuery(this.connectionService.current, query.id)
-      .pipe(switchMap(() => this.queryService.deleteSession(this.connectionService.current, query.sessionId)))
-      .subscribe(undefined, (err: Error) => {
-        throw new Error(this.translate.instant('SPOOLED_QUERY_COULD_NOT_BE_DELETED', { error: JSON.stringify(err) }));
-      });
+  deleteSpooledQuery(queryId: string): void {
+    this.queryService.deleteQuery(this.connectionService.current, queryId).subscribe(undefined, (err: Error) => {
+      throw new Error(this.translate.instant('SPOOLED_QUERY_COULD_NOT_BE_DELETED', { error: JSON.stringify(err) }));
+    });
   }
 }
 
