@@ -13,7 +13,6 @@ interface ISpooledQueryError extends HttpErrorResponse {
 
 const MAX_INTERVAL: number = 10000;
 const BASE_INTERVAL: number = 2000;
-const MAX_RETRIES: number = 2;
 
 enum SpooledQueryState {
   QUEUED = 'QUEUED',
@@ -46,8 +45,6 @@ export class VantageSpooledQueryService {
   }
 
   querySystem(payload: IQueryPayload): Observable<IQueryResultSet> {
-    let currentRuns: number = 1;
-
     return this.queryService.querySystem(this.connectionService.current, { ...payload, spooledResultSet: true }).pipe(
       tap((res: any) => this.queryStack.push(res.id)),
       switchMap((res: any) => this.exponentialBackOffInterval(MAX_INTERVAL, res.id)),
@@ -63,18 +60,8 @@ export class VantageSpooledQueryService {
       switchMap(([id]: [string, SpooledQueryState]) =>
         this.queryService.getQueryResult(this.connectionService.current, id).pipe(
           map((val: IQueryResultSet) => [id, val]),
+          tap(() => this.queryStack.pop()),
           catchError((res: HttpErrorResponse) => {
-            if (
-              res.error.message.includes(
-                'The supplied statement could not be completed due to an internal error at a database worker node.  Please contact support at Teradata.',
-              ) &&
-              currentRuns <= MAX_RETRIES
-            ) {
-              currentRuns++;
-
-              return this.querySystem(payload);
-            }
-
             return throwError({
               ...res,
               ...{ id },
