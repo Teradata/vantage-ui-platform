@@ -18,4 +18,6 @@ cp ./src/lib/_theming.scss ./deploy/ui-platform/
 # Add pre-loader files
 mkdir -p ./deploy/ui-platform/utilities/pre-loader && cp -R ./src/lib/utilities/pre-loader ./deploy/ui-platform/utilities
 
+mkdir -p ./deploy/ui-platform/theme/icons && cp -R ./src/lib/theme/icons ./deploy/ui-platform/theme/icons
+
 echo 'Build Complete'
