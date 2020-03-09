@@ -26,6 +26,11 @@
             "assets": [
               "src/assets",
               {
+                "glob": "teradata-icons.svg",
+                "input": "src/lib/theme/icons/",
+                "output": "/assets/icons/"
+              },
+              {
                 "glob": "favicon.ico",
                 "input": "src/docs-ui/",
                 "output": "/"
