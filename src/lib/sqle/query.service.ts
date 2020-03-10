@@ -1,8 +1,9 @@
 import { Injectable, Provider, Optional, SkipSelf } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ISystem } from '@td-vantage/ui-platform/system';
+import { TdHttpService } from '@covalent/http';
 
 export interface IQueryPayload {
   query: string;
@@ -45,7 +46,7 @@ export interface ISQLEConnection {
 
 @Injectable()
 export class VantageQueryService {
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _http: TdHttpService) {}
 
   querySystem(connection: ISQLEConnection, payload: IQueryPayload): Observable<IQueryResultSet> {
     let headers: HttpHeaders = new HttpHeaders()
@@ -58,7 +59,7 @@ export class VantageQueryService {
       payload.logMech = 'JWT';
     }
     payload.clientId = 'VANTAGE.EDITOR';
-    const request: Observable<object> = this._httpClient.post(
+    const request: Observable<object> = this._http.post(
       '/api/query/tdrest/systems/' + connection.system.nickname + '/queries',
       payload,
       { headers },
@@ -83,7 +84,7 @@ export class VantageQueryService {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
     }
 
-    const request: Observable<object> = this._httpClient.get(
+    const request: Observable<object> = this._http.get(
       `/api/query/systems/${connection.system.nickname}/databases/${databaseName}/tables/${tableName}`,
       { headers },
     );
@@ -107,7 +108,7 @@ export class VantageQueryService {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
     }
 
-    const request: Observable<object> = this._httpClient.get(
+    const request: Observable<object> = this._http.get(
       `/api/query/systems/${connection.system.nickname}/databases/${databaseName}/views/${viewName}`,
       { headers },
     );
@@ -129,7 +130,7 @@ export class VantageQueryService {
     if (connection.creds) {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
     }
-    const request: Observable<object> = this._httpClient.get(
+    const request: Observable<object> = this._http.get(
       '/api/query/tdrest/systems/' + connection.system.nickname + '/queries/' + requestId,
       { headers },
     );
@@ -151,7 +152,7 @@ export class VantageQueryService {
     if (connection.creds) {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
     }
-    const request: Observable<object> = this._httpClient.get(
+    const request: Observable<object> = this._http.get(
       '/api/query/tdrest/systems/' + connection.system.nickname + '/queries?session=' + sessionId,
       { headers },
     );
@@ -173,7 +174,7 @@ export class VantageQueryService {
     if (connection.creds) {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
     }
-    const request: Observable<object> = this._httpClient.get(
+    const request: Observable<object> = this._http.get(
       '/api/query/tdrest/systems/' + connection.system.nickname + '/queries/' + queryId + '/results',
       { headers },
     );
@@ -195,7 +196,7 @@ export class VantageQueryService {
     if (connection.creds) {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
     }
-    const request: Observable<object> = this._httpClient.delete(
+    const request: Observable<object> = this._http.delete(
       '/api/query/tdrest/systems/' + connection.system.nickname + '/queries/' + queryId,
       { headers },
     );
@@ -225,7 +226,7 @@ export class VantageQueryService {
     } else {
       payload.logMech = 'JWT';
     }
-    const request: Observable<object> = this._httpClient.post(
+    const request: Observable<object> = this._http.post(
       '/api/query/tdrest/systems/' + connection.system.nickname + '/sessions',
       payload,
       { headers },
@@ -248,7 +249,7 @@ export class VantageQueryService {
     if (connection.creds) {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
     }
-    const request: Observable<object> = this._httpClient.delete(
+    const request: Observable<object> = this._http.delete(
       '/api/query/tdrest/systems/' + connection.system.nickname + '/sessions/' + sessionId,
       { headers },
     );
@@ -266,14 +267,14 @@ export class VantageQueryService {
 
 export function VANTAGE_QUERY_PROVIDER_FACTORY(
   parent: VantageQueryService,
-  httpClient: HttpClient,
+  tdHttpService: TdHttpService,
 ): VantageQueryService {
-  return parent || new VantageQueryService(httpClient);
+  return parent || new VantageQueryService(tdHttpService);
 }
 
 export const VANTAGE_QUERY_PROVIDER: Provider = {
   // If there is already a service available, use that. Otherwise, provide a new one.
   provide: VantageQueryService,
-  deps: [[new Optional(), new SkipSelf(), VantageQueryService], HttpClient],
+  deps: [[new Optional(), new SkipSelf(), VantageQueryService], TdHttpService],
   useFactory: VANTAGE_QUERY_PROVIDER_FACTORY,
 };
