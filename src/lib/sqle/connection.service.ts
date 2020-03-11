@@ -5,16 +5,20 @@ import { VantageQueryService, ISQLEConnection } from './query.service';
 
 const CONNECTION_SESSION_KEY: string = 'vantage.editor.connection';
 
+export function current(): ISQLEConnection {
+  try {
+    return JSON.parse(sessionStorage.getItem(CONNECTION_SESSION_KEY));
+  } catch {
+    return undefined;
+  }
+}
+
 @Injectable()
 export class VantageConnectionService {
   constructor(private _queryService: VantageQueryService) {}
 
   public get current(): ISQLEConnection {
-    try {
-      return JSON.parse(sessionStorage.getItem(CONNECTION_SESSION_KEY));
-    } catch {
-      return undefined;
-    }
+    return current();
   }
 
   public disconnect(): void {
