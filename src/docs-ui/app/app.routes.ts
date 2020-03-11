@@ -7,6 +7,7 @@ import { VantageBlockRootAccessGuard, VantageBlockUserAccessGuard } from '@td-va
 import { TypographyComponent } from './typography/typography.component';
 import { MatComponentsComponent } from './mat-components/mat-components.component';
 import { DemosComponent } from './demos/demos.component';
+import { CovalentComponentsComponent } from './covalent-components/covalent-components.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'demos', component: DemosComponent },
       { path: 'mat-components', component: MatComponentsComponent },
       { path: 'typography', component: TypographyComponent },
+      { path: 'covalent-components', component: CovalentComponentsComponent },
     ],
   },
   { path: 'login', component: MainComponent, canActivate: [VantageAuthenticationGuard] },

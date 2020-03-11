@@ -162,12 +162,14 @@ $shape-radius: 8px;
     a.mat-button,
     button.mat-button,
     .mat-flat-button {
-      // Remove min-width to make sure items align consistently
-      min-width: 0;
-      // According to the spec, non-raised buttons should have less padding
-      padding: 0 8px;
-      // According to the spec, buttons should be all-caps
-      text-transform: uppercase;
+      &:not(.td-breadcrumb) {
+        // Remove min-width to make sure items align consistently
+        min-width: 0;
+        // According to the spec, non-raised buttons should have less padding
+        padding: 0 8px;
+        // According to the spec, buttons should be all-caps
+        text-transform: uppercase;
+      }
     }
     .mat-raised-button {
       // According to the spec, buttons should be all-caps
