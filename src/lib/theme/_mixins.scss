@@ -20,12 +20,12 @@
 // Background color palette mixin
 @mixin bgc($palette, $name, $default) {
   .bgc-#{$name} {
-    color: map-get($palette, $default);
+    background-color: map-get($palette, $default);
   }
   @each $size, $color in $palette {
     @if $size != contrast {
       .bgc-#{$name}-#{$size} {
-        color: $color;
+        background-color: $color;
       }
     }
   }
