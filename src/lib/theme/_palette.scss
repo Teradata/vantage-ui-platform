@@ -2,7 +2,6 @@
 * Teradata Colors
 */
 
-// Customer Teradata brand palette
 // Custom orange contrast
 $td-orange: (
   100: #facdbc,
@@ -149,10 +148,10 @@ $td-blue: (
 
 // Background palette for light themes.
 $mat-light-theme-background: (
-  status-bar: #e0e0e0,
-  app-bar: mat-color($mat-grey, 50),
-  background: mat-color($mat-grey, 200),
-  card: white,
+  status-bar: mat-color($mat-grey, 400),
+  app-bar: mat-color($mat-grey, 100),
+  background: mat-color($mat-grey, 300),
+  card: white /*** card color = surface color ***/,
   dialog: white,
   hover: rgba(0, 0, 0, 0.04),
   disabled-button: rgba(mat-color($mat-grey, 400), 0.1),
@@ -220,7 +219,7 @@ $mat-dark-theme-background: (
   status-bar: black,
   app-bar: mat-color($td-slate, 1300),
   background: mat-color($td-slate, 1500),
-  card: mat-color($td-slate, 1100),
+  card: mat-color($td-slate, 1100) /*** card color = surface color ***/,
   dialog: mat-color($td-slate, 1100),
   hover: rgba(255, 255, 255, 0.04),
   disabled-button: rgba(mat-color($td-slate, 800), 0.4),

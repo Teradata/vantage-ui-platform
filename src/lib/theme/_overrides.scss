@@ -396,8 +396,8 @@ $shape-radius: 8px;
   td-markdown-navigator-window {
     background-color: if(
       $is-dark,
-      map-get($mat-dark-theme-background, surface),
-      map-get($mat-light-theme-background, surface)
+      map-get($mat-dark-theme-background, card),
+      map-get($mat-light-theme-background, card)
     );
   }
 }
