@@ -316,9 +316,6 @@ $shape-radius: 8px;
   .light-theme .mat-drawer-container.mat-sidenav-container {
     background-color: mat-color($background, background);
   }
-  .td-expansion-panel {
-    background-color: if($is-dark, mat-color($td-slate-dark, 1300), $white-87-opacity);
-  }
   // Active icon color in list nav
   .mat-drawer {
     background-color: mat-color($background, app-bar);
