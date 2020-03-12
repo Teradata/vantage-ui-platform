@@ -265,15 +265,6 @@ $shape-radius: 8px;
   .tc {
     color: if($is-dark, $black-87-opacity, $white-87-opacity);
   }
-  body,
-  .bgc,
-  td-markdown-navigator-window {
-    background-color: if(
-      $is-dark,
-      map-get($mat-dark-theme-background, background),
-      map-get($mat-light-theme-background, background)
-    );
-  }
 
   // State colors
   .tc-positive {
@@ -363,5 +354,50 @@ $shape-radius: 8px;
 
   .mat-drawer-overlay.mat-drawer-shown {
     background-color: mat-color($background, overlay);
+  }
+
+  // Global app background
+  .bgc,
+  body {
+    background-color: if(
+      $is-dark,
+      map-get($mat-dark-theme-background, background),
+      map-get($mat-light-theme-background, background)
+    );
+  }
+
+  // Background (status bar)
+  .bgc-status-bar {
+    background-color: if(
+      $is-dark,
+      map-get($mat-dark-theme-background, status-bar),
+      map-get($mat-light-theme-background, status-bar)
+    );
+  }
+
+  // App bar (& panel backgrounds)
+  .bgc-app-bar {
+    background-color: if(
+      $is-dark,
+      map-get($mat-dark-theme-background, app-bar),
+      map-get($mat-light-theme-background, app-bar)
+    );
+  }
+
+  .bgc-canvas {
+    background-color: if(
+      $is-dark,
+      map-get($mat-dark-theme-background, canvas),
+      map-get($mat-light-theme-background, canvas)
+    );
+  }
+
+  .bgc-surface,
+  td-markdown-navigator-window {
+    background-color: if(
+      $is-dark,
+      map-get($mat-dark-theme-background, card),
+      map-get($mat-light-theme-background, card)
+    );
   }
 }
