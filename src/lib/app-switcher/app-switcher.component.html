@@ -1,0 +1,25 @@
+<button mat-icon-button [matMenuTriggerFor]="applicationMenu">
+  <mat-icon>apps</mat-icon>
+</button>
+<mat-menu #applicationMenu="matMenu" [overlapTrigger]="false" class="appswitcher-menu">
+  <div class="brand-container">
+    <mat-icon class="logo-icon" [svgIcon]="appSwitcherLogo"></mat-icon>
+    <div class="mat-body">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <ng-container *ngFor="let product of productList; last as isLast">
+    <a mat-menu-item *ngIf="product.icon" [href]="product.href">
+      <mat-icon>{{ product.icon }}</mat-icon>
+      {{ product.text }}
+    </a>
+    <mat-divider *ngIf="product.divider && !isLast"></mat-divider>
+  </ng-container>
+
+  <mat-divider></mat-divider>
+
+  <a mat-menu-item class="explore-more mat-caption" [href]="exploreMoreLink" target="blank">
+    {{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}
+    <mat-icon>launch</mat-icon>
+  </a>
+</mat-menu>
