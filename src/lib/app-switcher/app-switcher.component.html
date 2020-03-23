@@ -3,7 +3,15 @@
 </button>
 <mat-menu #applicationMenu="matMenu" [overlapTrigger]="false" class="appswitcher-menu">
   <div class="brand-container">
-    <mat-icon class="logo-icon" [svgIcon]="appSwitcherLogo"></mat-icon>
+    <mat-icon
+      class="logo-icon"
+      *ngIf="(activeTheme$ | async) === darkTheme; else lightLogo"
+      svgIcon="td-logo:on-dark"
+    ></mat-icon>
+    <ng-template #lightLogo>
+      <mat-icon class="logo-icon" svgIcon="td-logo:on-light"></mat-icon>
+    </ng-template>
+
     <div class="mat-body">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
   </div>
   <mat-divider></mat-divider>

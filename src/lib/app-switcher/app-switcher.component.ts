@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { VantageTheme, VantageThemeService } from '../theme/theme.service';
 
 export interface IAppSwitcherItem {
@@ -17,24 +17,17 @@ export interface IAppSwitcherItem {
   // tslint:disable-next-line: use-component-view-encapsulation
   encapsulation: ViewEncapsulation.None,
 })
-export class VantageAppSwitcherComponent implements OnInit, OnDestroy {
-  private serviceSubscription: Subscription;
-  private appSwitcherLogo: string = 'td-logo:dark-theme';
+export class VantageAppSwitcherComponent implements OnInit {
+  public activeTheme$: Observable<VantageTheme>;
+  public appSwitcherLogo: string;
+  public darkTheme: VantageTheme = VantageTheme.DARK;
 
   @Input() productList: IAppSwitcherItem[];
   @Input() exploreMoreLink: string;
 
-  constructor(private _themeService: VantageThemeService) {}
+  constructor(public _themeService: VantageThemeService) {}
 
   ngOnInit(): void {
-    this.serviceSubscription = this._themeService.activeTheme$.subscribe((theme: VantageTheme) => {
-      this.appSwitcherLogo = theme === VantageTheme.DARK ? 'td-logo:light-theme' : 'td-logo:dark-theme';
-    });
-  }
-
-  ngOnDestroy(): void {
-    if (this.serviceSubscription) {
-      this.serviceSubscription.unsubscribe();
-    }
+    this.activeTheme$ = this._themeService.activeTheme$;
   }
 }
