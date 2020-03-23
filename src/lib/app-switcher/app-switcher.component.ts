@@ -19,7 +19,7 @@ export interface IAppSwitcherItem {
 })
 export class VantageAppSwitcherComponent implements OnInit, OnDestroy {
   private serviceSubscription: Subscription;
-  private appSwitcherLogo: string = 'td-icons:teradata';
+  private appSwitcherLogo: string = 'td-logo:dark-theme';
 
   @Input() productList: IAppSwitcherItem[];
   @Input() exploreMoreLink: string;
@@ -28,7 +28,7 @@ export class VantageAppSwitcherComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.serviceSubscription = this._themeService.activeTheme$.subscribe((theme: VantageTheme) => {
-      this.appSwitcherLogo = theme === VantageTheme.DARK ? 'td-icons:teradata' : 'td-icons:teradata-dark';
+      this.appSwitcherLogo = theme === VantageTheme.DARK ? 'td-logo:light-theme' : 'td-logo:dark-theme';
     });
   }
 

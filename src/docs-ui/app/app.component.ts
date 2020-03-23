@@ -55,5 +55,11 @@ export class AppComponent {
       'td-icons',
       this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/teradata-icons.svg'),
     );
+
+    // Register Teradata icons
+    this._iconRegistry.addSvgIconSetInNamespace(
+      'td-logo',
+      this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/teradata-logo.svg'),
+    );
   }
 }
