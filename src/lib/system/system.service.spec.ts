@@ -123,6 +123,42 @@ describe('System Service:', () => {
     ),
   ));
 
+  it('expect to do a health request succesfully', async(
+    inject(
+      [VantageSystemService, HttpTestingController],
+      (service: VantageSystemService, httpTestingController: HttpTestingController) => {
+        let success: boolean = false;
+        let complete: boolean = false;
+        service.health().subscribe(
+          (resp: boolean) => {
+            expect(resp).toBeTrue();
+            success = true;
+          },
+          () => {
+            fail('on error executed when it shouldnt have with observables');
+          },
+          () => {
+            complete = true;
+          },
+        );
+
+        let req: TestRequest = httpTestingController.match(() => true)[0];
+        expect(req.request.method).toEqual('GET');
+        expect(req.request.params.toString()).toEqual('');
+        expect(req.request.url).toEqual(testUrl + '/health');
+        req.flush([], {
+          status: 200,
+          statusText: 'OK',
+          headers: { 'X-Total': '0' },
+        });
+        httpTestingController.verify();
+
+        expect(success).toBe(true, 'on success didnt execute with observables');
+        expect(complete).toBe(true, 'on complete didnt execute with observables');
+      },
+    ),
+  ));
+
   it('expect to do a query with object parameters succesfully', async(
     inject(
       [VantageSystemService, HttpTestingController],
