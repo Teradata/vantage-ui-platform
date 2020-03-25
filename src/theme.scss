@@ -8,8 +8,6 @@
 
 // Teradata brand
 @import './lib/theming';
-// App Switcher
-@import './lib/app-switcher/app-switcher.component.theme';
 
 // Include the core styles for Covalent
 @include covalent-core();
@@ -43,8 +41,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include covalent-theme($theme);
 // Include Teradata brand
 @include teradata-brand($theme);
-// Include App Switcher Theme
-@include app-switcher-theme($theme);
 
 /* ------------------------------------- DARK THEME ------------------------------------------ */
 
@@ -59,6 +55,4 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include covalent-theme($dark-theme);
   // Include Teradata brand
   @include teradata-brand($dark-theme);
-  // Include App Switcher Theme
-  @include app-switcher-theme($dark-theme);
 }

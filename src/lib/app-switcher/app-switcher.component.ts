@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { VantageTheme, VantageThemeService } from '../theme/theme.service';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { VantageThemeService } from '../theme/theme.service';
 
-export interface IAppSwitcherItem {
+export interface IVantageAppSwitcherItem {
   text: string;
   href: string;
   icon?: string;
+  svgIcon?: string;
   divider?: boolean;
 }
 
@@ -14,20 +14,10 @@ export interface IAppSwitcherItem {
   templateUrl: './app-switcher.component.html',
   styleUrls: ['./app-switcher.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // tslint:disable-next-line: use-component-view-encapsulation
-  encapsulation: ViewEncapsulation.None,
 })
-export class VantageAppSwitcherComponent implements OnInit {
-  public activeTheme$: Observable<VantageTheme>;
-  public appSwitcherLogo: string;
-  public darkTheme: VantageTheme = VantageTheme.DARK;
-
-  @Input() productList: IAppSwitcherItem[];
+export class VantageAppSwitcherComponent {
+  @Input() productList: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
 
   constructor(public _themeService: VantageThemeService) {}
-
-  ngOnInit(): void {
-    this.activeTheme$ = this._themeService.activeTheme$;
-  }
 }

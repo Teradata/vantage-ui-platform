@@ -1,33 +1,15 @@
-.appswitcher-menu {
-  text-align: center;
+.app-switcher-menu {
+  min-width: 250px;
 
-  &.mat-menu-panel {
-    min-width: 280px;
-  }
-
-  .mat-divider {
-    margin: 8px 0;
-  }
-
-  .mat-body {
-    font-size: 16px;
-  }
-
-  .mat-caption {
-    font-size: 12px;
-  }
-
-  .brand-container {
-    padding: 16px 0;
-  }
-
-  .logo-icon {
-    width: 100px;
-    margin-bottom: 8px;
+  .app-switcher-header[td-menu-header] {
+    padding: 24px 0;
+    .logo-icon {
+      width: 100px;
+      margin-bottom: 8px;
+    }
   }
 
   .explore-more {
-    padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;

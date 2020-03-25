@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
-import { IAppSwitcherItem } from '@td-vantage/ui-platform/app-switcher';
+import { IVantageAppSwitcherItem } from '@td-vantage/ui-platform/app-switcher';
 import { VantageThemeService, VantageTheme } from '../../lib/theme/theme.service';
 
 @Component({
@@ -10,8 +10,7 @@ import { VantageThemeService, VantageTheme } from '../../lib/theme/theme.service
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  appSwitcherLogo: string = 'td-icons:teradata-dark';
-  productList: IAppSwitcherItem[] = [
+  productList: IVantageAppSwitcherItem[] = [
     {
       text: 'Vantage Launcher',
       href: 'http://teradata.com',
@@ -19,24 +18,24 @@ export class AppComponent {
       divider: true,
     },
     {
-      text: 'Console',
-      href: 'http://teradata.com',
-      icon: 'settings',
-    },
-    {
-      text: 'App Center',
+      text: 'Editor',
       href: 'http://teradata.com',
       icon: 'settings',
     },
     {
       text: 'Analyst',
       href: 'http://teradata.com',
-      icon: 'settings',
+      svgIcon: 'td-logo:on-light',
     },
     {
-      text: 'Explore more products',
+      text: 'App Center',
       href: 'http://teradata.com',
-      divider: true,
+    },
+
+    {
+      text: 'Console',
+      href: 'http://teradata.com',
+      icon: 'settings',
     },
   ];
 
