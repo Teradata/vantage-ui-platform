@@ -19,7 +19,7 @@ module.exports = function(config) {
     customLaunchers: {
       ChromeCustom: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox'],
+        flags: ['--no-sandbox', '--force-dark-mode'],
       },
     },
     files: [

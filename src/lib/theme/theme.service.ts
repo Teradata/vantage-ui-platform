@@ -1,6 +1,6 @@
 import { Injectable, Renderer2, Inject, RendererFactory2, Provider, Optional, SkipSelf } from '@angular/core';
-import { fromEvent, BehaviorSubject, Observable } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { fromEvent, BehaviorSubject, Observable, fromEventPattern, merge } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 
 export const THEME_LOCAL_STORAGE_KEY: string = 'vantage.theme';
@@ -20,6 +20,7 @@ export class VantageThemeService {
   private _renderer2: Renderer2;
 
   private readonly _activeThemeSubject: BehaviorSubject<VantageTheme>;
+  private readonly preferDarkMediaQuery: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
 
   public activeTheme$: Observable<VantageTheme>;
   public darkTheme$: Observable<boolean>;
@@ -43,13 +44,25 @@ export class VantageThemeService {
     // apply initial theme
     this.applyTheme(initialValue, false);
 
+    // observe media query change events
+    const mediaObserver: Observable<VantageTheme> = fromEventPattern<MediaQueryListEvent>(
+      this.preferDarkMediaQuery.addListener.bind(this.preferDarkMediaQuery),
+      this.preferDarkMediaQuery.removeListener.bind(this.preferDarkMediaQuery),
+    ).pipe(
+      map((event: MediaQueryListEvent) => {
+        console.log('MEDIA QUERY OBS');
+        return event.matches ? VantageTheme.DARK : VantageTheme.LIGHT;
+      }),
+    );
+
     // account for storage events in other browser tabs
-    fromEvent(window, 'storage')
-      .pipe(
-        filter((event: StorageEvent) => event.key === THEME_LOCAL_STORAGE_KEY),
-        map((event: StorageEvent) => (event.newValue ? (event.newValue as VantageTheme) : this.checkOSPreference())),
-      )
-      .subscribe((theme: VantageTheme) => this.applyTheme(theme));
+    const storageObserver: Observable<VantageTheme> = fromEvent(window, 'storage').pipe(
+      filter((event: StorageEvent) => event.key === THEME_LOCAL_STORAGE_KEY),
+      map((event: StorageEvent) => (event.newValue ? (event.newValue as VantageTheme) : this.checkOSPreference())),
+    );
+
+    // apply theme on storage or media query change
+    merge(storageObserver, mediaObserver).subscribe((theme: VantageTheme) => this.applyTheme(theme));
   }
 
   private get _activeTheme(): VantageTheme {
@@ -103,7 +116,7 @@ export class VantageThemeService {
 
   private checkOSPreference(): VantageTheme {
     // it should now be light-by-default
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? VantageTheme.DARK : VantageTheme.LIGHT;
+    return this.preferDarkMediaQuery.matches ? VantageTheme.DARK : VantageTheme.LIGHT;
   }
 }
 

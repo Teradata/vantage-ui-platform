@@ -32,9 +32,6 @@ describe('ThemeService', () => {
 
     mediaSpy = spyOn(window, 'matchMedia').and.returnValue(mediaQueryList);
 
-    // ensure browser under test is always the same
-    mediaSpy.and.returnValue({ matches: true });
-
     TestBed.configureTestingModule({
       imports: [CommonModule],
       providers: [VANTAGE_THEME_PROVIDER],
@@ -105,6 +102,34 @@ describe('ThemeService', () => {
     expect(localStorage.setItem).toHaveBeenCalled();
   }));
 
+  it('should apply theme on OS preference change', fakeAsync(() => {
+    let mediaQueryEvent: MediaQueryListEvent = new MediaQueryListEvent('storage', {
+      media: '(prefers-color-scheme: dark)',
+      matches: true,
+    });
+
+    service = TestBed.inject(VantageThemeService);
+
+    window.matchMedia('(prefers-color-scheme: dark)').dispatchEvent(mediaQueryEvent);
+
+    tick(50);
+
+    expect(localStorage.getItem).toHaveBeenCalled();
+    expect(mediaSpy).toHaveBeenCalled();
+    expect(service.activeTheme()).toBe(VantageTheme.DARK);
+
+    mediaQueryEvent = new MediaQueryListEvent('change', {
+      media: '(prefers-color-scheme: dark)',
+      matches: false,
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').dispatchEvent(mediaQueryEvent);
+
+    tick(50);
+
+    expect(service.activeTheme()).toBe(VantageTheme.LIGHT);
+  }));
+
   it('should pull previous theme choices from localStorage', fakeAsync(() => {
     // start with preloaded localStorage theme
     localStorage.setItem(THEME_LOCAL_STORAGE_KEY, VantageTheme.DARK);
@@ -120,7 +145,7 @@ describe('ThemeService', () => {
     tick(50);
 
     expect(localStorage.getItem).toHaveBeenCalled();
-    expect(mediaSpy).not.toHaveBeenCalled();
+    expect(mediaSpy).toHaveBeenCalled();
     expect(service.activeTheme()).toBe(VantageTheme.DARK);
   }));
 
@@ -133,7 +158,7 @@ describe('ThemeService', () => {
     });
 
     // ensure browser under test is always the same
-    mediaSpy.and.returnValue({ matches: false });
+    mediaSpy.and.returnValue({ matches: false, addListener: () => undefined, removeListener: () => undefined });
 
     service = TestBed.inject(VantageThemeService);
 
@@ -157,7 +182,7 @@ describe('ThemeService', () => {
   });
 
   it('should default to the Light theme in absence of other preferences', () => {
-    mediaSpy.and.returnValue({ matches: false });
+    mediaSpy.and.returnValue({ matches: false, addListener: () => undefined, removeListener: () => undefined });
     service = TestBed.inject(VantageThemeService);
 
     expect(service.activeTheme()).toBe(VantageTheme.LIGHT);
