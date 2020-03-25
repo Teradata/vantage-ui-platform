@@ -50,7 +50,6 @@ export class VantageThemeService {
       this.preferDarkMediaQuery.removeListener.bind(this.preferDarkMediaQuery),
     ).pipe(
       map((event: MediaQueryListEvent) => {
-        console.log('MEDIA QUERY OBS');
         return event.matches ? VantageTheme.DARK : VantageTheme.LIGHT;
       }),
     );
