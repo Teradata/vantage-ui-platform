@@ -5,9 +5,9 @@
   -->
   <script>
     var themeLSKey = 'vantage.theme';
-    var defaultTheme = 'light-theme';
-    localStorage.setItem(themeLSKey, localStorage.getItem(themeLSKey) || defaultTheme);
-    document.querySelector('html').classList.add(localStorage.getItem(themeLSKey));
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var defaultTheme = prefersDark ? 'dark-theme' : 'light-theme';
+    document.querySelector('html').classList.add(localStorage.getItem(themeLSKey) || defaultTheme);
 
     /*
     The pre loader must be placed alongside, not inside, the root component because

@@ -1,9 +1,9 @@
 import { Injectable, Renderer2, Inject, RendererFactory2, Provider, Optional, SkipSelf } from '@angular/core';
 import { fromEvent, BehaviorSubject, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 
-const THEME_LOCAL_STORAGE_KEY: string = 'vantage.theme';
+export const THEME_LOCAL_STORAGE_KEY: string = 'vantage.theme';
 
 export enum VantageTheme {
   DARK = 'dark-theme',
@@ -19,23 +19,37 @@ export interface IVantageThemeMap {
 export class VantageThemeService {
   private _renderer2: Renderer2;
 
-  private readonly _activeThemeSubject: BehaviorSubject<VantageTheme> = new BehaviorSubject<VantageTheme>(
-    <VantageTheme>localStorage.getItem(THEME_LOCAL_STORAGE_KEY),
-  );
+  private readonly _activeThemeSubject: BehaviorSubject<VantageTheme>;
 
-  public readonly activeTheme$: Observable<VantageTheme> = this._activeThemeSubject.asObservable();
-  public readonly darkTheme$: Observable<boolean> = this._activeThemeSubject
-    .asObservable()
-    .pipe(map((theme: VantageTheme) => theme === VantageTheme.DARK));
-  public readonly lightTheme$: Observable<boolean> = this._activeThemeSubject
-    .asObservable()
-    .pipe(map((theme: VantageTheme) => theme === VantageTheme.LIGHT));
+  public activeTheme$: Observable<VantageTheme>;
+  public darkTheme$: Observable<boolean>;
+  public lightTheme$: Observable<boolean>;
 
   constructor(private rendererFactory: RendererFactory2, @Inject(DOCUMENT) private _document: any) {
+    const initialValue: VantageTheme =
+      <VantageTheme>localStorage.getItem(THEME_LOCAL_STORAGE_KEY) || this.checkOSPreference();
+
     this._renderer2 = rendererFactory.createRenderer(undefined, undefined);
+    this._activeThemeSubject = new BehaviorSubject<VantageTheme>(initialValue);
+
+    this.activeTheme$ = this._activeThemeSubject.asObservable();
+    this.darkTheme$ = this._activeThemeSubject
+      .asObservable()
+      .pipe(map((theme: VantageTheme) => theme === VantageTheme.DARK));
+    this.lightTheme$ = this._activeThemeSubject
+      .asObservable()
+      .pipe(map((theme: VantageTheme) => theme === VantageTheme.LIGHT));
+
+    // apply initial theme
+    this.applyTheme(initialValue, false);
+
+    // account for storage events in other browser tabs
     fromEvent(window, 'storage')
-      .pipe(filter((event: StorageEvent) => event.key === THEME_LOCAL_STORAGE_KEY))
-      .subscribe((event: StorageEvent) => this.applyTheme(<VantageTheme>event.newValue));
+      .pipe(
+        filter((event: StorageEvent) => event.key === THEME_LOCAL_STORAGE_KEY),
+        map((event: StorageEvent) => (event.newValue ? (event.newValue as VantageTheme) : this.checkOSPreference())),
+      )
+      .subscribe((theme: VantageTheme) => this.applyTheme(theme));
   }
 
   private get _activeTheme(): VantageTheme {
@@ -57,30 +71,39 @@ export class VantageThemeService {
     return this._activeTheme;
   }
 
-  public applyLightTheme(): void {
-    this.applyTheme(VantageTheme.LIGHT);
+  public applyLightTheme(): VantageTheme {
+    return this.applyTheme(VantageTheme.LIGHT);
   }
 
-  public applyDarkTheme(): void {
-    this.applyTheme(VantageTheme.DARK);
+  public applyDarkTheme(): VantageTheme {
+    return this.applyTheme(VantageTheme.DARK);
   }
 
-  public toggleTheme(): void {
-    this._activeTheme === VantageTheme.DARK ? this.applyLightTheme() : this.applyDarkTheme();
+  public toggleTheme(): VantageTheme {
+    return this._activeTheme === VantageTheme.DARK ? this.applyLightTheme() : this.applyDarkTheme();
   }
 
   public map(mapObject: IVantageThemeMap, fallback?: any): Observable<any> {
     return this.activeTheme$.pipe(map((value: VantageTheme) => (value in mapObject ? mapObject[value] : fallback)));
   }
 
-  private applyTheme(theme: VantageTheme): void {
+  private applyTheme(theme: VantageTheme, saveSetting: boolean = true): VantageTheme {
     this._renderer2.removeClass(
       this._document.querySelector('html'),
       theme === VantageTheme.DARK ? VantageTheme.LIGHT : VantageTheme.DARK,
     );
-    localStorage.setItem(THEME_LOCAL_STORAGE_KEY, theme);
     this._renderer2.addClass(this._document.querySelector('html'), theme);
-    this._activeTheme = <VantageTheme>localStorage.getItem(THEME_LOCAL_STORAGE_KEY);
+
+    if (saveSetting) {
+      localStorage.setItem(THEME_LOCAL_STORAGE_KEY, theme);
+    }
+
+    return (this._activeTheme = theme);
+  }
+
+  private checkOSPreference(): VantageTheme {
+    // it should now be light-by-default
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? VantageTheme.DARK : VantageTheme.LIGHT;
   }
 }
 
