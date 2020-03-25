@@ -219,7 +219,7 @@ $shape-radius: 8px;
 
     // More border radius
     .mat-card,
-    .mat-button-base,
+    .mat-button-base:not(.mat-fab):not(.mat-mini-fab):not(.mat-icon-button),
     .mat-dialog-container,
     .mat-snack-bar-container,
     .mat-menu-panel {
