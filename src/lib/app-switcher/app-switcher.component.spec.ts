@@ -6,11 +6,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
+import { CovalentMenuModule } from '@covalent/core/menu';
 
 import { VantageThemeModule } from '../theme/theme.module';
 
 import { VantageAppSwitcherComponent } from './app-switcher.component';
-import { VantageThemeService } from '../theme/theme.service';
 
 describe('VantageAppSwitcherComponent', () => {
   let component: VantageAppSwitcherComponent;
@@ -25,6 +25,7 @@ describe('VantageAppSwitcherComponent', () => {
         MatIconModule,
         MatButtonModule,
         MatDividerModule,
+        CovalentMenuModule,
         TranslateModule.forRoot(),
         VantageThemeModule,
       ],
@@ -48,12 +49,5 @@ describe('VantageAppSwitcherComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should use theme service activeTheme$ observable', () => {
-    const themeService: VantageThemeService = TestBed.inject(VantageThemeService);
-    themeService.toggleTheme();
-    component.ngOnInit();
-    expect(component.activeTheme$).toBeTruthy();
   });
 });
