@@ -23,12 +23,14 @@ describe('ThemeService', () => {
   let service: VantageThemeService;
   let mediaSpy: jasmine.Spy;
   let mediaQueryList: MediaQueryList;
+  let browserDefaultTheme: VantageTheme;
 
   beforeEach(() => {
     spyOn(localStorage, 'getItem').and.callFake(mockLocalStorage.getItem);
     spyOn(localStorage, 'removeItem').and.callFake(mockLocalStorage.removeItem);
     spyOn(localStorage, 'setItem').and.callFake(mockLocalStorage.setItem);
     mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+    browserDefaultTheme = mediaQueryList.matches ? VantageTheme.DARK : VantageTheme.LIGHT;
 
     mediaSpy = spyOn(window, 'matchMedia').and.returnValue(mediaQueryList);
 
@@ -116,7 +118,7 @@ describe('ThemeService', () => {
 
     expect(localStorage.getItem).toHaveBeenCalled();
     expect(mediaSpy).toHaveBeenCalled();
-    expect(service.activeTheme()).toBe(VantageTheme.DARK);
+    expect(service.activeTheme()).toBe(browserDefaultTheme);
 
     mediaQueryEvent = new MediaQueryListEvent('change', {
       media: '(prefers-color-scheme: dark)',
@@ -178,7 +180,7 @@ describe('ThemeService', () => {
 
     expect(localStorage.getItem).toHaveBeenCalled();
     expect(mediaSpy).toHaveBeenCalled();
-    expect(service.activeTheme()).toBe(VantageTheme.DARK);
+    expect(service.activeTheme()).toBe(browserDefaultTheme);
   });
 
   it('should default to the Light theme in absence of other preferences', () => {
