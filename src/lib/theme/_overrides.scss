@@ -3,6 +3,8 @@
 // Vantage UI platform
 //
 
+@import '../app-switcher/app-switcher-theme';
+
 // Radius to be used in: card, snackbar, button, dialog & menu
 $shape-radius: 8px;
 
@@ -14,6 +16,8 @@ $shape-radius: 8px;
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
   $is-dark: map-get($theme, is-dark);
+
+  @include vantage-app-switcher-theme($theme);
 
   // Component theme overrides
   $theme--all-accent: if($is-dark, mat-dark-theme($accent, $accent, $warn), mat-light-theme($accent, $accent, $warn));

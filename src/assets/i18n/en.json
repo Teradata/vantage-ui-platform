@@ -2,5 +2,9 @@
   "APP_TITLE": "Kitchen Sync",
   "THERE_WAS_A_PROBLEM": "There was a problem",
   "CLOSE": "Close",
-  "SPOOLED_QUERY_COULD_NOT_BE_DELETED": "Spooled query could not be deleted"
+  "SPOOLED_QUERY_COULD_NOT_BE_DELETED": "Spooled query could not be deleted",
+  "APP_SWITCHER": {
+    "HEADER": "Vantage Applications",
+    "EXPLORE_MORE": "Explore more products"
+  }
 }

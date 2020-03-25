@@ -1,0 +1,8 @@
+@mixin vantage-app-switcher-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $text: map-get($foreground, text);
+
+  .app-switcher-header-title {
+    color: $text;
+  }
+}
