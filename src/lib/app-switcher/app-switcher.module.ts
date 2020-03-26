@@ -9,7 +9,7 @@ import { CovalentMenuModule } from '@covalent/core/menu';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { VantageThemeModule } from '../theme/theme.module';
+import { VantageThemeModule } from '@td-vantage/ui-platform/theme';
 
 import { VantageAppSwitcherComponent } from './app-switcher.component';
 

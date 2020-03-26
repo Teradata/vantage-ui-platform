@@ -5,7 +5,11 @@
     "outDir": "../../out-tsc/spec",
     "lib": ["es6", "dom"],
     "module": "commonjs",
-    "types": ["jasmine", "hammerjs", "node"]
+    "types": ["jasmine", "hammerjs", "node"],
+    "paths": {
+      "@td-vantage/ui-platform": ["./"],
+      "@td-vantage/ui-platform/*": ["./*"]
+    }
   },
   "include": ["../polyfills.ts", "test.ts", "**/*.spec.*"]
 }
