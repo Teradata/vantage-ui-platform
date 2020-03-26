@@ -8,6 +8,14 @@
       margin-bottom: 8px;
     }
   }
+  .other-products {
+    .other-products-header {
+      height: 48px !important;
+    }
+    ::ng-deep .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
 
   .explore-more {
     display: flex;

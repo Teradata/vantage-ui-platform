@@ -13,10 +13,10 @@
       <ng-template #lightLogo>
         <mat-icon class="logo-icon" svgIcon="td-logo:on-light"></mat-icon>
       </ng-template>
-      <div class="app-switcher-header-title mat-body-2">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
+      <div class="app-switcher-header-title mat-input">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
     </div>
     <!--content-->
-    <ng-container *ngFor="let product of productList; last as isLast">
+    <ng-container *ngFor="let product of products; last as isLast">
       <a mat-menu-item [href]="product.href">
         <mat-icon *ngIf="product.svgIcon; else iconTemplate" [svgIcon]="product.svgIcon"></mat-icon>
         <ng-template #iconTemplate>
@@ -26,10 +26,28 @@
       </a>
       <mat-divider *ngIf="product.divider && !isLast"></mat-divider>
     </ng-container>
-    <!--footer-->
-    <a mat-menu-item td-menu-footer class="explore-more" [href]="exploreMoreLink">
-      <span class="mat-caption">{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
-      <mat-icon>launch</mat-icon>
-    </a>
+    <mat-divider></mat-divider>
+    <mat-expansion-panel *ngIf="otherProducts?.length; else explorerMore" class="other-products">
+      <mat-expansion-panel-header class="other-products-header" (click)="_blockEvent($event)">
+        {{ 'APP_SWITCHER.OTHER_PRODUCTS' | translate }}
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let other of otherProducts; last as isLast">
+        <a mat-menu-item matListAvatar [href]="other.href">
+          <mat-icon *ngIf="other.svgIcon; else iconTemplate" [svgIcon]="other.svgIcon"></mat-icon>
+          <ng-template #iconTemplate>
+            <mat-icon>{{ other.icon || 'apps' }}</mat-icon>
+          </ng-template>
+          {{ other.text }}
+        </a>
+      </ng-container>
+      <mat-divider></mat-divider>
+      <ng-template [ngTemplateOutlet]="explorerMore"></ng-template>
+    </mat-expansion-panel>
+    <ng-template #explorerMore>
+      <a mat-menu-item class="explore-more" [href]="exploreMoreLink">
+        <span class="mat-caption">{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
+        <mat-icon>launch</mat-icon>
+      </a>
+    </ng-template>
   </td-menu>
 </mat-menu>

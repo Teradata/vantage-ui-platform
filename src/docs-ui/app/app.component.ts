@@ -10,7 +10,7 @@ import { VantageThemeService, VantageTheme } from '../../lib/theme/theme.service
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  productList: IVantageAppSwitcherItem[] = [
+  products: IVantageAppSwitcherItem[] = [
     {
       text: 'Vantage Launcher',
       href: 'http://teradata.com',
@@ -34,6 +34,19 @@ export class AppComponent {
 
     {
       text: 'Console',
+      href: 'http://teradata.com',
+      icon: 'settings',
+    },
+  ];
+
+  otherProducts: IVantageAppSwitcherItem[] = [
+    {
+      text: 'Jupyter',
+      href: 'http://teradata.com',
+      icon: 'settings',
+    },
+    {
+      text: 'Something else',
       href: 'http://teradata.com',
       icon: 'settings',
     },
