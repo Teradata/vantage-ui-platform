@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.lib.json",
+  "compilerOptions": {
+    "paths": {
+      "@td-vantage/ui-platform": ["../"],
+      "@td-vantage/ui-platform/*": ["../*"]
+    }
+  }
+}

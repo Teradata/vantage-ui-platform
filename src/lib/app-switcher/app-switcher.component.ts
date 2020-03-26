@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { VantageThemeService } from '../theme/theme.service';
+import { VantageThemeService } from '@td-vantage/ui-platform/theme';
 
 export interface IVantageAppSwitcherItem {
   text: string;
