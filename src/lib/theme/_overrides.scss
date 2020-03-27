@@ -90,24 +90,12 @@ $shape-radius: 8px;
   }
 
   // Icons - Swap based on app theme
-  .light-theme {
-    .mat-icon {
-      svg path.lightmode {
-        display: block;
-      }
-      svg path.darkmode {
-        display: none;
-      }
+  .dark-theme svg {
+    .lightmode {
+      display: none;
     }
-  }
-  .dark-theme {
-    .mat-icon {
-      svg path.lightmode {
-        display: none;
-      }
-      svg path.darkmode {
-        display: block;
-      }
+    .darkmode {
+      display: block;
     }
   }
 
