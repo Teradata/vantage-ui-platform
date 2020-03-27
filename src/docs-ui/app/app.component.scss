@@ -1,0 +1,21 @@
+// Icons - Swap based on app theme
+.light-theme {
+  :host ::ng-deep .mat-icon {
+    svg path.lightmode {
+      display: block;
+    }
+    svg path.darkmode {
+      display: none;
+    }
+  }
+}
+.dark-theme {
+  :host ::ng-deep .mat-icon {
+    svg path.lightmode {
+      display: none;
+    }
+    svg path.darkmode {
+      display: block;
+    }
+  }
+}
