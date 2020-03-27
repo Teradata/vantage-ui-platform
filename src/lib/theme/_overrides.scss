@@ -89,6 +89,16 @@ $shape-radius: 8px;
     }
   }
 
+  // Icons - Swap based on app theme
+  .dark-theme svg {
+    .lightmode {
+      display: none;
+    }
+    .darkmode {
+      display: block;
+    }
+  }
+
   // Active icon color in list nav
   mat-nav-list {
     [mat-list-item].selected {
