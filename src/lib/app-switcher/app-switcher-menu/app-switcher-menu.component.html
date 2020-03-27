@@ -1,6 +1,6 @@
 <td-menu class="app-switcher-menu">
   <!--header-->
-  <div td-menu-header class="app-switcher-header">
+  <div td-menu-header class="app-switcher-header" (click)="_blockEvent($event)">
     <mat-icon
       class="logo-icon"
       [svgIcon]="_themeService.map({ 'dark-theme': 'td-logo:on-dark', 'light-theme': 'td-logo:on-light' }) | async"
@@ -8,23 +8,49 @@
     <div class="app-switcher-header-title mat-body-2">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
   </div>
   <!--content-->
-  <ng-container *ngFor="let product of productList; last as isLast">
-    <a mat-menu-item [href]="product.href">
-      <mat-icon
-        [class]="product.iconClasses"
-        *ngIf="product.svgIcon; else iconTemplate"
-        [svgIcon]="product.svgIcon"
-      ></mat-icon>
-      <ng-template #iconTemplate>
-        <mat-icon [class]="product.iconClasses">{{ product.icon || 'apps' }}</mat-icon>
-      </ng-template>
-      {{ product.text }}
+  <mat-list>
+    <ng-container *ngFor="let product of products; last as isLast">
+      <a mat-list-item class="text-nodecoration" [href]="product.href">
+        <mat-icon
+          matListAvatar
+          [class]="product.iconClasses"
+          *ngIf="product.svgIcon; else iconTemplate"
+          [svgIcon]="product.svgIcon"
+        ></mat-icon>
+        <ng-template #iconTemplate>
+          <mat-icon matListAvatar [class]="product.iconClasses">{{ product.icon || 'apps' }}</mat-icon>
+        </ng-template>
+        <span matLine>{{ product.text }}</span>
+      </a>
+      <mat-divider class="push-top-sm push-bottom-sm" *ngIf="product.divider && !isLast"></mat-divider>
+    </ng-container>
+  </mat-list>
+  <mat-divider class="push-top-sm"></mat-divider>
+  <mat-expansion-panel *ngIf="otherProducts?.length; else explorerMore" class="other-products">
+    <mat-expansion-panel-header
+      collapsedHeight="48px"
+      expandedHeight="48px"
+      class="other-products-header"
+      (click)="_blockEvent($event)"
+    >
+      <mat-panel-description>
+        {{ 'APP_SWITCHER.OTHER_PRODUCTS' | translate }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list [style.padding-top.px]="0">
+      <ng-container *ngFor="let other of otherProducts">
+        <a mat-list-item class="text-nodecoration" [href]="other.href">
+          <span matLine>{{ other.text }}</span>
+        </a>
+      </ng-container>
+    </mat-list>
+    <mat-divider class="push-top-sm"></mat-divider>
+    <ng-template [ngTemplateOutlet]="explorerMore"></ng-template>
+  </mat-expansion-panel>
+  <ng-template #explorerMore>
+    <a mat-menu-item class="explore-more" [href]="exploreMoreLink">
+      <span class="mat-caption">{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
+      <mat-icon>launch</mat-icon>
     </a>
-    <mat-divider *ngIf="product.divider && !isLast"></mat-divider>
-  </ng-container>
-  <!--footer-->
-  <a mat-menu-item td-menu-footer class="explore-more" [href]="exploreMoreLink">
-    <span class="mat-caption">{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
-    <mat-icon>launch</mat-icon>
-  </a>
+  </ng-template>
 </td-menu>

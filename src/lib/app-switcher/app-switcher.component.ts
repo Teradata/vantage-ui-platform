@@ -9,6 +9,7 @@ import { IVantageAppSwitcherItem } from './app-switcher-menu/app-switcher-menu.c
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VantageAppSwitcherComponent {
-  @Input() productList: IVantageAppSwitcherItem[];
+  @Input() products: IVantageAppSwitcherItem[];
+  @Input() otherProducts: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
 }

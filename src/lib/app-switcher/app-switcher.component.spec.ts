@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,6 +27,7 @@ describe('VantageAppSwitcherComponent', () => {
         MatIconModule,
         MatButtonModule,
         MatDividerModule,
+        MatExpansionModule,
         CovalentMenuModule,
         TranslateModule.forRoot(),
         VantageThemeModule,

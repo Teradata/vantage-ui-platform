@@ -9,6 +9,15 @@
     }
   }
 
+  .other-products {
+    .other-products-header {
+      padding: 0 16px;
+    }
+    ::ng-deep .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+
   .explore-more {
     display: flex;
     align-items: center;

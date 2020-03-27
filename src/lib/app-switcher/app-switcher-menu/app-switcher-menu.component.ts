@@ -17,8 +17,14 @@ export interface IVantageAppSwitcherItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VantageAppSwitcherMenuComponent {
-  @Input() productList: IVantageAppSwitcherItem[];
+  @Input() products: IVantageAppSwitcherItem[];
+  @Input() otherProducts: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
 
   constructor(public _themeService: VantageThemeService) {}
+
+  _blockEvent(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }

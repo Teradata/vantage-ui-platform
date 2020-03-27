@@ -4,6 +4,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 
 import { CovalentMenuModule } from '@covalent/core/menu';
 
@@ -22,6 +24,8 @@ import { VantageAppSwitcherComponent } from './app-switcher.component';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    MatExpansionModule,
+    MatListModule,
 
     /* covalent modules */
     CovalentMenuModule,
