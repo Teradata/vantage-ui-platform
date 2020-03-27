@@ -1,13 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { VantageThemeService } from '@td-vantage/ui-platform/theme';
 
-export interface IVantageAppSwitcherItem {
-  text: string;
-  href: string;
-  icon?: string;
-  svgIcon?: string;
-  divider?: boolean;
-}
+import { IVantageAppSwitcherItem } from './app-switcher-menu/app-switcher-menu.component';
 
 @Component({
   selector: 'vui-app-switcher',
@@ -18,6 +11,4 @@ export interface IVantageAppSwitcherItem {
 export class VantageAppSwitcherComponent {
   @Input() productList: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
-
-  constructor(public _themeService: VantageThemeService) {}
 }

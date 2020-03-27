@@ -2,34 +2,5 @@
   <mat-icon>apps</mat-icon>
 </button>
 <mat-menu #applicationMenu="matMenu" [overlapTrigger]="false">
-  <td-menu class="app-switcher-menu">
-    <!--header-->
-    <div td-menu-header class="app-switcher-header">
-      <mat-icon
-        class="logo-icon"
-        *ngIf="_themeService.darkTheme$ | async; else lightLogo"
-        svgIcon="td-logo:on-dark"
-      ></mat-icon>
-      <ng-template #lightLogo>
-        <mat-icon class="logo-icon" svgIcon="td-logo:on-light"></mat-icon>
-      </ng-template>
-      <div class="app-switcher-header-title mat-body-2">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
-    </div>
-    <!--content-->
-    <ng-container *ngFor="let product of productList; last as isLast">
-      <a mat-menu-item [href]="product.href">
-        <mat-icon *ngIf="product.svgIcon; else iconTemplate" [svgIcon]="product.svgIcon"></mat-icon>
-        <ng-template #iconTemplate>
-          <mat-icon>{{ product.icon || 'apps' }}</mat-icon>
-        </ng-template>
-        {{ product.text }}
-      </a>
-      <mat-divider *ngIf="product.divider && !isLast"></mat-divider>
-    </ng-container>
-    <!--footer-->
-    <a mat-menu-item td-menu-footer class="explore-more" [href]="exploreMoreLink">
-      <span class="mat-caption">{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
-      <mat-icon>launch</mat-icon>
-    </a>
-  </td-menu>
+  <vui-app-switcher-menu [productList]="productList" [exploreMoreLink]="exploreMoreLink"></vui-app-switcher-menu>
 </mat-menu>

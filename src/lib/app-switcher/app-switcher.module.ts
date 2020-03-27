@@ -11,10 +11,11 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { VantageThemeModule } from '@td-vantage/ui-platform/theme';
 
+import { VantageAppSwitcherMenuComponent } from './app-switcher-menu/app-switcher-menu.component';
 import { VantageAppSwitcherComponent } from './app-switcher.component';
 
 @NgModule({
-  declarations: [VantageAppSwitcherComponent],
+  declarations: [VantageAppSwitcherComponent, VantageAppSwitcherMenuComponent],
   imports: [
     CommonModule,
     MatMenuModule,
@@ -32,6 +33,6 @@ import { VantageAppSwitcherComponent } from './app-switcher.component';
     VantageThemeModule,
   ],
   providers: [],
-  exports: [VantageAppSwitcherComponent],
+  exports: [VantageAppSwitcherComponent, VantageAppSwitcherMenuComponent],
 })
 export class VantageAppSwitcherModule {}

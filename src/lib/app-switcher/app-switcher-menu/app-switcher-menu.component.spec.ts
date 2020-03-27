@@ -8,18 +8,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { CovalentMenuModule } from '@covalent/core/menu';
 
-import { VantageThemeModule } from '../theme/theme.module';
+import { VantageThemeModule } from '../../theme/theme.module';
 
-import { VantageAppSwitcherComponent } from './app-switcher.component';
-import { VantageAppSwitcherMenuComponent } from './app-switcher-menu/app-switcher-menu.component';
+import { VantageAppSwitcherMenuComponent } from './app-switcher-menu.component';
 
-describe('VantageAppSwitcherComponent', () => {
-  let component: VantageAppSwitcherComponent;
-  let fixture: ComponentFixture<VantageAppSwitcherComponent>;
+describe('VantageAppSwitcherMenuComponent', () => {
+  let component: VantageAppSwitcherMenuComponent;
+  let fixture: ComponentFixture<VantageAppSwitcherMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [VantageAppSwitcherComponent, VantageAppSwitcherMenuComponent],
+      declarations: [VantageAppSwitcherMenuComponent],
       imports: [
         HttpClientTestingModule,
         MatMenuModule,
@@ -43,7 +42,7 @@ describe('VantageAppSwitcherComponent', () => {
       domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/teradata-logo.svg'),
     );
 
-    fixture = TestBed.createComponent(VantageAppSwitcherComponent);
+    fixture = TestBed.createComponent(VantageAppSwitcherMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
