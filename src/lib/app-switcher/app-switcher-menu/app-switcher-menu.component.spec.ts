@@ -2,32 +2,29 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { CovalentMenuModule } from '@covalent/core/menu';
 
-import { VantageThemeModule } from '../theme/theme.module';
+import { VantageThemeModule } from '../../theme/theme.module';
 
-import { VantageAppSwitcherComponent } from './app-switcher.component';
-import { VantageAppSwitcherMenuComponent } from './app-switcher-menu/app-switcher-menu.component';
+import { VantageAppSwitcherMenuComponent } from './app-switcher-menu.component';
 
-describe('VantageAppSwitcherComponent', () => {
-  let component: VantageAppSwitcherComponent;
-  let fixture: ComponentFixture<VantageAppSwitcherComponent>;
+describe('VantageAppSwitcherMenuComponent', () => {
+  let component: VantageAppSwitcherMenuComponent;
+  let fixture: ComponentFixture<VantageAppSwitcherMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [VantageAppSwitcherComponent, VantageAppSwitcherMenuComponent],
+      declarations: [VantageAppSwitcherMenuComponent],
       imports: [
         HttpClientTestingModule,
         MatMenuModule,
         MatIconModule,
         MatButtonModule,
         MatDividerModule,
-        MatExpansionModule,
         CovalentMenuModule,
         TranslateModule.forRoot(),
         VantageThemeModule,
@@ -45,7 +42,7 @@ describe('VantageAppSwitcherComponent', () => {
       domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/teradata-logo.svg'),
     );
 
-    fixture = TestBed.createComponent(VantageAppSwitcherComponent);
+    fixture = TestBed.createComponent(VantageAppSwitcherMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

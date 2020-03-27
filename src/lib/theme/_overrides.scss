@@ -267,7 +267,7 @@ $shape-radius: 8px;
     background-color: if($is-dark, mat-color($td-slate-dark, 1400), mat-color($mat-gray, 50));
   }
   .tc {
-    color: if($is-dark, $black-87-opacity, $white-87-opacity);
+    color: if($is-dark, $white-87-opacity, $black-87-opacity);
   }
 
   // State colors
