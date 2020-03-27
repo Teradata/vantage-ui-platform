@@ -11,7 +11,12 @@
   <mat-list>
     <ng-container *ngFor="let product of products; last as isLast">
       <a mat-list-item class="text-nodecoration" [href]="product.href">
-        <mat-icon matListAvatar [class]="product.iconClasses" *ngIf="product.svgIcon; else iconTemplate" [svgIcon]="product.svgIcon"></mat-icon>
+        <mat-icon
+          matListAvatar
+          [class]="product.iconClasses"
+          *ngIf="product.svgIcon; else iconTemplate"
+          [svgIcon]="product.svgIcon"
+        ></mat-icon>
         <ng-template #iconTemplate>
           <mat-icon matListAvatar [class]="product.iconClasses">{{ product.icon || 'apps' }}</mat-icon>
         </ng-template>
