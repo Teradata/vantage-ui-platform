@@ -10,7 +10,7 @@
   }
   .other-products {
     .other-products-header {
-      height: 48px !important;
+      padding: 0 16px;
     }
     ::ng-deep .mat-expansion-panel-body {
       padding: 0;

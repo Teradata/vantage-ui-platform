@@ -4,8 +4,8 @@
   "CLOSE": "Close",
   "SPOOLED_QUERY_COULD_NOT_BE_DELETED": "Spooled query could not be deleted",
   "APP_SWITCHER": {
-    "HEADER": "Vantage Applications",
-    "OTHER_PRODUCTS": "Other Products",
+    "HEADER": "Vantage applications",
+    "OTHER_PRODUCTS": "Other products",
     "EXPLORE_MORE": "Explore more products"
   }
 }
