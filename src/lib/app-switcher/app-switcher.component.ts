@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { IVantageAppSwitcherItem } from './app-switcher-menu/app-switcher-menu.component';
+import { IVantageAppSwitcherItem } from './services/products.service';
 
 @Component({
   selector: 'vui-app-switcher',
