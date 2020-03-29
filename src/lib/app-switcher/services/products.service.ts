@@ -8,6 +8,7 @@ import { VANTAGE_BASE_URL_TOKEN } from '@td-vantage/ui-platform/common';
 export interface IVantageAppSwitcherItem {
   id?: string;
   text: string;
+  description?: string;
   href: string;
   icon?: string;
   svgIcon?: string;
