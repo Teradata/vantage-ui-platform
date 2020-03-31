@@ -29,13 +29,3 @@
     }
   }
 }
-
-// Swap logo version based on app theme
-.dark-theme :host ::ng-deep .logo-icon svg {
-  .on-light {
-    display: none;
-  }
-  .on-dark {
-    display: block;
-  }
-}
