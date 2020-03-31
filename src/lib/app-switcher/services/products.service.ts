@@ -39,4 +39,11 @@ export class VantageProductsService extends mixinHttp(class {}, {
   get(): Observable<IVantageAppSwitcherItem[]> {
     return;
   }
+
+  @TdGET({
+    path: '/other-products.json',
+  })
+  getOther(): Observable<IVantageAppSwitcherItem[]> {
+    return;
+  }
 }
