@@ -8,6 +8,12 @@
       margin-bottom: 8px;
     }
   }
+  .app-switcher-list-item {
+    .mat-icon::ng-deep > svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
 
   .other-products {
     .other-products-header {
