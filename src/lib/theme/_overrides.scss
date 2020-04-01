@@ -89,7 +89,7 @@ $shape-radius: 8px;
     }
   }
 
-  // Icons - Swap based on app theme
+  // Icons - swap version based on app theme
   .dark-theme svg {
     .lightmode {
       display: none;
@@ -97,6 +97,11 @@ $shape-radius: 8px;
     .darkmode {
       display: block;
     }
+  }
+
+  // Logo - swap colors based on app theme
+  .dark-theme svg .logo-text {
+    fill: #fffffe;
   }
 
   // Active icon color in list nav

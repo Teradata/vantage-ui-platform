@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { VantageThemeService } from '@td-vantage/ui-platform/theme';
 
 import { IVantageAppSwitcherItem } from '../services/products.service';
 
@@ -13,8 +12,6 @@ export class VantageAppSwitcherMenuComponent {
   @Input() products: IVantageAppSwitcherItem[];
   @Input() otherProducts: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
-
-  constructor(public _themeService: VantageThemeService) {}
 
   _blockEvent(event: Event): void {
     event.preventDefault();
