@@ -99,6 +99,11 @@ $shape-radius: 8px;
     }
   }
 
+  // Logo - swap colors based on app theme
+  .dark-theme svg .logo-text {
+    fill: #fffffe;
+  }
+
   // Active icon color in list nav
   mat-nav-list {
     [mat-list-item].selected {
