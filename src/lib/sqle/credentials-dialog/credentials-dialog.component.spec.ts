@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
-import { TestBed, inject, async, ComponentFixture } from '@angular/core/testing';
+import {
+  TestBed,
+  inject,
+  async,
+  ComponentFixture,
+  fakeAsync,
+  tick,
+  flush,
+  discardPeriodicTasks,
+} from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 
@@ -181,13 +190,13 @@ describe('Component: Credentials Dialog', () => {
       })();
     });
 
-    it('should render component and open dialog with 1 system, try to connect automatically and fail', (done: DoneFn) => {
-      inject([HttpTestingController], async (httpTestingController: HttpTestingController) => {
+    it('should render component and open dialog with 1 system, try to connect automatically and fail multiple times', fakeAsync(() => {
+      inject([HttpTestingController], (httpTestingController: HttpTestingController) => {
         fixture = TestBed.createComponent(ConnectionDialogBasicComponent);
         component = fixture.debugElement.componentInstance;
         dialog = component.connect();
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         const req1: TestRequest = httpTestingController.match(() => true)[0];
         expect(req1.request.method).toEqual('GET');
         expect(req1.request.url).toEqual('/api/system/systems');
@@ -206,7 +215,7 @@ describe('Component: Credentials Dialog', () => {
           },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-system-select')).toBeTruthy();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-empty-state')).toBeFalsy();
 
@@ -220,26 +229,35 @@ describe('Component: Credentials Dialog', () => {
           }),
         );
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
+        const req3: TestRequest = httpTestingController.match(() => true)[0];
+        req3.error(
+          new ErrorEvent('Something Failed', {
+            message: 'error',
+          }),
+        );
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
+        const req4: TestRequest = httpTestingController.match(() => true)[0];
+        req4.flush({ message: 'error' }, { status: 400, statusText: 'Bad Request' });
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
+        fixture.detectChanges();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-invalid-message')).toBeTruthy();
         dialog.close();
         fixture.detectChanges();
-        await fixture.whenStable();
-        done();
+        tick(1000);
       })();
-    });
+    }));
 
-    it('should render component and open dialog with 2 systems, try to connect manually and then close dialog automatically', (done: DoneFn) => {
-      inject([HttpTestingController], async (httpTestingController: HttpTestingController) => {
+    it('should render component and open dialog with 2 systems, try to connect manually and then close dialog automatically', fakeAsync(() => {
+      inject([HttpTestingController], (httpTestingController: HttpTestingController) => {
         fixture = TestBed.createComponent(ConnectionDialogBasicComponent);
         component = fixture.debugElement.componentInstance;
         dialog = component.connect();
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         const req1: TestRequest = httpTestingController.match(() => true)[0];
         expect(req1.request.method).toEqual('GET');
         expect(req1.request.url).toEqual('/api/system/systems');
@@ -263,7 +281,7 @@ describe('Component: Credentials Dialog', () => {
           },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-system-select')).toBeTruthy();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-empty-state')).toBeFalsy();
 
@@ -271,7 +289,7 @@ describe('Component: Credentials Dialog', () => {
           .querySelector('#vui-credentials-dialog-connect-button')
           .dispatchEvent(new Event('click'));
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
 
         const req2: TestRequest = httpTestingController.match(() => true)[0];
         expect(req2.request.method).toEqual('POST');
@@ -285,23 +303,19 @@ describe('Component: Credentials Dialog', () => {
           },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('vui-sqle-credentials-dialog')).toBeFalsy();
-        done();
+        tick(1000);
       })();
-    });
+    }));
 
-    it('should render component and open dialog with 2 systems, try to connect manually and fail', (done: DoneFn) => {
-      inject([HttpTestingController], async (httpTestingController: HttpTestingController) => {
+    it('should render component and open dialog with 2 systems, try to connect manually and fail', fakeAsync(() => {
+      inject([HttpTestingController], (httpTestingController: HttpTestingController) => {
         fixture = TestBed.createComponent(ConnectionDialogBasicComponent);
         component = fixture.debugElement.componentInstance;
         dialog = component.connect();
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         const req1: TestRequest = httpTestingController.match(() => true)[0];
         expect(req1.request.method).toEqual('GET');
         expect(req1.request.url).toEqual('/api/system/systems');
@@ -325,7 +339,7 @@ describe('Component: Credentials Dialog', () => {
           },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-system-select')).toBeTruthy();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-empty-state')).toBeFalsy();
 
@@ -333,41 +347,38 @@ describe('Component: Credentials Dialog', () => {
           .querySelector('#vui-credentials-dialog-connect-button')
           .dispatchEvent(new Event('click'));
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
 
         const req2: TestRequest = httpTestingController.match(() => true)[0];
         expect(req2.request.method).toEqual('POST');
         expect(req2.request.url).toEqual('/api/query/tdrest/systems/test/queries');
         expect(req2.request.body.logMech).toEqual('JWT');
-        req2.error(
-          new ErrorEvent('Something Failed', {
-            message: 'error',
-          }),
+        req2.flush(
+          { message: 'Invalid creds' },
+          {
+            status: 420,
+            statusText: 'Keep calm',
+          },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-invalid-message')).toBeTruthy();
         dialog.close();
         fixture.detectChanges();
-        await fixture.whenStable();
-        done();
+        tick(1000);
       })();
-    });
+    }));
   });
 
   describe('BasicAuth: true', () => {
-    it('should render component and open dialog with 1 system, enter credentials, connect and close dialog automatically', (done: DoneFn) => {
+    it('should render component and open dialog with 1 system, enter credentials, connect and close dialog automatically', fakeAsync(() => {
       inject([HttpTestingController], async (httpTestingController: HttpTestingController) => {
         fixture = TestBed.createComponent(ConnectionDialogBasicComponent);
         component = fixture.debugElement.componentInstance;
         dialog = component.connect();
         dialog.componentInstance.basicAuthEnabled = true;
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         const req1: TestRequest = httpTestingController.match(() => true)[0];
         expect(req1.request.method).toEqual('GET');
         expect(req1.request.url).toEqual('/api/system/systems');
@@ -391,7 +402,7 @@ describe('Component: Credentials Dialog', () => {
           },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-system-select')).toBeTruthy();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-connection-radio')).toBeTruthy();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-username-input')).toBeTruthy();
@@ -399,7 +410,7 @@ describe('Component: Credentials Dialog', () => {
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-empty-state')).toBeFalsy();
 
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         overlayContainerElement
           .querySelector('#vui-credentials-dialog-username-input')
           .dispatchEvent(new Event('focus'));
@@ -409,7 +420,7 @@ describe('Component: Credentials Dialog', () => {
           .querySelector('#vui-credentials-dialog-username-input')
           .dispatchEvent(new Event('input'));
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
 
         overlayContainerElement
           .querySelector('#vui-credentials-dialog-password-input')
@@ -421,11 +432,11 @@ describe('Component: Credentials Dialog', () => {
           .querySelector('#vui-credentials-dialog-password-input')
           .dispatchEvent(new Event('input'));
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
 
         overlayContainerElement.querySelector<HTMLElement>('#vui-credentials-dialog-connect-button').click();
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
 
         const req2: TestRequest = httpTestingController.match(() => true)[0];
         expect(req2.request.method).toEqual('POST');
@@ -440,24 +451,20 @@ describe('Component: Credentials Dialog', () => {
           },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('vui-sqle-credentials-dialog')).toBeFalsy();
-        done();
+        tick(1000);
       })();
-    });
+    }));
 
-    it('should render component and open dialog with 1 system, enter credentials, and fail to connect', (done: DoneFn) => {
+    it('should render component and open dialog with 1 system, enter credentials, and fail to connect', fakeAsync(() => {
       inject([HttpTestingController], async (httpTestingController: HttpTestingController) => {
         fixture = TestBed.createComponent(ConnectionDialogBasicComponent);
         component = fixture.debugElement.componentInstance;
         dialog = component.connect();
         dialog.componentInstance.basicAuthEnabled = true;
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         const req1: TestRequest = httpTestingController.match(() => true)[0];
         expect(req1.request.method).toEqual('GET');
         expect(req1.request.url).toEqual('/api/system/systems');
@@ -481,7 +488,7 @@ describe('Component: Credentials Dialog', () => {
           },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-system-select')).toBeTruthy();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-connection-radio')).toBeTruthy();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-username-input')).toBeTruthy();
@@ -489,7 +496,7 @@ describe('Component: Credentials Dialog', () => {
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-empty-state')).toBeFalsy();
 
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         overlayContainerElement
           .querySelector('#vui-credentials-dialog-username-input')
           .dispatchEvent(new Event('focus'));
@@ -500,7 +507,7 @@ describe('Component: Credentials Dialog', () => {
           .dispatchEvent(new Event('input'));
 
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         overlayContainerElement
           .querySelector('#vui-credentials-dialog-password-input')
           .dispatchEvent(new Event('focus'));
@@ -512,34 +519,31 @@ describe('Component: Credentials Dialog', () => {
           .querySelector('#vui-credentials-dialog-password-input')
           .dispatchEvent(new Event('input'));
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
 
         overlayContainerElement.querySelector<HTMLElement>('#vui-credentials-dialog-connect-button').click();
         fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
 
         const req2: TestRequest = httpTestingController.match(() => true)[0];
         expect(req2.request.method).toEqual('POST');
         expect(req2.request.url).toEqual('/api/query/tdrest/systems/test/queries');
         expect(req2.request.body.logMech).toEqual('TD2');
         expect(req2.request.headers.get('X-Auth-Credentials')).toEqual('Basic ' + btoa('user1:pass1234'));
-        req2.error(
-          new ErrorEvent('Something Failed', {
-            message: 'error',
-          }),
+        req2.flush(
+          { message: 'Invalid' },
+          {
+            status: 420,
+            statusText: 'Keep Calm',
+          },
         );
         fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
-        fixture.detectChanges();
-        await fixture.whenStable();
+        tick();
         expect(overlayContainerElement.querySelector('#vui-credentials-dialog-invalid-message')).toBeTruthy();
         dialog.close();
         fixture.detectChanges();
-        await fixture.whenStable();
-        done();
+        tick(1000);
       })();
-    });
+    }));
   });
 });
