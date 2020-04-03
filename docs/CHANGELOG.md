@@ -1,3 +1,34 @@
+<a name="1.0.0-beta.2"></a>
+
+# [1.0.0-beta.2](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2020-04-03)
+
+### Bug Fixes
+
+- **app-switcher:** add proper styles to svg icons ([6c77287](https://github.com/Teradata/vantage-ui-platform/commit/6c77287))
+- **app-switcher:** add to bundle deployment ([#76](https://github.com/Teradata/vantage-ui-platform/issues/76)) ([ebebb96](https://github.com/Teradata/vantage-ui-platform/commit/ebebb96))
+- **app-switcher:** adjusting css styling for explore more icon ([#84](https://github.com/Teradata/vantage-ui-platform/issues/84)) ([be24efc](https://github.com/Teradata/vantage-ui-platform/commit/be24efc))
+- **app-switcher:** copy theme scss in bundle ([2d2d2a6](https://github.com/Teradata/vantage-ui-platform/commit/2d2d2a6))
+- **fab-buttons:** propagating border radius ([#73](https://github.com/Teradata/vantage-ui-platform/issues/73)) ([08b737f](https://github.com/Teradata/vantage-ui-platform/commit/08b737f))
+- **styling:** wrong text color ([#78](https://github.com/Teradata/vantage-ui-platform/issues/78)) ([d61f465](https://github.com/Teradata/vantage-ui-platform/commit/d61f465))
+- **theme:** remove icons folder dup ([50bc28f](https://github.com/Teradata/vantage-ui-platform/commit/50bc28f))
+
+### Features
+
+- **app switcher:** use scss + body class method for swapping logo ([#81](https://github.com/Teradata/vantage-ui-platform/issues/81)) ([0797461](https://github.com/Teradata/vantage-ui-platform/commit/0797461))
+- **app-icons:** adding placeholders ([#72](https://github.com/Teradata/vantage-ui-platform/issues/72)) ([395a8d0](https://github.com/Teradata/vantage-ui-platform/commit/395a8d0))
+- **app-switcher:** add description to interface ([a488e53](https://github.com/Teradata/vantage-ui-platform/commit/a488e53))
+- **app-switcher:** add other prods getter to serv ([91d4ee1](https://github.com/Teradata/vantage-ui-platform/commit/91d4ee1))
+- **app-switcher:** add other products support ([#77](https://github.com/Teradata/vantage-ui-platform/issues/77)) ([9713f0a](https://github.com/Teradata/vantage-ui-platform/commit/9713f0a))
+- **app-switcher:** add products service ([5b00ddd](https://github.com/Teradata/vantage-ui-platform/commit/5b00ddd))
+- **app-switcher:** new module ([#70](https://github.com/Teradata/vantage-ui-platform/issues/70)) ([ac50aa2](https://github.com/Teradata/vantage-ui-platform/commit/ac50aa2))
+- **app-switcher:** separate menu from button impl ([#79](https://github.com/Teradata/vantage-ui-platform/issues/79)) ([74a121f](https://github.com/Teradata/vantage-ui-platform/commit/74a121f))
+- **icons:** add icon version of logo ([#86](https://github.com/Teradata/vantage-ui-platform/issues/86)) ([6d163a4](https://github.com/Teradata/vantage-ui-platform/commit/6d163a4))
+- **sqle:** add credentials dialog ([#83](https://github.com/Teradata/vantage-ui-platform/issues/83)) ([025afe8](https://github.com/Teradata/vantage-ui-platform/commit/025afe8))
+- add analyst console and editor icons ([#82](https://github.com/Teradata/vantage-ui-platform/issues/82)) ([55f92d9](https://github.com/Teradata/vantage-ui-platform/commit/55f92d9))
+- make icons respond to user theme selection ([#80](https://github.com/Teradata/vantage-ui-platform/issues/80)) ([22f7852](https://github.com/Teradata/vantage-ui-platform/commit/22f7852))
+- **sqle:** add timeout + retry to conn serv ([#85](https://github.com/Teradata/vantage-ui-platform/issues/85)) ([7afa5ee](https://github.com/Teradata/vantage-ui-platform/commit/7afa5ee))
+- **theme:** enhance theme service to respect OS theme pref ([#74](https://github.com/Teradata/vantage-ui-platform/issues/74)) ([aab6c1c](https://github.com/Teradata/vantage-ui-platform/commit/aab6c1c))
+
 <a name="1.0.0-beta.1"></a>
 
 # [1.0.0-beta.1](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2020-03-23)
