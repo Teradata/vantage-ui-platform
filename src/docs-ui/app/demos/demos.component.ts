@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VantageThemeService } from '@td-vantage/ui-platform/theme';
+import { VantageCredentialsDialogComponent } from '@td-vantage/ui-platform/sqle';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -11,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 export class DemosComponent implements OnInit, OnDestroy {
   private unsubscribe: Subject<void> = new Subject();
 
-  constructor(public _themeService: VantageThemeService) {}
+  constructor(public _themeService: VantageThemeService, private _dialog: MatDialog) {}
 
   ngOnInit(): void {
     // tslint:disable:no-console
@@ -36,5 +38,15 @@ export class DemosComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  connect(basicAuthEnabled: boolean = false): void {
+    const dialog: MatDialogRef<VantageCredentialsDialogComponent> = this._dialog.open(
+      VantageCredentialsDialogComponent,
+      {
+        width: '500px',
+      },
+    );
+    dialog.componentInstance.basicAuthEnabled = basicAuthEnabled;
   }
 }

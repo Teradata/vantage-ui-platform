@@ -3,8 +3,7 @@
 
   .app-switcher-header[td-menu-header] {
     padding: 24px 0;
-    .logo-icon {
-      width: 100px;
+    .mat-icon[svgicon='td-logo:logo-wordmark'] {
       margin-bottom: 8px;
     }
   }
@@ -31,6 +30,8 @@
 
     .mat-icon {
       font-size: 16px;
+      height: 16px;
+      width: 16px;
       margin-right: 0;
     }
   }

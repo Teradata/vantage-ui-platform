@@ -67,7 +67,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: IQueryResultSet) => {
         return resultSet;
@@ -91,7 +91,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: IQueryResultSet) => {
         return resultSet;
@@ -115,7 +115,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: IQueryResultSet) => {
         return resultSet;
@@ -137,7 +137,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: any) => {
         return resultSet;
@@ -159,7 +159,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: IQueryResultSet) => {
         return resultSet;
@@ -181,7 +181,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: IQueryResultSet) => {
         return resultSet;
@@ -203,7 +203,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: IQueryResultSet) => {
         return resultSet;
@@ -234,7 +234,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: any) => {
         return resultSet;
@@ -256,7 +256,7 @@ export class VantageQueryService {
 
     return request.pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.error;
+        throw Object.assign({}, error.error, { httpStatus: error.status });
       }),
       map((resultSet: any) => {
         return resultSet;

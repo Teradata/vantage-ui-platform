@@ -1,6 +1,8 @@
 import { Injectable, Optional, SkipSelf, Provider } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap, mapTo } from 'rxjs/operators';
+
+import { Observable, throwError, timer } from 'rxjs';
+import { mergeMap, retryWhen, tap, timeout, mapTo } from 'rxjs/operators';
+
 import { VantageQueryService, ISQLEConnection } from './query.service';
 
 const CONNECTION_SESSION_KEY: string = 'vantage.editor.connection';
@@ -25,11 +27,28 @@ export class VantageConnectionService {
     sessionStorage.removeItem(CONNECTION_SESSION_KEY);
   }
 
-  public connect(connection: ISQLEConnection): Observable<ISQLEConnection> {
+  public connect(
+    connection: ISQLEConnection,
+    opts?: { timeout: number; attempts: number },
+  ): Observable<ISQLEConnection> {
     // clear connection before starting a new one
     this.disconnect();
     // test connection with SELECT 1
     return this._queryService.querySystem(connection, { query: 'SELECT 1;' }).pipe(
+      // timeout connection if more than 7 seconds
+      timeout(opts?.timeout || 7000),
+      // retry only after a certain number of attempts or if the error is something else than 420
+      retryWhen((errors: Observable<{ httpStatus: number }>) => {
+        return errors.pipe(
+          mergeMap((error: { httpStatus: number }, index: number) => {
+            const retryAttempt: number = index + 1;
+            if (retryAttempt > (opts?.attempts || 2) || error.httpStatus === 420) {
+              return throwError(error);
+            }
+            return timer(0);
+          }),
+        );
+      }),
       tap(() => this.store(connection)), // if successful, save
       mapTo(connection),
     );

@@ -1,10 +1,7 @@
 <td-menu class="app-switcher-menu">
   <!--header-->
   <div td-menu-header class="app-switcher-header" (click)="_blockEvent($event)">
-    <mat-icon
-      class="logo-icon"
-      [svgIcon]="_themeService.map({ 'dark-theme': 'td-logo:on-dark', 'light-theme': 'td-logo:on-light' }) | async"
-    ></mat-icon>
+    <mat-icon class="logo-icon" svgIcon="td-logo:logo-wordmark"></mat-icon>
     <div class="app-switcher-header-title mat-body-2">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
   </div>
   <!--content-->

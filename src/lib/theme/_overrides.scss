@@ -89,7 +89,7 @@ $shape-radius: 8px;
     }
   }
 
-  // Icons - Swap based on app theme
+  // Icons - swap version based on app theme
   .dark-theme svg {
     .lightmode {
       display: none;
@@ -97,6 +97,22 @@ $shape-radius: 8px;
     .darkmode {
       display: block;
     }
+  }
+
+  // Logos initial sizing
+  // Icon / favicon version
+  .mat-icon[svgicon='td-logo:logo-mark'] {
+    height: 40px;
+    width: 40px;
+  }
+  // Text version
+  .mat-icon[svgicon='td-logo:logo-wordmark'] {
+    height: 20px;
+    width: 100px;
+  }
+  // Swap colors in text version based on app theme
+  .dark-theme svg.logo-wordmark .logo-text {
+    fill: #fffffe;
   }
 
   // Active icon color in list nav

@@ -14,7 +14,7 @@ export class AppComponent {
     {
       text: 'Vantage Launcher',
       href: 'http://teradata.com',
-      icon: 'settings',
+      svgIcon: 'td-logo:logo-mark',
       divider: true,
     },
     {
@@ -25,7 +25,7 @@ export class AppComponent {
     {
       text: 'Analyst',
       href: 'http://teradata.com',
-      svgIcon: 'td-logo:on-light',
+      icon: 'settings',
     },
     {
       text: 'App Center',
