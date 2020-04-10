@@ -54,7 +54,8 @@ export class VantageQueryService {
       .append('Content-Type', 'application/json');
     if (connection.creds) {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
-      payload.logMech = connection.system.system_attributes.attributes.log_mech || 'DEFAULT';
+      const attributes: { [key: string]: string } = connection.system.system_attributes?.attributes;
+      payload.logMech = attributes?.log_mech || attributes?.logMech || 'DEFAULT';
     } else {
       payload.logMech = 'JWT';
     }
@@ -222,7 +223,8 @@ export class VantageQueryService {
       .append('Content-Type', 'application/json');
     if (connection.creds) {
       headers = headers.set('X-Auth-Credentials', 'Basic ' + connection.creds);
-      payload.logMech = connection.system.system_attributes.attributes.log_mech || 'DEFAULT';
+      const attributes: { [key: string]: string } = connection.system.system_attributes?.attributes;
+      payload.logMech = attributes?.log_mech || attributes?.logMech || 'DEFAULT';
     } else {
       payload.logMech = 'JWT';
     }
