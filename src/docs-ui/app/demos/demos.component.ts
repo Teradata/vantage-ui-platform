@@ -55,7 +55,7 @@ export class DemosComponent implements OnInit, OnDestroy {
     dialog.componentInstance.basicAuthEnabled = basicAuthEnabled;
   }
 
-  openErrorDialog(error: number): void {
+  openErrorDialog(error?: number): void {
     this._errorService.open({
       message: 'This is an error dialog',
       error,
