@@ -1,8 +1,17 @@
 @mixin vantage-app-switcher-theme($theme) {
   $foreground: map-get($theme, foreground);
   $text: map-get($foreground, text);
+  $secondary-text: map-get($foreground, secondary-text);
 
   .app-switcher-header-title {
     color: $text;
+  }
+  .other-products-header {
+    color: $secondary-text;
+    @include mat-typography-level-to-styles($fontConfig, caption);
+  }
+  .explore-more {
+    color: $secondary-text;
+    font-size: mat-font-size($fontConfig, caption);
   }
 }

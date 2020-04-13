@@ -2,7 +2,7 @@
   <!--header-->
   <div td-menu-header class="app-switcher-header" (click)="_blockEvent($event)">
     <mat-icon class="logo-icon" svgIcon="td-logo:logo-wordmark"></mat-icon>
-    <div class="app-switcher-header-title mat-body-2">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
+    <div class="app-switcher-header-title">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
   </div>
   <!--content-->
   <mat-list>
@@ -41,12 +41,11 @@
         </a>
       </ng-container>
     </mat-list>
-    <mat-divider class="push-top-sm"></mat-divider>
     <ng-template [ngTemplateOutlet]="explorerMore"></ng-template>
   </mat-expansion-panel>
   <ng-template #explorerMore>
     <a mat-menu-item class="explore-more" [href]="exploreMoreLink">
-      <span class="mat-caption">{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
+      <span>{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
       <mat-icon>launch</mat-icon>
     </a>
   </ng-template>

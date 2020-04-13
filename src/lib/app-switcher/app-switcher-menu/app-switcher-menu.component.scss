@@ -1,10 +1,12 @@
 .app-switcher-menu {
-  min-width: 250px;
+  min-width: 256px;
 
   .app-switcher-header[td-menu-header] {
     padding: 24px 0;
     .mat-icon[svgicon='td-logo:logo-wordmark'] {
-      margin-bottom: 8px;
+      height: 24px;
+      width: auto;
+      margin-bottom: 12px;
     }
   }
   .app-switcher-list-item {
@@ -15,6 +17,9 @@
   }
 
   .other-products {
+    box-shadow: none;
+    margin: 8px 0;
+
     .other-products-header {
       padding: 0 16px;
     }
