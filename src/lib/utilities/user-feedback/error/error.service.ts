@@ -18,6 +18,8 @@ export class VantageErrorService {
   open(error: VantageError): MatDialogRef<TdAlertDialogComponent> {
     if (error) {
       const config: IAlertConfig = {
+        id: 'vui-error-dialog' + (error.error !== undefined ? `-${error.error.toString()}` : ''),
+        panelClass: 'vui-error-dialog',
         title: this._translate.instant('THERE_WAS_A_PROBLEM'),
         message: error.message,
         disableClose: true,

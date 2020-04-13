@@ -21,3 +21,14 @@
     Connect
   </button>
 </div>
+
+<div class="pad">
+  <h2>Utilities Module</h2>
+  <h4>Error Dialog</h4>
+  <button mat-raised-button class="push-right-sm" (click)="openErrorDialog()">
+    Open without error number
+  </button>
+  <button mat-raised-button (click)="openErrorDialog(404)">
+    Open with error number
+  </button>
+</div>
