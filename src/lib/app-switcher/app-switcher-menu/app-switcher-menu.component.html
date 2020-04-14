@@ -44,9 +44,8 @@
     <ng-template [ngTemplateOutlet]="explorerMore"></ng-template>
   </mat-expansion-panel>
   <ng-template #explorerMore>
-    <a mat-menu-item class="explore-more" [href]="exploreMoreLink">
-      <span>{{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}</span>
-      <mat-icon>launch</mat-icon>
+    <a mat-button class="explore-more" color="accent" [href]="exploreMoreLink">
+      {{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}
     </a>
   </ng-template>
 </td-menu>

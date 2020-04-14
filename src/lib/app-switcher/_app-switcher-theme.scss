@@ -10,8 +10,4 @@
     color: $secondary-text;
     @include mat-typography-level-to-styles($fontConfig, caption);
   }
-  .explore-more {
-    color: $secondary-text;
-    font-size: mat-font-size($fontConfig, caption);
-  }
 }

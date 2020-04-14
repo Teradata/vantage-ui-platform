@@ -11,8 +11,8 @@
   }
   .app-switcher-list-item {
     .mat-icon::ng-deep > svg {
-      height: 24px;
-      width: 24px;
+      height: 40px;
+      width: 40px;
     }
   }
 
@@ -29,15 +29,6 @@
   }
 
   .explore-more {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .mat-icon {
-      font-size: 16px;
-      height: 16px;
-      width: 16px;
-      margin-right: 0;
-    }
+    margin: 6px 8px;
   }
 }
