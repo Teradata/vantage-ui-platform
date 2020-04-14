@@ -3,6 +3,38 @@
     <div td-toolbar-content layout="row" layout-align="start center" flex>
       <span flex></span>
 
+      <vui-account-profile name="donald duck" email="donald.duck@teradata.com">
+        <ng-container account-info-list>
+          <mat-list-item (click)="_blockEvent($event)">
+            <mat-icon matListAvatar>account_balance</mat-icon>
+            <span matLine class="mat-body-1">Default</span>
+            <span matLine>organization</span>
+          </mat-list-item>
+        </ng-container>
+        <ng-container account-action-list>
+          <button
+            mat-list-item
+            *ngIf="_themeService.lightThemeIsActive; else darkModeButton"
+            (click)="toggleTheme($event)"
+          >
+            <mat-icon matListAvatar>brightness_low</mat-icon>
+            <span matLine>Switch to dark mode</span>
+          </button>
+
+          <ng-template #darkModeButton>
+            <button mat-list-item (click)="toggleTheme($event)">
+              <mat-icon matListAvatar>brightness_high</mat-icon>
+              <span matLine>Switch to light mode</span>
+            </button>
+          </ng-template>
+          <mat-divider></mat-divider>
+          <button mat-list-item>
+            <span matListAvatar></span>
+            <span matLine>Sign out</span>
+          </button>
+        </ng-container>
+      </vui-account-profile>
+
       <vui-app-switcher
         [products]="products"
         [otherProducts]="otherProducts"
