@@ -6,6 +6,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 import { TranslateModule } from '@ngx-translate/core';
 import { CovalentMenuModule } from '@covalent/core/menu';
 
@@ -28,6 +29,7 @@ describe('VantageAppSwitcherComponent', () => {
         MatButtonModule,
         MatDividerModule,
         MatExpansionModule,
+        MatListModule,
         CovalentMenuModule,
         TranslateModule.forRoot(),
         VantageThemeModule,

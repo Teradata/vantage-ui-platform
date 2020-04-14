@@ -6,6 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatListModule } from '@angular/material/list';
 import { CovalentMenuModule } from '@covalent/core/menu';
 
 import { VantageThemeModule } from '../../theme/theme.module';
@@ -25,6 +26,7 @@ describe('VantageAppSwitcherMenuComponent', () => {
         MatIconModule,
         MatButtonModule,
         MatDividerModule,
+        MatListModule,
         CovalentMenuModule,
         TranslateModule.forRoot(),
         VantageThemeModule,

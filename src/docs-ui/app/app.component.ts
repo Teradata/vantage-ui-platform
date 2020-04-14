@@ -74,4 +74,13 @@ export class AppComponent {
       this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/teradata-logo.svg'),
     );
   }
+
+  toggleTheme($event: Event): void {
+    this._themeService.toggleTheme();
+  }
+
+  _blockEvent(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }
