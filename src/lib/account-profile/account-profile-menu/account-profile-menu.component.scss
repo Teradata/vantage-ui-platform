@@ -6,32 +6,27 @@
     padding-bottom: 0;
   }
 
-  ::ng-deep mat-list-item:not(:first-child),
-  ::ng-deep [mat-list-item] {
+  .mat-action-list {
+    padding-top: 0;
+  }
+}
+
+:host ::ng-deep {
+  // TODO remove styles when bug gets addressed in td-menu in Covalent
+  mat-list .mat-list-item.mat-2-line .mat-list-item-content {
+    height: inherit;
+  }
+  mat-list-item:not(:first-child),
+  [mat-list-item] {
     .mat-list-item-content .mat-icon[matListAvatar] {
       background: none;
     }
   }
-
-  .mat-action-list {
-    padding-top: 0;
-  }
-
-  ::ng-deep .mat-action-list .mat-divider,
-  ::ng-deep .mat-divider {
+  .mat-action-list .mat-divider,
+  .mat-divider {
     margin: 8px 0;
   }
-
-  // TODO remove styles when bug gets addressed in td-menu in Covalent
-  :host ::ng-deep {
-    mat-divider:last-child {
-      display: none;
-    }
-    mat-list .mat-list-item.mat-2-line .mat-list-item-content {
-      height: inherit;
-    }
-  }
-  ::ng-deep .td-menu-content + .mat-divider {
+  .td-menu-content + .mat-divider {
     display: none;
   }
 }
