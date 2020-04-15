@@ -31,4 +31,7 @@
   .explore-more {
     margin: 6px 8px;
   }
+  ::ng-deep .td-menu-content + .mat-divider {
+    display: none;
+  }
 }
