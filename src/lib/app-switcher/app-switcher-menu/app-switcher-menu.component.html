@@ -5,7 +5,7 @@
     <div class="app-switcher-header-title">{{ 'APP_SWITCHER.HEADER' | translate }}</div>
   </div>
   <!--content-->
-  <mat-list>
+  <mat-action-list>
     <ng-container *ngFor="let product of products; last as isLast">
       <a mat-list-item class="app-switcher-list-item text-nodecoration" [href]="product.href">
         <mat-icon
@@ -21,7 +21,7 @@
       </a>
       <mat-divider class="push-top-sm push-bottom-sm" *ngIf="product.divider && !isLast"></mat-divider>
     </ng-container>
-  </mat-list>
+  </mat-action-list>
   <mat-divider class="push-top-sm"></mat-divider>
   <mat-expansion-panel *ngIf="otherProducts?.length; else explorerMore" class="other-products">
     <mat-expansion-panel-header
@@ -34,17 +34,17 @@
         {{ 'APP_SWITCHER.OTHER_PRODUCTS' | translate }}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-list [style.padding-top.px]="0">
+    <mat-action-list [style.padding-top.px]="0">
       <ng-container *ngFor="let other of otherProducts">
         <a mat-list-item class="text-nodecoration" [href]="other.href">
           <span matLine>{{ other.text }}</span>
         </a>
       </ng-container>
-    </mat-list>
+    </mat-action-list>
     <ng-template [ngTemplateOutlet]="explorerMore"></ng-template>
   </mat-expansion-panel>
   <ng-template #explorerMore>
-    <a mat-button class="explore-more" color="accent" [href]="exploreMoreLink">
+    <a mat-button class="explore-more" color="accent" [href]="exploreMoreLink" target="_blank">
       {{ 'APP_SWITCHER.EXPLORE_MORE' | translate }}
     </a>
   </ng-template>
