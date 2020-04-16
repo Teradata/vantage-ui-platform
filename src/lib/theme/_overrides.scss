@@ -320,24 +320,24 @@ $shape-radius: 8px;
     color: map-get($foreground, emphasis) !important;
   }
   .bgc-positive {
-    color: map-get($background, positive) !important;
+    background-color: map-get($background, positive) !important;
   }
   .bgc-caution {
-    color: map-get($background, caution) !important;
+    background-color: map-get($background, caution) !important;
   }
   .bgc-negative {
-    color: map-get($background, negative) !important;
+    background-color: map-get($background, negative) !important;
   }
   .bgc-neutral {
-    color: map-get($background, neutral) !important;
+    background-color: map-get($background, neutral) !important;
   }
   .bgc-accent,
   .bgc-emphasis-1 {
-    color: map-get($background, accent) !important;
+    background-color: map-get($background, accent) !important;
   }
   .bgc-emphasis,
   .bgc-emphasis-2 {
-    color: map-get($background, emphasis) !important;
+    background-color: map-get($background, emphasis) !important;
   }
 
   // Components
