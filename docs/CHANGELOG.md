@@ -1,3 +1,21 @@
+<a name="1.0.0-beta.3"></a>
+
+# [1.0.0-beta.3](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2020-04-15)
+
+### Bug Fixes
+
+- **connection-dialog:** add id on creds section ([d44a27e](https://github.com/Teradata/vantage-ui-platform/commit/d44a27e))
+- **docs:** aot build ([b82ff7d](https://github.com/Teradata/vantage-ui-platform/commit/b82ff7d))
+- **pre-loader:** remove hover title tooltip ([#89](https://github.com/Teradata/vantage-ui-platform/issues/89)) ([c65d7e1](https://github.com/Teradata/vantage-ui-platform/commit/c65d7e1))
+- **sqle:** check for log_mech and logMech on system ([#91](https://github.com/Teradata/vantage-ui-platform/issues/91)) ([3f69149](https://github.com/Teradata/vantage-ui-platform/commit/3f69149))
+
+### Features
+
+- add object storage icon ([#90](https://github.com/Teradata/vantage-ui-platform/issues/90)) ([2df292a](https://github.com/Teradata/vantage-ui-platform/commit/2df292a))
+- **account-profile:** adding account-profile component ([#92](https://github.com/Teradata/vantage-ui-platform/issues/92)) ([17ac6ca](https://github.com/Teradata/vantage-ui-platform/commit/17ac6ca))
+- **error:** add id to error dialog ([f4c1d16](https://github.com/Teradata/vantage-ui-platform/commit/f4c1d16))
+- **theme:** add more td-icons ([#87](https://github.com/Teradata/vantage-ui-platform/issues/87)) ([f12c7ec](https://github.com/Teradata/vantage-ui-platform/commit/f12c7ec))
+
 <a name="1.0.0-beta.2"></a>
 
 # [1.0.0-beta.2](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2020-04-03)
