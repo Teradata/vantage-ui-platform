@@ -4,13 +4,13 @@
 }
 
 @mixin vantage-account-profile-typography($config: null) {
-  @if $fontConfig == null {
-    $fontConfig: td-typography-config();
+  @if $config == null {
+    $config: td-typography-config();
   }
 
   vui-account-profile-menu {
     .mat-list-base .mat-list-item .mat-line:nth-child(n + 2) {
-      @include mat-typography-level-to-styles($fontConfig, caption);
+      @include mat-typography-level-to-styles($config, caption);
     }
   }
 }
