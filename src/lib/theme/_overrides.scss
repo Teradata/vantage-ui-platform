@@ -19,7 +19,7 @@ $shape-radius: 8px;
   $is-dark: map-get($theme, is-dark);
 
   @include vantage-app-switcher-theme($theme);
-  @include vantage-account-profile-theme($theme);
+  @include vui-account-profile-theme($theme, $fontConfig);
 
   // Component theme overrides
   $theme--all-accent: if($is-dark, mat-dark-theme($accent, $accent, $warn), mat-light-theme($accent, $accent, $warn));
