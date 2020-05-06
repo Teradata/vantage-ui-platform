@@ -18,7 +18,7 @@ $shape-radius: 8px;
   $foreground: map-get($theme, foreground);
   $is-dark: map-get($theme, is-dark);
 
-  @include vantage-app-switcher-theme($theme);
+  @include vui-app-switcher-theme($theme, $fontConfig);
   @include vantage-account-profile-theme($theme);
 
   // Component theme overrides
