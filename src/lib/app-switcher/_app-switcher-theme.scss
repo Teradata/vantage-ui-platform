@@ -1,8 +1,29 @@
+@mixin vui-app-switcher-theme($theme, $config: null) {
+  @include vantage-app-switcher-typography($config);
+  @include vantage-app-switcher-theme($theme);
+}
+
+@mixin vantage-app-switcher-typography($config: null) {
+  @if $fontConfig == null {
+    $fontConfig: td-typography-config();
+  }
+
+  vui-app-switcher-menu {
+    .other-products-header {
+      @include mat-typography-level-to-styles($fontConfig, caption);
+    }
+  }
+}
+
 @mixin vantage-app-switcher-theme($theme) {
   $foreground: map-get($theme, foreground);
   $text: map-get($foreground, text);
+  $secondary-text: map-get($foreground, secondary-text);
 
   .app-switcher-header-title {
     color: $text;
+  }
+  .other-products-header {
+    color: $secondary-text;
   }
 }
