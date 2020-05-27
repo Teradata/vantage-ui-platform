@@ -32,6 +32,7 @@ import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
 
 import { VantageSQLEModule } from '@td-vantage/ui-platform/sqle';
 import { VantageSystemModule } from '@td-vantage/ui-platform/system';
+import { VantageAuthenticationModule } from '@td-vantage/ui-platform/auth';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -84,6 +85,7 @@ describe('Component: Credentials Dialog', () => {
         VantageUserFeedbackModule,
         VantageSQLEModule,
         VantageSystemModule,
+        VantageAuthenticationModule,
 
         TranslateModule.forRoot(),
       ],
