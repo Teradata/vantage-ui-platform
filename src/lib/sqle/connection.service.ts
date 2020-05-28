@@ -4,7 +4,7 @@ import { mergeMap, retryWhen, tap, timeout, mapTo } from 'rxjs/operators';
 import { VantageQueryService, ISQLEConnection } from './query.service';
 import { VantageSessionService } from '@td-vantage/ui-platform/auth';
 
-const CONNECTION_SESSION_KEY: string = 'vantage.editor.connection';
+const CONNECTION_SESSION_KEY: string = 'vantage.connection_state';
 
 interface IVantageConnectionState {
   current?: ISQLEConnection;
