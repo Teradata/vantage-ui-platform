@@ -26,7 +26,10 @@
   <mat-expansion-panel
     *ngIf="otherProducts?.length; else explorerMore"
     class="other-products"
-    (afterExpand)="handleExpand()"
+    (afterExpand)="scrollToBottom()"
+    (afterCollapse)="scrollToBottom()"
+    (opened)="scrollToBottom()"
+    (closed)="scrollToBottom()"
   >
     <mat-expansion-panel-header
       collapsedHeight="48px"

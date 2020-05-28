@@ -20,8 +20,10 @@ export class VantageAppSwitcherMenuComponent {
     event.stopPropagation();
   }
 
-  handleExpand(): void {
-    const elem: HTMLElement = this.elRef.nativeElement.querySelector('.td-menu-content');
-    elem.scrollTop = elem.scrollHeight;
+  scrollToBottom(): void {
+    setTimeout(() => {
+      const elem: HTMLElement = this.elRef.nativeElement.querySelector('.td-menu-content');
+      elem.scrollTop = elem.scrollHeight;
+    });
   }
 }

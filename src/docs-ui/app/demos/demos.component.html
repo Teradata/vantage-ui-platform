@@ -20,6 +20,17 @@
   <button mat-raised-button (click)="connect(checkbox.checked)">
     Connect
   </button>
+  <h4>Current connection:</h4>
+  <p>{{ connectionService.currentConnection$ | async | json }}</p>
+  <h4>Connections:</h4>
+  <p>{{ connectionService.connections$ | async | json }}</p>
+  <button
+    *ngIf="(connectionService.connections$ | async)?.length > 0"
+    mat-raised-button
+    (click)="connectionService.removeAll()"
+  >
+    Remove all connections
+  </button>
 </div>
 
 <div class="pad">
