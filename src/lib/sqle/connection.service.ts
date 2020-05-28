@@ -17,7 +17,7 @@ export interface IConnectOptions {
   attempts: number;
 }
 
-export function stringify(connection: ISQLEConnection): string {
+export function generateConnectionKey(connection: ISQLEConnection): string {
   if (connection) {
     return `${connection.system.nickname}${connection.creds}`;
   }
@@ -129,8 +129,8 @@ export class VantageConnectionService {
     return this._areEqual(connection, this.currentConnection);
   }
 
-  public stringify(connection: ISQLEConnection): string {
-    return stringify(connection);
+  public generateKey(connection: ISQLEConnection): string {
+    return generateConnectionKey(connection);
   }
 
   private _pingAndSave(
