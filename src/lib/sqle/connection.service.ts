@@ -123,11 +123,11 @@ export class VantageConnectionService {
     this._currentConnection = undefined;
   }
 
-  public connectionExits(connection: ISQLEConnection): boolean {
+  public connectionExists(connection: ISQLEConnection): boolean {
     return this._getConnectionIndex(connection) > -1;
   }
 
-  public connectionIsCurrentConnection(connection: ISQLEConnection): boolean {
+  public isCurrent(connection: ISQLEConnection): boolean {
     return this._connectionsAreEqual(connection, this.currentConnection);
   }
 
@@ -138,18 +138,18 @@ export class VantageConnectionService {
   private _pingAndSave(
     connection: ISQLEConnection,
     setAsCurrent: boolean,
-    opts: IConnectOptions = { attempts: 2, timeout: 7000 },
+    opts?: IConnectOptions,
   ): Observable<ISQLEConnection> {
     // test connection with SELECT 1
     return this._queryService.querySystem(connection, { query: 'SELECT 1;' }).pipe(
       // timeout connection if more than 7 seconds
-      timeout(opts.timeout),
+      timeout(opts?.timeout || 7000),
       // retry only after a certain number of attempts or if the error is something else than 420
       retryWhen((errors: Observable<{ httpStatus: number }>) => {
         return errors.pipe(
           mergeMap((error: { httpStatus: number }, index: number) => {
             const retryAttempt: number = index + 1;
-            if (retryAttempt > opts.attempts || error.httpStatus === 420) {
+            if (retryAttempt > (opts?.attempts || 2) || error.httpStatus === 420) {
               return throwError(error);
             }
             return timer(0);

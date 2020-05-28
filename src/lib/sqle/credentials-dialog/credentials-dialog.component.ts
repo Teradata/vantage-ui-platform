@@ -89,7 +89,7 @@ export class VantageCredentialsDialogComponent implements OnInit, OnDestroy {
         ? { system: this.system, creds: btoa(this.username + ':' + this.password) }
         : { system: this.system };
 
-      if (this._connectionService.connectionExits(connection)) {
+      if (this._connectionService.connectionExists(connection)) {
         await this._connectionService.connectToExistingConnection(connection).toPromise();
       } else {
         await this._connectionService.addConnectionAndConnect(connection).toPromise();

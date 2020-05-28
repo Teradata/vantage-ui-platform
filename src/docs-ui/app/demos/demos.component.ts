@@ -21,10 +21,6 @@ export class DemosComponent implements OnInit, OnDestroy {
     public connectionService: VantageConnectionService,
   ) {}
 
-  stringify(obj: object): string {
-    return JSON.stringify(obj);
-  }
-
   ngOnInit(): void {
     // tslint:disable:no-console
     this._themeService
