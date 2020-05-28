@@ -45,33 +45,35 @@ export class VantageSpooledQueryService {
   }
 
   querySystem(payload: IQueryPayload): Observable<IQueryResultSet> {
-    return this.queryService.querySystem(this.connectionService.current, { ...payload, spooledResultSet: true }).pipe(
-      tap((res: any) => this.queryStack.push(res.id)),
-      switchMap((res: any) => this.exponentialBackOffInterval(MAX_INTERVAL, res.id)),
-      switchMap((id: number) =>
-        this.queryService.getQuery(this.connectionService.current, id.toString()).pipe(
-          map((query: any) => query.queryState),
-          tap((val: any) => this.queryStatus.next(val)),
-          map((val: any) => [id, val]),
+    return this.queryService
+      .querySystem(this.connectionService.currentConnection, { ...payload, spooledResultSet: true })
+      .pipe(
+        tap((res: any) => this.queryStack.push(res.id)),
+        switchMap((res: any) => this.exponentialBackOffInterval(MAX_INTERVAL, res.id)),
+        switchMap((id: number) =>
+          this.queryService.getQuery(this.connectionService.currentConnection, id.toString()).pipe(
+            map((query: any) => query.queryState),
+            tap((val: any) => this.queryStatus.next(val)),
+            map((val: any) => [id, val]),
+          ),
         ),
-      ),
-      skipWhile(([id, status]: [string, SpooledQueryState]) => status !== SpooledQueryState.RESULT_SET_READY),
-      take(1),
-      switchMap(([id]: [string, SpooledQueryState]) =>
-        this.queryService.getQueryResult(this.connectionService.current, id).pipe(
-          map((val: IQueryResultSet) => [id, val]),
-          tap(() => this.queryStack.pop()),
-          catchError((res: HttpErrorResponse) => {
-            return throwError({
-              ...res,
-              ...{ id },
-              detailMessage: `Error ${res.error.error}: ${res.error.message}`,
-            } as ISpooledQueryError);
-          }),
+        skipWhile(([id, status]: [string, SpooledQueryState]) => status !== SpooledQueryState.RESULT_SET_READY),
+        take(1),
+        switchMap(([id]: [string, SpooledQueryState]) =>
+          this.queryService.getQueryResult(this.connectionService.currentConnection, id).pipe(
+            map((val: IQueryResultSet) => [id, val]),
+            tap(() => this.queryStack.pop()),
+            catchError((res: HttpErrorResponse) => {
+              return throwError({
+                ...res,
+                ...{ id },
+                detailMessage: `Error ${res.error.error}: ${res.error.message}`,
+              } as ISpooledQueryError);
+            }),
+          ),
         ),
-      ),
-      map(([id, results]: [string, IQueryResultSet]) => results),
-    );
+        map(([id, results]: [string, IQueryResultSet]) => results),
+      );
   }
 
   exponentialBackOffInterval(maxInterval: number, returnVal: any): Observable<number> {
@@ -89,9 +91,11 @@ export class VantageSpooledQueryService {
   }
 
   deleteSpooledQuery(queryId: string): void {
-    this.queryService.deleteQuery(this.connectionService.current, queryId).subscribe(undefined, (err: Error) => {
-      throw new Error(this.translate.instant('SPOOLED_QUERY_COULD_NOT_BE_DELETED', { error: JSON.stringify(err) }));
-    });
+    this.queryService
+      .deleteQuery(this.connectionService.currentConnection, queryId)
+      .subscribe(undefined, (err: Error) => {
+        throw new Error(this.translate.instant('SPOOLED_QUERY_COULD_NOT_BE_DELETED', { error: JSON.stringify(err) }));
+      });
   }
 }
 

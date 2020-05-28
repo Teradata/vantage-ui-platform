@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VantageThemeService } from '@td-vantage/ui-platform/theme';
-import { VantageCredentialsDialogComponent } from '@td-vantage/ui-platform/sqle';
+import { VantageCredentialsDialogComponent, VantageConnectionService } from '@td-vantage/ui-platform/sqle';
 import { VantageErrorService } from '@td-vantage/ui-platform/utilities';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,6 +18,7 @@ export class DemosComponent implements OnInit, OnDestroy {
     public _themeService: VantageThemeService,
     private _dialog: MatDialog,
     private _errorService: VantageErrorService,
+    public connectionService: VantageConnectionService,
   ) {}
 
   ngOnInit(): void {
