@@ -17,7 +17,7 @@ export interface IConnectOptions {
   attempts: number;
 }
 
-export function stringifyConnection(connection: ISQLEConnection): string {
+export function stringify(connection: ISQLEConnection): string {
   if (connection) {
     return `${connection.system.nickname}${connection.creds}`;
   }
@@ -73,7 +73,7 @@ export class VantageConnectionService {
     return this._connections;
   }
 
-  public addConnectionAndConnect(connection: ISQLEConnection, options?: IConnectOptions): Observable<ISQLEConnection> {
+  public addAndSetAsCurrent(connection: ISQLEConnection, options?: IConnectOptions): Observable<ISQLEConnection> {
     if (this._getConnectionIndex(connection) > -1) {
       throw Error('Connection already exists');
     } else {
@@ -81,7 +81,7 @@ export class VantageConnectionService {
     }
   }
 
-  public addConnection(connection: ISQLEConnection, options?: IConnectOptions): Observable<ISQLEConnection> {
+  public add(connection: ISQLEConnection, options?: IConnectOptions): Observable<ISQLEConnection> {
     if (this._getConnectionIndex(connection) > -1) {
       throw Error('Connection already exists');
     } else {
@@ -89,22 +89,20 @@ export class VantageConnectionService {
     }
   }
 
-  public connectToExistingConnection(
-    connection: ISQLEConnection,
-    options?: IConnectOptions,
-  ): Observable<ISQLEConnection> {
+  public setAsCurrent(connection: ISQLEConnection, options?: IConnectOptions): Observable<ISQLEConnection> {
     if (this._getConnectionIndex(connection) > -1) {
       return this._pingAndSave(connection, true, options);
     } else {
       throw Error('Connection does not exist');
     }
   }
-  public removeConnection(connection: ISQLEConnection): ISQLEConnection {
+
+  public remove(connection: ISQLEConnection): ISQLEConnection {
     const index: number = this._getConnectionIndex(connection);
     if (index > -1) {
       this._connections = [...this._connections.slice(0, index), ...this._connections.slice(index + 1)];
       this._currentConnection =
-        this._currentConnection && this._connectionsAreEqual(this._currentConnection, connection)
+        this._currentConnection && this._areEqual(this._currentConnection, connection)
           ? undefined
           : this._currentConnection;
       return connection;
@@ -114,25 +112,25 @@ export class VantageConnectionService {
     }
   }
 
-  public disconnectFromCurrentConnection(): void {
+  public unsetAsCurrent(): void {
     this._currentConnection = undefined;
   }
 
-  public removeAllConnections(): void {
+  public removeAll(): void {
     this._connections = [];
     this._currentConnection = undefined;
   }
 
-  public connectionExists(connection: ISQLEConnection): boolean {
+  public exists(connection: ISQLEConnection): boolean {
     return this._getConnectionIndex(connection) > -1;
   }
 
   public isCurrent(connection: ISQLEConnection): boolean {
-    return this._connectionsAreEqual(connection, this.currentConnection);
+    return this._areEqual(connection, this.currentConnection);
   }
 
-  public stringifyConnection(connection: ISQLEConnection): string {
-    return stringifyConnection(connection);
+  public stringify(connection: ISQLEConnection): string {
+    return stringify(connection);
   }
 
   private _pingAndSave(
@@ -174,12 +172,12 @@ export class VantageConnectionService {
     return this._sessionService.user && this._sessionService.user.username;
   }
 
-  private _connectionsAreEqual(connectionA: ISQLEConnection, connectionB: ISQLEConnection): boolean {
+  private _areEqual(connectionA: ISQLEConnection, connectionB: ISQLEConnection): boolean {
     return connectionA.creds === connectionB.creds && connectionA.system.nickname === connectionB.system.nickname;
   }
 
   private _getConnectionIndex(connection: ISQLEConnection): number {
-    return this.connections.findIndex((conn: ISQLEConnection) => this._connectionsAreEqual(connection, conn));
+    return this.connections.findIndex((conn: ISQLEConnection) => this._areEqual(connection, conn));
   }
 
   private _getConnectionState(): IVantageConnectionState {

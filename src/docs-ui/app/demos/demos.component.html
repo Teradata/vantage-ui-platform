@@ -27,7 +27,7 @@
   <button
     *ngIf="(connectionService.connections$ | async)?.length > 0"
     mat-raised-button
-    (click)="connectionService.removeAllConnections()"
+    (click)="connectionService.removeAll()"
   >
     Remove all connections
   </button>
