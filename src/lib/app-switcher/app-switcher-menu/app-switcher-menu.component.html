@@ -23,7 +23,14 @@
     </ng-container>
   </mat-action-list>
   <mat-divider class="push-top-sm"></mat-divider>
-  <mat-expansion-panel *ngIf="otherProducts?.length; else explorerMore" class="other-products">
+  <mat-expansion-panel
+    *ngIf="otherProducts?.length; else explorerMore"
+    class="other-products"
+    (afterExpand)="scrollToBottom()"
+    (afterCollapse)="scrollToBottom()"
+    (opened)="scrollToBottom()"
+    (closed)="scrollToBottom()"
+  >
     <mat-expansion-panel-header
       collapsedHeight="48px"
       expandedHeight="48px"
