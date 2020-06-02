@@ -1,3 +1,22 @@
+<a name="1.0.0-beta.4"></a>
+
+# [1.0.0-beta.4](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2020-06-02)
+
+### Bug Fixes
+
+- bgc classes ([#94](https://github.com/Teradata/vantage-ui-platform/issues/94)) ([4fc8a4a](https://github.com/Teradata/vantage-ui-platform/commit/4fc8a4a))
+- typography for user profile ([#95](https://github.com/Teradata/vantage-ui-platform/issues/95)) ([8eaef8c](https://github.com/Teradata/vantage-ui-platform/commit/8eaef8c))
+- **app-switcher:** scroll on expansion ([#99](https://github.com/Teradata/vantage-ui-platform/issues/99)) ([ed27635](https://github.com/Teradata/vantage-ui-platform/commit/ed27635))
+- **connection-service:** namespace stringify func ([#101](https://github.com/Teradata/vantage-ui-platform/issues/101)) ([0fcbfd1](https://github.com/Teradata/vantage-ui-platform/commit/0fcbfd1))
+- **pre-loader:** remove src files from bundle ([ccb3928](https://github.com/Teradata/vantage-ui-platform/commit/ccb3928))
+
+### Features
+
+- **app-switcher:** some styling adjustments ([#93](https://github.com/Teradata/vantage-ui-platform/issues/93)) ([16a2e2a](https://github.com/Teradata/vantage-ui-platform/commit/16a2e2a))
+- add disconnect icon ([#100](https://github.com/Teradata/vantage-ui-platform/issues/100)) ([c7b25a9](https://github.com/Teradata/vantage-ui-platform/commit/c7b25a9))
+- add segmentation icon ([#96](https://github.com/Teradata/vantage-ui-platform/issues/96)) ([d318a11](https://github.com/Teradata/vantage-ui-platform/commit/d318a11))
+- **connection-service:** support multiple connections ([#55](https://github.com/Teradata/vantage-ui-platform/issues/55)) ([44cdb77](https://github.com/Teradata/vantage-ui-platform/commit/44cdb77))
+
 <a name="1.0.0-beta.3"></a>
 
 # [1.0.0-beta.3](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2020-04-15)
