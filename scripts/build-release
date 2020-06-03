@@ -13,7 +13,6 @@ cp -R ./src/lib/auth/config ./deploy/ui-platform/auth/
 
 # Adding theming file to ui-platform
 cp ./src/lib/app-switcher/_*.scss ./deploy/ui-platform/app-switcher/
-cp ./src/lib/account-profile/_*.scss ./deploy/ui-platform/account-profile/
 
 cp ./src/lib/theme/*.scss ./deploy/ui-platform/theme/
 cp ./src/lib/_theming.scss ./deploy/ui-platform/
