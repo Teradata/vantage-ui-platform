@@ -26,6 +26,11 @@
             "assets": [
               "src/assets",
               {
+                "glob": "*",
+                "input": "src/lib/theme/icons/",
+                "output": "/assets/icons/"
+              },
+              {
                 "glob": "favicon.ico",
                 "input": "src/docs-ui/",
                 "output": "/"
@@ -155,5 +160,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -16,7 +16,7 @@
   bottom: 0;
   z-index: 10000;
   height: 100%; // for transition
-  transition: opacity 0.25s 0s ease-in-out, height 0s 0.25s ease-in-out;
+  transition: opacity 0.125s 0s ease-in-out, height 0s 0.125s ease-in-out;
 
   /* light-theme */
   background-color: map-get($mat-light-theme-background, background);
@@ -24,6 +24,7 @@
   /* LOGO */
   .teradata-logo {
     overflow: visible;
+    width: 300px;
     max-width: 95%;
   }
 
@@ -45,6 +46,8 @@
   .mat-progress-spinner {
     display: block;
     position: relative;
+    width: 36px;
+    height: 36px;
   }
 
   .mat-progress-spinner svg {
@@ -54,6 +57,12 @@
     left: 0;
     transform-origin: center;
     overflow: visible;
+
+    circle {
+      animation-name: mat-progress-spinner-stroke-rotate-100;
+      stroke-dasharray: 282.743px;
+      stroke-width: 10%;
+    }
   }
 
   .mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode='indeterminate'] circle {

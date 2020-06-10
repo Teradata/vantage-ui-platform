@@ -2,7 +2,6 @@
 * Teradata Colors
 */
 
-// Customer Teradata brand palette
 // Custom orange contrast
 $td-orange: (
   100: #facdbc,
@@ -55,7 +54,7 @@ $td-slate: (
     200: $black-87-opacity,
     300: $black-87-opacity,
     400: $black-87-opacity,
-    500: $black-87-opacity,
+    500: $white-87-opacity,
     600: $white-87-opacity,
     700: $white-87-opacity,
     800: $white-87-opacity,
@@ -109,6 +108,17 @@ $td-teal: (
   700: #009392,
   800: #008383,
   900: #007373,
+  1000: #016b6b,
+  1100: #036464,
+  1200: #045c5c,
+  1300: #055454,
+  1400: #074d4d,
+  1500: #084545,
+  1600: #0a3e3e,
+  1700: #0b3636,
+  1800: #0c2e2e,
+  1900: #0e2727,
+  2000: #0f1f1f,
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -120,6 +130,17 @@ $td-teal: (
     700: $black-87-opacity,
     800: $black-87-opacity,
     900: $white-87-opacity,
+    1000: $white-87-opacity,
+    1100: $white-87-opacity,
+    1200: $white-87-opacity,
+    1300: $white-87-opacity,
+    1400: $white-87-opacity,
+    1500: $white-87-opacity,
+    1600: $white-87-opacity,
+    1700: $white-87-opacity,
+    1800: $white-87-opacity,
+    1900: $white-87-opacity,
+    2000: $white-87-opacity,
   ),
 );
 $td-blue: (
@@ -149,12 +170,13 @@ $td-blue: (
 
 // Background palette for light themes.
 $mat-light-theme-background: (
-  status-bar: #e0e0e0,
+  status-bar: mat-color($mat-grey, 300),
   app-bar: mat-color($mat-grey, 50),
-  background: mat-color($mat-grey, 200),
-  hover: rgba(0, 0, 0, 0.04),
-  card: white,
+  background: mat-color($mat-grey, 100),
+  canvas: mat-color($mat-grey, 200),
+  card: white /*** card color = surface color ***/,
   dialog: white,
+  hover: rgba(0, 0, 0, 0.04),
   disabled-button: rgba(mat-color($mat-grey, 400), 0.1),
   raised-button: white,
   focused-button: rgba(0, 0, 0, 0.12),
@@ -164,14 +186,13 @@ $mat-light-theme-background: (
   unselected-chip: mat-color($mat-grey, 400),
   disabled-list-option: #eeeeee,
   tooltip: #616161,
-  canvas: mat-color($mat-grey, 200),
   overlay: rgba(#000000, 0.4),
   accent: mat-color($td-teal, 200),
   accent-highlight: rgba(mat-color($td-teal, 200), 0.1),
   accent-highlight-hover: rgba(mat-color($td-teal, 200), 0.2),
-  emphasis: mat-color($td-slate, 200),
-  emphasis-highlight: rgba(mat-color($td-slate, 200), 0.1),
-  emphasis-highlight-hover: rgba(mat-color($td-slate, 200), 0.2),
+  emphasis: mat-color($mat-blue-grey, 200),
+  emphasis-highlight: rgba(mat-color($mat-blue-grey, 200), 0.1),
+  emphasis-highlight-hover: rgba(mat-color($mat-blue-grey, 200), 0.2),
   caution: mat-color($mat-orange, 300),
   caution-highlight: rgba(mat-color($mat-orange, 300), 0.1),
   caution-highlight-hover: rgba(mat-color($mat-orange, 300), 0.2),
@@ -179,11 +200,14 @@ $mat-light-theme-background: (
   negative-highlight: rgba(mat-color($mat-red, 300), 0.1),
   negative-highlight-hover: rgba(mat-color($mat-red, 300), 0.2),
   neutral: mat-color($mat-grey, 400),
-  neutral-highlight: rgba(mat-color($mat-grey, 400), 0.1),
-  neutral-highlight-hover: rgba(mat-color($mat-grey, 400), 0.2),
+  neutral-highlight: rgba(mat-color($mat-grey, 400), 0.04),
+  neutral-highlight-hover: rgba(mat-color($mat-grey, 400), 0.08),
   positive: mat-color($mat-green, 200),
   positive-highlight: rgba(mat-color($mat-green, 200), 0.1),
   positive-highlight-hover: rgba(mat-color($mat-green, 200), 0.2),
+  primary: mat-color($td-slate, 200),
+  primary-highlight: rgba(mat-color($td-slate, 500), 0.04),
+  primary-highlight-hover: rgba(mat-color($td-slate, 500), 0.08),
 );
 
 // Foreground palette for light themes.
@@ -207,8 +231,9 @@ $mat-light-theme-foreground: (
   emphasis: mat-color($mat-blue-grey, 600),
   caution: mat-color($mat-amber, 800),
   negative: mat-color($mat-red, 900),
-  neutral: rgba(black, 0.87),
+  neutral: mat-color($mat-grey, 400),
   positive: mat-color($mat-green, 700),
+  primary: mat-color($td-slate, 800),
 );
 
 // Background palette for dark themes.
@@ -216,7 +241,8 @@ $mat-dark-theme-background: (
   status-bar: black,
   app-bar: mat-color($td-slate, 1300),
   background: mat-color($td-slate, 1500),
-  card: mat-color($td-slate, 1100),
+  canvas: mat-color($td-slate, 1700),
+  card: mat-color($td-slate, 1100) /*** card color = surface color ***/,
   dialog: mat-color($td-slate, 1100),
   hover: rgba(255, 255, 255, 0.04),
   disabled-button: rgba(mat-color($td-slate, 800), 0.4),
@@ -228,12 +254,11 @@ $mat-dark-theme-background: (
   unselected-chip: mat-color($td-slate, 800),
   disabled-list-option: black,
   tooltip: #616161,
-  canvas: mat-color($td-slate, 1700),
   overlay: rgba(0, 0, 0, 0.4),
-  accent: #005858,
-  accent-highlight: rgba(#005858, 0.4),
-  accent-highlight-hover: rgba(#005858, 0.6),
-  emphasis: mat-color($td-slate, 200),
+  accent: mat-color($td-teal, 1200),
+  accent-highlight: rgba(mat-color($td-teal, 1200), 0.4),
+  accent-highlight-hover: rgba(mat-color($td-teal, 1200), 0.6),
+  emphasis: #4f5558,
   emphasis-highlight: rgba(mat-color($td-slate, 200), 0.4),
   emphasis-highlight-hover: rgba(mat-color($td-slate, 200), 0.6),
   caution: #704c16,
@@ -248,6 +273,9 @@ $mat-dark-theme-background: (
   positive: #336033,
   positive-highlight: rgba(#336033, 0.4),
   positive-highlight-hover: rgba(#336033, 0.6),
+  primary: mat-color($td-slate, 900),
+  primary-highlight: rgba(mat-color($td-slate, 900), 0.4),
+  primary-highlight-hover: rgba(mat-color($td-slate, 900), 0.6),
 );
 
 // Foreground palette for dark themes.
@@ -263,7 +291,7 @@ $mat-dark-theme-foreground: (
   secondary-text: $light-secondary-text,
   icon: white,
   icons: white,
-  text: rgba(white, 0.87),
+  text: white,
   slider-min: white,
   slider-off: rgba(white, 0.3),
   slider-off-active: rgba(white, 0.3),
@@ -273,6 +301,7 @@ $mat-dark-theme-foreground: (
   negative: mat-color($mat-red, 400),
   neutral: rgba(white, 0.87),
   positive: mat-color($mat-green, 300),
+  primary: mat-color($td-slate, 200),
 );
 
 $td-positive: (

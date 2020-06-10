@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VantageThemeService } from '@td-vantage/ui-platform/theme';
 
@@ -8,35 +8,25 @@ import { VantageThemeService } from '@td-vantage/ui-platform/theme';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   navLinks: any = [
     {
-      name: 'Components',
-      route: '/components',
+      name: 'Material Components',
+      route: '/mat-components',
     },
     {
       name: 'Typography',
       route: '/typography',
     },
+    {
+      name: 'Demos',
+      route: '/demos',
+    },
+    {
+      name: 'Covalent',
+      route: '/covalent-components',
+    },
   ];
 
-  constructor(private _dialog: MatDialog, private _snackbar: MatSnackBar, private _themeService: VantageThemeService) {}
-
-  ngOnInit(): void {
-    // Sets default theme to dark mode if user never set theme
-  }
-
-  get darkThemeIsActive(): boolean {
-    return this._themeService.darkThemeIsActive;
-  }
-  get lightThemeIsActive(): boolean {
-    return this._themeService.lightThemeIsActive;
-  }
-
-  applyLightTheme(): void {
-    this._themeService.applyLightTheme();
-  }
-  applyDarkTheme(): void {
-    this._themeService.applyDarkTheme();
-  }
+  constructor(private _dialog: MatDialog, private _snackbar: MatSnackBar, public _themeService: VantageThemeService) {}
 }

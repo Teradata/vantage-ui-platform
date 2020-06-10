@@ -1,0 +1,10 @@
+<button mat-icon-button [matMenuTriggerFor]="applicationMenu">
+  <mat-icon>apps</mat-icon>
+</button>
+<mat-menu #applicationMenu="matMenu" [overlapTrigger]="false">
+  <vui-app-switcher-menu
+    [products]="products"
+    [otherProducts]="otherProducts"
+    [exploreMoreLink]="exploreMoreLink"
+  ></vui-app-switcher-menu>
+</mat-menu>

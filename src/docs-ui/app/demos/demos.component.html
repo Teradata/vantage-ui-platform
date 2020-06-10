@@ -1,0 +1,45 @@
+<div class="pad">
+  <h2>Theme Service</h2>
+  <div>Active theme: {{ _themeService.activeTheme$ | async }}</div>
+  <div>Dark theme is active: {{ _themeService.darkTheme$ | async }}</div>
+  <div>Light theme is active: {{ _themeService.lightTheme$ | async }}</div>
+  <div>
+    Theme map: {{ _themeService.map({ 'dark-theme': 'hacker vibes 👩‍💻', 'light-theme': 'miami vibes 🏖️' }) | async }}
+  </div>
+</div>
+
+<div class="pad">
+  <h2>SQLE Module</h2>
+  <h4>Credentials Dialog</h4>
+  <p class="tc mat-caption">Note: Navigate to `/login` to trigger the auth flow</p>
+  <div class="pad-sm">
+    <mat-checkbox #checkbox>
+      Basic Auth
+    </mat-checkbox>
+  </div>
+  <button mat-raised-button (click)="connect(checkbox.checked)">
+    Connect
+  </button>
+  <h4>Current connection:</h4>
+  <p>{{ connectionService.currentConnection$ | async | json }}</p>
+  <h4>Connections:</h4>
+  <p>{{ connectionService.connections$ | async | json }}</p>
+  <button
+    *ngIf="(connectionService.connections$ | async)?.length > 0"
+    mat-raised-button
+    (click)="connectionService.removeAll()"
+  >
+    Remove all connections
+  </button>
+</div>
+
+<div class="pad">
+  <h2>Utilities Module</h2>
+  <h4>Error Dialog</h4>
+  <button mat-raised-button class="push-right-sm" (click)="openErrorDialog()">
+    Open without error number
+  </button>
+  <button mat-raised-button (click)="openErrorDialog(404)">
+    Open with error number
+  </button>
+</div>

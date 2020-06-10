@@ -12,10 +12,16 @@ rm -rf src/lib/node_modules
 cp -R ./src/lib/auth/config ./deploy/ui-platform/auth/
 
 # Adding theming file to ui-platform
+cp ./src/lib/app-switcher/_*.scss ./deploy/ui-platform/app-switcher/
+
 cp ./src/lib/theme/*.scss ./deploy/ui-platform/theme/
 cp ./src/lib/_theming.scss ./deploy/ui-platform/
 
 # Add pre-loader files
 mkdir -p ./deploy/ui-platform/utilities/pre-loader && cp -R ./src/lib/utilities/pre-loader ./deploy/ui-platform/utilities
+rm ./deploy/ui-platform/utilities/pre-loader/index.ts
+rm ./deploy/ui-platform/utilities/pre-loader/pre-loader.ts
+
+mkdir -p ./deploy/ui-platform/theme/icons && cp -R ./src/lib/theme/icons ./deploy/ui-platform/theme/
 
 echo 'Build Complete'

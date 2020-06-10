@@ -3,6 +3,13 @@
     <div td-toolbar-content layout="row" layout-align="start center" flex>
       <span flex></span>
 
+      <vui-app-switcher
+        [products]="products"
+        [otherProducts]="otherProducts"
+        [exploreMoreLink]="exploreMoreLink"
+        [matTooltip]="'Other Applications' | translate"
+      ></vui-app-switcher>
+
       <a mat-flat-button color="none" target="_blank" href="https://github.com/Teradata/vantage-ui-platform">
         GITHUB
       </a>

@@ -3,7 +3,10 @@
     "lib": {
       "entryFile": "index.ts",
       "umdModuleIds": {
-        "@covalent/http": "covalent.http"
+        "@covalent/core/loading": "covalent.core.loading",
+        "@covalent/core/message": "covalent.core.message",
+        "@covalent/http": "covalent.http",
+        "@ngx-translate/core": "ngx-translate.core"
       }
     }
   }
