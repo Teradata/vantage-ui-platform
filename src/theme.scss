@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
 @import '~@covalent/core/theming/all-theme';
+@import '~@covalent/markdown/markdown-theme';
 // Plus imports for other components in your app.
 
 // Include the base styles for Angular Material core. We include this here so that you only
@@ -41,6 +42,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include covalent-theme($theme);
 // Include Teradata brand
 @include teradata-brand($theme);
+@include covalent-markdown-theme($theme);
 
 /* ------------------------------------- DARK THEME ------------------------------------------ */
 
@@ -53,6 +55,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($dark-theme);
   @include covalent-theme($dark-theme);
+  @include covalent-markdown-theme($theme);
   // Include Teradata brand
   @include teradata-brand($dark-theme);
 }

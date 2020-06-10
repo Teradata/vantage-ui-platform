@@ -44,7 +44,7 @@ import { CovalentLoadingModule } from '@covalent/core/loading';
 import { CovalentDialogsModule } from '@covalent/core/dialogs';
 import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentBreadcrumbsModule } from '@covalent/core/breadcrumbs';
-
+import { CovalentMarkdownNavigatorModule } from '@covalent/markdown-navigator';
 import { CovalentHttpModule } from '@covalent/http';
 
 import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
@@ -126,6 +126,7 @@ import { CovalentComponentsComponent } from './covalent-components/covalent-comp
     CovalentDialogsModule,
     CovalentLoadingModule,
     CovalentMessageModule,
+    CovalentMarkdownNavigatorModule,
     TranslateModule.forRoot(),
     CovalentHttpModule.forRoot(),
 

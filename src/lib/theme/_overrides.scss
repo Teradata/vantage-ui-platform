@@ -32,6 +32,11 @@ $shape-radius: 8px;
 
   // More fine-grained overrides
 
+  // Markdown Navigator
+  .td-markdown a {
+    color: if($is-dark, map-get($mat-dark-theme-foreground, accent), map-get($mat-light-theme-foreground, accent));
+  }
+
   // Chips
   .mat-chip.mat-standard-chip {
     font-weight: normal;
