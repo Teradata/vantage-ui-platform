@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ElementRef } from '@angular/core';
 
 import { IVantageAppSwitcherItem } from '../services/products.service';
 
@@ -13,8 +13,17 @@ export class VantageAppSwitcherMenuComponent {
   @Input() otherProducts: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
 
+  constructor(private elRef: ElementRef) {}
+
   _blockEvent(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
+  }
+
+  scrollToBottom(): void {
+    setTimeout(() => {
+      const elem: HTMLElement = this.elRef.nativeElement.querySelector('.td-menu-content');
+      elem.scrollTop = elem.scrollHeight;
+    });
   }
 }

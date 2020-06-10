@@ -54,7 +54,6 @@ import { VantageAccessModule } from '@td-vantage/ui-platform/access';
 import { VantageThemeModule } from '@td-vantage/ui-platform/theme';
 import { VantageSQLEModule } from '@td-vantage/ui-platform/sqle';
 import { VantageAppSwitcherModule } from '@td-vantage/ui-platform/app-switcher';
-import { VantageAccountProfileModule } from '@td-vantage/ui-platform/account-profile';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -136,7 +135,6 @@ import { CovalentComponentsComponent } from './covalent-components/covalent-comp
     VantageAccessModule,
     VantageThemeModule,
     VantageAppSwitcherModule,
-    VantageAccountProfileModule,
     VantageSQLEModule,
 
     appRoutes,
