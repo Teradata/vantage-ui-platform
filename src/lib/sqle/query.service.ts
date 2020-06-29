@@ -45,6 +45,14 @@ export interface ISQLEConnection {
   creds?: string;
 }
 
+export interface ISessionPayload {
+  autoCommit: string;
+  transactionMode: string;
+  charSet: string;
+  defaultDatabase?: string;
+  logMech?: string;
+}
+
 @Injectable()
 export class VantageQueryService {
   constructor(private _http: TdHttpService) {}
@@ -213,12 +221,10 @@ export class VantageQueryService {
     );
   }
 
-  createSession(connection: ISQLEConnection): Observable<any> {
-    const payload: any = {
-      autoCommit: 'true',
-      transactionMode: 'TERA',
-      charSet: 'UTF8',
-    };
+  createSession(
+    connection: ISQLEConnection,
+    payload: ISessionPayload = { autoCommit: 'true', transactionMode: 'TERA', charSet: 'UTF8' },
+  ): Observable<any> {
     let headers: HttpHeaders = new HttpHeaders()
       .append('Accept', 'application/vnd.com.teradata.rest-v1.0+json')
       .append('Content-Type', 'application/json');
