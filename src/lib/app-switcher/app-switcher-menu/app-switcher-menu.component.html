@@ -7,7 +7,7 @@
   <!--content-->
   <mat-action-list>
     <ng-container *ngFor="let product of products; last as isLast">
-      <a mat-list-item class="app-switcher-list-item text-nodecoration" target="_blank" [href]="product.href">
+      <a mat-list-item class="app-switcher-list-item text-nodecoration" [href]="product.href">
         <mat-icon
           matListAvatar
           [class]="product.iconClasses"
@@ -18,7 +18,6 @@
           <mat-icon matListAvatar [class]="product.iconClasses">{{ product.icon || 'apps' }}</mat-icon>
         </ng-template>
         <span matLine>{{ product.text }}</span>
-        <mat-icon class="text-lg" [style.margin-right.px]="0">launch</mat-icon>
       </a>
       <mat-divider class="push-top-sm push-bottom-sm" *ngIf="product.divider && !isLast"></mat-divider>
     </ng-container>
@@ -44,9 +43,12 @@
     </mat-expansion-panel-header>
     <mat-action-list [style.padding-top.px]="0">
       <ng-container *ngFor="let other of otherProducts">
-        <a mat-list-item class="text-nodecoration" target="_blank" [href]="other.href">
+        <a *ngIf="other.newTab" mat-list-item class="text-nodecoration" target="_blank" [href]="other.href">
           <span matLine>{{ other.text }}</span>
           <mat-icon class="text-lg" [style.margin-right.px]="0">launch</mat-icon>
+        </a>
+        <a *ngIf="!other.newTab" mat-list-item class="text-nodecoration" [href]="other.href">
+          <span matLine>{{ other.text }}</span>
         </a>
       </ng-container>
     </mat-action-list>

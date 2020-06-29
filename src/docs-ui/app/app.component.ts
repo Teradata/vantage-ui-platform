@@ -44,11 +44,13 @@ export class AppComponent {
       text: 'Jupyter',
       href: 'http://teradata.com',
       icon: 'settings',
+      newTab: true,
     },
     {
       text: 'Something else',
       href: 'http://teradata.com',
       icon: 'settings',
+      newTab: false,
     },
   ];
 

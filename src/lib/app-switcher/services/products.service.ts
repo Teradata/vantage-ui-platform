@@ -14,6 +14,7 @@ export interface IVantageAppSwitcherItem {
   svgIcon?: string;
   iconClasses?: string[];
   divider?: boolean;
+  newTab?: boolean;
 }
 
 import { mixinHttp, TdGET } from '@covalent/http';
