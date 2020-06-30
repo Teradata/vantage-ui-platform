@@ -43,7 +43,7 @@
     </mat-expansion-panel-header>
     <mat-action-list [style.padding-top.px]="0">
       <ng-container *ngFor="let other of otherProducts">
-        <a *ngIf="other.newTab" mat-list-item class="text-nodecoration" target="_blank" [href]="other.href">
+        <a *ngIf="other.newTab" mat-list-item class="text-nodecoration new-tab" target="_blank" [href]="other.href">
           <span matLine>{{ other.text }}</span>
           <mat-icon class="text-lg" [style.margin-right.px]="0">launch</mat-icon>
         </a>
