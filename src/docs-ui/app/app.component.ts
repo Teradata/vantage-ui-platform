@@ -30,12 +30,14 @@ export class AppComponent {
     {
       text: 'App Center',
       href: 'http://teradata.com',
+      newTab: false,
     },
 
     {
       text: 'Console',
       href: 'http://teradata.com',
       icon: 'settings',
+      newTab: true,
     },
   ];
 
@@ -48,6 +50,11 @@ export class AppComponent {
     },
     {
       text: 'Something else',
+      href: 'http://teradata.com',
+      icon: 'settings',
+    },
+    {
+      text: 'Another thing',
       href: 'http://teradata.com',
       icon: 'settings',
       newTab: false,
