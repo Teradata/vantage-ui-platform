@@ -23,8 +23,15 @@
     .other-products-header {
       padding: 0 16px;
     }
+
     ::ng-deep .mat-expansion-panel-body {
       padding: 0;
+    }
+  }
+
+  .new-tab {
+    ::ng-deep .mat-list-item-content {
+      padding-right: 12px;
     }
   }
 
