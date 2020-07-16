@@ -188,6 +188,8 @@ $shape-radius: 8px;
     }
   }
   body {
+    color: if($is-dark, map-get($mat-dark-theme-foreground, text), map-get($mat-light-theme-foreground, text));
+
     // Buttons
     a.mat-button,
     button.mat-button,
