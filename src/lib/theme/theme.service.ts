@@ -27,6 +27,11 @@ export class VantageThemeService {
   public lightTheme$: Observable<boolean>;
 
   constructor(private rendererFactory: RendererFactory2, @Inject(DOCUMENT) private _document: any) {
+    // Will trigger a reload on back button.
+    // We need this to prevent Firefox bfChache to cache pages
+    // when back button is pressed.
+    window.onunload = () => undefined;
+
     const initialValue: VantageTheme =
       <VantageTheme>localStorage.getItem(THEME_LOCAL_STORAGE_KEY) || this.checkOSPreference();
 
