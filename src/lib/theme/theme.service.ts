@@ -65,11 +65,11 @@ export class VantageThemeService {
     // account for cached navigation
     // needed for Firefox BFCache
     window.addEventListener('pageshow', (pageTransition: PageTransitionEvent) => {
-      const localStorageDiffersActiveTheme: boolean =
-        this.localStorageTheme() && this.localStorageTheme() !== this._activeTheme;
+      const localStorageTheme: VantageTheme = this.localStorageTheme();
+      const localStorageDiffersActiveTheme: boolean = localStorageTheme && localStorageTheme !== this._activeTheme;
 
       if (pageTransition.persisted && localStorageDiffersActiveTheme) {
-        this.applyTheme(this.localStorageTheme() || this.checkOSPreference());
+        this.applyTheme(localStorageTheme);
       }
     });
   }
@@ -87,10 +87,6 @@ export class VantageThemeService {
   }
   public get lightThemeIsActive(): boolean {
     return this._activeTheme === VantageTheme.LIGHT;
-  }
-
-  public localStorageTheme(): VantageTheme {
-    return localStorage.getItem(THEME_LOCAL_STORAGE_KEY) as VantageTheme;
   }
 
   public activeTheme(): VantageTheme {
@@ -111,6 +107,10 @@ export class VantageThemeService {
 
   public map(mapObject: IVantageThemeMap, fallback?: any): Observable<any> {
     return this.activeTheme$.pipe(map((value: VantageTheme) => (value in mapObject ? mapObject[value] : fallback)));
+  }
+
+  private localStorageTheme(): VantageTheme {
+    return localStorage.getItem(THEME_LOCAL_STORAGE_KEY) as VantageTheme;
   }
 
   private applyTheme(theme: VantageTheme, saveSetting: boolean = true): VantageTheme {
