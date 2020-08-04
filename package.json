@@ -11,7 +11,7 @@
     "services"
   ],
   "scripts": {
-    "serve": "./node_modules/.bin/ng serve --port 5600 --proxy-config proxy.conf.js",
+    "serve": "./node_modules/.bin/ng serve",
     "serve:prod": "node --max_old_space_size=8192 ./node_modules/.bin/ng serve  --aot --prod --source-map=false --optimization --proxy-config proxy.conf.js",
     "build:docs": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --aot --prod --source-map=false --optimization",
     "lint": "npm run tslint && npm run stylelint",
