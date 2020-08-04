@@ -86,6 +86,7 @@ export interface IQueryPayload {
   outputNumbersAsStrings?: boolean;
   spooledResultSet?: boolean;
   clientId?: string;
+  queryBands?: string;
 }
 
 export interface IQueryResultSet {
@@ -129,6 +130,7 @@ export interface ISessionPayload {
   charSet: string;
   defaultDatabase?: string;
   logMech?: string;
+  queryBands?: string;
 }
 
 @Injectable()
