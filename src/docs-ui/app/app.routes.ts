@@ -8,6 +8,7 @@ import { TypographyComponent } from './typography/typography.component';
 import { MatComponentsComponent } from './mat-components/mat-components.component';
 import { DemosComponent } from './demos/demos.component';
 import { CovalentComponentsComponent } from './covalent-components/covalent-components.component';
+import { IconsDemoComponent } from './icons-demo/icons-demo.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'demos', component: DemosComponent },
       { path: 'mat-components', component: MatComponentsComponent },
       { path: 'typography', component: TypographyComponent },
+      { path: 'icons', component: IconsDemoComponent },
       { path: 'covalent-components', component: CovalentComponentsComponent },
     ],
   },
