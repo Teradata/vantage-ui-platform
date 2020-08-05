@@ -19,6 +19,10 @@ export class MainComponent {
       route: '/typography',
     },
     {
+      name: 'Teradata Icons',
+      route: '/icons',
+    },
+    {
       name: 'Demos',
       route: '/demos',
     },
