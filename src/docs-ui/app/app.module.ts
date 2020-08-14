@@ -67,6 +67,7 @@ import { TypographyComponent } from './typography/typography.component';
 import { MatComponentsComponent, DialogContentComponent } from './mat-components/mat-components.component';
 import { DemosComponent } from './demos/demos.component';
 import { CovalentComponentsComponent } from './covalent-components/covalent-components.component';
+import { IconsDemoComponent } from './icons-demo/icons-demo.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { CovalentComponentsComponent } from './covalent-components/covalent-comp
     MatComponentsComponent,
     DemosComponent,
     CovalentComponentsComponent,
+    IconsDemoComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
