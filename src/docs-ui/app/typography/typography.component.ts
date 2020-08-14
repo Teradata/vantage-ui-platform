@@ -11,7 +11,7 @@ export class TypographyComponent {
       title: 'Covalent',
       description: 'Terdata UI Platform',
       icon: 'whatshot',
-      url: 'https://github.com/Teradata/covalent/blob/develop/README.md',
+      url: 'https://raw.githubusercontent.com/ngx-translate/core/master/README.md',
     },
   ];
 }
