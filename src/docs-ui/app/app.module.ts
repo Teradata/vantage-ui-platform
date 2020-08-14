@@ -45,6 +45,8 @@ import { CovalentDialogsModule } from '@covalent/core/dialogs';
 import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentBreadcrumbsModule } from '@covalent/core/breadcrumbs';
 
+import { CovalentMarkdownNavigatorModule } from '@covalent/markdown-navigator';
+
 import { CovalentHttpModule } from '@covalent/http';
 
 import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
@@ -127,6 +129,7 @@ import { IconsDemoComponent } from './icons-demo/icons-demo.component';
     CovalentDialogsModule,
     CovalentLoadingModule,
     CovalentMessageModule,
+    CovalentMarkdownNavigatorModule,
     TranslateModule.forRoot(),
     CovalentHttpModule.forRoot(),
 

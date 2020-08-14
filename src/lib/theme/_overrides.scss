@@ -431,7 +431,7 @@ $shape-radius: 8px;
     );
   }
 
-  td-markdown-navigator-window td-markdown.td-markdown {
+  td-markdown-navigator td-markdown.td-markdown {
     @include long-form-content-sm($theme, $fontConfig);
     // Remove all bottom padding for text from markdown
     h1,
