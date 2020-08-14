@@ -27,6 +27,7 @@
 
   h1 {
     @include mat-typography-level-to-styles($fontConfig, headline);
+
     margin: 8px 0 !important;
   }
   h2 {
