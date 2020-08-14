@@ -11,8 +11,6 @@ const routes: Routes = [
   { path: '**', redirectTo: '/' },
 ];
 
-export const appRoutingProviders: any[] = [
-  VantageAuthenticationGuard,
-];
+export const appRoutingProviders: any[] = [VantageAuthenticationGuard];
 
 export const appRoutes: any = RouterModule.forRoot(routes);

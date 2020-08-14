@@ -10,6 +10,9 @@ npm link
 cd /tmp
 rm -rf testxyz
 ng new testxyz
+cd testxyz
+ng add @angular/material
+ng add @covalent/core 
 
 # Run covalent schematics
 cd testxyz
