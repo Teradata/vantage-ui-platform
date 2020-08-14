@@ -48,12 +48,14 @@
   p {
     @include mat-typography-level-to-styles($fontConfig, body-1);
   }
-  blockquote p {
-    @include mat-typography-level-to-styles($fontConfig, input);
-
-    color: mat-color($foreground, secondary-text);
+  blockquote {
     padding-top: 4px !important;
     margin-bottom: 16px !important;
-    font-style: italic;
+    p {
+      @include mat-typography-level-to-styles($fontConfig, input);
+
+      color: mat-color($foreground, secondary-text);
+      font-style: italic;
+    }
   }
 }
