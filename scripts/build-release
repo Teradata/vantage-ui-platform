@@ -17,6 +17,8 @@ cp ./src/lib/app-switcher/_*.scss ./deploy/ui-platform/app-switcher/
 cp ./src/lib/theme/*.scss ./deploy/ui-platform/theme/
 cp ./src/lib/_theming.scss ./deploy/ui-platform/
 
+mkdir -p ./deploy/ui-platform/theme/long-form-content/ && cp -R ./src/lib/theme/long-form-content ./deploy/ui-platform/theme/
+
 # Add pre-loader files
 mkdir -p ./deploy/ui-platform/utilities/pre-loader && cp -R ./src/lib/utilities/pre-loader ./deploy/ui-platform/utilities
 rm ./deploy/ui-platform/utilities/pre-loader/index.ts

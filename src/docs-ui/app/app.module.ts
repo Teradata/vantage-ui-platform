@@ -45,6 +45,8 @@ import { CovalentDialogsModule } from '@covalent/core/dialogs';
 import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentBreadcrumbsModule } from '@covalent/core/breadcrumbs';
 
+import { CovalentMarkdownNavigatorModule } from '@covalent/markdown-navigator';
+
 import { CovalentHttpModule } from '@covalent/http';
 
 import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
@@ -54,7 +56,7 @@ import { VantageAccessModule } from '@td-vantage/ui-platform/access';
 import { VantageThemeModule } from '@td-vantage/ui-platform/theme';
 import { VantageSQLEModule } from '@td-vantage/ui-platform/sqle';
 import { VantageAppSwitcherModule } from '@td-vantage/ui-platform/app-switcher';
-
+import { VantageUserProfileModule } from '@td-vantage/ui-platform/user-profile';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 
@@ -67,6 +69,7 @@ import { TypographyComponent } from './typography/typography.component';
 import { MatComponentsComponent, DialogContentComponent } from './mat-components/mat-components.component';
 import { DemosComponent } from './demos/demos.component';
 import { CovalentComponentsComponent } from './covalent-components/covalent-components.component';
+import { IconsDemoComponent } from './icons-demo/icons-demo.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,7 @@ import { CovalentComponentsComponent } from './covalent-components/covalent-comp
     MatComponentsComponent,
     DemosComponent,
     CovalentComponentsComponent,
+    IconsDemoComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
@@ -125,6 +129,7 @@ import { CovalentComponentsComponent } from './covalent-components/covalent-comp
     CovalentDialogsModule,
     CovalentLoadingModule,
     CovalentMessageModule,
+    CovalentMarkdownNavigatorModule,
     TranslateModule.forRoot(),
     CovalentHttpModule.forRoot(),
 
@@ -135,6 +140,7 @@ import { CovalentComponentsComponent } from './covalent-components/covalent-comp
     VantageThemeModule,
     VantageAppSwitcherModule,
     VantageSQLEModule,
+    VantageUserProfileModule,
 
     appRoutes,
   ], // modules needed to run this module

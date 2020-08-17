@@ -1,0 +1,29 @@
+<td-user-profile
+  [name]="sessionService.user?.display_name"
+  [email]="sessionService.user?.email"
+  [matTooltip]="'USER_PROFILE.TOOLTIP' | translate"
+  matTooltipShowDelay="0"
+>
+  <ng-container td-user-action-list>
+    <button mat-list-item (click)="themeService.toggleTheme()">
+      <mat-icon matListAvatar>
+        {{ themeService.map({ 'dark-theme': 'brightness_high', 'light-theme': 'brightness_low' }) | async }}
+      </mat-icon>
+      <span matLine>
+        {{
+          themeService.map({ 'dark-theme': 'USER_PROFILE.LIGHT_MODE', 'light-theme': 'USER_PROFILE.DARK_MODE' })
+            | async
+            | translate
+        }}
+      </span>
+    </button>
+
+    <ng-content></ng-content>
+
+    <mat-divider></mat-divider>
+    <button mat-list-item (click)="sessionService.logout()">
+      <mat-icon matListAvatar>exit_to_app</mat-icon>
+      <span matLine>{{ 'USER_PROFILE.SIGN_OUT' | translate }}</span>
+    </button>
+  </ng-container>
+</td-user-profile>

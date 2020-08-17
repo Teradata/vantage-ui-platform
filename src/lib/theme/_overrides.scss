@@ -4,6 +4,7 @@
 //
 
 @import '../app-switcher/app-switcher-theme';
+@import './long-form-content/small-scale';
 
 // Radius to be used in: card, snackbar, button, dialog & menu
 $shape-radius: 8px;
@@ -188,6 +189,8 @@ $shape-radius: 8px;
     }
   }
   body {
+    color: if($is-dark, map-get($mat-dark-theme-foreground, text), map-get($mat-light-theme-foreground, text));
+
     // Buttons
     a.mat-button,
     button.mat-button,
@@ -426,5 +429,33 @@ $shape-radius: 8px;
       map-get($mat-dark-theme-background, card),
       map-get($mat-light-theme-background, card)
     );
+  }
+
+  td-markdown-navigator td-markdown.td-markdown {
+    @include long-form-content-sm($theme, $fontConfig);
+    // Remove all bottom padding for text from markdown
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      padding-bottom: 0;
+      color: if($is-dark, $white-87-opacity, $black-87-opacity);
+    }
+
+    h1 {
+      // Remove markdown border and padding
+      border-width: 0 !important;
+      padding-bottom: 0 !important;
+      // Force mat typography lineheight
+      line-height: 36px !important;
+    }
+    h2 {
+      // Remove markdown border and padding
+      border-width: 0 !important;
+      padding-bottom: 0 !important;
+    }
   }
 }
