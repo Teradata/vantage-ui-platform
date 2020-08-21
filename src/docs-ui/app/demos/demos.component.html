@@ -34,6 +34,16 @@
 </div>
 
 <div class="pad">
+  <h2>Assets Module</h2>
+  <h4>Help JSON</h4>
+  <button mat-raised-button (click)="getHelpJSON()">
+    Get
+  </button>
+  <h4>Help Contents:</h4>
+  <p>{{ helpJSON }}</p>
+</div>
+
+<div class="pad">
   <h2>Utilities Module</h2>
   <h4>Error Dialog</h4>
   <button mat-raised-button class="push-right-sm" (click)="openErrorDialog()">

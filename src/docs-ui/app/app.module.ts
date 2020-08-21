@@ -53,6 +53,7 @@ import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
 import { VantageUserModule } from '@td-vantage/ui-platform/user';
 import { VantageAuthenticationModule } from '@td-vantage/ui-platform/auth';
 import { VantageAccessModule } from '@td-vantage/ui-platform/access';
+import { VantageAssetsModule } from '@td-vantage/ui-platform/assets';
 import { VantageThemeModule } from '@td-vantage/ui-platform/theme';
 import { VantageSQLEModule } from '@td-vantage/ui-platform/sqle';
 import { VantageAppSwitcherModule } from '@td-vantage/ui-platform/app-switcher';
@@ -137,6 +138,7 @@ import { IconsDemoComponent } from './icons-demo/icons-demo.component';
     VantageUserModule,
     VantageAuthenticationModule,
     VantageAccessModule,
+    VantageAssetsModule,
     VantageThemeModule,
     VantageAppSwitcherModule,
     VantageSQLEModule,

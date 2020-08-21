@@ -1,0 +1,11 @@
+{
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts",
+      "umdModuleIds": {
+        "@covalent/http": "covalent.http",
+        "@ngx-translate/core": "ngx-translate.core"
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { VantageCredentialsDialogComponent, VantageConnectionService } from '@td
 import { VantageErrorService } from '@td-vantage/ui-platform/utilities';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { VantageAssetsService } from '@td-vantage/ui-platform/assets';
 
 @Component({
   selector: 'app-demos',
@@ -14,11 +15,14 @@ import { takeUntil } from 'rxjs/operators';
 export class DemosComponent implements OnInit, OnDestroy {
   private unsubscribe: Subject<void> = new Subject();
 
+  helpJSON: string = '{}';
+
   constructor(
     public _themeService: VantageThemeService,
     private _dialog: MatDialog,
     private _errorService: VantageErrorService,
     public connectionService: VantageConnectionService,
+    public assetsService: VantageAssetsService,
   ) {}
 
   ngOnInit(): void {
@@ -61,5 +65,9 @@ export class DemosComponent implements OnInit, OnDestroy {
       message: 'This is an error dialog',
       error,
     });
+  }
+
+  getHelpJSON(): void {
+    this.helpJSON = this.assetsService.getHelpJSON() + '';
   }
 }
