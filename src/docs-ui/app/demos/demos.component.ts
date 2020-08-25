@@ -15,7 +15,7 @@ import { VantageAssetsService, IHelpAssets } from '@td-vantage/ui-platform/asset
 export class DemosComponent implements OnInit, OnDestroy {
   private unsubscribe: Subject<void> = new Subject();
 
-  helpJSON: string = '{}';
+  helpJSON: IHelpAssets;
 
   constructor(
     public _themeService: VantageThemeService,
@@ -69,7 +69,7 @@ export class DemosComponent implements OnInit, OnDestroy {
 
   getHelpJSON(): void {
     this.assetsService.getHelpJSON().subscribe((helpJSON: IHelpAssets) => {
-      this.helpJSON = helpJSON + '';
+      this.helpJSON = helpJSON;
     });
   }
 }

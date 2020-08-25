@@ -39,8 +39,8 @@
   <button mat-raised-button (click)="getHelpJSON()">
     Get
   </button>
-  <h4>Help Contents:</h4>
-  <p>{{ helpJSON }}</p>
+  <h4 *ngIf="helpJSON">Help Contents:</h4>
+  <td-json-formatter *ngIf="helpJSON" [data]="helpJSON" [levelsOpen]="6"></td-json-formatter>
 </div>
 
 <div class="pad">

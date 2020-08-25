@@ -45,6 +45,7 @@ import { CovalentLoadingModule } from '@covalent/core/loading';
 import { CovalentDialogsModule } from '@covalent/core/dialogs';
 import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentBreadcrumbsModule } from '@covalent/core/breadcrumbs';
+import { CovalentJsonFormatterModule } from '@covalent/core/json-formatter';
 
 import { CovalentMarkdownNavigatorModule } from '@covalent/markdown-navigator';
 
@@ -133,6 +134,7 @@ import { IconsDemoComponent } from './icons-demo/icons-demo.component';
     CovalentLoadingModule,
     CovalentMessageModule,
     CovalentMarkdownNavigatorModule,
+    CovalentJsonFormatterModule,
     TranslateModule.forRoot(),
     CovalentHttpModule.forRoot(),
 
