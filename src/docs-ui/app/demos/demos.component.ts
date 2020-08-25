@@ -69,7 +69,6 @@ export class DemosComponent implements OnInit, OnDestroy {
 
   getHelpJSON(): void {
     this.assetsService.getHelpJSON().subscribe((helpJSON: IHelpAssets) => {
-      console.log('HERE', helpJSON);
       this.helpJSON = helpJSON + '';
     });
   }
