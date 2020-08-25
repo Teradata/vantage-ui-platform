@@ -38,6 +38,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { CovalentCommonModule } from '@covalent/core/common';
+import { CovalentDynamicMenuModule } from '@covalent/core/dynamic-menu';
 import { CovalentLayoutModule } from '@covalent/core/layout';
 import { CovalentMessageModule } from '@covalent/core/message';
 import { CovalentLoadingModule } from '@covalent/core/loading';
@@ -124,6 +125,7 @@ import { IconsDemoComponent } from './icons-demo/icons-demo.component';
     MatPaginatorModule,
     /** Covalent Modules */
     CovalentCommonModule,
+    CovalentDynamicMenuModule,
     CovalentLayoutModule,
     CovalentBreadcrumbsModule,
     CovalentMediaModule,

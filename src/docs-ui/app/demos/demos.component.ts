@@ -5,7 +5,7 @@ import { VantageCredentialsDialogComponent, VantageConnectionService } from '@td
 import { VantageErrorService } from '@td-vantage/ui-platform/utilities';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { VantageAssetsService } from '@td-vantage/ui-platform/assets';
+import { VantageAssetsService, IHelpAssets } from '@td-vantage/ui-platform/assets';
 
 @Component({
   selector: 'app-demos',
@@ -68,6 +68,9 @@ export class DemosComponent implements OnInit, OnDestroy {
   }
 
   getHelpJSON(): void {
-    this.helpJSON = this.assetsService.getHelpJSON() + '';
+    this.assetsService.getHelpJSON().subscribe((helpJSON: IHelpAssets) => {
+      console.log('HERE', helpJSON);
+      this.helpJSON = helpJSON + '';
+    });
   }
 }

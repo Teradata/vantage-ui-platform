@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { VantageAssetsService } from './assets.service';
+import { VANTAGE_ASSETS_PROVIDER } from './assets.service';
 
 @NgModule({
   imports: [CommonModule],
-  providers: [VantageAssetsService],
+  providers: [VANTAGE_ASSETS_PROVIDER],
 })
 export class VantageAssetsModule {}

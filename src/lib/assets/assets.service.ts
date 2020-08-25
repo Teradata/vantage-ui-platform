@@ -1,18 +1,14 @@
 import { map, catchError } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
+import { Injectable, Optional, SkipSelf, Provider } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { mixinHttp, TdGET, TdResponse } from '@covalent/http';
 import { Observable, of } from 'rxjs';
 
+import { IMenuItem } from '@covalent/core/dynamic-menu';
+
 export interface IHelpAssets {
   [name: string]: {
-    links: any[];
-  };
-}
-
-export interface ILearnAssets {
-  [name: string]: {
-    links: any[];
+    links: IMenuItem[];
   };
 }
 
@@ -24,10 +20,10 @@ export class VantageAssetsService extends mixinHttp(class {}, {
   }),
 }) {
   /**
-   * gets the help asset
+   * Retrieve the help JSON definition asset
    */
   @TdGET({
-    path: '/json/help.json',
+    path: '/json/help/help.json',
     options: {
       observe: 'response',
     },
@@ -42,24 +38,15 @@ export class VantageAssetsService extends mixinHttp(class {}, {
       }),
     );
   }
-
-  /**
-   * gets the help asset
-   */
-  @TdGET({
-    path: '/json/learn.json',
-    options: {
-      observe: 'response',
-    },
-  })
-  getLearnAsset(@TdResponse() response?: Observable<HttpResponse<any>>): Observable<ILearnAssets> {
-    return response.pipe(
-      catchError((error: Response) => {
-        return of(error);
-      }),
-      map((res: HttpResponse<ILearnAssets>) => {
-        return res.body;
-      }),
-    );
-  }
 }
+
+export function VANTAGE_ASSETS_PROVIDER_FACTORY(parent: VantageAssetsService): VantageAssetsService {
+  return parent || new VantageAssetsService();
+}
+
+export const VANTAGE_ASSETS_PROVIDER: Provider = {
+  // If there is already a service available, use that. Otherwise, provide a new one.
+  provide: VantageAssetsService,
+  deps: [[new Optional(), new SkipSelf(), VantageAssetsService]],
+  useFactory: VANTAGE_ASSETS_PROVIDER_FACTORY,
+};
