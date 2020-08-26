@@ -21,7 +21,7 @@ const PROXY_CONFIG = {
     secure: false,
     changeOrigin: true,
   },
-  '/vantage-assets': {
+  '/ui-assets': {
     target: serverUrl,
     secure: false,
     changeOrigin: true,

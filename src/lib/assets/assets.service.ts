@@ -14,7 +14,7 @@ export interface IHelpAssets {
 
 @Injectable()
 export class VantageAssetsService extends mixinHttp(class {}, {
-  baseUrl: '/vantage-assets',
+  baseUrl: '/ui-assets',
   baseHeaders: new HttpHeaders({
     Accept: 'application/json',
   }),
