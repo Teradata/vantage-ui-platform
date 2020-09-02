@@ -43,6 +43,7 @@
   </mat-action-list>
   <mat-divider class="push-top-sm"></mat-divider>
   <mat-expansion-panel
+    #expansionPanel
     *ngIf="otherProducts?.length; else explorerMore"
     class="other-products"
     (afterExpand)="scrollToBottom()"

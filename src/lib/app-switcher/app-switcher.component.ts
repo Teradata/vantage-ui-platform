@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 
 import { IVantageAppSwitcherItem } from './services/products.service';
+import { VantageAppSwitcherMenuComponent } from './app-switcher-menu/app-switcher-menu.component';
 
 @Component({
   selector: 'vui-app-switcher',
@@ -12,4 +13,9 @@ export class VantageAppSwitcherComponent {
   @Input() products: IVantageAppSwitcherItem[];
   @Input() otherProducts: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
+  @ViewChild('appSwitcherMenu', { static: true }) appSwitcherMenu: VantageAppSwitcherMenuComponent;
+
+  menuClosed(): void {
+    this.appSwitcherMenu.expansionPanel.close();
+  }
 }

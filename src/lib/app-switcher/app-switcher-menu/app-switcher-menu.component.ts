@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+
+import { MatExpansionPanel } from '@angular/material/expansion';
 
 import { IVantageAppSwitcherItem } from '../services/products.service';
 
@@ -13,7 +15,9 @@ export class VantageAppSwitcherMenuComponent {
   @Input() otherProducts: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
 
-  constructor(private elRef: ElementRef) {}
+  @ViewChild('expansionPanel') expansionPanel: MatExpansionPanel;
+
+  constructor(private elRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) {}
 
   _blockEvent(event: Event): void {
     event.preventDefault();
@@ -21,6 +25,7 @@ export class VantageAppSwitcherMenuComponent {
   }
 
   scrollToBottom(): void {
+    this._changeDetectorRef.detectChanges();
     setTimeout(() => {
       const elem: HTMLElement = this.elRef.nativeElement.querySelector('.td-menu-content');
       elem.scrollTop = elem.scrollHeight;
