@@ -1,3 +1,36 @@
+<a name="1.0.0-beta.5"></a>
+
+# [1.0.0-beta.5](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2020-09-03)
+
+### Bug Fixes
+
+- firefox bfCache caching ([#113](https://github.com/Teradata/vantage-ui-platform/issues/113)) ([7b10c04](https://github.com/Teradata/vantage-ui-platform/commit/7b10c04))
+- **app-switcher-close:** close exp panel on menu close, detect changes ([dec8642](https://github.com/Teradata/vantage-ui-platform/commit/dec8642))
+- **app-switcher-close:** more change detection ([ae53957](https://github.com/Teradata/vantage-ui-platform/commit/ae53957))
+- **app-switcher-close:** reverted menu component change detection ([171645c](https://github.com/Teradata/vantage-ui-platform/commit/171645c))
+- **app-switcher-close:** updated demo links ([e09d5a4](https://github.com/Teradata/vantage-ui-platform/commit/e09d5a4))
+- **build:** missing directory ([#118](https://github.com/Teradata/vantage-ui-platform/issues/118)) ([6b437a7](https://github.com/Teradata/vantage-ui-platform/commit/6b437a7))
+- **color:** set body color based on mode ([3409f1f](https://github.com/Teradata/vantage-ui-platform/commit/3409f1f))
+- **query:** update data iinterface ([#111](https://github.com/Teradata/vantage-ui-platform/issues/111)) ([c9e55f7](https://github.com/Teradata/vantage-ui-platform/commit/c9e55f7))
+
+### Features
+
+- **app-switcher:** Allow for open in new tab ([#108](https://github.com/Teradata/vantage-ui-platform/issues/108)) ([20bced8](https://github.com/Teradata/vantage-ui-platform/commit/20bced8))
+- **assets-url-change:** relocated assets service url ([#121](https://github.com/Teradata/vantage-ui-platform/issues/121)) ([01227c8](https://github.com/Teradata/vantage-ui-platform/commit/01227c8))
+- **num-vals-as-str:** result set numeric values as strings ([#106](https://github.com/Teradata/vantage-ui-platform/issues/106)) ([778bddf](https://github.com/Teradata/vantage-ui-platform/commit/778bddf))
+- **nums-as-strings:** define interface for column metadata ([#109](https://github.com/Teradata/vantage-ui-platform/issues/109)) ([89bbca7](https://github.com/Teradata/vantage-ui-platform/commit/89bbca7))
+- **query:** add column types ([#112](https://github.com/Teradata/vantage-ui-platform/issues/112)) ([68ec52e](https://github.com/Teradata/vantage-ui-platform/commit/68ec52e))
+- **vui-user-profile:** add component ([#104](https://github.com/Teradata/vantage-ui-platform/issues/104)) ([8cc090c](https://github.com/Teradata/vantage-ui-platform/commit/8cc090c))
+- add notification node icon ([#119](https://github.com/Teradata/vantage-ui-platform/issues/119)) ([df9aa62](https://github.com/Teradata/vantage-ui-platform/commit/df9aa62))
+- assets service ([#120](https://github.com/Teradata/vantage-ui-platform/issues/120)) ([2740953](https://github.com/Teradata/vantage-ui-platform/commit/2740953))
+- long form small scale styles and markdown update ([#117](https://github.com/Teradata/vantage-ui-platform/issues/117)) ([2e3c114](https://github.com/Teradata/vantage-ui-platform/commit/2e3c114))
+- new icons and icon view ([#116](https://github.com/Teradata/vantage-ui-platform/issues/116)) ([3b608d5](https://github.com/Teradata/vantage-ui-platform/commit/3b608d5))
+- update createsession method with default payload param ([#107](https://github.com/Teradata/vantage-ui-platform/issues/107)) ([36a5b8f](https://github.com/Teradata/vantage-ui-platform/commit/36a5b8f))
+
+### Reverts
+
+- **account-profile:** depracting account-profile for covalent version ([#103](https://github.com/Teradata/vantage-ui-platform/issues/103)) ([f66cf1d](https://github.com/Teradata/vantage-ui-platform/commit/f66cf1d))
+
 <a name="1.0.0-beta.4"></a>
 
 # [1.0.0-beta.4](https://github.com/Teradata/vantage-ui-platform/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2020-06-02)
