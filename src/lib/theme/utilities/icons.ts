@@ -34,6 +34,7 @@ export const TD_ICONS: TdIcon[] = [
   'no_results',
   'node_branch',
   'node_merge',
+  'node_notification',
   'object_storage',
   'operations',
   'operators_divide',
@@ -125,6 +126,7 @@ export type TdIcon =
   | 'no_results'
   | 'node_branch'
   | 'node_merge'
+  | 'node_notification'
   | 'object_storage'
   | 'operations'
   | 'operators_divide'
