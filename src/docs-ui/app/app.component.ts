@@ -13,29 +13,29 @@ export class AppComponent {
   products: IVantageAppSwitcherItem[] = [
     {
       text: 'Vantage Launcher',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       svgIcon: 'td-logo:logo-mark',
       divider: true,
     },
     {
       text: 'Editor',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       icon: 'settings',
     },
     {
       text: 'Analyst',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       icon: 'settings',
     },
     {
       text: 'App Center',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       newTab: false,
     },
 
     {
       text: 'Console',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       icon: 'settings',
       newTab: true,
     },
@@ -44,24 +44,24 @@ export class AppComponent {
   otherProducts: IVantageAppSwitcherItem[] = [
     {
       text: 'Jupyter',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       icon: 'settings',
       newTab: true,
     },
     {
       text: 'Something else',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       icon: 'settings',
     },
     {
       text: 'Another thing',
-      href: 'http://teradata.com',
+      href: 'https://www.teradata.com',
       icon: 'settings',
       newTab: false,
     },
   ];
 
-  exploreMoreLink: string = 'http://teradata.com/products';
+  exploreMoreLink: string = 'https://www.teradata.com/products';
 
   constructor(
     private _iconRegistry: MatIconRegistry,
