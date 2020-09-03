@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ElementRef, ViewChild } from '@angular/core';
+
+import { MatExpansionPanel } from '@angular/material/expansion';
 
 import { IVantageAppSwitcherItem } from '../services/products.service';
 
@@ -12,6 +14,8 @@ export class VantageAppSwitcherMenuComponent {
   @Input() products: IVantageAppSwitcherItem[];
   @Input() otherProducts: IVantageAppSwitcherItem[];
   @Input() exploreMoreLink: string;
+
+  @ViewChild('expansionPanel') expansionPanel: MatExpansionPanel;
 
   constructor(private elRef: ElementRef) {}
 
