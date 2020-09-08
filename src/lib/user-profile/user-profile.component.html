@@ -5,9 +5,9 @@
   matTooltipShowDelay="0"
 >
   <ng-container td-user-action-list>
-    <button mat-list-item (click)="themeService.toggleTheme()">
+    <button mat-list-item (click)="themeService.toggleTheme(); $event.stopPropagation()">
       <mat-icon matListAvatar>
-        {{ themeService.map({ 'dark-theme': 'brightness_high', 'light-theme': 'brightness_low' }) | async }}
+        {{ themeService.map({ 'dark-theme': 'wb_sunny', 'light-theme': 'brightness_2' }) | async }}
       </mat-icon>
       <span matLine>
         {{
