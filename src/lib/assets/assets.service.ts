@@ -6,10 +6,14 @@ import { Observable, of } from 'rxjs';
 
 import { IMenuItem } from '@covalent/core/dynamic-menu';
 
+export interface ILearnLinkItem extends IMenuItem {
+  description?: string;
+}
+
 export interface IHelpAssets {
   [name: string]: {
     links: IMenuItem[];
-    learn?: IMenuItem[];
+    learn?: ILearnLinkItem[];
   };
 }
 
