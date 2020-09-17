@@ -6,7 +6,6 @@ import {
   url,
   apply,
   branchAndMerge,
-  SchematicsException,
   template,
   UpdateRecorder,
   FileEntry,
@@ -28,11 +27,11 @@ import { SourceFile } from 'typescript';
 import { Change } from '@schematics/angular/utility/change';
 
 export function addDependenciesAndFiles(options: ISchema): Rule {
-  let addVantagePacakgeRule: Rule = (host: Tree) => {
+  const addVantagePacakgeRule: Rule = (host: Tree) => {
     addPackageToPackageJson(host, '@td-vantage/ui-platform', `${uiPlatformVersion}`);
   };
 
-  let ruleSet: Rule[] = [addVantagePacakgeRule];
+  const ruleSet: Rule[] = [addVantagePacakgeRule];
 
   if (options.ssoServerURL && options.ssoServerURL.trim().length) {
     // enable SSO
@@ -58,25 +57,15 @@ function updateStyles(): Rule {
     const workspace: experimental.workspace.WorkspaceSchema = getWorkspace(host);
     const project: experimental.workspace.WorkspaceProject = getProjectFromWorkspace(workspace);
     const styleFilePath: string = getProjectStyleFile(project);
-
     const file: Buffer = host.read(styleFilePath);
-
     const themeFile: FileEntry = host.get('theme.scss');
-    // context.logger.log('info', themeFile.content.toString());
-    // if (!themeFile) {
-    //   throw new SchematicsException('Please install covalent core.');
-    // }
-
-    // if(file && themeFile) {
-    context.logger.log('info', themeFile.content.toString());
     const fileContent: string = file.toString();
-    const content: string = themeFile.content.toString();
+    const content: string = themeFile && themeFile.content.toString();
 
     if (content) {
       host.overwrite(styleFilePath, fileContent + '\n' + content);
+      host.delete('theme.scss');
     }
-    host.delete('theme.scss');
-    // }
 
     return host;
   };
