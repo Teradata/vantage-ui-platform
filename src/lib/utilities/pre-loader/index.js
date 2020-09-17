@@ -11,9 +11,20 @@ module.exports = (targetOptions, originalIndexHtml) => {
       .renderSync({ file: path.join(__dirname, 'pre-loader.scss'), includePaths: ['node_modules'] })
       .css.toString();
     const preLoaderHtmlWithCss = preLoaderHtml.replace('<style></style>', `<style>${preLoaderCss}</style>`);
-    const newIndexHtml = originalIndexHtml.replace('<div id="td-pre-loader"></div>', preLoaderHtmlWithCss);
+
+    const closingBodyTag = '</body>';
+    const closingBodyTagIndex = originalIndexHtml.indexOf(closingBodyTag);
+    if (closingBodyTagIndex === -1) {
+      throw new Error('Cannot find body tag to place pre-loader inside of');
+    }
+
+    const newIndexHtml = `${originalIndexHtml.slice(
+      0,
+      closingBodyTagIndex,
+    )}${preLoaderHtmlWithCss}${originalIndexHtml.slice(closingBodyTagIndex)}`;
     return newIndexHtml;
   } catch (error) {
+    console.error(error);
     return new Error(error);
   }
 };

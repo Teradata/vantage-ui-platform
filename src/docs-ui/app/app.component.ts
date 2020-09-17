@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+import { IVantageAppSwitcherItem } from '@td-vantage/ui-platform/app-switcher';
+import { VantageThemeService, VantageTheme } from '../../lib/theme/theme.service';
 
 @Component({
   selector: 'td-app',
@@ -7,8 +10,86 @@ import { MatIconRegistry } from '@angular/material/icon';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private _iconRegistry: MatIconRegistry) {
+  products: IVantageAppSwitcherItem[] = [
+    {
+      text: 'Vantage Launcher',
+      href: 'https://www.teradata.com',
+      svgIcon: 'td-logo:logo-mark',
+      divider: true,
+    },
+    {
+      text: 'Editor',
+      href: 'https://www.teradata.com',
+      icon: 'settings',
+    },
+    {
+      text: 'Analyst',
+      href: 'https://www.teradata.com',
+      icon: 'settings',
+    },
+    {
+      text: 'App Center',
+      href: 'https://www.teradata.com',
+      newTab: false,
+    },
+
+    {
+      text: 'Console',
+      href: 'https://www.teradata.com',
+      icon: 'settings',
+      newTab: true,
+    },
+  ];
+
+  otherProducts: IVantageAppSwitcherItem[] = [
+    {
+      text: 'Jupyter',
+      href: 'https://www.teradata.com',
+      icon: 'settings',
+      newTab: true,
+    },
+    {
+      text: 'Something else',
+      href: 'https://www.teradata.com',
+      icon: 'settings',
+    },
+    {
+      text: 'Another thing',
+      href: 'https://www.teradata.com',
+      icon: 'settings',
+      newTab: false,
+    },
+  ];
+
+  exploreMoreLink: string = 'https://www.teradata.com/products';
+
+  constructor(
+    private _iconRegistry: MatIconRegistry,
+    private _domSanitizer: DomSanitizer,
+    public _themeService: VantageThemeService,
+  ) {
     // Register Covalent Icons
     this._iconRegistry.registerFontClassAlias('covalent', 'covalent-icons');
+
+    // Register Teradata icons
+    this._iconRegistry.addSvgIconSetInNamespace(
+      'td-icons',
+      this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/teradata-icons.svg'),
+    );
+
+    // Register Teradata icons
+    this._iconRegistry.addSvgIconSetInNamespace(
+      'td-logo',
+      this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/teradata-logo.svg'),
+    );
+  }
+
+  toggleTheme($event: Event): void {
+    this._themeService.toggleTheme();
+  }
+
+  _blockEvent(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
   }
 }

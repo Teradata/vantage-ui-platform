@@ -43,16 +43,75 @@
       <button mat-icon-button disabled aria-label="Example icon-button with a heart icon">
         <mat-icon>favorite</mat-icon>
       </button>
+      <br />
+      <br />
+      <br />
+      <button class="push-sm" mat-fab>Basic</button>
+      <button class="push-sm" mat-fab color="primary">Primary</button>
+      <button class="push-sm" mat-fab color="accent">Accent</button>
+      <button class="push-sm" mat-fab color="warn">Warn</button>
+      <button class="push-sm" mat-fab disabled>Disabled</button>
+      <button class="push-sm" mat-fab aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <a mat-fab routerLink=".">Link</a>
+      <br />
+      <br />
+      <br />
+      <button class="push-sm" mat-mini-fab>Basic</button>
+      <button class="push-sm" mat-mini-fab color="primary">Primary</button>
+      <button class="push-sm" mat-mini-fab color="accent">Accent</button>
+      <button class="push-sm" mat-mini-fab color="warn">Warn</button>
+      <button class="push-sm" mat-mini-fab disabled>Disabled</button>
+      <button class="push-sm" mat-mini-fab aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <a mat-mini-fab routerLink=".">Link</a>
     </div>
     <!-- /Material Button -->
 
     <!-- Material Chip List -->
     <div class="push-bottom-xxl pad-bottom-lg">
-      <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Chips</h4>
+      <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Chips (unselected)</h4>
 
       <mat-chip-list>
         <mat-chip>
-          Default
+          Default / Primary
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="accent">
+          Accent
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="warn">
+          Negative
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="caution">
+          Caution
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="positive">
+          Positive
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="emphasis">
+          Emphasis
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="neutral">
+          Neutral
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div class="push-bottom-xxl pad-bottom-lg">
+      <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Chips (selected)</h4>
+
+      <mat-chip-list>
+        <mat-chip selected="true">
+          Default / Primary
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
         <mat-chip color="accent" selected="true">
@@ -73,6 +132,10 @@
         </mat-chip>
         <mat-chip color="emphasis" selected="true">
           Emphasis
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip color="neutral" selected="true">
+          Neutral
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
@@ -241,6 +304,7 @@
         </mat-card-actions>
       </mat-card>
     </div>
+
     <!-- Material Spinner -->
     <div class="push-bottom-xxl pad-bottom-lg">
       <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Progress Spinner</h4>
@@ -349,8 +413,8 @@
     </div>
     <!-- /Material Tab -->
 
-    <div class="push-bottom-xxl pad-bottom-lg">
-      <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material Icons</h4>
+    <div class="example-icons push-bottom-xxl pad-bottom-lg">
+      <h4 class="push-bottom-md example-h4 text-upper tc-grey-600">Material icons</h4>
 
       <mat-icon>build</mat-icon>
       <mat-icon>android</mat-icon>

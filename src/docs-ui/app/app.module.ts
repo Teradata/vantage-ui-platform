@@ -38,11 +38,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { CovalentCommonModule } from '@covalent/core/common';
+import { CovalentDynamicMenuModule } from '@covalent/core/dynamic-menu';
 import { CovalentLayoutModule } from '@covalent/core/layout';
 import { CovalentMessageModule } from '@covalent/core/message';
 import { CovalentLoadingModule } from '@covalent/core/loading';
 import { CovalentDialogsModule } from '@covalent/core/dialogs';
 import { CovalentMediaModule } from '@covalent/core/media';
+import { CovalentBreadcrumbsModule } from '@covalent/core/breadcrumbs';
+import { CovalentJsonFormatterModule } from '@covalent/core/json-formatter';
+
+import { CovalentMarkdownNavigatorModule } from '@covalent/markdown-navigator';
 
 import { CovalentHttpModule } from '@covalent/http';
 
@@ -50,8 +55,11 @@ import { VantageUserFeedbackModule } from '@td-vantage/ui-platform/utilities';
 import { VantageUserModule } from '@td-vantage/ui-platform/user';
 import { VantageAuthenticationModule } from '@td-vantage/ui-platform/auth';
 import { VantageAccessModule } from '@td-vantage/ui-platform/access';
+import { VantageAssetsModule } from '@td-vantage/ui-platform/assets';
 import { VantageThemeModule } from '@td-vantage/ui-platform/theme';
-
+import { VantageSQLEModule } from '@td-vantage/ui-platform/sqle';
+import { VantageAppSwitcherModule } from '@td-vantage/ui-platform/app-switcher';
+import { VantageUserProfileModule } from '@td-vantage/ui-platform/user-profile';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 
@@ -62,9 +70,21 @@ import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-transla
 import { getSelectedLanguage, getSelectedLocale, createTranslateLoader, SUPPORTED_LANGS } from '../config/translate';
 import { TypographyComponent } from './typography/typography.component';
 import { MatComponentsComponent, DialogContentComponent } from './mat-components/mat-components.component';
+import { DemosComponent } from './demos/demos.component';
+import { CovalentComponentsComponent } from './covalent-components/covalent-components.component';
+import { IconsDemoComponent } from './icons-demo/icons-demo.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, DialogContentComponent, TypographyComponent, MatComponentsComponent], // directives, components, and pipes owned by this NgModule
+  declarations: [
+    AppComponent,
+    MainComponent,
+    DialogContentComponent,
+    TypographyComponent,
+    MatComponentsComponent,
+    DemosComponent,
+    CovalentComponentsComponent,
+    IconsDemoComponent,
+  ], // directives, components, and pipes owned by this NgModule
   imports: [
     /** Angular Modules */
     HttpClientModule,
@@ -106,11 +126,15 @@ import { MatComponentsComponent, DialogContentComponent } from './mat-components
     MatPaginatorModule,
     /** Covalent Modules */
     CovalentCommonModule,
+    CovalentDynamicMenuModule,
     CovalentLayoutModule,
+    CovalentBreadcrumbsModule,
     CovalentMediaModule,
     CovalentDialogsModule,
     CovalentLoadingModule,
     CovalentMessageModule,
+    CovalentMarkdownNavigatorModule,
+    CovalentJsonFormatterModule,
     TranslateModule.forRoot(),
     CovalentHttpModule.forRoot(),
 
@@ -118,7 +142,11 @@ import { MatComponentsComponent, DialogContentComponent } from './mat-components
     VantageUserModule,
     VantageAuthenticationModule,
     VantageAccessModule,
+    VantageAssetsModule,
     VantageThemeModule,
+    VantageAppSwitcherModule,
+    VantageSQLEModule,
+    VantageUserProfileModule,
 
     appRoutes,
   ], // modules needed to run this module

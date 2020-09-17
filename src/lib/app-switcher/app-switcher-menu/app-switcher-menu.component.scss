@@ -1,0 +1,44 @@
+.app-switcher-menu {
+  min-width: 256px;
+
+  .app-switcher-header[td-menu-header] {
+    padding: 24px 0;
+    .mat-icon[svgicon='td-logo:logo-wordmark'] {
+      height: 24px;
+      width: auto;
+      margin-bottom: 12px;
+    }
+  }
+  .app-switcher-list-item {
+    .mat-icon::ng-deep > svg {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .other-products {
+    box-shadow: none;
+    margin: 8px 0;
+
+    .other-products-header {
+      padding: 0 16px;
+    }
+
+    ::ng-deep .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+
+  .new-tab {
+    ::ng-deep .mat-list-item-content {
+      padding-right: 12px;
+    }
+  }
+
+  .explore-more {
+    margin: 6px 8px;
+  }
+  ::ng-deep .td-menu-content + .mat-divider {
+    display: none;
+  }
+}

@@ -21,6 +21,11 @@ const PROXY_CONFIG = {
     secure: false,
     changeOrigin: true,
   },
+  '/ui-assets': {
+    target: serverUrl,
+    secure: false,
+    changeOrigin: true,
+  },
 };
 
 module.exports = PROXY_CONFIG;

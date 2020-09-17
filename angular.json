@@ -26,6 +26,11 @@
             "assets": [
               "src/assets",
               {
+                "glob": "*",
+                "input": "src/lib/theme/icons/",
+                "output": "/assets/icons/"
+              },
+              {
                 "glob": "favicon.ico",
                 "input": "src/docs-ui/",
                 "output": "/"
@@ -64,11 +69,13 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "docs-ui:build"
+            "browserTarget": "docs-ui:build",
+            "proxyConfig": "./proxy.conf.js"
           },
           "configurations": {
             "production": {
-              "browserTarget": "docs-ui:build:production"
+              "browserTarget": "docs-ui:build:production",
+              "proxyConfig": "./proxy.conf.js"
             }
           }
         },
