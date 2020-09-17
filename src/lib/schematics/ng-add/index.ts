@@ -1,3 +1,4 @@
+
 import {
   Rule,
   chain,
@@ -22,7 +23,9 @@ import { InsertChange } from '@schematics/angular/utility/change';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { experimental } from '@angular-devkit/core';
+
 import { getSourceFile, getProjectMainFile, getProjectStyleFile } from '@angular/cdk/schematics/utils';
+
 import { SourceFile } from 'typescript';
 import { Change } from '@schematics/angular/utility/change';
 
@@ -86,7 +89,6 @@ function addSSOImports(): Rule {
     addModuleImportToRootModule(host, `CovalentHttpModule.forRoot()`, '@covalent/http', project);
     replaceContentInAppModule(host, `CovalentHttpModule.forRoot()`, replacementString);
     addModuleImportToRootModule(host, 'appRoutes', './app.routes', project);
-
     addProvider(host, `VantageAuthenticationInterceptor`, '@td-vantage/ui-platform/auth');
     addProvider(host, `appRoutingProviders`, './app.routes');
   };

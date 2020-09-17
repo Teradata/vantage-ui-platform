@@ -6,6 +6,7 @@ const vantageLoginProxyConfig = require('./src/lib/auth/config/vantageLoginProxy
 /* * * * * * * * * * * */
 
 const serverUrl = 'https://vantage.url.io'; // REPLACE WITH VANTAGE BASE URL
+
 const localUrl = 'localhost:4200';
 const localProto = 'http'; // http or https
 
