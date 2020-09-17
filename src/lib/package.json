@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "author": "Teradata UI Team",
+  "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/common": "^0.0.0-NG",
     "@angular/core": "^0.0.0-NG",
