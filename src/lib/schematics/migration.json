@@ -1,0 +1,9 @@
+{
+  "schematics": {
+    "covalent-migration-01": {
+      "description": "Upgrade to latest version",
+      "version": "3.0.1",
+      "factory": "./update/index#updateDependencies"
+    }
+  }
+}
