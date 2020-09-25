@@ -10,6 +10,9 @@
   },
   "license": "MIT",
   "author": "Teradata UI Team",
+  "ng-update": {
+    "migrations": "./schematics/migration.json"
+  },
   "peerDependencies": {
     "@angular/common": "^0.0.0-NG",
     "@angular/core": "^0.0.0-NG",

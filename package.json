@@ -21,6 +21,7 @@
     "test": "ng test ui-platform --code-coverage --source-map=false --watch=false",
     "coveralls": "cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "build:lib": "bash scripts/build-release && gulp version-placeholder",
+    "test:schematics": "tsc -p src/lib/schematics/tsconfig.spec.json && jasmine src/lib/schematics/**/*.spec.js",
     "release:start": "bash scripts/start-release",
     "release:finish": "bash scripts/finish-release",
     "generate:changelog": "./node_modules/.bin/conventional-changelog -i docs/CHANGELOG.md -s -p angular",
