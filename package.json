@@ -1,6 +1,6 @@
 {
   "name": "@td-vantage/ui-platform",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "Teradata Vantage Angular Platform for easy integration and usage",
   "keywords": [
     "teradata",
@@ -56,11 +56,11 @@
     "@angular/platform-server": "^9.0.0",
     "@angular/router": "^9.0.0",
     "@covalent/core": "git+https://github.com/Teradata/covalent-nightly.git",
-    "@covalent/echarts": "3.0.0-beta.3",
-    "@covalent/flavored-markdown": "3.1.0-beta.1",
-    "@covalent/highlight": "3.0.0-beta.3",
-    "@covalent/http": "3.0.0-beta.3",
-    "@covalent/markdown": "^3.0.1",
+    "@covalent/echarts": "3.1.1-beta.1",
+    "@covalent/flavored-markdown": "3.1.1-beta.1",
+    "@covalent/highlight": "3.1.1-beta.1",
+    "@covalent/http": "3.1.1-beta.1",
+    "@covalent/markdown": "3.1.1-beta.1",
     "@covalent/markdown-navigator": "git+https://github.com/Teradata/covalent-markdown-navigator-nightly.git",
     "@ngx-translate/core": "12.0.0",
     "@ngx-translate/http-loader": "4.0.0",
@@ -107,7 +107,7 @@
     "require-dir": "0.3.2",
     "semver": "5.2.0",
     "ts-node": "~7.0.0",
-    "tsickle": "0.35.0",
+    "tsickle": "0.38.0",
     "typescript": "~3.7.5"
   }
 }
